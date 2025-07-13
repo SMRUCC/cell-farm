@@ -1,2 +1,3 @@
-# R-dev_studio
-the R# language app dev studio, inspired by Rstudio
+# Cell Farm
+
+The massively parallel virtual cell in-silicon farm to run cell population simulation.
