@@ -5,4 +5,14 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\CloudKit\Centos\Centos.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\computing\Parallel\parallel-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\networking\networking.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\BinaryData\binarydata-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Data\BinaryData\msgpack\msgpack-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\Microsoft.VisualBasic.Core\src\Core.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\runtime\sciBASIC#\mime\application%json\JSON-netcore5.vbproj" />
+  </ItemGroup>
+
 </Project>
