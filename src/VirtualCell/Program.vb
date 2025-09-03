@@ -21,7 +21,7 @@ Module Program
             .kinetics = New FluxBaseline
         }
 
-        Call Console.WriteLine(template.GetJson)
+        Call Console.WriteLine(template.GetJson(indent:=True))
 
         Return 0
     End Function
