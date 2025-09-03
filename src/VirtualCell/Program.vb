@@ -1,6 +1,6 @@
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
-Imports Microsoft.VisualBasic.Serialization.JSON
+Imports Microsoft.VisualBasic.MIME.application.json
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
 
 Module Program
@@ -21,7 +21,7 @@ Module Program
             .kinetics = New FluxBaseline
         }
 
-        Call Console.WriteLine(template.GetJson(indent:=True))
+        Call Console.WriteLine(template.GetJson(indent:=True, comment:=True))
 
         Return 0
     End Function
@@ -31,7 +31,10 @@ Module Program
     Public Function Run(args As CommandLine) As Integer
         Dim config_file As String = args.Tokens(1)
         Dim output As String = args("--output") Or config_file.ChangeSuffix(".dat")
-        Dim config As Config = config_file.LoadJsonFile(Of Config)
+        Dim config As Config = config_file _
+            .ReadAllText _
+            .ParseJson _
+            .CreateObject(Of Config)
 
     End Function
 End Module
