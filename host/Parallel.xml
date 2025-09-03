@@ -1,0 +1,571 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Darwinism.HPC.Parallel
+</name>
+</assembly>
+<members>
+<member name="P:Darwinism.HPC.Parallel.Extensions.Verbose">
+ <summary>
+ print the verbose debug echo?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.Extensions.SetVerbose(System.Boolean)">
+ <summary>
+ set global verbose option
+ </summary>
+ <param name="v"></param>
+</member>
+<member name="T:Darwinism.HPC.Parallel.IDelegate">
+ <summary>
+ remote method handler
+ </summary>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IDelegate.name">
+ <summary>
+ the function name
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IDelegate.type">
+ <summary>
+ the declared container type of the target method <see cref="P:Darwinism.HPC.Parallel.IDelegate.name"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IDelegate.filepath">
+ <summary>
+ the absolute path of the assembly module file that contains target delegate
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IDelegate.#ctor(System.Reflection.MethodInfo)">
+ <summary>
+ 
+ </summary>
+ <param name="target">
+ The name of this target method should be unique!
+ </param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IDelegate.GetMethodTarget">
+ <summary>
+ is static or instance method?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IDelegate.GetMethod">
+ <summary>
+ load method data from the delegate json data
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.HPC.Parallel.IPCSocket">
+ <summary>
+ IPC parallel socket for master node
+ </summary>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IPCSocket.socketExitCode">
+ <summary>
+ error code of <see cref="M:Darwinism.IPC.Networking.Tcp.TcpServicesSocket.Run"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.PortIsUsed(System.Boolean)">
+ <summary>
+ work on linux
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.Run">
+ <summary>
+ socket run
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.GetTask(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ get task function
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.GetArgumentByIndex(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ get argument value by index
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.PostStart(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ show a signal of task run
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.GetArgumentNumber(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ get count of argument value input
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.PostError(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ recive the error message from the slave node
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IPCSocket.PostResult(Microsoft.VisualBasic.Parallel.RequestStream,System.Net.IPEndPoint)">
+ <summary>
+ recive the result data from the slave node
+ </summary>
+ <param name="request"></param>
+ <param name="remoteAddress"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.HPC.Parallel.Protocols">
+ <summary>
+ the IPC parallel protocols
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.GetTask">
+ <summary>
+ get task method information
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.GetArgumentNumber">
+ <summary>
+ get total number of parameter input
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.GetArgumentByIndex">
+ <summary>
+ get parameter value by index
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.PostStart">
+ <summary>
+ notify task is start
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.PostResult">
+ <summary>
+ send result value to master node
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.Protocols.PostError">
+ <summary>
+ send error message to master node
+ </summary>
+</member>
+<member name="T:Darwinism.HPC.Parallel.ISlaveTask">
+ <summary>
+ generates the commandline string not contains the executable file path
+ </summary>
+ <param name="processor"></param>
+ <param name="port"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.HPC.Parallel.SlaveTask">
+ <summary>
+ the master node of the slave node
+ </summary>
+</member>
+<member name="M:Darwinism.HPC.Parallel.SlaveTask.#ctor(Microsoft.VisualBasic.CommandLine.InteropService.InteropService,Darwinism.HPC.Parallel.ISlaveTask,System.Nullable{System.Int32},System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="processor"></param>
+ <param name="cli">function delegate to generates a commandline for run 
+ a parallel task. this commandline string should not contains the 
+ executable file path.</param>
+ <param name="debugPort"></param>
+ <param name="ignoreError"></param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.SlaveTask.handlePOST(System.IO.Stream,System.Type,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="buf">buffer is an <see cref="T:Darwinism.HPC.Parallel.IpcStream.ObjectStream"/></param>
+ <param name="type"></param>
+ <param name="debugCode"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.SlaveTask.RunTask``1(System.Delegate,System.Object[])">
+ <summary>
+ 
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="entry"></param>
+ <param name="parameters">
+ the common parameter value between the parallel batches 
+ can be handle by the pre-cached <see cref="T:Darwinism.HPC.Parallel.IpcStream.SocketRef"/>.
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.SocketRef.WriteBuffer(System.Object,Darwinism.HPC.Parallel.IpcStream.StreamEmit)">
+ <summary>
+ buffered object is <see cref="T:Darwinism.HPC.Parallel.IpcStream.ObjectStream"/>
+ </summary>
+ <param name="target">target .net clr object to save to file, and then which 
+ could be load into memory in another process for run the parallel computing.
+ </param>
+ <param name="emit">the object file read/write helper, default bson serializer will be used if this parameter is missing.</param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.SocketRef.CreateReference">
+ <summary>
+ Usually be used for create memory temp file reference
+ </summary>
+ <returns>
+ this function returns a temp file inside memory cache location: ``/dev/shm`` by default.
+ the default location could be modify via the sciBASIC framework variable: ``sockets``.
+ </returns>
+ <remarks>
+ the size of ``/dev/shm`` depends on the memory size of the host system, example as the 
+ memory size of linux host system is 1.5TB, then ``/dev/shm`` is allocated as 756GB.
+ but the docker contains ``/dev/shm`` has a very small size allocated by default: 64MB, 
+ you needs configs of the docker container startup parameter for adjust of the size via 
+ ``--shm-size``, example as: ``docker run -it --shm-size="512M" docker-image-id``.
+ </remarks>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.SocketRef.SetSocketPool(System.String)">
+ <summary>
+ set the directory for place the socket data that used for data exchange 
+ between the slave process and master node.
+ </summary>
+ <param name="handle">
+ usually be a directory path that in memory disk
+ </param>
+</member>
+<member name="T:Darwinism.HPC.Parallel.IpcStream.EmitHandler.toBuffer">
+ <summary>
+ serialize target object as memory stream bytes
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.HPC.Parallel.IpcStream.EmitHandler.loadBuffer">
+ <summary>
+ parse target object from a given memory stream bytes
+ </summary>
+ <param name="buf"></param>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IpcStream.IPCException.StackTrace">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks>
+ # https://stackoverflow.com/questions/912420/throw-exceptions-with-custom-stack-trace
+ 
+ The StackTrace property is virtual - create your own derived Exception class and have the property return whatever you want.
+ </remarks>
+</member>
+<member name="P:Darwinism.HPC.Parallel.IpcStream.ObjectStream.stream">
+ <summary>
+ the in-memory buffer data, should be less than 2GB
+ </summary>
+ <returns></returns>
+</member>
+<member name="F:Darwinism.HPC.Parallel.IpcStream.StreamEmit.toBuffers">
+ <summary>
+ convert clr object to file stream data
+ </summary>
+</member>
+<member name="F:Darwinism.HPC.Parallel.IpcStream.StreamEmit.loadBuffers">
+ <summary>
+ create clr object from a given file stream data
+ </summary>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.StreamEmit.Emit``1(System.Func{``0,System.IO.Stream})">
+ <summary>
+ add handler for convert the clr object to file stream data
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="streamAs"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.StreamEmit.Emit``1(System.Func{System.IO.Stream,``0})">
+ <summary>
+ add handler for creates the clr object from the file stream data
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="fromStream"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.StreamEmit.handleCreate(System.IO.Stream,System.Type,Darwinism.HPC.Parallel.IpcStream.StreamMethods)">
+ <summary>
+ load clr object from the given stream data
+ </summary>
+ <param name="buf"></param>
+ <param name="type"></param>
+ <param name="emit"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.StreamEmit.GetHandler(System.Type)">
+ <summary>
+ try to get the stream data function
+ </summary>
+ <param name="type">target object type for save/read of a stream file.</param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IpcStream.StreamEmit.handleSerialize(System.Object)">
+ <summary>
+ generates the object file binary data
+ </summary>
+ <param name="param"></param>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.HPC.Parallel.EmitStreamAttribute.Target">
+ <summary>
+ the target object type for create file i/o via the functions inside <see cref="P:Darwinism.HPC.Parallel.EmitStreamAttribute.Handler"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.EmitStreamAttribute.#ctor(System.Type)">
+ <summary>
+ the handler type should implements the interface <see cref="T:Darwinism.HPC.Parallel.IEmitStream"/>
+ </summary>
+ <param name="handler"></param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.IEmitStream.BufferInMemory(System.Object)">
+ <summary>
+ serialize into a memory stream buffer?
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.HPC.Parallel.TaskBuilder">
+ <summary>
+ Run on slave node
+ </summary>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.#ctor(System.Int32,System.String,System.Double,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="port"></param>
+ <param name="master"></param>
+ <param name="timeout">
+ the tcp request timeout value in time data unit ``seconds``.
+ </param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.GetParameters(System.Reflection.ParameterInfo[],System.Int32)">
+ <summary>
+ get parameter values
+ </summary>
+ <param name="params"></param>
+ <param name="n"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.Initialize(System.Reflection.MethodInfo@,System.Object@,System.Object[]@)">
+ <summary>
+ load task method delegate function and request parameters from remote master for run the task 
+ </summary>
+ <param name="api"></param>
+ <param name="target"></param>
+ <param name="args"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.GetArgumentValueNumber">
+ <summary>
+ just get the number of the arguments that passed.
+ (due to the reason of optional parameters) 
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.GetMethod">
+ <summary>
+ get target task function from the master node via TCP request
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.FromStream(Darwinism.HPC.Parallel.IpcStream.ObjectStream)">
+ <summary>
+ object is created via the module symbol: <see cref="F:Darwinism.HPC.Parallel.TaskBuilder.emit"/>
+ </summary>
+ <param name="stream"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.TaskBuilder.GetArgumentValue(System.Int32)">
+ <summary>
+ <see cref="T:Darwinism.HPC.Parallel.IpcStream.SocketRef"/> -> target
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.BackgroundTaskUtils.BindToMaster(System.String,System.IDisposable)">
+ <summary>
+ if parent is exists then kill current web server 
+ </summary>
+ <param name="parentId"></param>
+ <param name="kill"></param>
+</member>
+<member name="T:Darwinism.HPC.Parallel.MapObject">
+ <summary>
+ 只能够在进程之间映射一个不大于2GB的对象
+ </summary>
+ <remarks>
+ this code module only works for windows platform
+ </remarks>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MapObject.GetObject(System.Type)">
+ <summary>
+ load object from the memory region by a specific type schema
+ </summary>
+ <param name="type"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MapObject.Exists(System.String)">
+ <summary>
+ Test file exists?
+ </summary>
+ <param name="hMem"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MapObject.Allocate(System.Int32,System.String)">
+ <summary>
+ Allocate an empty memory region
+ </summary>
+ <param name="bufferSize">size in bytes, should be less than 2GB</param>
+ <param name="hMemP">
+ the memory map file name 
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MapObject.FromObject(System.Object,System.String)">
+ <summary>
+ serialize object in BSON to a memory region 
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MemoryPipe.LoadStream">
+ <summary>
+ read data from memory
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MemoryPipe.WriteBuffer(System.IO.MemoryStream)">
+ <summary>
+ save data into memory
+ </summary>
+ <param name="data"></param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.MemoryPipe.WriteBuffer(System.Byte[]@)">
+ <summary>
+ save data into memory
+ </summary>
+ <param name="data"></param>
+</member>
+<member name="P:Darwinism.HPC.Parallel.UnmanageMemoryRegion.isError">
+ <summary>
+ It is an error memory mapping region?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.BatchTasks.SelfFolks(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+ <summary>
+ Folk this program itself for the large amount data batch processing.
+ </summary>
+ <param name="CLI">Self folk processing commandline collection.</param>
+ <param name="parallel">If this parameter value less than 1, then will be a single 
+ thread task. Any positive value that greater than 1 will be parallel task.
+ (小于等于零表示非并行化，单线程任务)
+ </param>
+ <returns>
+ Returns the total executation time for running this task collection.
+ (返回任务的执行的总时长)
+ </returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.BatchTasks.Invoke(System.Action[],System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="tasks"></param>
+ <param name="numOfThreads">同时执行的句柄的数目</param>
+ <remarks></remarks>
+</member>
+<member name="T:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1">
+ <summary>
+ Using parallel linq that may stuck the program when a linq task partion wait a long time task to complete. 
+ By using this parallel function that you can avoid this problem from parallel linq, and also you can 
+ controls the task thread number manually by using this parallel task function.
+ (由于LINQ是分片段来执行的，当某个片段有一个线程被卡住之后整个进程都会被卡住，所以执行大型的计算任务的时候效率不太好，
+ 使用这个并行化函数可以避免这个问题，同时也可以自己手动控制线程的并发数)
+ </summary>
+ <typeparam name="TOut"></typeparam>
+</member>
+<member name="F:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.taskInterval">
+ <summary>
+ sleep for a interval between start each parallel 
+ task thread could avoid some parallel lock
+ problem.
+ </summary>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.#ctor(System.Collections.Generic.IEnumerable{System.Func{`0}},System.Boolean,System.Boolean,System.Int32)">
+ <summary>
+ create parallel task pool from a given collection of task handler
+ </summary>
+ <param name="task"></param>
+ <param name="debugMode">
+ if this option is set to TRUE, then task will always running in sequence mode
+ </param>
+ <param name="taskInterval">thread sleep time in ms, interval for run parallel task</param>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.CreateThreads``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Func{`0}})">
+ <summary>
+ Create a parallel thread task pool and then get the task result value
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="items"></param>
+ <param name="task"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.CreateThreads``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,`0})">
+ <summary>
+ Create a parallel thread task pool and then get the task result value
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="items"></param>
+ <param name="task"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.WithDegreeOfParallelism(System.Int32)">
+ <summary>
+ You can controls the parallel tasks number from this parameter, smaller or equals to ZERO means auto 
+ config the thread number, If want single thread, not parallel, set this value to 1, and positive 
+ value greater than 1 will makes the tasks parallel.
+ (可以在这里手动的控制任务的并发数，这个数值小于或者等于零则表示自动配置线程的数量, 1为单线程)
+ </summary>
+ <param name="n_threads"></param>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.ToString">
+ <summary>
+ view thread pool status
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.HPC.Parallel.ThreadTask.ThreadTask`1.RunParallel">
+ <summary>
+ Run parallel task list
+ </summary>
+ <returns></returns>
+ <remarks>
+ Threads count is 1 or debug mode will running in sequence mode
+ </remarks>
+</member>
+</members>
+</doc>
