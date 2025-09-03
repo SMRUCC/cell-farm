@@ -395,7 +395,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  在反应容器<see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel"/>核心部件的基础之上所构建的虚拟细胞计算引擎模块
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.DebuggerView.#ctor(SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine,System.String)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.DebuggerView.#ctor(SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine,System.String[])">
  <summary>
  
  </summary>
