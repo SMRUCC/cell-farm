@@ -8,5 +8,6 @@ Public Class Config
     ''' <returns></returns>
     Public Property models As String()
     Public Property mapping As Definition
+    Public Property kinetics As FluxBaseline
 
 End Class
