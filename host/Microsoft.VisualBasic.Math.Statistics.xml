@@ -1,0 +1,1562 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.Math.Statistics
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetInvCDF(System.Double)">
+ <summary>
+ This function produces a value for a given probability, this value will represent the Non-Exceedance value for that probability. </summary>
+ <param name="probability"> a number between 0 and 1. </param>
+ <returns> a value distributed by the distribution defined in the concrete implementation of this abstract class. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetCDF(System.Double)">
+ <summary>
+ This function is the Cumulative Distribution Function. It returns a Non Exceedance probability for any value.  It will be implemented by all concrete implementations of this abstract class. </summary>
+ <param name="value"> the value that a probability will be produced for. </param>
+ <returns> a probability that this value will be exceeded by any other value from the sample set. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetPDF(System.Double)">
+ <summary>
+ This is the Probability Density Function. It describes the likelihood any given value will occur within a dataset. </summary>
+ <param name="value"> the value that a likelihood will be returned for. </param>
+ <returns> the likelihood (defined by the concrete distribution) the specified value will occur in any given sample dataset (assuming the value is from the underlying distribution). </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetInvCDF(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
+ <summary>
+ This function produces a value for a given probability, this value will represent the Non-Exceedance value for that probability. </summary>
+ <param name="probability"> a number between 0 and 1. </param>
+ <returns> a value distributed by the distribution defined in the concrete implementation of this abstract class. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetCDF(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
+ <summary>
+ This function is the Cumulative Distribution Function. It returns a Non Exceedance probability for any value.  It will be implemented by all concrete implementations of this abstract class. </summary>
+ <param name="value"> the value that a probability will be produced for. </param>
+ <returns> a probability that this value will be exceeded by any other value from the sample set. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetPDF(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
+ <summary>
+ This is the Probability Density Function. It describes the likelihood any given value will occur within a dataset. </summary>
+ <param name="value"> the value that a likelihood will be returned for. </param>
+ <returns> the likelihood (defined by the concrete distribution) the specified value will occur in any given sample dataset (assuming the value is from the underlying distribution). </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetParamNames">
+ <summary>
+ This function will return string representations of the parameter names for each distribution. </summary>
+ <returns> a String array of all of the declared fields composing the concrete implementation of this ContinuousDistribution </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.GetParamValues">
+ <summary>
+ This function determines the current values for each parameter in this concrete implementation of the ContinuousDistribution </summary>
+ <returns> an array of object for each parameter in this class. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.ContinuousDistribution.Clone">
+ <summary>
+ Creates a clone of the current ContinuousDistribution. </summary>
+ <returns> A ContinuousDistribution of the same type as the one this function is called on. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.Ex(System.Double)">
+ <summary>
+ The ex method takes a double x as an input, if x is less than -BIGX it returns 0, otherwise it returns Euler's number
+ <i>e</i> raised to the power of x.
+ </summary>
+ <param name="x"></param>
+ <returns>0 if input is less than -BIGX, Euler's number <i>e</i> raised to the power of x otherwise.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.Beta(System.Double[])">
+ <summary>
+ The beta method takes a double {@link java.lang.reflect.Array} x as an input. It loops through x and accumulates
+ the value of gammaLn(x), also it sums up the items of x and returns (accumulated result - gammaLn of this summation).
+ </summary>
+ <param name="x"></param>
+ <returns>gammaLn(sum).</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.GammaLn(System.Double)">
+ <summary>
+ The gammaLn method takes a double x as an input and returns the logarithmic result of the gamma distribution at point x.
+ </summary>
+ <param name="x"></param>
+ <returns>the logarithmic result of the gamma distribution at point x.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.ZNormal(System.Double)">
+ <summary>
+ The zNormal method performs the Z-Normalization. It ensures, that all elements of the input vector are transformed
+ into the output vector whose mean is approximately 0 while the standard deviation is in a range close to 1.
+ </summary>
+ <param name="z"></param>
+ <returns>normalized value of given input.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.ZInverse(System.Double)">
+ <summary>
+ the zInverse method returns the Z-Inverse of given probability value.
+ </summary>
+ <param name="p">double probability.</param>
+ <returns>the Z-Inverse of given probability.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.ChiSquare(System.Double,System.Int32)">
+ <summary>The chiSquare method is used to determine whether there is a significant difference between the expected
+  frequencies and the observed frequencies in one or more categories. It takes a double input x and an integer freedom
+  for degrees of freedom as inputs. It returns the Chi Squared result.</summary>
+ <param name="x">a numeric input.</param>
+ <param name="freedom">integer input for degrees of freedom.</param>
+  
+ <returns>the Chi Squared result.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.ChiSquareInverse(System.Double,System.Int32)">
+ <summary>
+ The chiSquareInverse method returns the Chi Square-Inverse of given probability value with given degree of freedom.
+ </summary>
+ <param name="p">double probability.</param>
+ <param name="freedom">integer input for degrees of freedom.</param>
+ <returns>the chiSquare-Inverse of given probability.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.FDistribution(System.Double,System.Int32,System.Int32)">
+ <summary>
+ The f-Distribution method is used to observe whether two samples have the same variance. It takes a double input F
+ and two integer freedom1 and freedom2 for degrees of freedom as inputs. It returns the F-Distribution result.
+ </summary>
+ <param name="fValue"></param>
+ <param name="freedom1">integer input for degrees of freedom.</param>
+ <param name="freedom2">integer input for degrees of freedom.</param>
+ <returns>the F-Distribution result.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.FDistributionInverse(System.Double,System.Int32,System.Int32)">
+ <summary>
+ The fDistributionInverse method returns the F-Distribution Inverse of given probability value.
+ </summary>
+ <param name="p">double probability.</param>
+ <param name="freedom1">integer input for degrees of freedom.</param>
+ <param name="freedom2">integer input for degrees of freedom.</param>
+ <returns>the F-Distribution Inverse of given probability.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.TDistribution(System.Double,System.Int32)">
+ <summary>
+ The tDistribution method is used instead of the normal distribution when there is small samples. It takes a double input T
+ and an integer freedom for degree of freedom as inputs. It returns the T-Distribution result by using F-Distribution method.
+ </summary>
+ <param name="T"></param>
+ <param name="freedom">integer input for degrees of freedom.</param>
+ <returns>the T-Distribution result.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.Distribution.TDistributionInverse(System.Double,System.Int32)">
+ <summary>
+ The tDistributionInverse method returns the T-Distribution Inverse of given probability value.
+ </summary>
+ <param name="p">double probability.</param>
+ <param name="freedom">integer input for degrees of freedom.</param>
+ <returns>the T-Distribution Inverse of given probability.</returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.Exponential">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.GEV">
+ 
+ <summary>
+ @author Will_and_Sara and Micheal Wright
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.Gumbel">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.Logistic">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.LogPearsonIII">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.LinearMoments.Pareto">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Beta">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Emperical">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Exponential">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Gamma">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.GEV">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+ <remarks>
+ https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution
+ </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Gumbel">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.LogNormal">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.LogNormal.#ctor(System.Double[])">
+ <summary>
+ This takes an input array of sample data, calculates the log base 10 of the data, then calculates the mean and standard deviation of the log data. </summary>
+ <param name="data"> the sampled data (in linear space) </param>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.LogPearsonIII">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Normal">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Normal.#ctor">
+ <summary>
+ Creates a standard normal distribution
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Normal.#ctor(System.Double,System.Double)">
+ <summary>
+ Creates a normal distribution based on the user defined mean and standard deviation </summary>
+ <param name="m"> the mean of the distribution </param>
+ <param name="sd"> the standard deviation of the distribution </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Normal.#ctor(System.Double[])">
+ <summary>
+ Creates a normal distribution based on input data using the standard method of moments. </summary>
+ <param name="data"> an array of double data. </param>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Rayleigh">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Triangular">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Uniform">
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Extensions.SD(System.Double,System.Double,System.Double)">
+ <summary>
+ 从95%的置信区间推断出可能的SD值
+ </summary>
+ <param name="m#"></param>
+ <param name="up#"></param>
+ <param name="down#"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest">
+ <summary>
+ 
+ </summary>
+ <remarks>
+ 卡方检验
+ 
+ 卡方检验用于确定预期频数（expected frequencies）和观察频数（observed frequencies）
+ 在一个或多个类别中是否存在显著差异。预期频数是指在假设两个变量独立的情况下，根据边际
+ 总数计算出的理论频数。观察频数则是在实际数据中观察到的频数。
+ </remarks>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C97_5">
+ <summary>
+ 97.5%
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C50">
+ <summary>
+ 50%
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C75">
+ <summary>
+ 75%
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C90">
+ <summary>
+ 90%
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C95">
+ <summary>
+ 95%
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.C99">
+ <summary>
+ 99%
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ChiSquareTest.Test(System.Double[][],System.Double[][])">
+ <summary>
+ 
+ </summary>
+ <param name="observed">
+ shoudl be matrix with two rows and two columns.
+ </param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactPvalues">
+ <summary>
+ `FishersExactPvalues` holds the pvalues calculated by the `fishers_exact` function.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactPvalues.two_tail_pvalue">
+ <summary>
+ pvalue for the two-tailed test. Use this when there Is no prior alternative.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactPvalues.less_pvalue">
+ <summary>
+ pvalue for the "left" Or "lesser" tail. Use this when the alternative to
+ independence Is that there Is negative association between the variables.
+ That Is, the observations tend to lie in lower left And upper right.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactPvalues.greater_pvalue">
+ <summary>
+ Use this when the alternative to independence Is that there Is positive
+ association between the variables. That Is, the observations tend to lie
+ in upper left And lower right.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactPvalues.matrix">
+ <summary>
+ [a,b,c,d]
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactTest">
+ <summary>
+ Fisher's exact test.
+
+ Implements a 2×2 Fishers exact test. Use this to test the independence of two
+ categorical variables when the sample sizes are small.
+
+ For an approachable explanation of Fisher's exact test, see
+ [Fisher's exact test of independence](http://www.biostathandbook.com/fishers.html) by
+ John H. McDonald in the [Handbook of Biological Statistics](http://www.biostathandbook.com/).
+
+ The test Is computed using code ported from Øyvind Langsrud's JavaScript
+ implementation at [http://www.langsrud.com/fisher.htm](http://www.langsrud.com/fisher.htm),
+ used with permission.
+
+ https//github.com/cpearce/fishers_exact
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactTest.exact(System.Int32,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Returns prob,sleft,sright,sless,slarg
+ </summary>
+ <param name="n11"></param>
+ <param name="n1_"></param>
+ <param name="n_1"></param>
+ <param name="n"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.FishersExact.FishersExactTest.FishersExact(System.Int32,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Computes the Fisher's exact pvales to determine if there are nonrandom associations between two
+ categorical variables, in a two by two contingency table.
+
+ The test Is computed using code ported from Øyvind Langsrud's JavaScript
+ implementation at [http://www.langsrud.com/fisher.htm](http://www.langsrud.com/fisher.htm).
+
+ Use this when sample sizes are small. For large samples, other statistical tests of independence
+ are more appropriate.
+
+ # Examples
+ ```
+ use fishers_exact:fishers_exact;
+
+ let p = fishers_exact(&amp;[1,9,11,3]).unwrap();
+
+ assert!((p.less_pvalue - 0.001346).abs() &lt; 0.0001);
+ assert!((p.greater_pvalue - 0.9999663).abs() &lt; 0.0001);
+ assert!((p.two_tail_pvalue - 0.0027594).abs() &lt; 0.0001);
+ ```
+
+ # Errors
+ Returns `TooLargeValueError` if any member in the `table` array Is too large. Currently
+ "too large" Is defined as greater than `std:i32:MAX`.
+ </summary>
+ <param name="n11"></param>
+ <param name="n12"></param>
+ <param name="n21"></param>
+ <param name="n22"></param>
+ <returns></returns>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis.Greater">
+ <summary>
+ ``mu > mu0``
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis.Less">
+ <summary>
+ ``mu &lt; mu0``
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis.TwoSided">
+ <summary>
+ not equals ``mu &lt;> mu0``
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.corr.corr">
+ <summary>
+ An abstract delegate function for measure the correlation between two given numeric vector
+ </summary>
+ <param name="x">a numeric vector</param>
+ <param name="y">another numeric vector, these two vector should be equals on dimension size!</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.corr.GetCorrelations(System.Double[][],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.corr.corr)">
+ <summary>
+ 
+ </summary>
+ <param name="mat"></param>
+ <param name="cor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.corr.Pearson(System.Double[],System.Double[])">
+ <summary>
+ A wrapper to the <see cref="M:Microsoft.VisualBasic.Math.Correlations.Correlations.GetPearson(System.Double[],System.Double[])"/> base method.
+ </summary>
+ <param name="x"></param>
+ <param name="y"></param>
+ <returns></returns>
+ <remarks>
+ The Pearson correlation coefficient, often denoted by r, is a measure of the linear relationship between 
+ two continuous variables. It was developed by Karl Pearson from a related idea introduced by Francis Galton 
+ in the 1880s. The coefficient is calculated using the covariance of the two variables divided by the 
+ product of their standard deviations.
+ 
+ Here's a breakdown of the key aspects of the Pearson correlation:
+ 
+ **Range**: The value of the Pearson correlation coefficient ranges from -1 to 1.
+ - **1** indicates a perfect positive linear relationship: as one variable increases, the other variable also increases in a perfectly linear manner.
+ - **-1** indicates a perfect negative linear relationship: as one variable increases, the other variable decreases in a perfectly linear manner.
+ - **0** indicates no linear relationship between the variables.
+ **Symmetry**: The Pearson correlation is symmetric, meaning that the correlation of X with Y is the same as the correlation of Y with X.
+ **Scale Independence**: The Pearson correlation is not affected by changes in the scale of the variables. For example, if you multiply all values 
+   of one variable by a constant, the correlation coefficient remains the same.
+ **Unit-Free**: The correlation coefficient is a unit-free measure, which means that it does not have any units of measurement attached to it.
+ **Sensitivity to Outliers**: The Pearson correlation coefficient can be sensitive to outliers, which are extreme values that differ significantly 
+   from other observations. Outliers can have a disproportionate effect on the calculation of the correlation coefficient.
+ **Assumptions**:
+ - The relationship between the variables is linear.
+ - Both variables are continuous and normally distributed.
+ - The data is homoscedastic, meaning that the variance of the residuals (differences between observed and predicted values) is constant across all 
+   levels of the independent variable.
+ **Interpretation**:
+ - A correlation close to 1 or -1 suggests a strong linear relationship.
+ - A correlation close to 0 suggests a weak linear relationship.
+ - The sign of the correlation coefficient indicates the direction of the relationship: positive means that as one variable increases, the other tends 
+   to increase, and negative means that as one variable increases, the other tends to decrease.
+ **Limitations**:
+ - It only measures linear relationships and may not capture non-linear relationships effectively.
+ - It does not imply causation; a high correlation between two variables does not mean that one causes the other.
+ - It can be misleading in the presence of outliers or when the data does not meet the assumptions of normality and homoscedasticity.
+ The Pearson correlation coefficient is a useful statistical tool for assessing the strength and direction of the linear relationship between two 
+ continuous variables, but it should be used with an understanding of its assumptions and limitations.
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result.coef">
+ <summary>
+ [result] reference statistic
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result.proba">
+ <summary>
+ [result] p-value
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result.numelt">
+ <summary>
+ number of elements in the half-matrix without diagonal values
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model">
+ <summary>
+ the test model
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model.matsize">
+ <summary>
+ size of matrices
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model.partial">
+ <summary>
+ option partial 0|1
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model.raw">
+ <summary>
+ option raw 0|1
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model.exact">
+ <summary>
+ option exact permutation 0|1
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model.numrand">
+ <summary>
+ [permutations] number of randomizations
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.somx(System.Double[][],System.Int32)">
+ <summary>
+ compute simple sum of elements in a half-matrix
+ </summary>
+ <param name="a">matrix pointer, size of the half-matrix</param>
+ <param name="[stop]"></param>
+ <returns>sum as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.somx2(System.Double[][],System.Int32)">
+ <summary>
+ compute square sum of elements in a half-matrix
+ </summary>
+ <param name="a">matrix pointer, size of the half-matrix</param>
+ <param name="[stop]"></param>
+ <returns>square sum as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.moy(System.Double[][],System.Int32)">
+ <summary>
+ compute mean for a half-matrix
+ </summary>
+ <param name="a">matrix pointer, size of the half-matrix</param>
+ <param name="[stop]"></param>
+ <returns>mean as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.ect(System.Double[][],System.Int32)">
+ <summary>
+ compute standard deviation for a half-matrix
+ </summary>
+ <param name="a">matrix pointer, size of the half-matrix</param>
+ <param name="[stop]"></param>
+ <returns>standard deviation as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.shake(System.Int32[],System.Int32)">
+ <summary>
+ shaking elements of a vector at random 
+ </summary>
+ <param name="a">array pointer, size of the array</param>
+ <param name="f"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.sompx(System.Double[][],System.Int32)">
+ <summary>
+ compute square sum of mean deviations for a half matrix
+ </summary>
+ <param name="a">matrix pointer, size of the half-matrix</param>
+ <param name="[stop]"></param>
+ <returns>sum as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.sompxy(System.Double[][],System.Double[][],System.Int32,System.Double,System.Double)">
+ <summary>
+ sum x-mean(x) * y-mean(y) for two half matrices
+ </summary>
+ <param name="a">matrix A pointer, matrix B pointer, size of the matrices, mean matrix A, mean matrix B</param>
+ <param name="b"></param>
+ <param name="[stop]"></param>
+ <param name="lmoyA"></param>
+ <param name="lmoyB"></param>
+ <returns>sum as double</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.resid(System.Double[][],System.Double[][],System.Int32,System.Double,System.Double)">
+ <summary>
+ compute residuals of half-matrix A against half-matrix B
+ </summary>
+ <param name="a">matrix A pointer, matrix B pointer, size of the matrices, mean matrix A, mean matrix B</param>
+ <param name="b"></param>
+ <param name="[stop]"></param>
+ <param name="lmoyA"></param>
+ <param name="lmoyB"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.norm(System.Double[][],System.Int32)">
+ <summary>
+ normalization of a half-matrix
+ </summary>
+ <param name="a">
+ matrix pointer, size of the matrix      
+ </param>
+ <param name="[stop]"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.pmt_perm(System.Double[][],System.Double[][],System.Double[][],System.Double@,Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ randomization procedure for partial Mantel test
+ </summary>
+ <param name="A">matrix A pointer, matrix B pointer, matrix C pointer, r_bc pointer, struct for parameters</param>
+ <param name="B"></param>
+ <param name="C"></param>
+ <param name="r_bc"></param>
+ <param name="p"></param>
+ <returns>1 if ok</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.pmt_perm_exact(System.Double[][],System.Double[][],System.Double[][],System.Double@,Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ exact permutation procedure for partial Mantel test
+ </summary>
+ <param name="A">matrix A pointer, matrix B pointer, matrix C pointer, r_bc pointer, struct for results</param>
+ <param name="B"></param>
+ <param name="C"></param>
+ <param name="r_bc"></param>
+ <param name="p"></param>
+ <returns>1 if ok </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.smt_perm(System.Double[][],System.Double[][],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ randomization procedure for simple Mantel test
+ </summary>
+ <param name="A">matrix A pointer, matrix B pointer, struct for results</param>
+ <param name="B"></param>
+ <param name="p"></param>
+ <returns>1 if ok</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.stats.smt_perm_exact(System.Double[][],System.Double[][],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ exact permutation procedure for simple Mantel test
+ </summary>
+ <param name="A">matrix pointer A, matrix pointer B, struct for results</param>
+ <param name="B"></param>
+ <param name="p"></param>
+ <returns>1 if ok</returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.statistical_test">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.statistical_test.test(Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Model,System.Double[][],System.Double[][],System.Double[][])">
+ <summary>
+ The Mantel test, named after Nathan Mantel, is a statistical test of 
+ the correlation between two matrices. The matrices must be of the 
+ same dimension; in most applications, they are matrices of interrelations 
+ between the same vectors of objects. The test was first published 
+ by Nathan Mantel, a biostatistician at the National Institutes of 
+ Health, in 1967.[1] Accounts of it can be found in advanced statistics
+ books (e.g., Sokal &amp; Rohlf 1995[2]).
+ </summary>
+ <param name="model"></param>
+ <param name="matA"></param>
+ <param name="matB"></param>
+ <param name="matC"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.statistical_test.pmt(System.Double[][],System.Double[][],System.Double[][],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ partial Mantel test
+ </summary>
+ <param name="A">matrix A pointer, matrix B pointer, matrix C pointer, struct of parameters (see rr.h)</param>
+ <param name="B"></param>
+ <param name="C"></param>
+ <param name="p"></param>
+ <returns>1 if ok</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.statistical_test.smt(System.Double[][],System.Double[][],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Mantel.Result@)">
+ <summary>
+ simple Mantel test
+ </summary>
+ <param name="A">matrix A pointer, matrix B pointer, struct for results  </param>
+ <param name="B"></param>
+ <param name="p"></param>
+ <returns>1 if ok</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.MoranTest.moran_test(System.Double[],System.Double[],System.Double[],Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis,System.Boolean,System.Boolean)">
+ <summary>
+ Calculate Moran's I quickly for point data
+ </summary>
+ <param name="x">a numeric vector, the value distributed over space</param>
+ <param name="c1">a numeric vector, the first (x) value of a column of coordinates</param>
+ <param name="c2">a numeric vector, the second (y) value of a column of coordinates</param>
+ <param name="alternative">
+ alternative a character sring specifying the alternative hypothesis that
+ is tested against; must be one of "two.sided", "less", or "greater", 
+ or any unambiguous abbreviation of these.
+ </param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.DegreeFreedom">
+ <summary>
+ the degrees of freedom for the t-statistic.
+ </summary>
+ <returns></returns>
+ <remarks>Welch–Satterthwaite equation 的计算结果为小数</remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.Pvalue">
+ <summary>
+ the p-value For the test.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.TestValue">
+ <summary>
+ the value of the t-statistic.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.Mean">
+ <summary>
+ Sample mean
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.Valid">
+ <summary>
+ Alternative hypothesis result
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.Topt.alternative">
+ <summary>
+ the alternative hypothesis.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t">
+ <summary>
+ Performs one and two sample t-tests on vectors of data.
+ </summary>
+ <remarks>
+ 进行t检验的p值计算通常涉及两个主要步骤：首先计算t统计量，然后根据t统计量和自由度查找t分布表或使用计算方法来得出p值。
+ 计算t统计量：t统计量的计算公式是
+ $$
+ t = \frac{\bar{X} - \mu}{s / \sqrt{n}}
+ $$
+ 其中，$\bar{X}$ 是样本均值，$\mu$ 是总体均值，$s$ 是样本标准差，$n$ 是样本大小。
+ 
+ 计算p值：
+ 对于单尾t检验，p值是t分布曲线下超过或等于计算出的t统计量的面积。
+ 对于双尾t检验，p值是t分布曲线下超过或等于计算出的t统计量的绝对值的面积的两倍。
+ p值的具体计算方法使用数值积分技术（如梯形法则或辛普森法则）来估算t分布下的面积。数值积分法可以作为一种近似计算p值的方法。
+
+ 数值积分法是一种数学方法，用于估算函数下的面积。在统计学中，特别是在计算t检验的p值时，我们可以使用数值积分法来估算t分布曲线下特定区间（通常是尾区间）的面积。
+ 为了讲解这个算法，我们首先需要了解t分布和p值的基本概念。t分布是一种概率分布，用于小样本数据集的情况。p值则是衡量观察结果或更极端结果在零假设为真时出现的概率。
+ **数值积分法计算p值的步骤如下**：
+ 1. **定义t分布函数**：首先，我们需要定义t分布的概率密度函数（PDF）。t分布的PDF定义为：
+ $$
+  f(t; \nu) = \frac{\Gamma(\frac{\nu + 1}{2})}{\sqrt{\nu \pi} \Gamma(\frac{\nu}{2})} (1 + \frac{t^2}{\nu})^{-\frac{\nu + 1}{2}} 
+ $$
+    其中，$\nu$ 是自由度，$\Gamma$ 是伽玛函数。
+ 2. **选择积分区间**：对于单尾t检验，积分区间是从t统计量到正无穷；对于双尾t检验，积分区间是从-t统计量到t统计量，然后乘以2。
+ 3. **应用数值积分方法**：数值积分方法（如梯形法则或辛普森法则）用于估算积分区间内t分布函数下的面积。这些方法通过将积分区间分成若干小段，然后近似每段的面积，最后将这些面积相加来估算总面积。
+ 4. **计算p值**：通过数值积分得到的面积即为p值。对于单尾t检验，这个面积就是p值；对于双尾t检验，需要将这个面积乘以2。
+ 在实际应用中，由于t分布是对称的，我们通常只需要计算单尾的面积，然后根据检验的类型（单尾或双尾）来调整p值。
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t.Test(System.Collections.Generic.IEnumerable{System.Double},Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis,System.Double,System.Double)">
+ <summary>
+ Performs one sample t-tests on vectors of data.
+ </summary>
+ <param name="x">a (non-empty) numeric vector of data values.</param>
+ <param name="mu#">a number indicating the True value Of the mean (Or difference In means If you are performing a two sample test).</param>
+ <param name="alpha#"></param>
+ <param name="alternative">specifying the alternative hypothesis</param>
+ <remarks>``ttest({0,1,1,1}, mu:= 1).valid() = True``</remarks>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t.Test(System.Collections.Generic.IEnumerable{System.Double},System.Collections.Generic.IEnumerable{System.Double},Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis,System.Double,System.Double,System.Boolean,System.Boolean)">
+ <summary>
+ Performs two sample t-tests on vectors of data.
+ </summary>
+ <param name="a">a (non-empty) numeric vector of data values.</param>
+ <param name="b">a (non-empty) numeric vector of data values.</param>
+ <param name="mu#">a number indicating the True value Of the mean (Or difference In means If you are performing a two sample test).</param>
+ <param name="alpha#"></param>
+ <param name="alternative">specifying the alternative hypothesis</param>
+ <param name="varEqual">Default using **student's t-test**, set this parameter to False using **Welch's t-test**</param>
+ <returns></returns>
+ <remarks>
+ ``ttest({0,1,1,1}, {1,2,2,2}, mu:= -1).valid() = True``
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t.Pvalue(System.Double,System.Double,Microsoft.VisualBasic.Math.Statistics.Hypothesis.Hypothesis)">
+ <summary>
+ two sample p-value
+ </summary>
+ <param name="t#">The t test value</param>
+ <param name="v">v is the degrees of freedom</param>
+ <returns></returns>
+ <remarks>
+ 请注意，双样本检测与单样本检测的pvalue在less和greater是反过来的
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t.Tcdf(System.Double,System.Double)">
+ <summary>
+ ###### Student's t-distribution CDF
+ 
+ https://en.wikipedia.org/wiki/Student%27s_t-distribution#Non-standardized_Student.27s_t-distribution
+ </summary>
+ <param name="t">Only works for ``t > 0``</param>
+ <param name="v">v is the degrees of freedom</param>
+ <returns></returns>
+ <remarks>
+ ###### 2017-1-11 test success!
+ 
+ ```
+ tcdf(1,1) = 0.75
+ tcdf(0,5) = 0.5
+ ```
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.t.Tcdf(Microsoft.VisualBasic.Math.LinearAlgebra.Vector,System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="t"></param>
+ <param name="v#"></param>
+ <returns></returns>
+ <remarks>
+ ```
+ Tcdf({0, 2, 4}, 5) = {0.5, 0.949, 0.995}
+ ```
+ </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.FisherTest">
+ <summary>
+ ### Fisher's exact test
+ 
+ > https://en.wikipedia.org/wiki/Fisher's_exact_test
+ 
+ Fisher 's exact test is a statistical significance test used in the 
+ analysis of contingency tables.[1][2][3] Although in practice it is 
+ employed when sample sizes are small, it is valid for all sample sizes. 
+ It is named after its inventor, Ronald Fisher, and is one of a class 
+ of exact tests, so called because the significance of the deviation 
+ from a null hypothesis (e.g., P-value) can be calculated exactly, 
+ rather than relying on an approximation that becomes exact in the limit 
+ as the sample size grows to infinity, as with many statistical tests.
+ 
+ Fisher Is said To have devised the test following a comment from Muriel 
+ Bristol, who claimed to be able to detect whether the tea Or the milk was 
+ added first to her cup. He tested her claim in the "lady tasting tea" 
+ experiment.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.FisherPvalue(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ 
+ |                |**Men**|**Women**|*Row Total*|
+ |----------------|-------|---------|-----------|
+ |**Studying**    |   a   |    b    |   a + b   | 
+ |**Non-Studying**|   c   |    d    |   c + d   |
+ |*Column Total*  | a + c |  b + d  | a+b+c+d=n |
+ 
+ 这个函数通过下面的阶乘计算来计算FisherTest的pvalue值
+ 
+ ```
+ p = ((a+b)!(c+d)!(a+c)!(b+d)!)/(a!b!c!d!n!)
+ ```
+ </summary>
+ <param name="a#"></param>
+ <param name="b#"></param>
+ <param name="c#"></param>
+ <param name="d#"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.FactorialDivide(Microsoft.VisualBasic.Language.List{System.Int32},Microsoft.VisualBasic.Language.List{System.Int32})">
+ <summary>
+ 在做基因富集的时候，背景基因的数量会达到上万个，直接计算阶乘的积是无法被计算出来的
+ 在这里使用约分来降低数量级
+ </summary>
+ <param name="X"></param>
+ <param name="Y"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.fact(System.Int32)">
+ <summary>
+ compute factorial 
+ </summary>
+ <param name="n">integer n</param>
+ <returns>n! as long</returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.FTest.F">
+ <summary>
+ ratio of variances 
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.FTest.PValue">
+ <summary>
+ double tailed p-value
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.LogLikelihood">
+ <summary>
+ calculates log likelihood between a source and a reference corpus. for more
+ details on LLH please visit http : //ucrel.lancs.ac.uk/llwizard.html
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.LogLikelihood.Likelihood(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="freq1">frequency of the word in your corpus</param>
+ <param name="freq2">frequency of the word in the reference corpus</param>
+ <param name="corpus1Size">size of your corpus in words</param>
+ <param name="corpus2Size">size of the reference corpus in words</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments">
+ <summary>
+ 可以利用这个模块来进行一组数据的正态分布的参数的估计
+ 
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.SampleVariance">
+ <summary>
+ 样本的变异程度
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.StDev">
+ <summary>
+ 标准差
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.IsConverged">
+ <summary>
+ This function can be used to determine if enough samples have been added to determine convergence 
+ of the data stream. 
+ </summary>
+ <returns> 
+ this function will return false until the minimum number of observations have been added, and then 
+ will return the result of the convergence test after the most recent observation. 
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.SetMinValuesBeforeConvergenceTest(System.Int32)">
+ <summary>
+ This method allows the user to define a minimum number of observations before testing for convergence.
+ This would help to mitigate early convergence if similar observations are in close sequence early in the dataset. </summary>
+ <param name="numobservations"> the minimum number of observations to wait until testing for convergence. </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.SetConvergenceTolerance(System.Double)">
+ <summary>
+ This method sets the tolerance for convergence.  This tolerance is used as an epsilon neighborhood around the confidence defined in SetZalphaForConvergence. </summary>
+ <param name="tolerance"> the distance that is determined to be close enough to the alpha in question. </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.SetZAlphaForConvergence(System.Double)">
+ <summary>
+ This method defines the alpha value used to determine convergence.  
+ This value is based on a two sided confidence interval.  
+ It uses the upper Confidence Limit.
+ </summary>
+ <param name="ConfidenceInterval"> 
+ The value that would be used to determine the normal alpha value.  
+ The default is a .9 Confidence interval, which corresponds to 1.96 alpha value. 
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.#ctor">
+ <summary>
+ This constructor allows one to create an instance without adding any data.
+ </summary>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.#ctor(System.Collections.Generic.IEnumerable{System.Double})">
+ <summary>
+ This constructor allows one to create an instance with some initial data, 
+ observations can be added after the constructor through the 
+ "AddObservations(double observation) call. 
+ </summary>
+ <param name="data"> the dataset to calculate mean and standard deviation for. </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMoments.AddObservation(System.Double)">
+ <summary>
+ An inline algorithm for incrementing mean and standard of deviation. 
+ After this method call, the properties of this class should be 
+ updated to include this observation.
+ </summary>
+ <param name="observation"> the observation to be added </param>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.BasicProductMomentsHistogram">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.LinearMoments">
+ 
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.ProductMoments">
+ <summary>
+ In statistics, moments are a set of numerical characteristics that describe the shape and features of a probability distribution. 
+ Sample moments are the same concept applied to a sample of data, rather than an entire population. They are used to estimate 
+ the corresponding population moments and to understand the properties of the data distribution.
+ 
+ Here's a basic introduction to the concept of sample moments:
+ 
+ ### Definition:
+ 
+ 1. **Sample Mean (First Moment):**
+    The sample mean is the average of the data points in a sample. It is a measure of the central tendency of the data.
+      \[
+      \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
+      \]
+    where \( x_i \) are the data points and \( n \) is the number of data points in the sample.
+ 2. **Sample Variance (Second Central Moment):**
+    The sample variance measures the spread or dispersion of the data points around the sample mean.
+      \[
+      s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2
+      \]
+    The denominator \( n-1 \) is used instead of \( n \) to provide an unbiased estimate of the population variance.
+ 3. **Sample Standard Deviation:**
+    The sample standard deviation is the square root of the sample variance and is also a measure of dispersion.
+      \[
+      s = \sqrt{s^2}
+      \]
+ 4. **Higher-Order Sample Moments:**
+    Higher-order moments describe the shape of the distribution. For example:
+    - **Third Moment:** Measures skewness, which indicates the asymmetry of the data distribution.
+    - **Fourth Moment:** Measures kurtosis, which indicates the "tailedness" of the data distribution.
+    
+ ### Calculation:
+ 
+ To calculate sample moments, you simply apply the formulas to your data set. For instance, to find the sample mean,
+ you add up all the data points and divide by the number of points.
+ 
+ ### Use:
+ 
+ Sample moments are used to:
+ - Estimate population parameters.
+ - Assess the shape of the data distribution (e.g., normality, skewness, kurtosis).
+ - Form the basis for many statistical tests and procedures.
+ 
+ ### Properties:
+ - **Unbiasedness:** Some sample moments are designed to be unbiased estimators, meaning that the expected value of the sample moment equals the population moment.
+ - **Efficiency:** Different sample moments may have different levels of variability; some are more efficient than others.
+ - **Robustness:** Certain moments are more robust to outliers than others.
+ 
+ ### Example:
+ If you have a sample of data: \( \{2, 4, 4, 4, 5, 5, 7, 9\} \), you can calculate the sample mean, variance, 
+ and other moments to understand the central tendency, dispersion, and shape of the data distribution.
+ 
+ sample moments are fundamental tools in statistics for summarizing and understanding the characteristics of
+ a data set. They provide a way to quantify features such as location, spread, and shape, which are essential 
+ for further statistical analysis.
+ 
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.MomentFunctions.ProductMoments.data">
+ <summary>
+ the input raw data vector
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.RANSAC.Algorithm">
+ <summary>
+ RANSAC (RANdom SAmple Consensus) is an algorithm for measuring 
+ system parameters for some input data.
+ A common task For this algorithm Is To find the median subset 
+ Of a specified Set. For the regular spaces, the subset Is:
+
+ + 2D space - a line
+ + 3D space - a plane
+ 
+ This implementation presents a search Of a median plane For 
+ a random (Or loaded) Set Of points In 3D space.
+ </summary>
+ <remarks>
+ https://github.com/scikodot/ransac
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.RANSAC.Algorithm.Evaluate(System.Double,System.Double,System.Int32)">
+ <summary>
+ RANSAC algorithm implementation
+ </summary>
+ <param name="alpha">
+ probability of finding best-fitting plane
+ </param>
+ <param name="w">
+ probability of choosing an inlier from the set of data
+ </param>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.CharacteristicFunction">
+ <summary>
+ represent the following function often written by v
+ 2^N to R
+ for each subset of the set {1.. N} is associated a value
+ per convention v(empty set) = 0
+ 
+ @author Franck Benault
+ 
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.CoalitionStrategy">
+ 
+ <summary>
+ @author Franck Benault
+ 
+ @version	0.0.2
+ @since 0.0.2
+ 
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.ShapleyApplication">
+ <summary>
+ facade of Shapley application
+ 
+ @author Franck Benault
+ 
+ @version	0.0.2
+ @since 0.0.2
+ 
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.ShapleyApplication.calculate">
+ <summary>
+ full calculation of the Shapley value
+ </summary>
+ <returns> partial result of the Shapley value </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.ShapleyApplication.calculate(System.Int64)">
+ <summary>
+ complete the calculation of the Shapley value 
+ with the next set of coalitions choosen sequentially 
+ </summary>
+ <param name="nbCoalitions"> number of coalition taken in account for this calculation
+ </param>
+ <returns> partial result of the Shapley value
+ </returns>
+ <exception cref="T:System.Exception"> when different strategy are mixed
+  </exception>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.ShapleyApplication.calculate(System.Int64,Microsoft.VisualBasic.Math.Statistics.ShapleyValue.CoalitionStrategy)">
+ <summary>
+ complete the calculation of the Shapley value 
+ with the next set of coalitions which may be choosen randomly
+ </summary>
+ <param name="nbCoalitions"> number of coalition taken in account for this calculation </param>
+ <param name="strategy"> way to choose the next coalitions (sequential or random)  
+ </param>
+ <returns> partial result of the Shapley value
+ </returns>
+ <exception cref="T:System.Exception"> when different strategy are mixed
+  </exception>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.ShapleyApplication.LastCoalitionReached">
+ <summary>
+ check in the case of sequential strategy if the last coalition possible is reached
+ 
+ @return </summary>
+ <exception cref="T:System.Exception"> in the cas of non sequential strategy </exception>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement">
+ <summary>
+ Path element for use in <seealso cref="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo2"/>
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement.featureIndex">
+ <summary>
+ (m.d)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement.zeroFraction">
+ <summary>
+ (m.z)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement.oneFraction">
+ <summary>
+ (m.o)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement.weight">
+ <summary>
+ (m.w)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.leafValue">
+ <summary>
+ (v) Leaf value. If not leaf, contains NAN.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.splitValue">
+ <summary>
+ (t) Split value (threshold). If not split node, contains NAN.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.yes">
+ <summary>
+ (a) left node
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.no">
+ <summary>
+ (b) right node
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.splitFeatureIndex">
+ <summary>
+ (d) index of feature used to split
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkNode.dataCount">
+ <summary>
+ (r) cover
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkTree.printTree(System.IO.TextWriter)">
+ <summary>
+ Prints the decision tree using java "if" tree as its notation, for convenient reading
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PkTree.printTreeConstructor(System.IO.TextWriter)">
+ <summary>
+ Prints the tree in form of java builder - useful for importing more test trees from other formats
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1">
+ <summary>
+ See https://arxiv.org/pdf/1802.03888.pdf - Chapter 3.1, Algorithm 1.
+ 
+ v - vector of node values; = "internal" for internal nodes
+ a,b - left and right node indexes for each internal node
+ t - thresholds for each internal node
+ d - indexes of the features used for splitting in internal nodes
+ r - cover of each node (ie. how many data samples fall in that sub-tree)
+ w - weight, measures the proportion of the training samples matching the conditioning set S fall into each leaf
+ s - set of non-zero indexes in z', ie. known features
+ z' - for each feature, 0 if unknown, 1 if known
+ x - feature values
+ </summary>
+ <remarks>
+ https://github.com/pkozelka/treeshap
+ </remarks>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.x">
+ <summary>
+ feature values
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.v">
+ <summary>
+ vector of node values; = "internal" for internal nodes
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.t">
+ <summary>
+ thresholds for each internal node
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.r">
+ <summary>
+ cover of each node (ie. how many data samples fall in that sub-tree)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.a">
+ <summary>
+ left and right node indexes for each internal node
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.b">
+ <summary>
+ left and right node indexes for each internal node
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.d">
+ <summary>
+ indexes of the features used for splitting in internal nodes
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo1.expValue">
+ <summary>
+ sincerely, I have no idea what this thing computes; I expected one computed contribution
+ weight per feature, and instead, this computes just one number.
+ Probably needs to be called repeatedly; more study of the paper needed here.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo2">
+ <summary>
+ Rewrite of the Algorithm 2 from [1].
+ 
+ The main goal here is to get "fanatically faithful" transcript of the algo into java.
+ Therefore, performance and memory optimizations are neither done nor planned here.
+ 
+ Deviations from original notation:
+ - java list/arrays are zero-based
+ - tree is represented by recursive structure of nodes, each is either a leaf or a split node with yes, no, and other props
+ - the path (stored in variable "m") has long-named properties to make the thing more readable
+ 
+ Bugfixes:
+ - [bugfix1] in EXTEND, iteration misses newly added element, causing wrong computation - see [2]
+ - [bugfix2] in UNWIND, iteration exceeds into removed element, causing exception
+ 
+ Resources:
+ - [1] Consistent Individualized Feature Attribution for Tree Ensembles - https://arxiv.org/pdf/1802.03888.pdf
+ - [2] From local explanations to global understanding with explainable AI for trees, pages 65,66 - https://www.nature.com/articles/s42256-019-0138-9.epdf?shared_access_token=RCYPTVkiECUmc0CccSMgXtRgN0jAjWel9jnR3ZoTv0O81kV8DqPb2VXSseRmof0Pl8YSOZy4FHz5vMc3xsxcX6uT10EzEoWo7B-nZQAHJJvBYhQJTT1LnJmpsa48nlgUWrMkThFrEIvZstjQ7Xdc5g%3D%3D
+ </summary>
+ <remarks>
+ https://github.com/pkozelka/treeshap
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapAlgo2.unwind(System.Collections.Generic.IList{Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.PathElement},System.Int32)">
+ <summary>
+ Removes i-th element of the path, and redistributes all weights </summary>
+ <param name="origM"> elements of decision path </param>
+ <param name="i">  zero-based index to be removed </param>
+ <returns> transformed decision path </returns>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapOptimized.pathArray">
+ <summary>
+ temporary variables, for use inside recursion - minimizing number of passed parameters
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapOptimized.stdcopy(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Ala C++ std::copy - see http://www.cplusplus.com/reference/algorithm/copy/
+ (Copies the elements in the range [first,last) into the range beginning at result.)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapOptimized.extendPath(System.Int32,System.Int32,System.Double,System.Double,System.Int32)">
+ <summary>
+ extend our decision path with a fraction of one and zero extensions
+ </summary>
+ <param name="uniquePathPtr"></param>
+ <param name="uniqueDepth"></param>
+ <param name="zeroFraction"></param>
+ <param name="oneFraction"></param>
+ <param name="featureIndex"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapOptimized.unwindPath(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ undo a previous extension of the decision path
+ </summary>
+ <param name="uniquePathPtr"></param>
+ <param name="uniqueDepth"></param>
+ <param name="pathIndex"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.ShapleyValue.TreeShape.ShapOptimized.unwoundPathSum(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ determine what the total permutation weight would be if
+ we unwound a previous extension in the decision path
+ </summary>
+ <param name="uniquePathPtr"></param>
+ <param name="uniqueDepth"></param>
+ <param name="pathIndex"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions">
+ <summary>
+ @author Will_and_Sara
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.Factorial(System.Int32,System.Int32)">
+ <summary>
+ could be improved with unsigned integers or the gamma function
+ </summary>
+ <param name="N"></param>
+ <param name="k"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.FactorialCalculation(System.Int32)">
+ <summary>
+ n!
+ </summary>
+ <param name="n"></param>
+ <returns></returns>
+ <remarks>
+ calculates `n!` === `P(n, n)`.
+ 
+ n! = permutation(n, n)
+ 
+ https://en.wikipedia.org/wiki/Factorial
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.Combination(System.Int32,System.Int32)">
+ <summary>
+ calculates `C(n, k)`.
+ </summary>
+ <param name="n"></param>
+ <param name="k"></param>
+ <returns></returns>
+ <remarks>
+ implements the excel function COMBIN(number, number_chosen).
+ 
+ COMBIN(8,2) = 28
+ 
+ https://en.wikipedia.org/wiki/Combination
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.Permutation(System.Int32,System.Int32)">
+ <summary>
+ calculates `P(n, k)`.
+ </summary>
+ <param name="n"></param>
+ <param name="k"></param>
+ <returns></returns>
+ <remarks>
+ https://en.wikipedia.org/wiki/Permutation
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.Binom(System.Int32,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="n"></param>
+ <param name="k"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.MutualProbability(System.Double[])">
+ <summary>
+ http://lethalman.blogspot.com/2011/08/probability-of-union-of-independent.html
+ </summary>
+ <param name="probabilities"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.RegularizedIncompleteBetaFunction(System.Double,System.Double,System.Double)">
+ <summary>
+ ######  The regularized incomplete beta function
+ https://en.wikipedia.org/wiki/Beta_function#Incomplete_beta_function
+ </summary>
+ <param name="aa"></param>
+ <param name="bb"></param>
+ <param name="xx"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.incbcf(System.Double,System.Double,System.Double)">
+ <summary>
+ Continued fraction expansion #1
+ * for incomplete beta integral
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.incbd(System.Double,System.Double,System.Double)">
+ <summary>
+ Continued fraction expansion #2
+ * for incomplete beta integral
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.pseries(System.Double,System.Double,System.Double)">
+ <summary>
+ Power series for incomplete beta integral.
+ Use when b*x is small and x not too close to 1.  
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.StirlingsFormula(System.Double)">
+ <summary>
+ https://www.ncnr.nist.gov/resources/sansmodels/SpecialFunction.java //previous name was stirf
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.EvaluatePolynomial(System.Double,System.Double[])">
+ <summary>
+ https://www.ncnr.nist.gov/resources/sansmodels/SpecialFunction.java //previous name was polevl
+ </summary>
+ <param name="x"></param>
+ <param name="coefficients"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.IncompleteGammaComplement(System.Double,System.Double)">
+ <summary>
+ https://www.ncnr.nist.gov/resources/sansmodels/SpecialFunction.java //previous name was igamc
+ </summary>
+ <param name="a"></param>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.IncompleteGamma(System.Double,System.Double)">
+ <summary>
+ https://www.ncnr.nist.gov/resources/sansmodels/SpecialFunction.java //previous name was igam
+ </summary>
+ <param name="a"></param>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.gammaln(System.Double)">
+ <summary>
+ testing showed Ben's code and this code were roughly equivalent (also to excel) however, Ben's code executed faster in the time trials.
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.SpecialFunctions.gamma(System.Double)">
+ <summary>
+ testing showed Ben's code and this code were roughly equivalent (also to excel) however, Ben's code executed faster in the time trials.
+ https://www.ncnr.nist.gov/resources/sansmodels/SpecialFunction.java
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

@@ -1,0 +1,210 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.Data.Storage
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.VisualBasic.Data.IO.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.ASN1.StreamReader">
+ <summary>
+ 
+ </summary>
+ <remarks>
+ https://github.com/lapo-luchini/asn1js
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.ASN1.StreamReader.ex(System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="c">must be 10xxxxxx</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.FrameReader.ReadFeatures(System.String)">
+ <summary>
+ read the feather file as dataframe
+ </summary>
+ <param name="file"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.FrameReader.ReadSasXPT(System.String)">
+ <summary>
+ read sas xpt file as dataframe
+ </summary>
+ <param name="file"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.FrameReader.ReadSasXPT(System.IO.Stream,System.String)">
+ <summary>
+ read sas xpt file as dataframe
+ </summary>
+ <param name="buffer"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.FrameWriter.WriteFrame(Microsoft.VisualBasic.Data.Framework.DataFrame,System.IO.Stream)">
+ <summary>
+ write dataframe object as the binary file
+ </summary>
+ <param name="df"></param>
+ <param name="file"></param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Schema.ordinals">
+ <summary>
+ the orders of the feature names(keys of the <see cref="P:Microsoft.VisualBasic.Data.IO.Schema.cols"/>)
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Xpt.IO">
+ <summary>
+ Contains static convenience methods for low level operations (typically close
+ to IO).
+ 
+ @author Kasper Sørensen
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.IO.toBytes(System.Int32[])">
+ <summary>
+ Converts an int-array to a byte-array. Makes it more convenient to use int
+ literals in code.
+ </summary>
+ <param name="arr">
+ @return </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int16)">
+ <summary>
+ Byte swap a single short value.
+ </summary>
+ <param name="value"> Value to byte swap. </param>
+ <returns> Byte swapped representation. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int32)">
+ <summary>
+ Byte swap a single int value.
+ </summary>
+ <param name="value"> Value to byte swap. </param>
+ <returns> Byte swapped representation. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int64)">
+ <summary>
+ Byte swap a single long value.
+ </summary>
+ <param name="value"> Value to byte swap. </param>
+ <returns> Byte swapped representation. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Single)">
+ <summary>
+ Byte swap a single float value.
+ </summary>
+ <param name="value"> Value to byte swap. </param>
+ <returns> Byte swapped representation. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Double)">
+ <summary>
+ Byte swap a single double value.
+ </summary>
+ <param name="value"> Value to byte swap. </param>
+ <returns> Byte swapped representation. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int16[])">
+ <summary>
+ Byte swap an array of shorts. The result of the swapping is put back into the
+ specified array.
+ </summary>
+ <param name="array"> Array of values to swap </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int32[])">
+ <summary>
+ Byte swap an array of ints. The result of the swapping is put back into the
+ specified array.
+ </summary>
+ <param name="array"> Array of values to swap </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Int64[])">
+ <summary>
+ Byte swap an array of longs. The result of the swapping is put back into the
+ specified array.
+ </summary>
+ <param name="array"> Array of values to swap </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Single[])">
+ <summary>
+ Byte swap an array of floats. The result of the swapping is put back into the
+ specified array.
+ </summary>
+ <param name="array"> Array of values to swap </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.PrimitiveUtils.swap(System.Double[])">
+ <summary>
+ Byte swap an array of doubles. The result of the swapping is put back into
+ the specified array.
+ </summary>
+ <param name="array"> Array of values to swap </param>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Xpt.SASXportFileIterator">
+ <summary>
+ SAS XPT file reader
+ </summary>
+ <remarks>
+ SAS XPT (SAS Transport File) is a standardized file format primarily used for transferring data 
+ between different SAS software versions and systems, particularly in regulated environments 
+ like clinical trials. Here are the key aspects based on the search results:
+ 
+ ### 1. **Core Purpose and Functionality**  
+ 
+ XPT files enable cross-version compatibility for SAS datasets, resolving issues when data is 
+ shared between different SAS installations (e.g., SAS 9 and SAS Viya). This ensures seamless 
+ data exchange without version conflicts .  
+ 
+ ### 2. **Structure and Naming Conventions**  
+ 
+ - Each XPT file corresponds to a single dataset.  
+ - The dataset name must match the XPT filename exactly.  
+ - Files use a standardized extension (e.g., `.xpt`), as specified in regulatory guidelines like 
+   the *Drug Clinical Trial Data Submission Guideline* .  
+   
+ ### 3. **Regulatory and Industry Applications**  
+ 
+ XPT is the mandated format for submitting clinical trial data to regulatory agencies (e.g., 
+ FDA, NMPA). Its structured format ensures data integrity and consistency during reviews .  
+ 
+ ### 4. **Interoperability with Other Tools**  
+ 
+ Beyond SAS, XPT files can be processed in other programming environments. For example, in R, 
+ the `Hmisc` package's `sasxport.get` function imports XPT data for analysis, demonstrating 
+ cross-platform utility .  
+ 
+ ### 5. **Key Advantages**  
+ 
+ - **Standardization**: Uniform structure simplifies data validation and regulatory submissions.  
+ - **Compatibility**: Eliminates barriers between SAS versions and external systems.  
+ - **Efficiency**: Streamlines data transfer in large-scale studies (e.g., pharmaceutical trials) .  
+ 
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Xpt.SASXportFileIterator.next">
+ <summary>
+ read the data frame line by line
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>

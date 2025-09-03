@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VirtualCell
+</name>
+</assembly>
+<members>
+<member name="P:VirtualCell.Config.models">
+ <summary>
+ the file path to the model files, usually be the relative path to the config file
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>

@@ -1,0 +1,305 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.MIME.application.rdf_xml
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Array">
+ <summary>
+ ``&lt;Bag>``、``&lt;Seq>`` 以及 ``&lt;Alt>``
+ 
+ + ``&lt;rdf:Bag>`` 元素用于描述一个规定为无序的值的列表。元素可包含重复的值。
+ + ``&lt;rdf:Seq>`` 元素用于描述一个规定为有序的值的列表（比如一个字母顺序的排序）。
+ + ``&lt;rdf:Alt>`` 元素用于一个可替换的值的列表（用户仅可选择这些值的其中之一）。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.Array.list">
+ <summary>
+ A bag list of the resource reference
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI">
+ <summary>
+ RDF 都柏林核心元数据倡议
+ (http://w3school.com.cn/rdf/rdf_dublin.asp)
+ </summary>
+ <remarks>
+ 都柏林核心元数据倡议 (DCMI) 已创建了一些供描述文档的预定义属性。
+ 
+ Dublin 核心
+ RDF 是元数据（关于数据的数据）。RDF 被用于描述信息资源。
+ 都柏林核心是一套供描述文档的预定义属性。
+ 第一份都柏林核心属性是于1995年 在俄亥俄州的都柏林的元数据工作组被定义的，目前由都柏林元数据倡议来维护。
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Contributor">
+ <summary>
+ 一个负责为资源内容作出贡献的实体(如作者)。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Coverage">
+ <summary>
+ 资源内容的氛围或作用域
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Creator">
+ <summary>
+ 一个主要负责创建资源内容的实体。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Format">
+ <summary>
+ 物理或数字的资源表现形式。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Date">
+ <summary>
+ 在资源生命周期中某事件的日期。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Description">
+ <summary>
+ 对资源内容的说明。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Identifier">
+ <summary>
+ 一个对在给定上下文中的资源的明确引用
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Language">
+ <summary>
+ 资源智力内容所用的语言。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Publisher">
+ <summary>
+ 一个负责使得资源内容可用的实体
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Relation">
+ <summary>
+ 一个对某个相关资源的引用
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Rights">
+ <summary>
+ 有关保留在资源之内和之上的权利的信息
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Source">
+ <summary>
+ 一个对作为目前资源的来源的资源引用。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Subject">
+ <summary>
+ 一个资源内容的主题
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Title">
+ <summary>
+ 一个给资源起的名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.DCMI.Type">
+ <summary>
+ 资源内容的种类或类型。
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Resource">
+ <summary>
+ a data resource reference
+ </summary>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.DataTypes">
+ <summary>
+ http://www.w3.org/2001/XMLSchema
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.rdf_xml.DataTypes.GetType(System.String)">
+ <summary>
+ RDF data type
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.rdf_xml.DataTypes.SchemaDataType(Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty)">
+ <summary>
+ Default is string type if property value of <see cref="P:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty.dataType"/> is null or empty
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.NamespaceDoc">
+ <summary>
+ 在进行RDF反序列化读取操作的时候似乎存在一个BUG
+ 不可以将元素的命名空间设置为RDF的命名空间，即元素
+ 的命名空间不应该和根元素的命名空间保持一致，否则
+ 无法读取出注释数据
+ 所以这个也是在当前模块之中将元素类型的命名空间设置
+ 为``NA``字符串值的原因
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.RDF`1">
+ <summary>
+ the xml file serilization model
+ </summary>
+ <remarks>
+ 关于RDF模型对象的使用方法，在这里提供两两个抽象对象用来表示RDF模型
+ 
+ 1. description数据是对象的注释信息存储位置
+ 2. 这个RDF抽象类型为注释信息的存储容器
+ 
+ 因为不同的应用程序会产生不同的注释信息数据，所以需要继承所提供的
+ description对象以及继承当前的RDF对象来生成一个特定的数据读取对象
+ 后进行信息数据的读取操作。
+ </remarks>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFEntity">
+ <summary>
+ 在rdf之中被描述的对象实体
+ </summary>
+ <remarks>
+ ID,about
+ </remarks>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFEntity.XmlnsNamespace">
+ <summary>
+ rdf:XXX
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFEntity.RDFId">
+ <summary>
+ rdf:ID
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFEntity.about">
+ <summary>
+ [资源] 是可拥有 URI 的任何事物
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFEntity.Properties">
+ <summary>
+ [属性]   是拥有名称的资源
+ [属性值] 是某个属性的值，(请注意一个属性值可以是另外一个<see cref="P:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty.resource"/>）
+ xml文档在rdf反序列化之后，原有的类型定义之中除了自有的属性被保留下来了之外，具备指向其他资源的属性都被保存在了这个属性字典之中
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFProperty">
+ <summary>
+ property value with data type
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFType">
+ <summary>
+ rdf:type
+ </summary>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty">
+ <summary>
+ RDF DataValue
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty.dataType">
+ <summary>
+ rdf:datatype
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty.resource">
+ <summary>
+ rdf:resource
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.EntityProperty.value">
+ <summary>
+ the rdf xml text value
+ </summary>
+ <returns></returns>
+ <remarks>
+ ###### 20191102
+ 
+ Base type '<see cref="T:Microsoft.VisualBasic.MIME.application.rdf_xml.RDFProperty"/>' has simpleContent and can only be extended 
+ by adding <see cref="T:System.Xml.Serialization.XmlAttributeAttribute"/> elements. 
+ 
+ Please consider changing <see cref="T:System.Xml.Serialization.XmlTextAttribute"/> member of the base class to 
+ string array.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.BuildObject.PopulateObjects(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.Triple})">
+ <summary>
+ build rdf object from the ttl data
+ </summary>
+ <param name="ttl"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.Triple">
+ <summary>
+ object properties
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.Relation">
+ <summary>
+ property data
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.Relation.predicate">
+ <summary>
+ the property name
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.Relation.objs">
+ <summary>
+ the property value
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.ttl_property">
+ <summary>
+ A simple key-value pair tuple data
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.TurtleFile">
+ <summary>
+ RDF 1.1 Turtle
+ 
+ Terse RDF Triple Language
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.rdf_xml.Turtle.TurtleFile.ParseObject(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="line"></param>
+ <returns>
+ this function returns nothing if the line data is a prefix
+ </returns>
+</member>
+</members>
+</doc>

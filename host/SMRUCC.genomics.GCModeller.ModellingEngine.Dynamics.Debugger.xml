@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Summary">
+ <summary>
+ model summary report generator
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Visualizer.ToGraph(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel,System.Collections.Generic.Dictionary{System.String,System.Double})">
+ <summary>
+ Visual the cellular graph as network graph
+ </summary>
+ <param name="cell"></param>
+ <param name="flux">just used for assign the edge weight</param>
+ <returns></returns>
+</member>
+</members>
+</doc>

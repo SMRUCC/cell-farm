@@ -1,0 +1,168 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.MIME.application.xml
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.xml.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.xml.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.CodeGenerator">
+ <summary>
+ Generate the VB.NET class code based on the xsd definition
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.xml.MathML.actiontypes.tooltip">
+ <summary>
+ When the pointer moves over the expression, a tooltip box with a message is displayed near the expression.
+ The syntax Is: ``&lt;maction actiontype = "tooltip"> expression message &lt;/maction>``.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.xml.MathML.ContentBuilder.ParseXml(Microsoft.VisualBasic.MIME.application.xml.XmlElement)">
+ <summary>
+ 因为反序列化存在一个元素顺序的bug，所以在这里不可以通过反序列化来进行表达式的解析
+ </summary>
+ <param name="mathML"></param>
+ <returns></returns>
+ 
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.xml.MathML.ContentBuilder.stdMathFunc">
+ <summary>
+ a list of standard math function
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.MathML.LambdaExpression">
+ <summary>
+ A lambda expression that consist with the 
+ <see cref="P:Microsoft.VisualBasic.MIME.application.xml.MathML.LambdaExpression.parameters"/> and <see cref="P:Microsoft.VisualBasic.MIME.application.xml.MathML.LambdaExpression.lambda"/>
+ body.
+ 
+ example as: ``f(x) = x ^ 2``
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.xml.MathML.LambdaExpression.FromMathML(System.String)">
+ <summary>
+ lambda expression parsed from the given xml text
+ </summary>
+ <param name="xmlText"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.MathML.Apply">
+ <summary>
+ 
+ </summary>
+ <remarks>
+ the math xml data should be parsed via the method:
+ 
+ <see cref="M:Microsoft.VisualBasic.MIME.application.xml.MathML.ContentBuilder.ParseXml(Microsoft.VisualBasic.MIME.application.xml.XmlElement)"/>
+ </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.MathML.maction">
+ <summary>
+ The MathML ``&lt;maction>`` element provides a possibility 
+ to bind actions to (sub-) expressions. The action itself 
+ is specified by the actiontype attribute, which accepts 
+ several values. To specify which child elements are addressed 
+ by the action, you can make use of the selection attribute.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.xml.XmlParser.ParseXml(System.String)">
+ <summary>
+ parse the xml document text
+ </summary>
+ <param name="xml">the xml document text</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.XmlElement">
+ <summary>
+ A generic xml element node
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.xml.XmlElement.name">
+ <summary>
+ the xml tag name
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.xml.XmlElement.text">
+ <summary>
+ the content value of the current xml node
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.xml.XmlElement.comment">
+ <summary>
+ the content text of the comment in current node
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.xml.XmlElement.ParseXmlText(System.String)">
+ <summary>
+ parse the xml document text
+ </summary>
+ <param name="xmlText">the xml document text</param>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.XPath">
+ <summary>
+ 1. ``nodename`` 选取此节点的所有子节点。
+ 2. ``/``        从根节点选取。
+ 3. ``//``       从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
+ 4. ``.``        选取当前节点。
+ 5. ``..``       选取当前节点的父节点。
+ 6. ``@``        选取属性。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.SelectByNodeName">
+ <summary>
+ 选取此节点的所有子节点。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.RootPathSelector">
+ <summary>
+ 从根节点选取。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.CurrentNodes">
+ <summary>
+ 从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.CurrentNode">
+ <summary>
+ 选取当前节点。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.ParentNode">
+ <summary>
+ 选取当前节点的父节点。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.SelectAttributes">
+ <summary>
+ 选取属性。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.xml.xsd.NamespaceDoc">
+ <summary>
+ The xml element data model in xsd definition file.
+ </summary>
+</member>
+</members>
+</doc>

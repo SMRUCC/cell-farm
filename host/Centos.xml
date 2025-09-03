@@ -1,0 +1,215 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Centos
+</name>
+</assembly>
+<members>
+<member name="T:Darwinism.Centos.netstat">
+ <summary>
+ 
+ </summary>
+ <remarks>
+ sudo yum install net-tools
+ </remarks>
+</member>
+<member name="P:Darwinism.Centos.netstat.Program">
+ <summary>
+ PID/Program name
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Darwinism.Centos.netstat.tulnp(System.String)">
+ <summary>
+ netstat -tulnp
+ </summary>
+ <param name="text"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.Centos.Interaction">
+ <summary>
+ linux command interaction shell module
+ </summary>
+</member>
+<member name="M:Darwinism.Centos.Interaction.HasCommand(System.String,System.Boolean)">
+ <summary>
+ does the required command is installed in the centos system?
+ </summary>
+ <param name="command"></param>
+ <returns></returns>
+ <remarks>
+ use the ``command -v`` for check the command is existsed or not, example as 
+ check docker command is existed ``command -v docker``.
+ </remarks>
+</member>
+<member name="M:Darwinism.Centos.Interaction.Shell(System.String,System.String,System.Boolean)">
+ <summary>
+ run a linux command
+ </summary>
+ <param name="command">the command name or its executative file path.</param>
+ <param name="args">command line arguments</param>
+ <param name="verbose">debug option</param>
+ <returns>
+ the std_output of the specific command.
+ </returns>
+</member>
+<member name="M:Darwinism.Centos.Interaction.cat(System.String,System.Boolean)">
+ <summary>
+ read the file content of a specific <paramref name="file"/>
+ </summary>
+ <param name="file">the file path of the target text file.</param>
+ <param name="verbose"></param>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.Centos.proc.net.tcp">
+ <summary>
+ /proc/net/tcp
+ </summary>
+ <remarks>
+ This file contains information about all TCP sockets that are currently open on 
+ the system. Each line in the file represents a TCP socket, and the fields in 
+ each line provide details about the socket’s state, the local and remote addresses 
+ and ports, and other related information.
+ </remarks>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.sl">
+ <summary>
+ The socket’s slot (index) in the kernel’s socket table.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.local_address">
+ <summary>
+ The local IP address and port number (in hexadecimal).
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.rem_address">
+ <summary>
+ The remote IP address and port number (in hexadecimal), or 00000000:0000 if not connected.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.st">
+ <summary>
+ The socket’s state (e.g., 0A for listening, 01 for established).
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.tx_queue">
+ <summary>
+ The amount of data in the transmit queue.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.rx_queue">
+ <summary>
+ The amount of data in the receive queue.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.tr">
+ <summary>
+ Timing and retransmission information.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.tm_when">
+ <summary>
+ Timing and retransmission information.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.retrnsmt">
+ <summary>
+ Timing and retransmission information.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.uid">
+ <summary>
+ The user ID of the process that owns the socket.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.timeout">
+ <summary>
+ The socket’s timeout value.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.tcp.inode">
+ <summary>
+ The inode number of the socket. This can be used to find the process using 
+ the socket by looking at ``/proc/[pid]/fdinfo/`` for the inode.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.Centos.proc.net.udp">
+ <summary>
+ /proc/net/udp
+ 
+ This file is similar to /proc/net/tcp, but it provides information about UDP sockets. 
+ Since UDP is connectionless, some of the fields that are relevant to TCP connections
+ (like st for socket state) are not applicable or are set to default values.
+ </summary>
+</member>
+<member name="P:Darwinism.Centos.proc.net.udp.st">
+ <summary>
+ The socket’s state. For UDP, this is typically 07, which represents a socket 
+ that is waiting to receive packets.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.udp.ref">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Darwinism.Centos.proc.net.udp.drops">
+ <summary>
+ The number of packets dropped by the socket.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Darwinism.Centos.PuTTY">
+ <summary>
+ PuTTY automation combine with the hyper-V virtual machine for windows server
+ </summary>
+</member>
+<member name="M:Darwinism.Centos.PuTTY.cacheServerKey">
+ <summary>
+ try to fix problem of 
+ 
+ ```
+ D:\web\RWeb>plink pipeline_submit@192.168.0.254 -P 22 -pw "pipeline_submit123" -batch qsub -cwd -e "/mnt/smb3/tmp/GCMS_autoTest/error" -o "/mnt/smb3/tmp/GCMS_autoTest/stdout" /mnt/smb2/.auto//GC-MS/auto_f1803b4671326cc1491b2cd8b7b9e7d3.sh
+ The server's host key is not cached in the registry. You
+ have no guarantee that the server Is the computer you
+ think it Is.
+ The server 's ssh-ed25519 key fingerprint is:
+ ssh-ed25519 255 58:66:53:3d:3f:6c:a9:fb:8c:ad:af:bd:8c:dc:57:16
+ Connection abandoned.
+ ```
+ </summary>
+</member>
+<member name="M:Darwinism.Centos.PuTTY.Run(System.String)">
+ <summary>
+ Run a bash script in target virtual machine
+ </summary>
+ <param name="bash">the file path of the bash script in the hyper-v virtual machine.</param>
+ <returns></returns>
+ <remarks>
+ Hyper-V PowerShell - Run a bash command in Linux VM and get output.
+ 
+ https://stackoverflow.com/questions/57778301/hyper-v-powershell-run-a-bash-command-in-linux-vm-and-get-output
+ </remarks>
+</member>
+<member name="T:Darwinism.Centos.SSH">
+ <summary>
+ this works on linux system via ssh command from bash
+ </summary>
+</member>
+</members>
+</doc>

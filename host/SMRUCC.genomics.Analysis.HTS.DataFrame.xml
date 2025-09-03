@@ -1,0 +1,483 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.Analysis.HTS.DataFrame
+</name>
+</assembly>
+<members>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSDataFrame.MergeMultipleHTSMatrix(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix[],System.Boolean)">
+ <summary>
+ merge multiple batches data directly
+ </summary>
+ <param name="batches">
+ matrix in multiple batches data should be normalized at
+ first before calling this data batch merge function.
+ </param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.BinaryMatrix">
+ <summary>
+ data encoded in network byte order
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.BinaryMatrix.Save(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.IO.Stream)">
+ <summary>
+ save the HTS matrix object as binary file
+ </summary>
+ <param name="mat"></param>
+ <param name="file"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader">
+ <summary>
+ the matrix shape dimension is features in rows and the sample observation in columns
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader.geneIDs">
+ <summary>
+ the data reader offset is evaluated via this index object
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader.SampleIDs">
+ <summary>
+ sample data id in columns
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader.FeatureIDs">
+ <summary>
+ gene feature ids in rows
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader.Size">
+ <summary>
+ the matrix shape dimension is features in rows and 
+ the sample observation in columns:
+ 
+ 1. nsamples: the matrix column width
+ 2. nfeature: the matrix row height
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixReader.SetNewGeneIDs(System.String[])">
+ <summary>
+ just updates of the gene id index
+ </summary>
+ <param name="geneIDs"></param>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSMatrixViewer.dims">
+ <summary>
+ [width(sample_size), height(geneset_size)]
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixViewer">
+ <summary>
+ the abstract viewer model of the in-memory matrix object and the
+ huge binary matrix file
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixViewer.FeatureIDs">
+ <summary>
+ get gene row features name
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixViewer.GetGeneExpression(System.String)">
+ <summary>
+ get gene expression across all sample data
+ </summary>
+ <param name="geneID">a specific gene target</param>
+ <returns>
+ expression data is aligned with the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixViewer.SampleIDs"/>
+ </returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixViewer.GetGeneExpression(System.String[],System.Int32)">
+ <summary>
+ get a set of gene expression across a specific sample data
+ </summary>
+ <param name="geneID">a set of target gene</param>
+ <param name="sampleOrdinal">the order index of the specific sample data</param>
+ <returns>
+ expression data is aligned with the <paramref name="geneID"/> set.
+ </returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Document.LoadMatrixDocument(System.String,Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
+ <summary>
+ 
+ </summary>
+ <param name="file">
+ table file could be csv table or tsv table file.
+ </param>
+ <param name="excludes">
+ excludes some sample columns data which is speicifed 
+ by this parameter
+ </param>
+ <returns></returns>
+ <remarks>
+ 因为矩阵文档是由数字构成的，所以在这里不再使用csv文件解析器来完成，
+ 直接通过分隔符进行解析来获取最好的解析性能
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Document.SaveMatrix(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.String,System.String)">
+ <summary>
+ save matrix as csv file
+ </summary>
+ <param name="mat"></param>
+ <param name="file"></param>
+ <param name="idcolName"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.Reader">
+ <summary>
+ the parser of the matrix text document
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.Limma">
+ <summary>
+ The **limma algorithm** (Linear Models for Microarray Data) is a widely used statistical framework in 
+ R/Bioconductor for differential expression (DE) analysis of RNA-seq data. Originally designed for 
+ microarray studies, its flexibility and robustness have extended its utility to RNA-seq through the 
+ `voom` transformation. Below is a comprehensive overview of its workflow, features, and applications:  
+
+ ---
+
+ ### **1. Core Philosophy**  
+ 
+ - **Linear Modeling**: Uses linear models to relate gene expression to experimental conditions, covariates, or interactions .  
+ - **Empirical Bayes Moderation**: Borrows information across genes to stabilize variance estimates, especially effective for small sample sizes .  
+ - **Adaptability**: Processes data from microarrays, RNA-seq, PCR, and other platforms with a unified pipeline after preprocessing .  
+
+ ### **2. Key Steps in RNA-seq Analysis with limma**  
+ 
+ #### **A. Preprocessing**  
+ 
+ - **Normalization**:  
+ - Applies methods like **TMM** (edgeR), **quantile normalization**, or **voom transformation** to correct for library size, sequencing depth, and technical biases .  
+ - `voom` converts count data into log2 counts per million (CPM) and calculates precision weights for each observation based on the mean-variance trend .  
+ - **Batch Effect Correction**: Uses `removeBatchEffect()` or incorporates batch covariates into the design matrix .  
+
+ #### **B. Linear Modeling**  
+ 
+ - **Design Matrix**: Constructed using `model.matrix()` to encode experimental factors (e.g., treatment vs. control, time points) .  
+ - **Model Fitting**:  
+ - `lmFit()` fits a linear model to normalized expression data.  
+ - `eBayes()` applies empirical Bayes moderation to t-statistics, enhancing DE detection reliability .  
+
+ #### **C. Differential Expression Testing**  
+ 
+ - **Contrasts**: Define comparisons (e.g., `treatment - control`) with `makeContrasts()` .  
+ - **DE Gene Extraction**:  
+ - `topTable()` outputs DE genes ranked by statistical significance (adjusted *p*-values) and log-fold change (logFC) .  
+ - Thresholds: Commonly use **|logFC| > 1** and **adj. *p*-value &lt; 0.05** .  
+
+ #### **D. Visualization**  
+ 
+ - **Volcano Plots**: Highlight DE genes (up/downregulated) using `ggplot2` or `ggVolcano` .  
+ - **Heatmaps**: Display expression patterns of DE genes across samples .  
+
+ ### **3. Advanced Features**  
+ 
+ - **Complex Designs**: Handles multi-factor experiments (e.g., interactions, time series) and repeated measurements .  
+ - **Differential Splicing**: Detects alternative splicing events in RNA-seq data .  
+ - **Gene Set Analysis**: Integrates with tools like *camera* or *romer* to test co-regulated gene sets or pathways .  
+
+
+ ### **4. Strengths &amp; Limitations**  
+ 
+ - **Strengths**:  
+ - Flexibility for diverse experimental designs.  
+ - Superior performance in small-sample studies via information borrowing .  
+ - Seamless integration with Bioconductor ecosystem (e.g., edgeR, Glimma) .  
+ - **Limitations**:  
+ - Sensitive to normalization methods.  
+ - Requires biological replicates for stable variance estimation .  
+
+
+ ### **5. Practical Applications**  
+ 
+ - Identifies disease biomarkers (e.g., schizophrenia, Parkinson’s) from blood or tissue transcriptomes .  
+ - Validated in studies integrating RNA-seq with clinical data or multi-omics approaches .  
+
+ ---
+
+ ### **Example R Code Snippet**  
+ 
+ ```r
+ library(limma)
+ library(edgeR)
+
+ # Step 1: Preprocessing with voom
+ dge &lt;- DGEList(counts = count_matrix)
+ dge &lt;- calcNormFactors(dge, method = "TMM")
+ v &lt;- voom(dge, design = design_matrix, plot = TRUE)  # Converts counts + weights
+
+ # Step 2: Fit linear model
+ fit &lt;- lmFit(v, design_matrix)
+ fit &lt;- eBayes(fit)
+
+ # Step 3: Extract DE genes (e.g., treatment vs. control)
+ de_genes &lt;- topTable(fit, coef = 2, adjust = "BH", number = Inf, sort.by = "P")
+ ```
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.Math">
+ <summary>
+ math helper for HTS matrix
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Math.Sum(System.Collections.Generic.IEnumerable{SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow})">
+ <summary>
+ sum multiple gene expression into a vector
+ </summary>
+ <param name="expr"></param>
+ <returns>expression sum value in a vector</returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Math.log(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.Double)">
+ <summary>
+ make log transform of the expresion value
+ </summary>
+ <param name="expr"></param>
+ <param name="base">the base for log function.</param>
+ <returns></returns>
+ <remarks>
+ # 分布转换（处理非正态分布）
+ 
+ 对数转换是处理非正态分布数据的常用方法，尤其是右偏数据。通过对数转换，可以将数据的分布变得更接近正态分布，从而满足统计分析的假设。
+ 
+ 例如，对于基因表达数据，通常会使用对数转换来减少数据的偏态性，使得后续的统计分析（如t检验、方差分析等）更加可靠。
+ 
+ 对于右偏数据，可以使用以下代码进行对数转换：
+ 
+ # 对数转换（右偏数据）
+ log_transform &lt;- function(mat) {
+    log(mat + 1 - min(mat))  # 避免log(0)
+ }
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Math.TRanking(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo[])">
+ <summary>
+ evaluated expression ranking value
+ </summary>
+ <param name="expr">
+ data must be normalized!
+ </param>
+ <param name="sampleinfo"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.TPM.Normalize(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix)">
+ <summary>
+ 
+ </summary>
+ <param name="countData"></param>
+ <returns></returns>
+ <remarks>
+ normalized scaled via the median of the library size
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow">
+ <summary>
+ The gene expression data samples file.
+ (基因的表达数据样本)
+ </summary>
+ <remarks>the gene expression model implements the <see cref="T:Microsoft.VisualBasic.Math.IVector"/> model, 
+ could be converts a vector.</remarks>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.geneID">
+ <summary>
+ The unique reference id of current expression data vector
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.experiments">
+ <summary>
+ This gene's expression value in the different experiment condition.
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks>(同一个基因在不同实验之下的表达值)</remarks>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.Value(System.Int32)">
+ <summary>
+ Get the sample expression value via a given index
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.Value(System.Int32[])">
+ <summary>
+ get subset of the vector by a specific sample id offsets
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.samples">
+ <summary>
+ Gets the sample counts of current gene expression data.(获取基因表达数据样本数目)
+ </summary>
+ <value></value>
+ <returns>
+ the length of the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.experiments"/> expression vector.
+ </returns>
+ <remarks></remarks>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.MAD">
+ <summary>
+ MAD（Median Absolute Deviation，中位数绝对偏差）是一种鲁棒的统计量，用于衡量单变量数据的离散程度。其核心思想是通过中位数计算偏差，避免异常值对结果的影响。数学定义为：
+ 
+ ```
+ MAD=median(∣Xi−median(X)∣)
+ ```
+ 
+ 其中 X表示基因在所有样本中的表达值向量，Xi为单个样本的表达值，median(X)是基因表达值的中位数。
+ 与标准差不同，MAD使用中位数而非均值，因此不受极端值干扰。例如，若某基因在多数样本中表达稳定，但个别样本异常高/低，标准差会显著增大，而MAD几乎不变。
+ 
+ WGCNA等共表达网络分析中，需筛选高变异基因（如取MAD值最高的前5000个基因）。高MAD值表明基因表达在样本间波动大，可能具有生物学意义（如调控关键通路）。
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.ToDataSet(System.String[])">
+ <summary>
+ cast the numeric vector as the labeled list.
+ </summary>
+ <param name="labels"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.CreateVector">
+ <summary>
+ Cast current expression vector as the standard math <see cref="T:Microsoft.VisualBasic.Math.LinearAlgebra.Vector"/> object.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.Sum">
+ <summary>
+ get sum of current expression vector
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.Average">
+ <summary>Computes the average of a sequence of Double values.
+ </summary>
+ <returns>The average of the sequence of values.</returns>
+ <remarks>
+ this function returns ZERO if the sample count is ZERO
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix">
+ <summary>
+ a data matrix of samples in column and gene features in row
+ </summary>
+ <remarks>
+ a data model of a collection of then gene expression <see cref="T:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow"/>.
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.tag">
+ <summary>
+ the tag data of current expression matrix
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.sampleID">
+ <summary>
+ sample id of <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow.experiments"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.expression">
+ <summary>
+ gene list, vector element is the sample data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.size">
+ <summary>
+ the row numbers of the expression matrix(number of genes)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.gene(System.Int32)">
+ <summary>
+ take by row
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.gene(System.String)">
+ <summary>
+ get gene expression vector data by a specific <paramref name="geneId"/>
+ </summary>
+ <param name="geneId"></param>
+ <returns>
+ value nothing may be returned if the gene id is not exists in the matrix rows
+ </returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.gene(Microsoft.VisualBasic.Language.Vectorization.BooleanVector)">
+ <summary>
+ matrix subset by row
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.sample(System.String)">
+ <summary>
+ get sample column as vector by sample id
+ </summary>
+ <param name="sample_id"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.sample(System.Int32)">
+ <summary>
+ take by column
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.rownames">
+ <summary>
+ get all gene id list
+ </summary>
+ <returns>
+ a set of gene id that keeps the same order 
+ with the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.expression"/> rows.
+ </returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.Project(System.String[])">
+ <summary>
+ make column projection via <see cref="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.TakeSamples(SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow[],System.Int32[],System.Boolean)"/>.
+ </summary>
+ <param name="sampleNames"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.T">
+ <summary>
+ matrix transpose
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.TrimZeros">
+ <summary>
+ removes the rows which all gene expression result is ZERO
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.TakeSamples(SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow[],System.Int32[],System.Boolean)">
+ <summary>
+ matrix subset by a given collection of sample names
+ </summary>
+ <param name="data"></param>
+ <param name="sampleVector"></param>
+ <param name="reversed"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.MatrixAverage(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo[],System.Boolean)">
+ <summary>
+ calculate average value of the gene expression for
+ each sample group.
+ </summary>
+ <param name="matrix"></param>
+ <param name="sampleInfo"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

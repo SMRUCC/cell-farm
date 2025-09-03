@@ -1,0 +1,338 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis">
+ <summary>
+ the different expression analysis design
+ </summary>
+ <remarks>
+ a collection of the sample <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> for run the different expression analysis.
+ usually be <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.experiment"/> vs <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.control"/>.
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.designs">
+ <summary>
+ show be contains at least two sample group
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.size">
+ <summary>
+ number of sample groups to run analysis
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup">
+ <summary>
+ the group view of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/> data
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sampleGroup">
+ <summary>
+ the sample group label: <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sample_id">
+ <summary>
+ a collection of the sample id that belongs to current sample data group
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.CreateDataGroups(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo})">
+ <summary>
+ create a collection of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> from the given <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/>
+ </summary>
+ <param name="samples"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel">
+ <summary>
+ A generic model for different expression molecule
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.label">
+ <summary>
+ usually be the gene id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.t">
+ <summary>
+ t stats value
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.pvalue">
+ <summary>
+ The p-value of the differential expression test
+ </summary>
+ <returns></returns>
+ <remarks>
+ This is the p-value before multiple testing correction.
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.VIP">
+ <summary>
+ Variance importance(used in metabolomics data)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.nLog10p">
+ <summary>
+ -log10(p-value)
+ </summary>
+ <returns></returns>
+</member>
+<member name="F:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.ExperimentDesigner">
+ <summary>
+ ``ExperimentDesigner`` category for the <see cref="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.TemplateAttribute"/>
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.PairedAnalysisSamples(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo},System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner},System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleTuple})">
+ <summary>
+ 为成对数据的T检验设计的帮助函数
+ </summary>
+ <param name="sampleInfo"></param>
+ <param name="analysisDesign"></param>
+ <param name="sampleTuple"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.TakeGroup``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+ <summary>
+ 从所给定的样本信息列表之中,取出指定组别编号的所有的样本信息
+ </summary>
+ <param name="sampleInfo"></param>
+ <param name="groupLabel"><see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.ToCategory``1(System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ 按照<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/>进行分组，读取出每一个分组之中的
+ <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_name"/>
+ </summary>
+ <param name="sampleInfo"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.SampleNames(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup})">
+ <summary>
+ 取出所有的<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_name"/>
+ </summary>
+ <param name="sampleInfo"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.SampleIDs(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo},System.String)">
+ <summary>
+ 取出<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/>
+ </summary>
+ <param name="sampleInfo"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.SampleGroupInfo(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo})">
+ <summary>
+ ``<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/> -> <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/>``
+ </summary>
+ <param name="sampleInfo"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.SampleGroupColor``1(System.Collections.Generic.IEnumerable{``0},System.Drawing.Color[])">
+ <summary>
+ 相同分组的sample都会被分配到相同的颜色，这个函数主要是为一些分类相关的绘图准备的，例如PCA之类的绘图
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="sampleInfo"></param>
+ <param name="colors">Color for <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.DataAnalysisDesign(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo},System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner})">
+ <summary>
+ 将组别比对标记转换为样品比对标记
+ </summary>
+ <param name="sampleInfo"></param>
+ <param name="analysis">
+ <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.controls"/>和<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.treatment"/>都是组别名称
+ </param>
+ <returns>
+ 经过这个函数转换之后，<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.controls"/>和<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.treatment"/>
+ 都分别被转换为样品标记了
+ </returns>
+ <remarks>
+ 例如，存在下面的样品信息
+ 
+ + PCCa组	
+   + M-P-CCa1
+	  + M-P-CCa2
+	  + M-P-CCa3
+ 
+ + PCCaT组	
+   + M-P-CCaT1
+	  + M-P-CCaT2
+	  + M-P-CCaT3
+	
+ 而实验数据分析设计则是：``PCCa组 vs PCCaT组``
+ 
+ 故而需要使用这个函数将组别标记转换为实际计算分析所要使用到的样品标记
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.EnsureGroupPaired``1(System.Collections.Generic.IEnumerable{``0},System.String[],System.String)">
+ <summary>
+ Ensure all of the name label in <paramref name="allSamples"/> were paired in groups.
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="sampleInfo">Probably this is the part of the sample name collection</param>
+ <param name="allSamples$">Contains all sample names, <paramref name="sampleInfo"/> maybe is the subset of it.</param>
+ <param name="groupCreated$"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Extensions.SetNames``1(``0[],SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo[])">
+ <summary>
+ 将<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/>映射为对应的<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_name"/>
+ </summary>
+ <param name="matrix">
+ 属性的键名称应该都是<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/>
+ </param>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg">
+ <summary>
+ a simple abstract model for the different expression gene object
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg.label">
+ <summary>
+ the gene unique id
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleNames">
+ <summary>
+ Sample names helper
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleNames.GuessPossibleGroups(System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+ <summary>
+ Guess all possible sample groups from the given name string collection.
+ </summary>
+ <param name="allSampleNames"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner">
+ <summary>
+ ```
+ <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.controls"/> / <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.treatment"/>
+ ```
+ 这个对象描述了如何设计一个比对计算实验分析
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.controls">
+ <summary>
+ the group label of controls.
+ </summary>
+ <returns></returns>
+ <remarks>
+ 对照组
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.treatment">
+ <summary>
+ the group label of treatments. 
+ </summary>
+ <returns></returns>
+ <remarks>
+ 处理组
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.note">
+ <summary>
+ 用户备注信息，这个属性一般不会被使用
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner.ToString">
+ <summary>
+ 对于iTraq实验数据而言，这里是具体的样品的编号的比对
+ 对于LabelFree实验数据而言，由于需要手工计算FC值，所以在这里比对的是样品的组别名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup">
+ <summary>
+ the analysis property of the sample data group.(样品的分组信息)
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_name">
+ <summary>
+ 在报告之中的显示名称，可能会含有一些奇怪的符号
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info">
+ <summary>
+ the sample info.
+ 
+ (样品的实验设计分组信息)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.color">
+ <summary>
+ 绘图可视化的时候的颜色
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.shape">
+ <summary>
+ legend的形状
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.#ctor(SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup)">
+ <summary>
+ copy the sample group information
+ </summary>
+ <param name="info">
+ could be copy from the information of a sample: <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/>
+ </param>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo">
+ <summary>
+ 一般而言，对于实验数据的分析而言，在进行数据存储的时候使用的是<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/>属性，
+ 而在进行数据可视化或者数据报告输出的时候，则是使用的<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_name"/>属性
+ 作为显示的label
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID">
+ <summary>
+ 样品的标记符号，符合VisualBasic标识符语法的目标样品标识符
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.injectionOrder">
+ <summary>
+ index编号
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.batch">
+ <summary>
+ the experiment batch id
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleTuple">
+ <summary>
+ Using for paired sample T-test
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleTuple.Label">
+ <summary>
+ Using this 
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>

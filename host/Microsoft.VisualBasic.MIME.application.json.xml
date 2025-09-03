@@ -1,0 +1,540 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.MIME.application.json
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.BSONFormat.Load(System.Byte[])">
+ <summary>
+ 解析BSON
+ </summary>
+ <param name="buf"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.BSONFormat.LoadList(System.IO.Stream,System.Boolean)">
+ <summary>
+ usually apply this function for load MongoDB database file
+ </summary>
+ <param name="buf"></param>
+ <param name="tqdm"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.BSONFormat.SafeGetBuffer(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement)">
+ <summary>
+ 只兼容array或者object
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.BSONFormat.SafeWriteBuffer(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.IO.Stream)">
+ <summary>
+ save json element in bson format
+ </summary>
+ <param name="obj">
+ json object or json array
+ </param>
+ <param name="ms"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.BSONValue.#ctor(Microsoft.VisualBasic.MIME.application.json.BSON.ValueType)">
+
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.Decoder.#ctor(System.Byte[],Microsoft.VisualBasic.Text.Encodings)">
+ <summary>
+ create document decoder from a given in-memory stream data
+ </summary>
+ <param name="buf"></param>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.Decoder.decodeCString">
+ <summary>
+ Decode a ZERO terminated C-string.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.Encoder.encodeDocument(System.IO.Stream,Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject)">
+ <summary>
+ save json object
+ </summary>
+ <param name="ms"></param>
+ <param name="obj"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.BSON.Encoder.encodeArray(System.IO.Stream,Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray)">
+ <summary>
+ save json array as json object
+ </summary>
+ <param name="ms"></param>
+ <param name="lst"></param>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.BSON.ValueType.Undefined">
+ <summary>
+ undefined, obsolete in bson
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.BSON.ValueType.ObjectId">
+ <summary>
+ 
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.BSON.ValueType.None">
+ <summary>
+ NULL
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray.Length">
+ <summary>
+ the element count in current json array 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray.FirstAndLast">
+ <summary>
+ get a tuple of array data which is the first element and last element value in this array seperatelly
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray.UnderlyingType">
+ <summary>
+ try to measure of the array base element type
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray.Item(System.Int32)">
+ <summary>
+ Gets/Set elements by index
+ </summary>
+ <param name="index"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray.AsObjects">
+ <summary>
+ directcast this json array as a collection of the json object
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement">
+ <summary>
+ The abstract javascript object model
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement.As``1">
+ <summary>
+ do direct cast to the required json element sub type.
+ </summary>
+ <typeparam name="T"></typeparam>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement.ParseJSON(System.String,Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement)">
+ <summary>
+ Parse the json string as clr json element
+ </summary>
+ <param name="jsonStr"></param>
+ <param name="default">
+ set the default json value returns if the given json string is nothing or ``null`` literal.
+ </param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonModel">
+ <summary>
+ The abstract model of the array/object
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject">
+ <summary>
+ Dictionary/Array equivalent in javascript
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.ObjectKeys">
+ <summary>
+ get all member names in current json object
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.isArray">
+ <summary>
+ Does all of the member names in current json object is
+ a number[array schema]?
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.UnderlyingType">
+ <summary>
+ try to measure of the array base element type
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.Add(System.String,System.Object)">
+ <summary>
+ 
+ </summary>
+ <param name="key"></param>
+ <param name="value">
+ .NET clr runtime value, this parameter value should be a literal constant
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.WriteBuffer(System.IO.FileStream)">
+ <summary>
+ write bson buffer
+ </summary>
+ <param name="buffer"></param>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.HasObjectKey(System.String)">
+ <summary>
+ Does the current json object has the required object member? 
+ </summary>
+ <param name="key">
+ the object member name
+ </param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.CreateObject``1(System.Boolean)">
+ <summary>
+ 反序列化为目标类型的对象实例
+ </summary>
+ <typeparam name="T"></typeparam>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue">
+ <summary>
+ The primitive value type in javascript.
+ </summary>
+ <remarks>
+ (请注意，假若是字符串的话，值是未经过处理的原始字符串，可能会含有转义字符，
+ 则这个时候还需要使用<see cref="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.GetStripString(System.Boolean,System.String)"/>得到最终的字符串)
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.IsLiteralNull">
+ <summary>
+ the literal value is nothing?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.#ctor(System.Object)">
+ <summary>
+ create based on the value literal data
+ </summary>
+ <param name="obj">
+ could be any type of the clr runtime object as the json value
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.Literal">
+ <summary>
+ get literal value
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.Literal(System.Type,System.Boolean)">
+ <summary>
+ get literal value with type try cast action.
+ </summary>
+ <param name="typeOfT"></param>
+ <param name="decodeMetachar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue.GetStripString(System.Boolean,System.String)">
+ <summary>
+ 处理转义等特殊字符串
+ </summary>
+ <returns>
+ this function will removes the warpping of quot symbol.
+ </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.NamespaceDoc">
+ <summary>
+ The javascript object model of the json/bson
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.JSONLogic.jsonLogic">
+ <summary>
+ Build complex rules, serialize them as JSON, share them between front-end and back-end
+ </summary>
+ <remarks>
+ If you’re looking for a way to share logic between front-end and back-end code, and even
+ store it in a database, JsonLogic might be a fit for you.
+
+ JsonLogic isn't a full programming language. It’s a small, safe way to delegate one decision. 
+ You could store a rule in a database to decide later. You could send that rule from back-end
+ to front-end so the decision is made immediately from user input. Because the rule is data,
+ you can even build it dynamically from user actions or GUI input.
+
+ JsonLogic has no setters, no loops, no functions Or gotos. One rule leads To one decision, 
+ With no side effects And deterministic computation time.
+ 
+ > https://jsonlogic.com/
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONLogic.TreeBuilder.Parse(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.ValueTuple{System.String,System.Type}[])">
+ <summary>
+ convert the json logical tree as the .net clr lambda expression tree
+ </summary>
+ <param name="logic"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONLogic.TreeBuilder.tripleIif(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement)">
+ <summary>
+ If(test, true, false)
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONTextParser.ParseJson(System.String,System.Boolean)">
+ <summary>
+ Parse json string
+ </summary>
+ <param name="JsonStr"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONTextParser.AsString(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.Boolean)">
+ <summary>
+ try cast of the json element object as json literal value
+ </summary>
+ <param name="obj"></param>
+ <returns>
+ nothing will be returns if the target <paramref name="obj"/>
+ is not a <see cref="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue"/> type.
+ 
+ the first not-null value will be returns if the input data 
+ is an array.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONTextParser.AsStringVector(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.Boolean)">
+ <summary>
+ this function auto encode the scalar value to array data
+ </summary>
+ <param name="array">should be json array or json literal value</param>
+ <param name="decodeMetachar"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.JsonParser">
+ <summary>
+ A json text parser module
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.JsonParser.strictVectorSyntax">
+ <summary>
+ set this option to value false will enable syntax of array like: [1 2 3], 
+ without comma symbol as the element value delimiter!
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.JsonParser.JSONvalue">
+ <summary>
+ The root node in json file
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser.#ctor(System.String,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="json_str">the json text content</param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser.Open(System.String,System.Boolean)">
+ <summary>
+ parse a json file
+ </summary>
+ <param name="file">
+ a file path of the json data file
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser.OpenJSON">
+ <summary>
+ parse json text content
+ </summary>
+ <returns>
+ this function will returns nothing if the given json string is empty string or "null" literal.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser.Parse(System.String,System.Boolean)">
+ <summary>
+ parse the text in json format
+ </summary>
+ <param name="json">
+ text data in json string format
+ </param>
+ <returns>
+ this function will returns nothing if the given json string is empty string or "null" literal.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser._parse">
+ <summary>
+ parse string and create JSON object
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JsonParser.StripString(System.String@,System.Boolean)">
+ <summary>
+ do string unescape
+ </summary>
+ <param name="str"></param>
+ <param name="decodeMetaChar"></param>
+ <returns></returns>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.Token.JSONElements.Comment">
+ <summary>
+ hjson comment
+ </summary>
+ <remarks>
+ just parse the hjson comment, this module will not save the
+ comment data when do json serialization
+ </remarks>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.TokenIcer.comment_escape">
+ <summary>
+ single line comment
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.TokenIcer.strictVectorSyntax">
+ <summary>
+ set this option to value false will enable syntax of array like: [1 2 3], 
+ without comma symbol as the element value delimiter!
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.TokenIcer.MeasureToken">
+ <summary>
+ the entire <see cref="F:Microsoft.VisualBasic.MIME.application.json.TokenIcer.buffer"/> will be clear in this function
+ </summary>
+ <returns></returns>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.StringTokenIcer.json_str">
+ <summary>
+ a clean json string
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.StreamTokenIcer.json_str">
+ <summary>
+ a clean json string
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ExtendedDictionary.getSpecificProperties(System.Type,Microsoft.VisualBasic.ComponentModel.DataSourceModel.PropertyAccess)">
+ <summary>
+ 得到除去字典以外的所有继承类的可写、可读属性
+ </summary>
+ <param name="type"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ExtendedDictionary.GetExtendedJson``2(``1,System.Boolean)">
+ <summary>
+ 对继承自字典对象的Class类型进行序列化处理
+ </summary>
+ <typeparam name="T"></typeparam>
+ <typeparam name="V"></typeparam>
+ <param name="obj"></param>
+ <returns></returns>
+ <remarks>
+ 1. 首先序列化字典本身
+ 2. 然后添加属性
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONSerializer.GetJson``1(``0,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="obj"></param>
+ <param name="maskReadonly">
+ 如果这个参数为真，则不会序列化只读属性
+ </param>
+ <returns></returns>
+</member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.JSONWriter.unescape">
+ <summary>
+ find two char
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONWriter.jsonValueString(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue)">
+ <summary>
+ "..."
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONWriter.jsonObjectString(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject,System.Int32)">
+ <summary>
+ {...}
+ </summary>
+ <param name="obj"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONWriter.jsonArrayString(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonArray,System.Int32)">
+ <summary>
+ [...]
+ </summary>
+ <param name="arr"></param>
+</member>
+<member name="T:Microsoft.VisualBasic.MIME.application.json.Deserializer">
+ <summary>
+ create .NET clr object from json
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Deserializer.CreateObject(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.Type,System.Boolean)">
+ <summary>
+ 进行反序列化
+ </summary>
+ <param name="json"></param>
+ <param name="schema">add know types for object by using the <see cref="T:System.Runtime.Serialization.KnownTypeAttribute"/>.</param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Deserializer.CreateObject``1(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <typeparam name="T">add know types for object by using the <see cref="T:System.Runtime.Serialization.KnownTypeAttribute"/>.</typeparam>
+ <param name="json"></param>
+ <param name="decodeMetachar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Deserializer.CreateObject(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject,Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph,System.Type,System.Boolean)">
+ <summary>
+ 反序列化为目标类型的对象实例
+ </summary>
+ <param name="json"></param>
+ <param name="schema"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectSerializer.populateObjectJson(System.Type,System.Object,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
+ <summary>
+ 
+ </summary>
+ <param name="schema"></param>
+ <param name="obj"></param>
+ <param name="opt"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectSerializer.populateTableJson(System.Collections.IDictionary,System.Type,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
+ <summary>
+ 所有的字典键都会被强制转换为字符串类型
+ </summary>
+ <param name="obj"></param>
+ <param name="valueSchema"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectSerializer.GetJsonElement(System.Type,System.Object,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
+ <summary>
+ Convert any .NET CLR object as json element model for build json string or bson data
+ </summary>
+ <param name="schema"></param>
+ <param name="obj"></param>
+ <param name="opt"></param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.Variant.jsonValue">
+ <summary>
+ 反序列化得到的结果值
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Variant.which(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject)">
+ <summary>
+ 在这里应该是根据一些json文档的关键特征选择合适的类型进行反序列
+ 选择的过程由用户代码进行控制
+ </summary>
+ <param name="json"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

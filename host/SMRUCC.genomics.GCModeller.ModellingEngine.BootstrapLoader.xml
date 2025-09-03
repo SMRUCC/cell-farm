@@ -1,0 +1,487 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.BioMoleculeDegradation">
+ <summary>
+ 构建出生物大分子的降解过程
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader">
+ <summary>
+ 先构建一般性的中心法则过程
+ 在这里面包含所有类型的RNA转录
+ 以及蛋白序列的翻译
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.componentRNA">
+ <summary>
+ tRNA+rRNA+mics RNA
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.tRNAProcess(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma)">
+ <summary>
+ tRNA charge process
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.ribosomeAssembly(System.Collections.Generic.Dictionary{System.String,Microsoft.VisualBasic.Language.List{System.String}})">
+ <summary>
+ is a reversiable process
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.transcriptionTemplate(System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
+ <summary>
+ DNA模板加上碱基消耗
+ </summary>
+ <param name="geneID$"></param>
+ <param name="matrix"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.translationTemplate(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.ProteinComposition})">
+ <summary>
+ mRNA模板加上氨基酸消耗，请注意，在这里并不是直接消耗的氨基酸，而是消耗的已经荷载的tRNA分子
+ </summary>
+ <param name="gene">The name of the mRNA molecule</param>
+ <param name="matrix"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.FluxLoader">
+ <summary>
+ Helper module for convert the cellular module as the dynamics channels
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader">
+ <summary>
+ Module loader
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader.define">
+ <summary>
+ some necessary constant mapping of the id name
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader.massTable">
+ <summary>
+ This mass table object is generated automatically 
+ </summary>
+ <returns></returns>
+</member>
+<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MassLoader.proteinComplex">
+ <summary>
+ link mapping from protein to protein complex
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MassLoader.doMassLoadingOn(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule)">
+ <summary>
+ create mass table from the virtual cell model
+ </summary>
+ <param name="cell"></param>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MetabolismNetworkLoader">
+ <summary>
+ 构建代谢网络
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MetabolismNetworkLoader.CreateFlux">
+ <summary>
+ create reaction flux data
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.ProteinMatureFluxLoader">
+ <summary>
+ 构建酶成熟的过程
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Extensions.variables(SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Molecule.Protein,System.String)">
+ <summary>
+ Populate all the <paramref name="complex"/> related components.
+ </summary>
+ <param name="massTable"></param>
+ <param name="complex"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.A">
+ <summary>
+ L-Alanine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.R">
+ <summary>
+ L-Arginine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.N">
+ <summary>
+ L-Asparagine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.D">
+ <summary>
+ L-Aspartic acid
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.C">
+ <summary>
+ L-Cysteine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.E">
+ <summary>
+ L-Glutamic acid
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.Q">
+ <summary>
+ L-Glutamine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.G">
+ <summary>
+ Glycine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.H">
+ <summary>
+ L-Histidine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.I">
+ <summary>
+ L-Isoleucine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.L">
+ <summary>
+ L-Leucine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.K">
+ <summary>
+ L-Lysine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.M">
+ <summary>
+ L-Methionine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.F">
+ <summary>
+ L-Phenylalanine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.P">
+ <summary>
+ L-Proline
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.S">
+ <summary>
+ L-Serine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.T">
+ <summary>
+ L-Threonine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.W">
+ <summary>
+ L-Tryptophan
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.Y">
+ <summary>
+ L-Tyrosine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.V">
+ <summary>
+ L-Valine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.U">
+ <summary>
+ L-Selenocysteine
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.AminoAcid.O">
+ <summary>
+ L-Pyrrolysine
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition">
+ <summary>
+ The definition for the mass environment for run the simulation
+ </summary>
+ <remarks>
+ 因为物质编号可能会来自于不同的数据库，所以会需要使用这个对象将一些关键的物质映射为计算引擎所能够被识别的对象
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.ATP">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.Water">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.CultureMedium">
+ <summary>
+ the compartment id of the Culture medium
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.status">
+ <summary>
+ 对细胞的初始状态的定义
+ 初始物质浓度
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.KEGG(System.Collections.Generic.IEnumerable{System.String},System.Double)">
+ <summary>
+ Get the KEGG compound <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline">
+ <summary>
+ The baseline value of the flux controls and dynamics
+ </summary>
+ <remarks>
+ adjust the kinetics parameters at here
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.transcriptionBaseline">
+ <summary>
+ min rate of the transcription of gene template to RNA
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.translationCapacity">
+ <summary>
+ 对于翻译过程，因为需要有核糖体来介导，所以就不设置最低下限了
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.NucleicAcid.A">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.NucleicAcid.U">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.NucleicAcid.G">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.NucleicAcid.C">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Status">
+ <summary>
+ 细胞状态定义
+ </summary>
+ <remarks>
+ 在这里应该是通过各种代谢物分子之间的浓度相对百分比来定义诸如死亡或者细胞分裂之类的状态？
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Status.name">
+ <summary>
+ 状态名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Status.definition">
+ <summary>
+ 当虚拟细胞反应容器<see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel"/>中的<see cref="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel.MassEnvironment"/>浓度
+ 百分比接近于这个向量的百分比的时候就认为<see cref="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Status.name"/>状态或者细胞活动事件发生了
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable">
+ <summary>
+ the cellular mass environment 
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.CompartTable.Keys">
+ <summary>
+ get a collection of the cellular compartment id
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.CompartTable.variable(System.String,System.String,System.Double)">
+ <summary>
+ Create a mass factor link to the current mass environment
+ </summary>
+ <param name="mass"></param>
+ <param name="coefficient"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetMassValues">
+ <summary>
+ make a snapshot of current mass environment
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.Delete(System.String)">
+ <summary>
+ delete metabolites from all compartment
+ </summary>
+ <param name="key"></param>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetRole(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles)">
+ <summary>
+ filter all molecules with a specific <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles"/> filter condition.
+ </summary>
+ <param name="role"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable},System.Double,System.String)">
+ <summary>
+ refresh and make copy of the mass factor data to the simulator core links
+ </summary>
+ <param name="compounds"></param>
+ <param name="factor"></param>
+ <param name="compart_id"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.ComponentModel.EquaionModel.DefaultTypes.CompoundSpecieReference},Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
+ <summary>
+ create molecule variable in the flux model
+ </summary>
+ <param name="compounds"></param>
+ <param name="templates"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variable(System.String,System.String,System.Double)">
+ <summary>
+ Create a mass factor link to the current mass environment
+ </summary>
+ <param name="mass"></param>
+ <param name="coefficient"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetByKey(System.Collections.Generic.IEnumerable{System.String},System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="keys">a collection of the molecule mass id</param>
+ <param name="compart_id"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.addNew(System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles,System.String)">
+ <summary>
+ 这个函数会先判断目标对象是否存在，只会添加不存在的对象
+ </summary>
+ <param name="entity"></param>
+ <returns>
+ this function returns the entity id back
+ </returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.NamespaceDoc">
+ <summary>
+ 在反应容器<see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel"/>核心部件的基础之上所构建的虚拟细胞计算引擎模块
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.DebuggerView.#ctor(SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="engine"></param>
+ <param name="cellular_id">
+ the intracellular compartment id
+ </param>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine">
+ <summary>
+ The GCModeller VirtualCell dynamics engine module
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.dynamics">
+ <summary>
+ The argument of the cellular flux dynamics
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.initials">
+ <summary>
+ The compound map definition and the initial status
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.AttachBiologicalStorage(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Engine.IOmicsDataAdapter)">
+ <summary>
+ Attach the biological data storage driver
+ </summary>
+ <param name="driver"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.Reset">
+ <summary>
+ Reset the reactor engine. (Do reset of the biological mass contents)
+ </summary>
+</member>
+</members>
+</doc>

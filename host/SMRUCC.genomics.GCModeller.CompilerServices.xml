@@ -1,0 +1,67 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.CompilerServices
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.CompilerServices.Compiler`1">
+ <summary>
+ Model file of class type <see cref="T:SMRUCC.genomics.GCModeller.CompilerServices.ModelBaseType"></see> compiler.
+ </summary>
+ <typeparam name="TModel">
+ the output model file
+ </typeparam>
+ <remarks></remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.CompilerServices.Compiler`1.Compile(Microsoft.VisualBasic.CommandLine.CommandLine)">
+ <summary>
+ 
+ </summary>
+ <param name="args">
+ Property definition parameters for <see cref="P:SMRUCC.genomics.GCModeller.CompilerServices.ModelBaseType.properties"></see>, the override function of 
+ this mustOverride method should call method <see cref="M:SMRUCC.genomics.GCModeller.CompilerServices.Compiler`1.WriteProperty(Microsoft.VisualBasic.CommandLine.CommandLine,`0)"></see> to write the property into the 
+ compiled model file.</param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.CompilerServices.Compiler`1.PreCompile(Microsoft.VisualBasic.CommandLine.CommandLine)">
+ <summary>
+ 
+ </summary>
+ <param name="args"><see cref="P:Microsoft.VisualBasic.CommandLine.CommandLine.cli"></see></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.CompilerServices.ModelBaseType">
+ <summary>
+ All of the model file basetype definition in the GCModeller program group, all of the model file must inherits from this class object.
+ (GCModeller程序包内的所有模型文件的基类型，所有的模型文件对象必须从本对象类型继承)
+ </summary>
+ <remarks></remarks>
+ 
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.CompilerServices.Property">
+ <summary>
+ the property about the current virtual cell model
+ </summary>
+</member>
+</members>
+</doc>

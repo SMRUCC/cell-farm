@@ -1,0 +1,972 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.Data.visualize.Network
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Communities.Community(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph)">
+ <summary>
+ extract community cluster information from the property value 
+ <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_NODETYPE"/>.
+ </summary>
+ <param name="g"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Communities.GetCommunitySet(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph)">
+ <summary>
+ just group the node vertex via the data property 
+ <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_NODETYPE"/>
+ </summary>
+ <param name="g"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Communities.Modularity(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Double[]@)">
+ <summary>
+ compute the modularity of the network comminity
+ </summary>
+ <param name="g">
+ the graph data should be assign into multiple node
+ cluster via some algorithm at first, before calling 
+ this modularity evalution function.
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Communities.Analysis(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@,System.Double,System.String,System.Int32,System.String)">
+ <summary>
+ analysis network node community structure
+ </summary>
+ <param name="g">
+ 请注意，这个必须要要求节点的编号是连续的``0:n``序列中的值，不可以存在重复编号
+ </param>
+ <param name="slotName">
+ the graph class community information will be save at the <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_NODETYPE"/> by default.
+ </param>
+ <param name="max_class">
+ controls the max number of the node class we have, default value 
+ means no limits: get as more number of node class we can get.
+ </param>
+ <returns>
+ a network model with the <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_NODETYPE"/> 
+ property data has been assigned as the community tags by default.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Extensions.isTupleEdge``2(``1,Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex{``0,``1})">
+ <summary>
+ 判断边的两个节点是否只有当前的边连接而再无其他的任何边连接了
+ </summary>
+ <param name="g"></param>
+ <param name="edge"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Extensions.DecomposeGraph(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,System.Int32)">
+ <summary>
+ Decompose a graph into components, Creates a separate graph for each component of a graph.
+ 
+ 与<see cref="M:Microsoft.VisualBasic.Data.GraphTheory.Network.Extensions.IteratesSubNetworks``3(Microsoft.VisualBasic.Data.GraphTheory.Network.NetworkGraph{``0,``1},System.Boolean,System.Double)"/>所不同的是，IteratesSubNetworks是分离出独立的子网络
+ 而这个函数则是根据连接强度进行子网络的分割
+ </summary>
+ <param name="g"></param>
+ <param name="minVertices"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Extensions.IteratesSubNetworks(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,System.Double,System.String[])">
+ <summary>
+ 枚举出所输入的网络数据模型之中的所有互不相连的子网络
+ </summary>
+ <param name="network"></param>
+ <param name="edgeCut">
+ all of the edge weight less than this 
+ cutff value will be ignored.
+ </param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.GraphEmbedding">
+ <summary>
+ Embedding of a graph object as numeric vector
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.GraphEmbedding.ToVector(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.String[],System.Boolean)">
+ <summary>
+ Embedding a network graph object as a numeric vector
+ </summary>
+ <param name="g"></param>
+ <param name="classNames">The node class names that used for generates the vector elements</param>
+ <returns>
+ edge weight as the vector value
+ </returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Kosaraju">
+ <summary>
+ Kosaraju's algorithm is a linear time algorithm to find 
+ the strongly connected components of a directed graph.
+ 
+ Kosaraju's algorithm works as follows:
+
+ + Let G be a directed graph And S be an empty stack.
+ + While S does Not contain all vertices:
+    + Choose an arbitrary vertex ''v'' not in S. 
+    + Perform a depth first search starting at ''v''. 
+    + Each time that depth-first search finishes expanding a vertex ''u'', push ''u'' onto S.
+ + Reverse the directions Of all arcs To obtain the transpose graph.
+ + While S Is nonempty:
+    + Pop the top vertex ''v'' from S. 
+    + Perform a depth-first search starting at ''v'' in the transpose graph. 
+    + The set of visited vertices will give the strongly connected component containing ''v''; 
+    + record this and remove all these vertices from the graph G and the stack S. 
+    + Equivalently, breadth-first search (BFS) can be used instead of depth-first search.
+  
+ > https://github.com/awadalaa/kosaraju
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Kosaraju.scc">
+ <summary>
+ the strong connected components
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1">
+ <summary>
+ 在这个集合中，所有的<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction.source"/>都是一样的
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.adjacentNodes">
+ <summary>
+ ``{V => edges}``
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.U">
+ <summary>
+ 当前的这个节点的<see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IKeyedEntity`1.Key"/>
+ 在这里<see cref="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.adjacentNodes"/>所有的边对象都是与这个label所代表的节点相连接的
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.hasNeighbor(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ check the input node <paramref name="i"/> is a 
+ connected adjacent node to current node vertex.
+ </summary>
+ <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.EnumerateAllEdges(Microsoft.VisualBasic.ComponentModel.Collection.Generic.INamedValue)">
+ <summary>
+ 获取目标两个节点之间的所有的重复的边连接
+ </summary>
+ <param name="V"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex">
+ <summary>
+ an edge collection for indexing the in/out edge connection with current node.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.outgoingEdges">
+ <summary>
+ me to target
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.incomingEdges">
+ <summary>
+ source to me
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.connectivity">
+ <summary>
+ summ all connected edge weights as weighted degree connectivity
+ </summary>
+ <returns></returns>
+ <remarks>
+ the edge weight data should be not missing!
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.#ctor(System.String)">
+ <summary>
+ create a new node edge connection collection object
+ </summary>
+ <param name="label">the node unique id</param>
+ <exception cref="T:System.ArgumentNullException"></exception>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.addOutgoingEdge(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ unsafe add outgoing edge
+ </summary>
+ <param name="edge"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.addIncomingEdge(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ unsafe add source to me edge
+ </summary>
+ <param name="e"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.addEdge(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ safely add an edge to current vertex
+ </summary>
+ <param name="edge"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex.getEdgeTo(Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.DirectedVertex)">
+ <summary>
+ get first edge that connected to the given <paramref name="v2"/> node.
+ </summary>
+ <param name="v2">target to</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.EdgeSet`1">
+ <summary>
+ 两个节点对象之间的重复的边链接的集合
+ </summary>
+ <remarks>
+ 所有的<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction.source"/>和<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction.target"/>都是一样的
+ </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex`2">
+ <summary>
+ The network graph element index
+ </summary>
+ <typeparam name="Node">The network node element</typeparam>
+ <typeparam name="Edge">The network edge element</typeparam>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex`2._nodeSet">
+ <summary>
+ 应用于按照节点的<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/>为键名进行节点对象的快速查找
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex`2.RemoveEdge(`1)">
+ <summary>
+ Delete a graph edge connection from current network graph model
+ </summary>
+ <param name="edge"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex`2.GetEdges(`0,`0)">
+ <summary>
+ 获取目标两个节点之间的所有的重复的边连接
+ </summary>
+ <param name="u"></param>
+ <param name="v"></param>
+ <returns>get a set of the directed edges</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.GraphIndex`2.GetEdges(System.String)">
+ <summary>
+ 获取得到与目标节点所有相连接的节点
+ </summary>
+ <param name="nodeKey"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Analysis.PAGA">
+ <summary>
+ PAGA - partition-based graph abstraction
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.PAGA.Abstraction(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Double)">
+ <summary>
+ Mapping out the coarse-grained connectivity structures of complex manifolds (Genome Biology, 2019).
+ </summary>
+ <param name="manifolds">
+ the manifolds graph should contains the cluster information inside the node metadata.
+ </param>
+ <returns>
+ an abstract graph of the input manifolds result
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.SimilarityImpl.GraphTopology.TopologyCos(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ Calculate topology similarity
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Similarity.NodeSimilarity(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,System.Func{System.String,System.String,System.Double},System.Boolean)">
+ <summary>
+ Compare node similarity between two network graph
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Statistics.ComputeBetweennessCentrality(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@,System.Int32)">
+ <summary>
+ compute and write data of <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_BETWEENESS_CENTRALITY"/>, <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_RELATIVE_BETWEENESS_CENTRALITY"/>
+ </summary>
+ <param name="graph"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Statistics.ConnectedDegrees(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph)">
+ <summary>
+ 
+ </summary>
+ <param name="g"></param>
+ <returns>``[<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> => degree]``</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Statistics.ComputeNodeDegrees(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@,System.Int32)">
+ <summary>
+ 这个函数计算网络的节点的degree，然后将degree数据写入节点的同时，通过字典返回给用户
+ </summary>
+ <param name="g"></param>
+ <returns>
+ ``[<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> => degree]``
+ </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INode">
+ <summary>
+ Node model in the network
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.ExtensionsAPI.GetNullDirectedGuid(Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INetworkEdge,System.Boolean)">
+ <summary>
+ 返回没有方向性的统一标识符
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.ExtensionsAPI.GetDirectedGuid(Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INetworkEdge,System.Boolean)">
+ <summary>
+ 带有方向的互作关系字符串
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.NodesID(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction})">
+ <summary>
+ Get all of the connected nodes ID from the edges data
+ </summary>
+ <param name="network"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.ApplyAnalysis(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@)">
+ <summary>
+ 生成诸如degree之类的信息
+ </summary>
+ <param name="g"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.GetNeighbours(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.String)">
+ <summary>
+ 枚举出和当前的给定编号的节点所连接的节点的索引编号
+ </summary>
+ <param name="g"></param>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode">
+ <summary>
+ 这是一个节点对象
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode.Parents">
+ <summary>
+ 从外部链接到当前节点的节点列表
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode.Childs">
+ <summary>
+ 从当前的节点出发，链接到的其他的节点列表
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.Trees">
+ <summary>
+ 一个大网络可能会是由几个小的独立的网络模块所构成，也可能由独立的节点构成
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.Count">
+ <summary>
+ Gets the node counts and edge counts.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.IterateTrees(Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode,Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Collections.Generic.Dictionary{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode}@)">
+ <summary>
+ 
+ </summary>
+ <param name="current"></param>
+ <param name="graph"></param>
+ <param name="treeTable">如果下一个节点在这个列表之中，则不会再进行递归操作了</param>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData.length">
+ <summary>
+ 这个属性值一般是由两个节点之间的坐标位置所计算出来的欧几里得距离
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData.style">
+ <summary>
+ [color, width, dash]
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData.#ctor(Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData)">
+ <summary>
+ Value copy
+ </summary>
+ <param name="copy"></param>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphData.label">
+ <summary>
+ The graph object display label.
+ (这个属性为显示的标题，与ID不一样，这个属性可能会出现重复值，所以不可以用这个标签来作为字典主键)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.neighborhoods">
+ <summary>
+ Get length of the <see cref="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.neighbours"/> index array
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.size">
+ <summary>
+ 这个主要是为了兼容圆形或者矩形之类的大小信息
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.mass">
+ <summary>
+ Mass weight
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.initialPostion">
+ <summary>
+ For 2d layout <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector2"/> / 3d layout <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector3"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.color">
+ <summary>
+ 颜色<see cref="T:Microsoft.VisualBasic.Imaging.SolidBrush"/>或者绘图<see cref="T:Microsoft.VisualBasic.Imaging.TextureBrush"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.neighbours">
+ <summary>
+ 与本节点相连接的其他节点的<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label">编号</see>
+ </summary>
+ <value></value>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge">
+ <summary>
+ the network graph edge.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.ID">
+ <summary>
+ 如果什么也不赋值，则默认自动根据node编号来生成唯一id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.m_source">
+ <summary>
+ <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Edge`1.U"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.m_target">
+ <summary>
+ <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Edge`1.V"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.m_interationtype">
+ <summary>
+ get/set data via edge data(NamesOf.REFLECTION_ID_MAPPING_INTERACTION_TYPE)
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.Other(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ find the partner node of the given <paramref name="current"/> node
+ </summary>
+ <param name="current"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.op_Equality(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge,Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ check of the edge equivalent via the <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Edge`1.ID"/> equivalent.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.op_Inequality(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge,Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ check of the edge un-equivalent via the <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Edge`1.ID"/> un-equivalent.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge.Iterate2Nodes">
+ <summary>
+ populate out the from node and to node of 
+ current graph edge object 
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph">
+ <summary>
+ The network graph object model
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.connectedNodes">
+ <summary>
+ Returns the set of all Nodes that have emanating Edges.
+ This therefore returns all Nodes that will be visible in the drawing.
+ (这个属性之中是没有任何孤立的节点的)
+ </summary>
+ <returns></returns>
+ <remarks>
+ 对于<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Graph`3.vertex"/>属性而言，其则是所有的节点的集合，
+ 包括当前的这个<see cref="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.connectedNodes"/>和孤立点的总集合
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.Clear">
+ <summary>
+ Empties the Graph
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.AddNode(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,System.Boolean)">
+ <summary>
+ 添加节点然后返回这个新添加的节点，如果节点不存在的话，
+ 则会自动更新<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.ID"/>之后添加进入图之中
+ </summary>
+ <param name="node"></param>
+ <param name="assignId">
+ make update and assign the <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.ID"/> hashcode value?
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.GetElementByID(System.String,System.Boolean)">
+ <summary>
+ 根据node节点的label来查找
+ </summary>
+ <param name="labelID"><see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/></param>
+ <param name="dataLabel"></param>
+ <returns>
+ 查找失败会返回空值
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.GetElementsByClassName(System.String)">
+ <summary>
+ get node of given node type
+ </summary>
+ <param name="classname">the node type</param>
+ <returns></returns>
+ <remarks>
+ this function check of the property with name <see cref="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_NODETYPE"/>
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.CreateNode(System.String,Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData)">
+ <summary>
+ 使用节点的标签创建一个新的节点对象，将这个节点对象添加进入网络模型之后将新创建的节点对象返回给用户
+ </summary>
+ <param name="label"></param>
+ <returns></returns>
+ <remarks>
+ 使用这个函数所构建的节点对象的<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.ID"/>是自增的，<paramref name="label"/>则会赋值给<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/>属性
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.CreateEdge(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,System.Double,Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData)">
+ <summary>
+ 使用两个节点对象创建一条边连接之后，将所创建的边连接对象添加进入当前的图模型之中，最后将边对象返回给用户
+ </summary>
+ <param name="u"></param>
+ <param name="v"></param>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.CreateEdge(System.String,System.String,System.Double,Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeData)">
+ <summary>
+ 这个会自动添加新创建的边对象，因为这个函数的含义是在图之中创建一条新的边连接
+ </summary>
+ <param name="source"></param>
+ <param name="target"></param>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.GetEdges(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ 获取目标两个节点之间的所有的重复的边连接
+ </summary>
+ <param name="u"></param>
+ <param name="v"></param>
+ <returns>get a set of the directed edges</returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.GetEdges(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ 获取得到与目标节点所有相连接的节点
+ </summary>
+ <param name="iNode"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.RemoveNode(System.String)">
+ <summary>
+ removes a target node from graph object via a given <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/>.
+ </summary>
+ <param name="labelId"></param>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.RemoveNode(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ 应该使用这个方法来安全的删除节点
+ </summary>
+ <remarks>
+ 这个函数会移除:
+ 
+ 1. 目标节点从内部索引中删除
+ 2. 删除与之相关的边连接
+ </remarks>
+ <param name="node"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.DetachNode(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ 将目标节点相关联的边从图中删除
+ </summary>
+ <param name="iNode"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.RemoveEdge(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge)">
+ <summary>
+ Delete a graph edge connection from current network graph model
+ </summary>
+ <param name="edge"></param>
+ <remarks>
+ this method just break the edge connection, the edge node 
+ will be keeps in the graph.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.GetEdge(System.String)">
+ <summary>
+ Find edge by label data
+ </summary>
+ <param name="label"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.Merge(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph)">
+ <summary>
+ merge another graph into current graph object
+ </summary>
+ <param name="another"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.Union(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="another"></param>
+ <param name="assignId">
+ assign the new node id to the union graph vertex when
+ insert target node into the union graph object.
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.FilterNodes(System.Predicate{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node})">
+ <summary>
+ removes the nodes which is not matched with the given condition <paramref name="match"/>.
+ </summary>
+ <param name="match"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.FilterEdges(System.Predicate{Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge})">
+ <summary>
+ removes the edges which is not matched with the given condition <paramref name="match"/>.
+ </summary>
+ <param name="match"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.Clone">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks>
+ graphEdges和edges这两个元素集合应该都是等长的
+ 在这个函数之中会将节点以及边连接的值都进行复制
+ 因为克隆之后的操作可能会涉及对边或者节点对象的修改操作
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.Copy">
+ <summary>
+ Perform a network graph model deep clone
+ </summary>
+ <returns></returns>
+ <remarks>
+ 1. 经过克隆之后，节点和边对象已经完全切断了和之前的副本的所有引用关联
+ 2. the node id may be have some gap or shift after delete some nodes,
+ this situation will makes the cluster analysis failure, so this graph
+ copy operation will fix this problem
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph.RemovesIsolatedNodes">
+ <summary>
+ The degress data of each node should be computed at first, 
+ before calling this method for make the graph object 
+ cleanup.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle">
+ <summary>
+ 进行网络之中的边连接的布局走向的``拐点``的矢量化描述
+ </summary>
+ <remarks>
+ https://github.com/cytoscape/cytoscape-impl/blob/93530ef3b35511d9b1fe0d0eb913ecdcd3b456a8/ding-impl/ding-presentation-impl/src/main/java/org/cytoscape/ding/impl/HandleImpl.java#L247
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.originalLocation">
+ <summary>
+ 当前的这个位置是一个绝对位置，并非矢量描述位置
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.pointAuto(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ Rotate And scale the vector to the handle position
+ </summary>
+ <param name="sX">x of source node</param>
+ <param name="sY">y of source node</param>
+ <param name="tX">x of target node</param>
+ <param name="tY">y of target node</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.convert(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ Rotate And scale the vector to the handle position
+ </summary>
+ <param name="sX">x of source node</param>
+ <param name="sY">y of source node</param>
+ <param name="tX">x of target node</param>
+ <param name="tY">y of target node</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.getSerializableString">
+ <summary>
+ Serialized string Is "cos,sin,ratio".
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.ParseHandles(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="strRepresentation">
+ String join of <see cref="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle.getSerializableString"/> between handles with delimiter ``|``.
+ </param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.HandleCreator">
+ <summary>
+ handle point creator algorithm module
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.HandleCreator.defineHandle(System.Drawing.PointF,System.Drawing.PointF,System.Double,System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="source">边的起始位点</param>
+ <param name="target">边的终止位点</param>
+ <param name="hx">当前的这个拐点的X位置</param>
+ <param name="hy">当前的这个拐点的Y位置</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.XYMetaHandle">
+ <summary>
+ 相对于<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.Handle"/>模型，这个矢量模型则是单纯的以xy偏移比例来进行矢量比例缩放
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.XYMetaHandle.GetPoint(System.Double,System.Double,System.Double,System.Double)">
+ <summary>
+ 将当前的这个矢量描述转换为实际的点位置
+ </summary>
+ <param name="sx"></param>
+ <param name="sy"></param>
+ <param name="tx"></param>
+ <param name="ty"></param>
+ <returns></returns>
+ <remarks>
+ location of source node [<paramref name="sx"/>, <paramref name="sy"/>]
+ location of target node [<paramref name="tx"/>, <paramref name="ty"/>]
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.XYMetaHandle.CreateVector(System.Drawing.PointF,System.Drawing.PointF,System.Single,System.Single)">
+ <summary>
+ 
+ </summary>
+ <param name="ps">location of the source node</param>
+ <param name="pt">location of the target node</param>
+ <param name="hx">the location x of the turn point</param>
+ <param name="hy">the location x of the turn point</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.EdgeBundling.XYMetaHandle.CreateVector(System.Drawing.PointF,System.Drawing.PointF,System.Drawing.PointF)">
+ <summary>
+ 
+ </summary>
+ <param name="ps"></param>
+ <param name="pt"></param>
+ <param name="handle">当前的这个需要进行矢量化描述的未知点坐标数据</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node">
+ <summary>
+ <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> -> <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IKeyedEntity`1.Key"/>
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.adjacencies">
+ <summary>
+ Get all of the edge collection that connect to current node object
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.pinned">
+ <summary>
+ 这个节点是被钉住的？在进行布局计算的时候，钉住的节点将不会更新位置
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.Metadata(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="name"></param>
+ <returns>
+ returns nothing if the node meta <see cref="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.data"/> is nothing orelse 
+ node data contains no such given key name.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.#ctor(System.String,Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData)">
+ <summary>
+ 在这里是用的是unique id进行初始化，对于Display title则可以在<see cref="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphData.label"/>属性上面设置
+ </summary>
+ <param name="iId"></param>
+ <param name="iData"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.EnumerateAdjacencies">
+ <summary>
+ 枚举出所有的与当前节点直接相邻接的节点列表
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.adjacentTo(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ Indicates if the node is adjacent to the node specified by id
+ </summary>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.op_Equality(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ check vertex node equivalent via the <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> equivalent.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.op_Inequality(Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node)">
+ <summary>
+ check vertex node un-equivalent via the <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> un-equivalent
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.Clone">
+ <summary>
+ make data clone of current graph vertex node
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector">
+ <summary>
+ Graph value selector by property name
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector.IGraphValueContainer`1">
+ <summary>
+ An class object that contains <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphData"/>
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector.SelectNodeValue(System.String,System.Type@)">
+ <summary>
+ Create a node value selector from a property name
+ </summary>
+ <param name="property$"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector.GenericSelector``2(System.String,System.Type@)">
+ <summary>
+ 所映射的属性的类型
+ </summary>
+ <typeparam name="T"></typeparam>
+ <typeparam name="Graph"></typeparam>
+ <param name="property$"></param>
+ <param name="type"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf">
+ <summary>
+ The preset names value for edge type <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/> and node type <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/>
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.NamesOf.REFLECTION_ID_MAPPING_IDENTIFIER">
+ <summary>
+ <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.IDynamicsTable">
+ <summary>
+ The network graph object contains the dynamics property for contains the extra information of the object.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.IDynamicsTable.Properties">
+ <summary>
+ The dynamics property table of this network component
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector2.SquaredNorm">
+ <summary>
+ Calculates the squared 2-norm of this instance.
+ </summary>
+ <returns>System.Double.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector2.Magnitude">
+ <summary>
+ [norm] Calculates the 2-norm of this instance.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector2.Normalized(System.Double@)">
+ <summary>
+ Returns the normalized vector.
+ </summary>
+ <param name="norm">The norm.</param>
+ <returns>Vector.</returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.NamespaceDoc">
+ <summary>
+ 这个模块提供的是网络模型的读写操作，以及ForceDirect网络布局的构建引擎
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.NetworkAPI.RemoveDuplicated(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,System.Boolean)">
+ <summary>
+ 移除的重复的边
+ </summary>
+ <remarks></remarks>
+ <param name="directed">是否忽略方向？</param>
+ <param name="ignoreTypes">是否忽略边的类型？</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.TreeAPI.Operations.ClusterParts(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge})">
+ <summary>
+ {最开始的节点，实体列表}
+ </summary>
+ <param name="net"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

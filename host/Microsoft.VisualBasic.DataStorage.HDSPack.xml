@@ -1,0 +1,612 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.DataStorage.HDSPack
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.TreeParser.Parse(System.IO.Stream,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ header tree data is compressed in gzip
+ </summary>
+ <param name="buffer"></param>
+ <param name="registry"></param>
+ <returns></returns>
+ <remarks>
+ the attribute data in the tree element has 
+ already been unpack from the raw data 
+ buffer.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.TreeWriter.GetBuffer(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup,Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
+ <summary>
+ save tree data into data buffer
+ </summary>
+ <param name="root"></param>
+ <param name="type"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.Debugger.ListFiles(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack,System.Boolean)">
+ <summary>
+ this function returns all sub folder and files inside the <see cref="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.superBlock"/>
+ </summary>
+ <param name="hds"></param>
+ <param name="recursive"></param>
+ <returns>a collection of <see cref="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject"/>: <see cref="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup"/> mixed with <see cref="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock"/></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.Debugger.ListFiles(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup,System.Boolean,System.Boolean)">
+ <summary>
+ enumerate all data file object inside current group dir
+ </summary>
+ <param name="dir"></param>
+ <returns>
+ contains data file and file group object, for filter only data objects, the linq 
+ extension function <see cref="M:System.Linq.Enumerable.OfType``1(System.Collections.IEnumerable)"/> 
+ with generic parameter type <see cref="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock"/> constrained
+ is recommended.
+ </returns>
+ <remarks>
+ get all the files/dirs inside current dir object and its child dirs.
+ this function will returns an empty collection if the given dir object
+ is nothing andalso <paramref name="safe"/> parameter value is configured 
+ as true.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.Debugger.Tree(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup,System.IO.TextWriter,System.Int32,Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack,System.Boolean)">
+ <summary>
+ a linux tree liked command for show structure 
+ inside of the HDS stream pack file.
+ </summary>
+ <param name="dir"></param>
+ <param name="text"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.Extensions.WriteText(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack,System.String,System.String,Microsoft.VisualBasic.Text.Encodings,System.Boolean)">
+ <summary>
+ unsafe write text data, you should check the 
+ <paramref name="fileName"/> is exists or not 
+ before call this write data function.
+ </summary>
+ <param name="pack"></param>
+ <param name="text"></param>
+ <param name="fileName"></param>
+ <param name="encoding"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.Extensions.ReadBinary(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack,System.String)">
+ <summary>
+ Get in-memory stream buffer data from the archive
+ </summary>
+ <param name="pack"></param>
+ <param name="filename"></param>
+ <returns>
+ this function will returns nothing if the given resource 
+ which is assoctaed with <paramref name="filename"/> is 
+ not found inside the package file.
+ </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock">
+ <summary>
+ A data file reference
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.offset">
+ <summary>
+ the byte offset of current file data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.size">
+ <summary>
+ the data size
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.mimeType">
+ <summary>
+ get http mime content type of current file object
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.extensionSuffix">
+ <summary>
+ get the extension suffix name of current file node
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.fullName">
+ <summary>
+ tostring of the <see cref="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject.referencePath"/> object.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.#ctor(Microsoft.VisualBasic.FileIO.Path.FilePath)">
+ <summary>
+ just create the file path reference of current stream block file
+ </summary>
+ <param name="filepath"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock.GetRegion">
+ <summary>
+ get data stream region of current file content data
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer">
+ <summary>
+ an in-memory stream buffer for write new file data
+ </summary>
+ <remarks>
+ <strong>size is limited to 2GB</strong>, use the <see cref="M:System.IDisposable.Dispose"/> method
+ for save the memory data to the underlying stream, and this dispose method
+ will not close the target base stream<br />
+ 
+ this model will append of the block data into the last of the physical file
+ by default, or write to the specific location when in pre-allocation mode
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.CanRead">
+ <inheritdoc />
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.CanSeek">
+ <inheritdoc />
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.CanWrite">
+ <inheritdoc />
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Length">
+ <inheritdoc />
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Position">
+ <inheritdoc />
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.block">
+ <summary>
+ the file write behaviour is different at here based on the buffer 
+ information data in this file block reference object:
+ 
+ 1. if the file block information is empty: no position and no size, 
+    then file data will be append to the stream last
+ 2. if the file block information is not empty, then file data will 
+    be write to a specific location, and then length of the stream 
+    data is fixed!
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.IsPreallocated">
+ <summary>
+ current stream is fixed length?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.#ctor(System.IO.Stream,Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock,System.Int32)">
+ <summary>
+ create a new temp stream for write new object data
+ </summary>
+ <param name="buffer"></param>
+ <param name="block">the block location of current file data</param>
+ <param name="buffer_size"></param>
+ <remarks>
+ all stream data before flush into file is in-memory, so one block file 
+ its file size <strong>should be less then 2GB</strong>.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Flush">
+ <inheritdoc />
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.SetLength(System.Int64)">
+ <inheritdoc />
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Write(System.Byte[],System.Int32,System.Int32)">
+ <inheritdoc />
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Read(System.Byte[],System.Int32,System.Int32)">
+ <inheritdoc />
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Seek(System.Int64,System.IO.SeekOrigin)">
+ <inheritdoc />
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.writeBuffer">
+ <summary>
+ write the in-memory content data into 
+ the base file stream, and then update 
+ the stream block content data
+ </summary>
+ <remarks>
+ append current file block object to the last of the file by default 
+ when flush the data to physical pack file
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer.Dispose(System.Boolean)">
+ <summary>
+ write the in-memory data to local file
+ </summary>
+ <param name="disposing"></param>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup">
+ <summary>
+ a data folder
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.tree">
+ <summary>
+ indexed by <see cref="P:Microsoft.VisualBasic.FileIO.Path.FilePath.FileName"/>
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.totalSize">
+ <summary>
+ get total data size in current folder
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.files">
+ <summary>
+ get all file + dirs list in current dir root
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.#ctor(System.String)">
+ <summary>
+ create a new file tree
+ </summary>
+ <param name="directory">
+ the folder directory path
+ </param>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ create a new file tree
+ </summary>
+ <param name="dirs"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.GetDataBlock(Microsoft.VisualBasic.FileIO.Path.FilePath)">
+ <summary>
+ get file
+ </summary>
+ <param name="filepath"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.AddDataBlock(Microsoft.VisualBasic.FileIO.Path.FilePath)">
+ <summary>
+ Create a new file block on the fs tree
+ </summary>
+ <param name="filepath"></param>
+ <returns>
+ A file block object with blank allocation data, no postion and no data size, just
+ with the file path reference data
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.VisitBlock(Microsoft.VisualBasic.FileIO.Path.FilePath,System.Boolean)">
+ <summary>
+ get file or directory
+ </summary>
+ <param name="filepath"></param>
+ <param name="checkExists">
+ just check the file is exists or not, do not throw any exception
+ </param>
+ <returns>
+ returns nothing if object not found!
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamGroup.BlockExists(Microsoft.VisualBasic.FileIO.Path.FilePath)">
+ <summary>
+ check file exists in current tree?
+ </summary>
+ <param name="filepath">
+ should be a path data which is relative
+ to current file tree node.
+ </param>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject">
+ <summary>
+ the abstract type of the file or directory object
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject.fileName">
+ <summary>
+ get the file basename, not full path
+ </summary>
+ <returns>file name with extension suffix</returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject.description">
+ <summary>
+ comments about this file object
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamObject.GetAttribute(System.String)">
+ <summary>
+ get attribute value by a given attribute name
+ </summary>
+ <param name="name"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack">
+ <summary>
+ Hierarchical Data Stream Pack, A hdf5 liked file format
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.buffer">
+ <summary>
+ usually be the underlying local file stream for read/write pack data
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack._registriedTypes">
+ <summary>
+ the type list of the values in the <see cref="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.globalAttributes"/> data,
+ a messagepack schema should be defined for these types.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack._meta_size">
+ <summary>
+ the pre-allocated metadata header size, includes of the global metadata and filesystem tree
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.filepath">
+ <summary>
+ gets the file path of the underlying stream data of current stream pack object
+ </summary>
+ <returns>
+ this property will returns the file path string if the underlying stream 
+ data is <see cref="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.isDiskFile"/>, otherwise nothing will be returns.
+ </returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.files">
+ <summary>
+ get all data files inside this hds data 
+ pack, not includes directory.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.HeaderSize">
+ <summary>
+ the actual used file header size
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.#ctor(System.String,System.Int32,System.Int64,System.Boolean,System.Boolean)">
+ <summary>
+ open or create new stream pack data object
+ </summary>
+ <param name="filepath"></param>
+ <param name="init_size"></param>
+ <param name="meta_size">
+ default 1MB for save the header data
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.#ctor(System.IO.Stream,System.Int32,System.Int64,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="buffer"></param>
+ <param name="init_size">
+ the initialize block file of the memorystream for the block file when do create new file.
+ </param>
+ <param name="meta_size">
+ the size in bytes of the tree header data, used for create new file only
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.Clear(System.Int64)">
+ <summary>
+ Clear the file tree
+ </summary>
+ <param name="meta_size">
+ the size in bytes of the tree header data
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.SetAttribute(Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{System.Object}[])">
+ <summary>
+ set global attributes
+ </summary>
+ <param name="attrs"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.SetAttribute(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+ <summary>
+ 
+ </summary>
+ <param name="fileName">
+ the dir object its file name must be ends with the symbol '\' or '/'
+ </param>
+ <param name="attrs">
+ all attribute value will be serialized via messagepack
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.ToString">
+ <summary>
+ get debug view of current data pack object
+ </summary>
+ <returns>
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.ParseTree">
+ <summary>
+ parse the magic header/global metadata attribute/filesystem tree
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.GetObject(System.String)">
+ <summary>
+ Get target object and its corresponding attributes data
+ which is specified by the given <paramref name="fileName"/>
+ </summary>
+ <param name="fileName">
+ the dir object its file name must be ends with the symbol '\' or '/'
+ </param>
+ <returns>
+ returns nothing if object is not found!
+ </returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.OpenBlock(Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBlock,System.Boolean)">
+ <summary>
+ Open an existed block file
+ </summary>
+ <param name="block"></param>
+ <returns>
+ this function will returns a <see cref="T:System.IO.MemoryStream"/> in-memory data 
+ when <paramref name="loadMemory"/> parameter value is set to TRUE.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.FileExists(System.String,System.Boolean)">
+ <summary>
+ Check of the given file data stream is existsed inside current data pack file
+ </summary>
+ <param name="path"></param>
+ <param name="ZERO_Nonexists">
+ this parameter is not working at here
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.OpenFile(System.String,System.IO.FileMode,System.IO.FileAccess)">
+ <summary>
+ a more advanced wrapper for <see cref="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.OpenBlock(System.String,System.Int32)"/> function
+ </summary>
+ <param name="path"></param>
+ <param name="mode">this parameter is no use in streampack</param>
+ <param name="access"></param>
+ <returns></returns>
+ <remarks>
+ the parameter <paramref name="access"/> only supports data mode:<br />
+ 
+ 1. <see cref="F:System.IO.FileAccess.Read"/>;
+ 2. <see cref="F:System.IO.FileAccess.Write"/>;
+ 
+ <br /><br />
+ 
+ <strong><span style="color: red">Do not dispose the readonly stream;</span> </strong>
+ for a write stream, dispose method should be call for commit the data into 
+ filesystem.<br />
+ 
+ this function create data buffer without pre-allocation for write, and append 
+ to the file last location
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.OpenBlock(System.String,System.Int32)">
+ <summary>
+ open a data block for read and write
+ 
+ if the target file block is missing from the tree, then this function 
+ will append a new file block based on the <see cref="P:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.is_readonly"/> 
+ flag is set to false or not, otherwise a substream object will be 
+ returned for read data
+ </summary>
+ <param name="fileName">
+ the dir object its file name must be ends with the symbol '\' or '/'
+ </param>
+ <param name="buffer_size">options for write data only</param>
+ <returns>
+ this function returns two type of the stream:
+ 
+ 1. <see cref="T:Microsoft.VisualBasic.ApplicationServices.SubStream"/> for readonly, this kind of stream should not call the dispose method, or the based file stream will be closed too!
+ 2. <see cref="T:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamBuffer"/> for writeonly, this kind of stream must be use the dispose method for commit data to based file stream
+ 
+ based on the target file object is existsed or not
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.Allocate(System.Int32)">
+ <summary>
+ try allocate a free block inside the file, not append to it
+ </summary>
+ <param name="buffer_size"></param>
+ <returns></returns>
+ <remarks>
+ this function may be too slow if too much file to process
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.OpenReadOnly(System.String,System.Boolean)">
+ <summary>
+ Open a stream pack data file for read data
+ </summary>
+ <param name="filepath"></param>
+ <param name="strict_missing">
+ this parameter controls the behaviours about the missing <paramref name="filepath"/>, if this
+ parameter is set to value true(default behaviours), function will throw file not found 
+ exception, otherwise will returns an empty stream object. 
+ </param>
+ <returns>
+ this function may returns an empty stream data if the given <paramref name="filepath"/> is
+ missing on the filesystem andalso not set <paramref name="strict_missing"/> to true.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.flushStreamPack">
+ <summary>
+ just write stream header data
+ </summary>
+ <remarks>
+ check of the header size is larger than the pre-allocated metadata size,
+ and populate warning message if it is.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.Dispose">
+ <summary>
+ 已经在dispose函数之中处理好所有文件数据保存，以及文件释放的工作，直接dispose即可
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.Close">
+ <summary>
+ Save the file tree and close the file stream
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.WriteText(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="text"></param>
+ <param name="path"></param>
+ <returns></returns>
+ <remarks>
+ this method is a safe method, it alwasy delete the 
+ target file stream at first and then do text write
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.Flush">
+ <summary>
+ Commit the metadata header stream into filesystem
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.FileSystem.StreamPack.GetFiles(System.String)">
+ <summary>
+ Get all files inside the given folder path
+ </summary>
+ <param name="dir"></param>
+ <returns>
+ this function returns an empty collection of the file 
+ path string if the given <paramref name="dir"/> is not 
+ exists in the archive file tree or its value is 
+ nothing
+ </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.HDSPack.AttributeMetadata">
+ <summary>
+ a name key tagged attribute metadata.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.HDSPack.AttributeMetadata.name">
+ <summary>
+ the attribute name
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.LazyAttribute.Add(System.String,System.Object)">
+ <summary>
+ add key-value paired data into the attribute list
+ </summary>
+ <param name="name"></param>
+ <param name="value"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.HDSPack.LazyAttribute.BuildDynamicTypeObject">
+ <summary>
+ build a dynamics object that could be used for show in property grid controld
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>

@@ -1,0 +1,441 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.ZipAssembly">
+ <summary>
+ 将所有的模型数据都放置在同一个XML文件之中
+ 会因为文件过大而难于调试
+ 在这里进行元素的分块存储
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.ZipWriter">
+ <summary>
+ An internal module for save the virtual cell model in zip archive format
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Debugger">
+ <summary>
+ Model file debugger
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Debugger.checkModel(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell,Microsoft.VisualBasic.ApplicationServices.Debugging.Logging.LogFile)">
+ <summary>
+ this function is mainly address at check the errors in the virtual cell component networking.
+ </summary>
+ <param name="vcell"></param>
+ <param name="log"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ModelExtensions.CreateModel(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell,System.Boolean)">
+ <summary>
+ Load model file as the unify data model for run the downstream simulation analysis.
+ </summary>
+ <param name="model"></param>
+ <returns></returns>
+ <remarks>
+ (将所加载的XML模型文件转换为统一的数据模型)
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.NamespaceDoc">
+ <summary>
+ 为了方便进行程序的调试，这个模块的对外依赖关系因该是很小的
+ 因为这个模块主要是应用于定义文件的格式以及结构
+ 为了减少依赖关系，模型的创建应该是放在compiler模型编译器模块之中
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.OperationExtensions.DeleteMutation(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell,System.String[])">
+ <summary>
+ 基因组之中的基因发生了缺失突变
+ </summary>
+ <param name="model"></param>
+ <param name="geneList$"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.OperationExtensions.Trim(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell)">
+ <summary>
+ 删除所有没有在当前的模型之中找到对应的酶的酶促反应过程
+ (不推荐使用这个操作，因为可以假设缺少酶的情况下，反应过程可以以非常低的效率进行，但是删除之后反应链将会完全断裂了)
+ </summary>
+ <param name="model"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene">
+ <summary>
+ the gene model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.locus_tag">
+ <summary>
+ the gene id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.protein_id">
+ <summary>
+ the corresponding ORF protein id, this will link to the metabolisom model
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.product">
+ <summary>
+ the protein function description
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.strand">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks>
+ 因为字符类型在进行XML序列化的时候会被转换为ASCII代码，影响阅读
+ 所以在这里使用字符串类型来解决这个问题
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.amino_acid">
+ <summary>
+ 对于rRNA和tRNA不存在
+ </summary>
+ <returns>composition vector of 22 kinds of AA residues, integer value in range from [1,n]</returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.nucleotide_base">
+ <summary>
+ mRNA, tRNA, rRNA, etc
+ </summary>
+ <returns>composition vector of 4 RNA base ACGU, integer value in range from [1,n]</returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Genome.replicons">
+ <summary>
+ 一个完整的基因组是由若干个复制子所构成的，复制子主要是指基因组和细菌的质粒基因组
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Genome.regulations">
+ <summary>
+ 转录调控网络
+ </summary>
+ <returns></returns>
+ <remarks>
+ 如果这个基因组是由多个复制子构成的，那么在这里面会由染色体上面的调控因子和质粒上的
+ 调控因子之间的相互调控作用网络的数据而构成
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.RNA">
+ <summary>
+ 只记录tRNA，rRNA和其他RNA的数据，对于mRNA则不做记录
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.RNA.gene">
+ <summary>
+ the trranscription source template gene <see cref="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.locus_tag"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.RNA.type">
+ <summary>
+ the rna type
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.RNA.val">
+ <summary>
+ usually be the:
+ 
+ 1. amino acid code for tRNA
+ 2. 16s,5s,23s for rRNA
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.replicon">
+ <summary>
+ 复制子
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.replicon.isPlasmid">
+ <summary>
+ 当前的这个复制子对象是否是质粒基因组？
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.replicon.operons">
+ <summary>
+ the operon is the transcript unit inside the cellular system
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.replicon.RNAs">
+ <summary>
+ 除了mRNA的其他的一切非蛋白编码RNA
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.replicon.GetGeneList">
+ <summary>
+ loop each operons and populates the members gene inside the operons
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.transcription">
+ <summary>
+ 基因表达转录调控
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.transcription.centralDogma">
+ <summary>
+ 这个调控关系所影响到的中心法则的事件名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.transcription.targets">
+ <summary>
+ a collection of the genes id inside the regulated operons
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Motif">
+ <summary>
+ 调控的motif位点
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Motif.distance">
+ <summary>
+ 这个motif位点到被调控的基因的ATG位点的最短距离
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.TranscriptUnit">
+ <summary>
+ an operon model is a single transcript unit
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.TranscriptUnit.name">
+ <summary>
+ the display name of this operon object
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.TranscriptUnit.genes">
+ <summary>
+ the operon gene list
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.TranscriptUnit.#ctor(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene)">
+ <summary>
+ create a transcript unit with single gene inside
+ </summary>
+ <param name="gene"></param>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.referenceIds">
+ <summary>
+ the reference id of current metabolite
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.formula">
+ <summary>
+ the chemical composition formula of this metabolite
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Enzyme">
+ <summary>
+ 酶分子对象
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Enzyme.proteinID">
+ <summary>
+ the protein id of this enzyme
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Enzyme.catalysis">
+ <summary>
+ 酶分子所催化的反应列表
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis">
+ <summary>
+ 酶分子对目标反应过程的催化动力学函数
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.reaction">
+ <summary>
+ The reaction id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.temperature">
+ <summary>
+ 单位为摄氏度的温度参数值
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.formula">
+ <summary>
+ 通过sabio-rk数据库得到的动力学函数方程
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.parameter">
+ <summary>
+ 动力学方程的参数列表
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.KineticsParameter.target">
+ <summary>
+ kegg compound id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.KineticsParameter.isModifier">
+ <summary>
+ true means current parameter is enzyme concentration
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.MetabolismStructure">
+ <summary>
+ model of the metabolic network
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.MetabolismStructure.reactions">
+ <summary>
+ the metabolic network inside this cellular model, includes all enzymatic reaction and non-enzymatic reaction.
+ </summary>
+ <returns></returns>
+ <remarks>
+ 在这个属性之中包含有所有的代谢反应过程的定义
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.MetabolismStructure.enzymes">
+ <summary>
+ 在这个属性里面只会出现具有KO分类编号的蛋白序列，如果需要找所有基因的数据，可以
+ 读取<see cref="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Genome.replicons"/>里面的基因的数据
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.MetabolismStructure.maps">
+ <summary>
+ the pathway function category groups of the enzymes
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup">
+ <summary>
+ the reaction collection
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup.enzymatic">
+ <summary>
+ enzymatic reactions
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup.none_enzymatic">
+ <summary>
+ non-enzymatic reactions
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction">
+ <summary>
+ the reaction graph model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction.ID">
+ <summary>
+ unique reference id of current reaction link
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction.is_enzymatic">
+ <summary>
+ 这个反应模型是否是需要酶促才会发生了生化反应过程？
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction.bounds">
+ <summary>
+ [forward, reverse] boundary of the reaction speed
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction.compartment">
+ <summary>
+ the compartment location of the reaction
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction.equation">
+ <summary>
+ the debug view of the current equation model
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell">
+ <summary>
+ The virtual cell model xml file 
+ </summary>
+ <remarks>
+ 虚拟细胞数据模型Xml文件
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell.taxonomy">
+ <summary>
+ 物种注释信息
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell.genome">
+ <summary>
+ 基因组结构模型，包含有基因的列表，以及转录调控网络
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell.metabolismStructure">
+ <summary>
+ 代谢组网络结构
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell.cellular_id">
+ <summary>
+ the intra-cellular environment id, will be used for identify the compound source between different cell source.
+ usually be the organism taxonomy scientific name, or taxid, something.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell.Summary(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell)">
+ <summary>
+ 进行虚拟细胞模型的摘要文本输出
+ </summary>
+ <param name="model"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

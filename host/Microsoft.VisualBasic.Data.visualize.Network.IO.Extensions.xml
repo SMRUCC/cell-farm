@@ -1,0 +1,438 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
+</name>
+</assembly>
+<members>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.AnalysisAPI.NodesGroupCount(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables)">
+ <summary>
+ 统计网络之中的每一种类型的节点的数量
+ </summary>
+ <param name="net"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.AnalysisAPI.GetDegrees(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables)">
+ <summary>
+ 获取得到网络之中的每一个节点的Degree度
+ </summary>
+ <param name="net"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.AnalysisAPI.AnalysisDegrees(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables)">
+ <summary>
+ 计算出每一个节点的``Degree``值，并且将结果写入节点的动态属性之中
+ 这个函数之中包含有了节点的degree，并且还计算出了indegree和outdegree
+ </summary>
+ <param name="net"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.AnalysisAPI.ComputeNodeDegrees(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables@)">
+ <summary>
+ 计算出每一个节点的``Degree``值，并且将结果写入节点的动态属性之中
+ 这个函数之中包含有了节点的degree，并且还计算出了indegree和outdegree
+ </summary>
+ <param name="net"></param>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.CorrelationGraph">
+ <summary>
+ A network graph model base on the correlation matrix between variables.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.CorrelationGraph.CreateCorrelationGraph(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.Framework.IO.DataSet},System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String},System.Double,System.Boolean)">
+ <summary>
+ Create a network graph object from a correlation matrix.
+ 
+ (变量的属性里面必须是包含有相关度的)
+ </summary>
+ <param name="data"></param>
+ <param name="cut"><see cref="M:System.Math.Abs(System.Double)"/></param>
+ <param name="trim">Removes the duplicated edges and self loops?</param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Cytoscape.Edges.data">
+ <summary>
+ Dynamics extended data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Cytoscape.Nodes.data">
+ <summary>
+ Dynamics extended data
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Cytoscape.CytoscapeTableLoader.CytoscapeExportAsGraph(System.String,System.String)">
+ <summary>
+ Load cytoscape exports as network graph model.
+ </summary>
+ <param name="edgesTable">``edges.csv``</param>
+ <param name="nodesTable">``nodes.csv``</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge">
+ <summary>
+ The edge between the two nodes in the network.(节点与节点之间的相互关系)
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.value">
+ <summary>
+ 与当前的这个边对象所相关联的一个数值对象，可以为置信度，相关度，强度之类的
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.selfLoop">
+ <summary>
+ 起始节点是否是终止节点
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.#ctor(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge)">
+ <summary>
+ Copy value
+ </summary>
+ <param name="clone"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.Nodes">
+ <summary>
+ Yield all node ids
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.GetConnectedNode(System.String)">
+ <summary>
+ 假若存在连接则返回相对的节点，否则返回空字符串
+ </summary>
+ <param name="Node"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables">
+ <summary>
+ The csv table file format of the network graph object model: <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph"/>.
+ (在这个对象之中包括了一个<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node"/>和<see cref="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.edges"/>节点和边列表，可以直接用于CSV文件的读写操作)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables.Links(System.String)">
+ <summary>
+ 获取指定节点的连接数量
+ </summary>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node">
+ <summary>
+ An node entity in the target network.(这个对象里面包含了网络之中的节点的实体的最基本的定义：节点的标识符以及节点的类型)
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node.ID">
+ <summary>
+ 这个节点的标识符
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node.NodeType">
+ <summary>
+ Node data groups identifier.(这个节点的分组类型的定义)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Json.net.style">
+ <summary>
+ 优先加载的样式名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Json.net.types">
+ <summary>
+ All unique vaue of the property <see cref="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Json.node.type"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI">
+ <summary>
+ Data Model Extensions
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.ScaleRadius(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@,Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange)">
+ <summary>
+ 将网络之中的半径值重新映射到另外一个范围区间内
+ </summary>
+ <param name="graph"></param>
+ <param name="range"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.OrderByDegrees(System.Collections.Generic.IEnumerable{System.Linq.IGrouping{System.String,Microsoft.VisualBasic.Data.visualize.Network.Graph.Node}},System.String)">
+ <summary>
+ 将节点组按照组内的节点的degree的总和或者平均值来重排序
+ 函数返回的是降序排序的结果
+ 如果需要升序排序，则可以对返回的结果进行一次reverse即可
+ </summary>
+ <param name="nodeGroups"></param>
+ <param name="method$"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.UsingDegreeAsRadius(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean)">
+ <summary>
+ 将节点的degree作为节点的绘图半径数据
+ </summary>
+ <param name="g"></param>
+ <param name="computeDegree"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.RemovesByDegreeQuantile(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables,System.Double,System.String[]@)">
+ <summary>
+ 默认移除degree少于10% quantile的节点
+ </summary>
+ <param name="net"></param>
+ <param name="quantile#"></param>
+ <returns></returns>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.NoConnections">
+ <summary>
+ 无边连接的节点的Degree值为零
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI.RemovesByDegree(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables,System.Int32,System.String[]@)">
+ <summary>
+ (请确保在调用这个函数之前网络模型对应已经通过<see cref="M:Microsoft.VisualBasic.Data.visualize.Network.AnalysisAPI.AnalysisDegrees(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables)"/>函数计算了degree，否则会移除所有的网络节点而返回一个空网络)
+ 直接按照节点的``Degree``来筛选，节点被移除的同时，相应的边连接也会被删除
+ </summary>
+ <param name="net"></param>
+ <param name="degree%">``<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node"/> -> "Degree"``.（当这个参数为零的时候，表示默认是将无连接的孤立节点删除掉）</param>
+ <param name="removeIDs$">可以通过这个参数来获取得到被删除的节点ID列表</param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.ModelLoader.CreateGraph(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables,System.Func{Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node,Microsoft.VisualBasic.Imaging.Brush},System.String,System.String,System.Boolean)">
+ <summary>
+ Create a <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph"/> model from csv table data.
+ (这个函数会将节点的degree属性值映射为节点的radius)
+ </summary>
+ <param name="net"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.ModelLoader.CreateGraphGeneric``2(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{``0,``1},System.Func{Microsoft.VisualBasic.Data.visualize.Network.FileStream.Node,Microsoft.VisualBasic.Imaging.Brush},System.String,System.String,System.Boolean)">
+ <summary>
+ Transform the network data model to graph model
+ </summary>
+ <typeparam name="TNode"></typeparam>
+ <typeparam name="TEdge"></typeparam>
+ <param name="net"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2">
+ <summary>
+ The network csv data information with specific type of the datamodel
+ </summary>
+ <typeparam name="T_Node"></typeparam>
+ <typeparam name="T_Edge"></typeparam>
+ <remarks></remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.IsEmpty">
+ <summary>
+ 判断这个网络模型之中是否是没有任何数据
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.RemoveDuplicated">
+ <summary>
+ 移除的重复的边
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.RemoveSelfLoop">
+ <summary>
+ 移除自身与自身的边
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_Addition(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},System.Collections.Generic.IEnumerable{`0})">
+ <summary>
+
+ </summary>
+ <param name="net"></param>
+ <param name="x">由于会调用ToArray，所以这里建议使用Iterator</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_Addition(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},System.Collections.Generic.IEnumerable{`1})">
+ <summary>
+
+ </summary>
+ <param name="net"></param>
+ <param name="x">由于会调用ToArray，所以这里建议使用Iterator</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_Exponent(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},System.String)">
+ <summary>
+ Network contains node?
+ </summary>
+ <param name="net"></param>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_Exponent(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},`0)">
+ <summary>
+ Network contains node?
+ </summary>
+ <param name="net"></param>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_Concatenate(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},System.String)">
+ <summary>
+ GET node
+ </summary>
+ <param name="net"></param>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.op_LessThanOrEqual(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{`0,`1},System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Select nodes from the network based on the input identifers <paramref name="nodes"/>
+ </summary>
+ <param name="net"></param>
+ <param name="nodes"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.TabularCreator.Tabular(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.String[],System.Boolean,System.String[],System.String,System.String,System.String[],System.String[],System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ 将<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph"/>保存到csv文件之中
+ </summary>
+ <param name="g"></param>
+ <param name="propertyNames">
+ The data property names of nodes and edges.
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.TabularCreator.Tabular(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph)">
+ <summary>
+ 将<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph"/>保存到csv文件之中
+ </summary>
+ <param name="g"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.TabularCreator.Tabular(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.String[],System.Boolean,Microsoft.VisualBasic.Data.visualize.Network.FileStream.MetaData)">
+ <summary>
+ 将<see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph"/>保存到csv文件之中
+ </summary>
+ <param name="g"></param>
+ <param name="properties">
+ The data property names of nodes and edges.
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.TabularCreator.CreateGraphTable(Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge[],System.String[],System.Boolean)">
+ <summary>
+ create table of the network graph edges
+ </summary>
+ <param name="g"></param>
+ <param name="properties$"></param>
+ <param name="is2Dlayout"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.TabularCreator.CreateGraphTable(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.String[],System.Boolean)">
+ <summary>
+ create table of the network graph edges
+ </summary>
+ <param name="g"></param>
+ <param name="properties$"></param>
+ <param name="is2Dlayout"></param>
+ <returns></returns>
+ 
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.vbnet">
+ <summary>
+ VB.NET sciBASIC network data file.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.vbnet.Load(System.String)">
+ <summary>
+ 文件拓展名为``*.vbnet``
+ </summary>
+ <param name="vbnet$"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.FileStream.vbnet.Save(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables,System.String,System.Text.Encoding)">
+ <summary>
+ 文件拓展名为``*.vbnet``
+ </summary>
+ <param name="net"></param>
+ <param name="vbnet$"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Extensions.RemoveDuplicated``1(System.Collections.Generic.IEnumerable{``0},System.Boolean,System.Boolean)">
+ <summary>
+ 移除的重复的边
+ </summary>
+ <remarks></remarks>
+ <param name="directed">是否忽略方向？</param>
+ <param name="ignoreTypes">是否忽略边的类型？</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Extensions.RemoveSelfLoop``1(System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ 移除自身与自身的边
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Extensions.GetConnections(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge},System.String)">
+ <summary>
+ 这个查找函数是忽略掉了方向了的
+ </summary>
+ <param name="source"></param>
+ <param name="node"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Extensions.GetNextConnects(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge},System.String)">
+ <summary>
+ 查找To关系的节点边
+ </summary>
+ <param name="source"></param>
+ <param name="from"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Extensions.Trim(Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables,System.Boolean)">
+ <summary>
+ Removes all of the selfloop and duplicated edges
+ </summary>
+ <param name="network"></param>
+ <param name="doNothing"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.NetworkFileIO.Save``2(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{``0,``1},System.String,System.Text.Encoding,System.Boolean)">
+ <summary>
+ Export the network graph object into data files
+ </summary>
+ <param name="output">The data directory for the data export, if the value of this directory is null then the data
+ will be exported at the current work directory.
+ (进行数据导出的文件夹，假若为空则会保存数据至当前的工作文件夹之中)</param>
+ <param name="encoding">The file encoding of the exported node and edge csv file.</param>
+ <returns></returns>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.NetworkFileIO.Save``2(Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network{``0,``1},Microsoft.VisualBasic.ApplicationServices.IFileSystemEnvironment,System.Text.Encoding,System.Boolean)">
+ <summary>
+ Export the network graph object into data files
+ </summary>
+ <param name="output">The data directory for the data export, if the value of this directory is null then the data
+ will be exported at the current work directory.
+ (进行数据导出的文件夹，假若为空则会保存数据至当前的工作文件夹之中)</param>
+ <param name="encoding">The file encoding of the exported node and edge csv file.</param>
+ <returns></returns>
+ <remarks></remarks>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.NetworkFileIO.Load(System.String,System.Boolean)">
+ <summary>
+ Load network graph data from a saved network data direcotry.
+ </summary>
+ <param name="DIR"></param>
+ <returns></returns>
+</member>
+</members>
+</doc>

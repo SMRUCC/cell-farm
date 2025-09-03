@@ -1,0 +1,163 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Extensions.LoadSymbols(SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reader)">
+ <summary>
+ load symbol names from the result pack file
+ </summary>
+ <param name="raw"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Extensions.GetTimeFrames(SMRUCC.genomics.GCModeller.ModellingEngine.IO.vcXML.Reader,System.String,System.String)">
+ <summary>
+ 读取netCDF格式的模拟计算结果数据文件
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.NamespaceDoc">
+ <summary>
+ The GCModeller Virtual Cell raw data file format and I/O 
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules">
+ <summary>
+ The sandbox engine output raw data file format
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.mRNAId">
+ <summary>
+ 由基因转录出来的mRNA的编号列表
+ </summary>
+ <returns></returns>
+ <remarks>ORF gene id</remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.RNAId">
+ <summary>
+ 由基因转录出来的其他的RNA分子的编号列表
+ </summary>
+ <returns></returns>
+ <remarks>RNA gene id</remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.Polypeptide">
+ <summary>
+ 由mRNA翻译出来的多肽链的Id列表
+ </summary>
+ <returns></returns>
+ <remarks>Usually is the Uniprot protein id</remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.Proteins">
+ <summary>
+ 由一条或者多条多肽链修饰之后得到的最终的蛋白质的编号列表
+ </summary>
+ <returns></returns>
+ <remarks>Protein complexe</remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.Metabolites">
+ <summary>
+ 代谢物列表
+ </summary>
+ <returns></returns>
+ <remarks>
+ Usually is the KEGG compounds
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.CellularModules.Reactions">
+ <summary>
+ 反应过程编号列表
+ </summary>
+ <returns></returns>
+ <remarks>
+ Usually is the KEGG reactions
+ </remarks>
+</member>
+<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reader.tick_counts">
+ <summary>
+ total time tick count
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reader.GetRelatedReactions(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="id">id of the metabolite</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reader.LoadIndex">
+ <summary>
+ load data visitor index
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.StorageDriver">
+ <summary>
+ Data storage adapter driver
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer">
+ <summary>
+ The GCModeller raw data writer
+ </summary>
+ <remarks>
+ (写数据模块)
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer.Init">
+ <summary>
+ 将编号列表写入的原始文件之中
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer.Write(System.String,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="module">the molecule data types</param>
+ <param name="time">the time tick point</param>
+ <param name="snapshot">The snapshot value after the loop cycle in <paramref name="time"/> point</param>
+ <returns></returns>
+</member>
+<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.IO.vcXML.Reader.index">
+ <summary>
+ [module -> [type -> offset]]
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.vcXML.Writer.writeInit(SMRUCC.genomics.GCModeller.ModellingEngine.IO.vcXML.VcellAdapterDriver,SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline)">
+ <summary>
+ mass profile:
+ 
+ + transcriptome -> mass_profile
+ + proteome -> mass_profile
+ + metabolome -> mass_profile
+ 
+ flux profile:
+ 
+ + transcriptome -> activity
+ + proteome -> activity
+ + metabolome -> flux_size
+ </summary>
+ <param name="entities"></param>
+ <param name="args"></param>
+</member>
+</members>
+</doc>

@@ -17,7 +17,8 @@ Module Program
                 .GenericCompounds = New Dictionary(Of String, GeneralCompound),
                 .NucleicAcid = New NucleicAcid,
                 .status = New Dictionary(Of String, Double)
-            }
+            },
+            .kinetics = New FluxBaseline
         }
 
         Call Console.WriteLine(template.GetJson)

@@ -1,0 +1,3297 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Microsoft.VisualBasic.DataStorage.FeatherFormat
+</name>
+</assembly>
+<members>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType">
+ <summary>
+ Represents whether a dataframe is using 0-based or 1-based indexing.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType.One">
+ <summary>
+ 1-based indexing - intended for ports from 1-based languages
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType.Zero">
+ <summary>
+ 0-based indexing - the C# standard
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnValueEnumerator">
+ <summary>
+ Allocation free enumerator for a column.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnValueEnumerator._CurrentProp">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnValueEnumerator.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnValueEnumerator.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnValueEnumerator.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column">
+ <summary>
+ Represents a column of a DataFrame.
+ 
+ Is untyped, but returned values can be implicitly coerced to built-in types.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this column in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Name">
+ <summary>
+ Returns the name of this column.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Type">
+ <summary>
+ Returns the .NET equivalent type of this column.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always match the number of rows in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Count">
+ <summary>
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ 
+ Throws if <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Length"/> will not fit in an int.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.IsReadOnly">
+ <summary>
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ 
+ Always return true.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Item(System.Int32)">
+ <summary>
+ &lt;see cref="this[long]"/&gt;
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToArray``1">
+ <summary>
+ Converts this column to an array of the specified type.
+ 
+ Throws if the column cannot be coerced to the given type, or cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToArray">
+ <summary>
+ Converts this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ Throws if the column cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange``1(System.Int64,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of the specified type.
+ 
+ Throws if the column cannot be coerced to the given type, or the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange(System.Int64,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ Throws if the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToArray``1(``0[]@)">
+ <summary>
+ Converts a subset of this column to an array of the specified type.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange``1(System.Int64,System.Int32,``0[]@)">
+ <summary>
+ Converts a subset of this column to an array of the specified type.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the column cannot be coerced to the given type, or the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts a subset of this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange``1(System.Int64,System.Int32,``0[]@,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of the specified type.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at the given index in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the column cannot be coerced to the given type, or the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at the given index in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the column cannot be coerced to the given type, or the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ Sets value to the value of the row at the passed index (in the dataframe's basis), having coerced it to the appropriate type if possible.
+ 
+ If the passed index is out of bounds, or the coercing fails, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/> of the row at the passed index (in the dataframe's basis).
+ 
+ If the passed index is out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Cast``1">
+ <summary>
+ Converts the column to a typed column of the given type.
+ 
+ Throws if the conversion isn't allowed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.IndexOf(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ Finds a given value in the column.  Throws if the index will not fit in an int.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.LongIndexOf(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ Finds a given value in the column.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Insert(System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.RemoveAt(System.Int32)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Add(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Clear">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Contains(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ <see cref="M:System.Collections.Generic.ICollection`1.Contains(`0)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.CopyTo(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[],System.Int32)">
+ <summary>
+ <see cref="M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.Remove(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.Column)~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerable">
+ <summary>
+ Allocation free enumerable for the columns in a dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerable.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerator">
+ <summary>
+ Allocation free enumerator for the columns in a dataframe.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerator._CurrentProp">
+ <summary>
+ <see cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerator.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerator.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnEnumerator.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnMap">
+ <summary>
+ Utility class for addressing a dataframes columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnMap.Count">
+ <summary>
+ Number of columns in the dataframe
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnMap.Item(System.Int64)">
+ <summary>
+ Returns the column at the given index (in the dataframe's basis).
+ 
+ Throws if the index is out of range.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ColumnMap.Item(System.String)">
+ <summary>
+ Returns the column with the given name.
+ 
+ Throws if no column has the given name.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame">
+ <summary>
+ Represents a dataframe.
+ 
+ Is untyped, but can be mapped to columns of known types or proxied for easy interop with .NET classes or structs.
+ 
+ Is backed by a MemoryMappedFile, remember to Dispose when done using the dataframe.
+ 
+ Any <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1"/>, <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1"/>, or <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/> instances
+ (and their enumerables) obtained via a DataFrame become invalid after that DataFrame is disposed.  Be sure to have converted
+ to built-in types prior to Disposing.
+ </summary>
+ <remarks>
+ https://github.com/kevin-montrose/FeatherDotNet
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Proxy``1(System.String[])">
+ <summary>
+ Map the columns in this dataframe to a given type.
+ 
+ If the column names match (in a case insensitive, culture invariant comparison) the mapping can be automatic.
+ 
+ Otherwise, list out the member names in column order to map to.
+ 
+ Objects of TProxyType will be created by calling the default constructor.
+ 
+ Throws if the types are not compatible.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Proxy``1(System.Func{``0},System.String[])">
+ <summary>
+ Map the columns in this dataframe to a given type.
+ 
+ If the column names match (in a case insensitive, culture invariant comparison) the mapping can be automatic.
+ 
+ Otherwise, list out the member names in column order to map to.
+ 
+ Objects of TProxyType will be created by calling the provided proxy function.
+ 
+ Throws if the types are not compatible.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryProxy``1(Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame{``0}@,System.String[])">
+ <summary>
+ Map the columns in this dataframe to a given type.
+ 
+ If the column names match (in a case insensitive, culture invariant comparison) the mapping can be automatic.
+ 
+ Otherwise, list out the member names in column order to map to.
+ 
+ Objects of TProxyType will be created by calling the default constructor.
+ 
+ Return false if the mapping cannot be made, and true otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryProxy``1(System.Func{``0},Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame{``0}@,System.String[])">
+ <summary>
+ Map the columns in this dataframe to a given type.
+ 
+ If the column names match (in a case insensitive, culture invariant comparison) the mapping can be automatic.
+ 
+ Otherwise, list out the member names in column order to map to.
+ 
+ Objects of TProxyType will be created by calling the provided proxy function.
+ 
+ Return false if the mapping cannot be made, and true otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``1">
+ <summary>
+ Maps this dataframe to a dataframe with a single column of the given type.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``1(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrame{``0}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with a single column of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``2">
+ <summary>
+ Maps this dataframe to a dataframe with two columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``2(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType{``0,``1}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with two columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``3">
+ <summary>
+ Maps this dataframe to a dataframe with three columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``3(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1{``0,``1,``2}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with three columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``4">
+ <summary>
+ Maps this dataframe to a dataframe with four columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``4(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2{``0,``1,``2,``3}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with four columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``5">
+ <summary>
+ Maps this dataframe to a dataframe with five columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``5(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3{``0,``1,``2,``3,``4}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with five columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``6">
+ <summary>
+ Maps this dataframe to a dataframe with six columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``6(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4{``0,``1,``2,``3,``4,``5}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with six columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``7">
+ <summary>
+ Maps this dataframe to a dataframe with seven columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``7(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5{``0,``1,``2,``3,``4,``5,``6}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with seven columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Map``8">
+ <summary>
+ Maps this dataframe to a dataframe with eight columns of the given types.
+ 
+ Throws if the mapping cannot be made.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryMap``8(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6{``0,``1,``2,``3,``4,``5,``6,``7}@)">
+ <summary>
+ Tries to map this dataframe to a dataframe with eight columns of the given type.
+ 
+ Return true if such a mapping was possible, and false otherwise.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame._Basis">
+ <summary>
+ Whether this DataFrame is addressable with base-0 or base-1 indexes.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame._AllColumns">
+ <summary>
+ An enumerable of all the columns in this DataFrame.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame._AllRows">
+ <summary>
+ An enumerable of all the rows in this DataFrame.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame._Columns">
+ <summary>
+ A utility accessor for columns in this DataFrame.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame._Rows">
+ <summary>
+ A utility accessor for rows in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.RowCount">
+ <summary>
+ Number of rows in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.ColumnCount">
+ <summary>
+ Number of columns in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Item(System.Int64)">
+ <summary>
+ Return the row at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetRow(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Row@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Item(System.String)">
+ <summary>
+ Return the column with the given name.
+ 
+ Will throw if the name is not found.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetColumn(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Item(System.Int64,System.Int64)">
+ <summary>
+ Return the value at the given row and column indexes.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Item(System.Int64,System.String)">
+ <summary>
+ Return the value at the given row index in the column with the given name.
+ 
+ Will throw if the index is out of bounds or the column is not found.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetColumn(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)">
+ <summary>
+ Sets column to the column at the given index.
+ 
+ Returns true if a column exists at that index, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetColumn(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)">
+ <summary>
+ Sets column to the column with the given name.
+ 
+ Returns true if a column exists with that name, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetRow(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Row@)">
+ <summary>
+ Gets row to the row at the given index.
+ 
+ Returns true if a row exists at that index, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue``1(System.Int64,System.Int64,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds, or the value cannot be coerced, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue(System.Int64,System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row given row index in the column with the given name.
+ 
+ If the passed index is out of bounds or no column with the given name exists, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.TryGetValue``1(System.Int64,System.String,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the given row index in the column with the given name.
+ 
+ If the passed index is out of bounds, no column with the given name exists, or the value cannot be coerced then false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame.Dispose">
+ <summary>
+ <see cref="M:System.IDisposable.Dispose"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader">
+ <summary>
+ Utility class for reading Feather files.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.ReadFromFile(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType)">
+ <summary>
+ Create a dataframe from the given file, with the given basis.
+ 
+ Throws if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.TryReadFromFile(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType,Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame@,System.String@)">
+ <summary>
+ Create a dataframe from the given file, with the given basis.
+ 
+ Returns false if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.ReadFromName(System.String,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType)">
+ <summary>
+ Create a dataframe from a memory mapped file with the given name, with the given basis.
+ 
+ Throws if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.TryReadFromName(System.String,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType,Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame@,System.String@)">
+ <summary>
+ Create a dataframe from a memory mapped file with the given name, with the given basis.
+ 
+ Returns false if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.ReadFromBytes(System.Byte[],Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType)">
+ <summary>
+ Create a dataframe from the bytes passed, with the given basis.
+ 
+ Throws if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.TryReadFromBytes(System.Byte[],Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType,Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame@,System.String@)">
+ <summary>
+ Create a dataframe from the give bytes, with the given basis.
+ 
+ Returns false if the dataframe cannot be created.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherReader.TryRead(System.IO.MemoryMappedFiles.MemoryMappedFile,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.BasisType,Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame@,System.String@)">
+ <summary>
+ try read feather dataframe from a memory map file
+ </summary>
+ <param name="file"></param>
+ <param name="fileSize"></param>
+ <param name="basis"></param>
+ <param name="frame"></param>
+ <param name="errorMessage"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.WriteMode">
+ <summary>
+ Indicates how a FeatherWriter should schedule writing to disk.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.WriteMode.Lazy">
+ <summary>
+ Writes are queued, but not actually executed until the writer is being discarded.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.WriteMode.Eager">
+ <summary>
+ Writes occur immediately, and references to any parameters to the writer are discarded where possible.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter">
+ <summary>
+ Class for writing dataframes (or equivalently, sets of columns) to a file in the Feather format.
+ 
+ Supports writing lazily (the default) or eagerly.
+ 
+ Eager writes are meant for the cases where individual inputs consume considerable resources, and
+ it is undesirable for a FeatherWriter to hold references to inputs.  An example would be a case
+ where there are many billions of rows in a dataframe, and the GC being able to reclaim whole columns
+ during dataframe persisting is necessary for adequate performance.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.Mode">
+ <summary>
+ WriteMode this FeatherWriter is configured in.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.NumRows">
+ <summary>
+ Number of rows in the dataframe being written
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.NumColumns">
+ <summary>
+ Number of columns added to this dataframe
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.#ctor(System.String)">
+ <summary>
+ Create a new FeatherWriter that will persist to the given file.
+ Writes are performed lazily.
+ 
+ Throws if not able to create the file.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.#ctor(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.WriteMode)">
+ <summary>
+ Create a new FeatherWriter that will persist to the given file.
+ 
+ Throws if not able to create the file.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.#ctor(System.IO.Stream,Microsoft.VisualBasic.DataStorage.FeatherFormat.WriteMode)">
+ <summary>
+ Create a new FeatherWriter that will write to the given stream.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumn``1(System.String,System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ Append a single column to the the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumn``1(System.String,System.Collections.Generic.IEnumerable{``0},System.Int64)">
+ <summary>
+ Append a single column with a known length to the the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumn(System.String,System.Collections.IEnumerable)">
+ <summary>
+ Append a single column to the the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumn(System.String,System.Collections.IEnumerable,System.Int64)">
+ <summary>
+ Append a single column with a known length to the the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumns(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Collections.IEnumerable})">
+ <summary>
+ Append a set of columns to the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumns(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Collections.IEnumerable},System.Collections.Generic.IEnumerable{System.Int64})">
+ <summary>
+ Append a set of columns with known lengths to the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumns``1(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}})">
+ <summary>
+ Append a set of columns to the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.AddColumns``1(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}},System.Collections.Generic.IEnumerable{System.Int64})">
+ <summary>
+ Append a set of columns with known lengths to the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FeatherWriter.Dispose">
+ <summary>
+ <see cref="M:System.IDisposable.Dispose"/>
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.CategoryMetadata.Levels">
+ The category codes are presumed to be integers that are valid indexes into
+ the levels array
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.Column.UserMetadata">
+ This should (probably) be JSON
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.CTable.Description">
+ Some text (or a name) metadata about what the file is, optional
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.CTable.Version">
+ Version number of the Feather format
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.CTable.Metadata">
+ Table metadata (likely JSON), not yet used
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.PrimitiveArray.Offset">
+ Relative memory offset of the start of the array data excluding the size
+ of the metadata
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.PrimitiveArray.Length">
+ The number of logical values in the array
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.PrimitiveArray.NullCount">
+ The number of observed nulls
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.PrimitiveArray.TotalBytes">
+ The total size of the actual data in the file
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Impl.FbsMetadata.TimestampMetadata.Timezone">
+ Timestamp data is assumed to be UTC, but the time zone is stored here for
+ presentation as localized
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.ByteBuffer">
+ <summary>
+ Class to mimic Java's ByteBuffer which is used heavily in Flatbuffers.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder">
+ <summary>
+ Responsible for building up and accessing a FlatBuffer formatted byte
+ array (via ByteBuffer).
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.#ctor(System.Int32)">
+ <summary>
+ Create a FlatBufferBuilder with a given initial size.
+ </summary>
+ <param name="initialSize">
+ The initial size to use for the internal buffer.
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.Clear">
+ <summary>
+ Reset the FlatBufferBuilder by purging all data that it holds.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults">
+ <summary>
+ Gets and sets a Boolean to disable the optimization when serializing
+ default values to a Table.
+
+ In order to save space, fields that are set to their default value
+ don't get serialized into the buffer.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.Offset">
+ @cond FLATBUFFERS_INTERNAL
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddBool(System.Boolean)">
+ <summary>
+ Add a `bool` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `bool` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddSbyte(System.SByte)">
+ <summary>
+ Add a `sbyte` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `sbyte` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddByte(System.Byte)">
+ <summary>
+ Add a `byte` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `byte` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddShort(System.Int16)">
+ <summary>
+ Add a `short` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `short` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUshort(System.UInt16)">
+ <summary>
+ Add an `ushort` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `ushort` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddInt(System.Int32)">
+ <summary>
+ Add an `int` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `int` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUint(System.UInt32)">
+ <summary>
+ Add an `uint` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `uint` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddLong(System.Int64)">
+ <summary>
+ Add a `long` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `long` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUlong(System.UInt64)">
+ <summary>
+ Add an `ulong` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `ulong` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddFloat(System.Single)">
+ <summary>
+ Add a `float` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `float` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddDouble(System.Double)">
+ <summary>
+ Add a `double` to the buffer (aligns the data and grows if necessary).
+ </summary>
+ <param name="x">The `double` to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddOffset(System.Int32)">
+ <summary>
+ Adds an offset, relative to where it will be written.
+ </summary>
+ <param name="off">The offset to add to the buffer.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.StartVector(System.Int32,System.Int32,System.Int32)">
+ @cond FLATBUFFERS_INTERNAL
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.EndVector">
+ <summary>
+ Writes data necessary to finish a vector construction.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.CreateVectorOfTables``1(Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.Offset{``0}[])">
+ <summary>
+ Creates a vector of tables.
+ </summary>
+ <param name="offsets">Offsets of the tables.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.Nested(System.Int32)">
+ @cond FLATBUFFERS_INTENRAL
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddBool(System.Int32,System.Boolean,System.Boolean)">
+ <summary>
+ Adds a Boolean to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddSbyte(System.Int32,System.SByte,System.SByte)">
+ <summary>
+ Adds a SByte to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddByte(System.Int32,System.Byte,System.Byte)">
+ <summary>
+ Adds a Byte to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddShort(System.Int32,System.Int16,System.Int32)">
+ <summary>
+ Adds a Int16 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUshort(System.Int32,System.UInt16,System.UInt16)">
+ <summary>
+ Adds a UInt16 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddInt(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Adds an Int32 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUint(System.Int32,System.UInt32,System.UInt32)">
+ <summary>
+ Adds a UInt32 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddLong(System.Int32,System.Int64,System.Int64)">
+ <summary>
+ Adds an Int64 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddUlong(System.Int32,System.UInt64,System.UInt64)">
+ <summary>
+ Adds a UInt64 to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddFloat(System.Int32,System.Single,System.Double)">
+ <summary>
+ Adds a Single to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddDouble(System.Int32,System.Double,System.Double)">
+ <summary>
+ Adds a Double to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.AddOffset(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Adds a buffer offset to the Table at index `o` in its vtable using the value `x` and default `d`
+ </summary>
+ <param name="o">The index into the vtable</param>
+ <param name="x">The value to put into the buffer. If the value is equal to the default
+ and <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.ForceDefaults"/> is false, the value will be skipped.</param>
+ <param name="d">The default value to compare the value against</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.CreateString(System.String)">
+ <summary>
+ Encode the string `s` in the buffer using UTF-8.
+ </summary>
+ <param name="s">The string to encode.</param>
+ <returns>
+ The offset in the buffer where the encoded string starts.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.Finish(System.Int32)">
+ <summary>
+ Finalize a buffer, pointing to the given `root_table`.
+ </summary>
+ <param name="rootTable">
+ An offset to be added to the buffer.
+ </param>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.DataBuffer">
+ <summary>
+ Get the ByteBuffer representing the FlatBuffer.
+ </summary>
+ <remarks>
+ This is typically only called after you call `Finish()`.
+ The actual data starts at the ByteBuffer's current position,
+ not necessarily at `0`.
+ </remarks>
+ <returns>
+ Returns the ByteBuffer for this FlatBuffer.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.SizedByteArray">
+ <summary>
+ A utility function to copy and return the ByteBuffer data as a
+ `byte[]`.
+ </summary>
+ <returns>
+ A full copy of the FlatBuffer data.
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.FlatBufferBuilder.Finish(System.Int32,System.String)">
+ <summary>
+ Finalize a buffer, pointing to the given `rootTable`.
+ </summary>
+ <param name="rootTable">
+ An offset to be added to the buffer.
+ </param>
+ <param name="fileIdentifier">
+ A FlatBuffer file identifier to be added to the buffer before
+ `root_table`.
+ </param>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.IFlatbufferObject">
+ <summary>
+ This is the base for both structs and tables.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.Offset`1">
+ <summary>
+ Offset class for typesafe assignments.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.Struct">
+ <summary>
+ All structs in the generated code derive from this class, and add their own accessors.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.FlatBuffers.Table">
+ <summary>
+ All tables in the generated code derive from this struct, and add their own accessors.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowMap`1">
+ <summary>
+ Utility class for addressing a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1"/>'s rows.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowMap`1.Count">
+ <summary>
+ Number of rows in the dataframe
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowMap`1.Item(System.Int64)">
+ <summary>
+ Returns the row at the given index (in the dataframe's basis).
+ 
+ Throws if the index is out of range.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1">
+ <summary>
+ Represents a dataframe, where each row has been mapped to an instance of a type.
+ 
+ Is backed by a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame"/>, and will become invalid when that dataframe is disposed.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1._Inner">
+ <summary>
+ The backing <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame"/>
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1._AllRows">
+ <summary>
+ An enumerable of all the rows in this DataFrame.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1._Rows">
+ <summary>
+ A utility accessor for rows in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.RowCount">
+ <summary>
+ Number of rows in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.ColumnCount">
+ <summary>
+ Number of columns in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Basis">
+ <summary>
+ Whether this DataFrame is addressable with base-0 or base-1 indexes.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.AllColumns">
+ <summary>
+ An enumerable of all the columns in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Columns">
+ <summary>
+ A utility accessor for columns in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Item(System.Int64)">
+ <summary>
+ Return the row at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetRow(System.Int64,`0@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Item(System.String)">
+ <summary>
+ Return the column with the given name.
+ 
+ Will throw if the name is not found.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetColumn(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Item(System.Int64,System.Int64)">
+ <summary>
+ Return the value at the given row and column indexes.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.Item(System.Int64,System.String)">
+ <summary>
+ Return the value at the given row index in the column with the given name.
+ 
+ Will throw if the index is out of bounds or the column is not found.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetColumn(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)">
+ <summary>
+ Sets column to the column at the given index.
+ 
+ Returns true if a column exists at that index, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetColumn(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Column@)">
+ <summary>
+ Sets column to the column with the given name.
+ 
+ Returns true if a column exists with that name, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetRow(System.Int64,`0@)">
+ <summary>
+ Sets row to the row at the given index.
+ 
+ Returns true if a row exists at that index, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue``1(System.Int64,System.Int64,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds, or the value cannot be coerced, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue(System.Int64,System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row given row index in the column with the given name.
+ 
+ If the passed index is out of bounds or no column with the given name exists, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyDataFrame`1.TryGetValue``1(System.Int64,System.String,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the given row index in the column with the given name.
+ 
+ If the passed index is out of bounds, no column with the given name exists, or the value cannot be coerced then false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerable`1">
+ <summary>
+ Allocation free enumerable for a proxied row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerable`1.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerator`1">
+ <summary>
+ Allocation free enumerator for a proxied row.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerator`1._CurrentProp">
+ <summary>
+ <see cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerator`1.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerator`1.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.ProxyRowEnumerator`1.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowValueEnumerator">
+ <summary>
+ Allocation free enumerator for a row.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowValueEnumerator._CurrentProp">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowValueEnumerator.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowValueEnumerator.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowValueEnumerator.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row">
+ <summary>
+ Represents a row of a DataFrame.
+ 
+ Is untyped, but returned values can be implicitly coerced to built-in types.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always match the number of columns in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/> of the column at the passed index (in the dataframe's basis).
+ 
+ If the passed index is out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ Sets value to the value of the column at the passed index (in the dataframe's basis), having coerced it to the appropriate type if possible.
+ 
+ If the passed index is out of bounds, or the coercing fails, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/> of the column with the passed name.
+ 
+ If the passed index is out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue``1(System.String,``0@)">
+ <summary>
+ Sets value to the value of the column with the given name, having coerced it to the appropriate type if possible.
+ 
+ If the passed index is out of bounds, or the coercing fails, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray">
+ <summary>
+ Converts this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ Throws if the row cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts this row to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)">
+ <summary>
+ Converts a subset of this row to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ Throws if the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts a subset of this row to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ Converts a subset of this row to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at the given index in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``1">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``2">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``3">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``4">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``5">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``6">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``7">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.Map``8">
+ <summary>
+ Maps this row to a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8"/>.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerable">
+ <summary>
+ Allocation free enumerable for a row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerable.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerator">
+ <summary>
+ Allocation free enumerator for a row.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerator._CurrentProp">
+ <summary>
+ <see cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerator.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerator.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowEnumerator.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowMap">
+ <summary>
+ Utility class for addressing a dataframe's rows.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowMap.Count">
+ <summary>
+ Number of rows in the dataframe
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.RowMap.Item(System.Int64)">
+ <summary>
+ Returns the row at the given index (in the dataframe's basis).
+ 
+ Throws if the index is out of range.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumnEnumerator`1">
+ <summary>
+ Allocation free enumerator for a typed column.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumnEnumerator`1._CurrentProp">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumnEnumerator`1.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumnEnumerator`1.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumnEnumerator`1.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1">
+ <summary>
+ Represents a column of a TypedDataFrame, or a column of a DataFrame that has been mapped.
+ 
+ Typing is validated eagerly, but coercision of particular values is done lazily.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this column in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Name">
+ <summary>
+ Returns the name of this column.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Type">
+ <summary>
+ Returns the .NET equivalent type of this column.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always match the number of rows in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Count">
+ <summary>
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ 
+ Throws if <see cref="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Length"/> will not fit in an int.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.IsReadOnly">
+ <summary>
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ 
+ Always return true.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Item(System.Int32)">
+ <summary>
+ &lt;see cref="this[long]"/&gt;
+ <see cref="T:System.Collections.Generic.IList`1"/>
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+ <param name="rowIndex">The index of the value to get, in the appropriate basis.</param>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray">
+ <summary>
+ Converts this column to an array of TColumnType.
+ 
+ Throws if the column cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange(System.Int64,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of TColumnType.
+ 
+ Throws if the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray(`0[]@)">
+ <summary>
+ Converts a subset of this column to an array of TColumnType.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ Throws if the column cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange(System.Int64,System.Int32,`0[]@)">
+ <summary>
+ Converts a subset of this column to an array of TColumnType.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ Converts a subset of this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at index 0 in the passed array reference, which is initialized or resized if needed.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange(System.Int64,System.Int32,`0[]@,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of TColumnType.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at the given index in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ Converts a subset of this column to an array of <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value"/>.
+ 
+ The column subset starts at the given index (in the dataframe's basis) and is of the given length.
+ 
+ The array is stored at the given index in the passed array reference, which is initialized or resized if needed.
+ 
+ Throws if the column cannot be coerced to the given type, or the subset cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.TryGetValue(System.Int64,`0@)">
+ <summary>
+ Sets value to the value of the row at the passed index (in the dataframe's basis).
+ 
+ If the passed index is out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray``1(``0[]@)">
+ <summary>
+ Converts this column to an array of the specified type.
+ 
+ Throws if the column cannot be coerced to the given type, or cannot fit in an array.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange``1(System.Int64,System.Int32,``0[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange``1(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetRange``1(System.Int64,System.Int32,``0[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.TryGetValue``1(System.Int64,``0@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Column.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.IndexOf(`0)">
+ <summary>
+ Finds a given value in the column.  Throws if the index will not fit in an int.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.LongIndexOf(`0)">
+ <summary>
+ Finds a given value in the column.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Insert(System.Int32,`0)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.RemoveAt(System.Int32)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Add(`0)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Clear">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Remove(`0)">
+ <summary>
+ Not supported.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.Contains(`0)">
+ <summary>
+ <see cref="M:System.Collections.Generic.ICollection`1.Contains(`0)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.CopyTo(`0[],System.Int32)">
+ <summary>
+ <see cref="M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn{`0})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn{`0})~`0[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedColumn`1.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowMap`1">
+ <summary>
+ Utility class for addressing a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1"/> rows.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowMap`1.Count">
+ <summary>
+ Number of rows in the dataframe
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowMap`1.Item(System.Int64)">
+ <summary>
+ Returns the row at the given index (in the dataframe's basis).
+ 
+ Throws if the index is out of range.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1">
+ <summary>
+ Represents a dataframe, where each column has been typed.
+ 
+ Is backed by a <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame"/>, and will become invalid when that dataframe is disposed.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1._Inner">
+ <summary>
+ The backing <see cref="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame"/>
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1._AllRows">
+ <summary>
+ An enumerable of all the rows in this DataFrame.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1._Rows">
+ <summary>
+ A utility accessor for rows in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.RowCount">
+ <summary>
+ Number of rows in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.ColumnCount">
+ <summary>
+ Number of columns in the DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.Basis">
+ <summary>
+ Whether this DataFrame is addressable with base-0 or base-1 indexes.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.AllColumns">
+ <summary>
+ An enumerable of all the columns in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.Columns">
+ <summary>
+ A utility accessor for columns in this DataFrame.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.Item(System.Int64,System.Int64)">
+ <summary>
+ Return the value at the given row and column indexes.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.Item(System.Int64,System.String)">
+ <summary>
+ Return the value at the given row index in the column with the given name.
+ 
+ Will throw if the index is out of bounds or the column is not found.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.#ctor(Microsoft.VisualBasic.DataStorage.FeatherFormat.DataFrame)">
+ <summary>
+ Creates a new TypedDateFrameBase
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue(System.Int64,System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue``1(System.Int64,System.Int64,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the row and column indexes passed in.
+ 
+ If the passed indexes are out of bounds, or the value cannot be coerced, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue(System.Int64,System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ Sets value to the value at the row given row index in the column with the given name.
+ 
+ If the passed index is out of bounds or no column with the given name exists, false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetValue``1(System.Int64,System.String,``0@)">
+ <summary>
+ Sets value to the value, coerced to the appropriate type, at the given row index in the column with the given name.
+ 
+ If the passed index is out of bounds, no column with the given name exists, or the value cannot be coerced then false is returned.  Otherwise, true is returned;
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.TryGetRow(System.Int64,`0@)">
+ <summary>
+ Sets row to the row at the given index.
+ 
+ Returns true if a row exists at that index, and false otherwise.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ Maps an untyped row to TRowType.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrame`1">
+ <summary>
+ Represents a dataframe with one typed column.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrame`1._Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrame`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType`2">
+ <summary>
+ Represents a dataframe with two typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType`2.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType`2.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType`2.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1`3">
+ <summary>
+ Represents a dataframe with three typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1`3.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1`3.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1`3.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType1`3.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4">
+ <summary>
+ Represents a dataframe with four typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4.Column4">
+ <summary>
+ The fourth column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType2`4.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5">
+ <summary>
+ Represents a dataframe with five typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.Column4">
+ <summary>
+ The fourth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.Column5">
+ <summary>
+ The fifth column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType3`5.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6">
+ <summary>
+ Represents a dataframe with six typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column4">
+ <summary>
+ The fourth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column5">
+ <summary>
+ The fifth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.Column6">
+ <summary>
+ The sixth column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType4`6.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7">
+ <summary>
+ Represents a dataframe with seven typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column4">
+ <summary>
+ The fourth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column5">
+ <summary>
+ The fifth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column6">
+ <summary>
+ The sixth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.Column7">
+ <summary>
+ The seventh column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType5`7.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8">
+ <summary>
+ Represents a dataframe with eight typed columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column1">
+ <summary>
+ The first column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column2">
+ <summary>
+ The second column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column3">
+ <summary>
+ The third column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column4">
+ <summary>
+ The fourth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column5">
+ <summary>
+ The fifth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column6">
+ <summary>
+ The sixth column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column7">
+ <summary>
+ The seventh column in the dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.Column8">
+ <summary>
+ The eigth column in the dataframe.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameType6`8.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedDataFrameBase`1.MapRow(Microsoft.VisualBasic.DataStorage.FeatherFormat.Row)"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowValueEnumerator">
+ <summary>
+ Allocation free enumerator for a typed row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowValueEnumerator.CurrentProp">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowValueEnumerator.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowValueEnumerator.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowValueEnumerator.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1">
+ <summary>
+ Represents a typed row with 1 column.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 1.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow`1.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRow{`0})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2">
+ <summary>
+ Represents a typed row with 2 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 2.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType`2.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType{`0,`1})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3">
+ <summary>
+ Represents a typed row with 3 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 3.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1`3.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType1{`0,`1,`2})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4">
+ <summary>
+ Represents a typed row with 4 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 4.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Column4">
+ <summary>
+ Returns the value of the 4th column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2`4.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType2{`0,`1,`2,`3})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5">
+ <summary>
+ Represents a typed row with 5 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 5.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Column4">
+ <summary>
+ Returns the value of the 4th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Column5">
+ <summary>
+ Returns the value of the 5th column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3`5.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType3{`0,`1,`2,`3,`4})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6">
+ <summary>
+ Represents a typed row with 6 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 6.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column4">
+ <summary>
+ Returns the value of the 4th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column5">
+ <summary>
+ Returns the value of the 5th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Column6">
+ <summary>
+ Returns the value of the 6th column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4`6.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType4{`0,`1,`2,`3,`4,`5})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7">
+ <summary>
+ Represents a typed row with 7 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 7.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column4">
+ <summary>
+ Returns the value of the 4th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column5">
+ <summary>
+ Returns the value of the 5th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column6">
+ <summary>
+ Returns the value of the 6th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Column7">
+ <summary>
+ Returns the value of the 7th column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5`7.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType5{`0,`1,`2,`3,`4,`5,`6})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8">
+ <summary>
+ Represents a typed row with 8 columns.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Index">
+ <summary>
+ Returns the Index (in the appropriate basis) of this row in the original dataframe.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Length">
+ <summary>
+ Returns the number of entries in the this column.
+ This will always be 8.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Item(System.Int64)">
+ <summary>
+ Return the value at the given index.
+ 
+ Will throw if the index is out of bounds.  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Item(System.String)">
+ <summary>
+ Return the value in the column with the given name.
+ 
+ Will throw if no column with that name exists .  Use <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/> for non-throwing gets.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column1">
+ <summary>
+ Returns the value of the 1st column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column2">
+ <summary>
+ Returns the value of the 2nd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column3">
+ <summary>
+ Returns the value of the 3rd column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column4">
+ <summary>
+ Returns the value of the 4th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column5">
+ <summary>
+ Returns the value of the 5th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column6">
+ <summary>
+ Returns the value of the 6th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column7">
+ <summary>
+ Returns the value of the 7th column in the row.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Column8">
+ <summary>
+ Returns the value of the 8th column in the row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.Equals(System.Object)">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.GetHashCode">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.ToString">
+ <summary>
+ <see cref="T:System.Object"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue``1(System.Int64,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue(System.String,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.TryGetValue``1(System.String,``0@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.TryGetValue(System.Int64,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value@)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.ToArray">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.GetRange(System.Int64,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.ToArray(Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.GetRange(System.Int64,System.Int32,Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]@,System.Int32)">
+ <summary>
+ <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.GetRange(System.Int64,System.Int32)"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6`8.op_Explicit(Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowType6{`0,`1,`2,`3,`4,`5,`6,`7})~Microsoft.VisualBasic.DataStorage.FeatherFormat.Value[]">
+ <summary>
+ Equivalent to <see cref="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.Row.ToArray"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerator`1">
+ <summary>
+ Allocation free enumerator for a typed row.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerator`1._CurrentProp">
+ <summary>
+ <see cref="P:System.Collections.Generic.IEnumerator`1.Current"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerator`1.Dispose">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerator`1.MoveNext">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerator`1.Reset">
+ <summary>
+ <see cref="T:System.Collections.Generic.IEnumerator`1"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerable`1">
+ <summary>
+ Allocation free enumerable for a typed row.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DataStorage.FeatherFormat.TypedRowEnumerable`1.GetEnumerator">
+ <summary>
+ <see cref="M:System.Collections.Generic.IEnumerable`1.GetEnumerator"/>
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value">
+ <summary>
+ Represents a value in a dataframe cell.
+ 
+ Depending on the underlying type, can be coerced to:
+   - (s)byte(?)
+   - (u)short(?)
+   - (u)int(?)
+   - (u)long(?)
+   - float(?)
+   - double(?)
+   - bool(?)
+   - string
+   - DateTime(?)
+   - DateTimeOffset(?)
+   - TimeSpan(?)
+   
+ Conversions can be performed with casts (which throw if the conversion is invalid) or the TryConvert methods which
+ return false if the conversion is invalid.
+ 
+ Conversions are done lazily.  Values just represent offsets into a dataframe.
+ 
+ Enumerations are a special case.  If the underyling type is a category, enums can be used if:
+   - the names of each enum field match a category name
+   - the valyues of each enum field match a category index
+   
+ However, no cast operators can be provided for enumerations.  Conversion must go through either an (int) cast or
+ a TryConvert call.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value.RowIndex">
+ <summary>
+ The row index, in the containing dataframe's basis, of this Value.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value.ColumnIndex">
+ <summary>
+ The column index, in the containing dataframe's basis, of this Value.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value.Type">
+ <summary>
+ The .NET type that best matches the underlying value of this Value.
+ 
+ Categories (which best mapped to enums) have a Type of System.Enum.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value.Row">
+ <summary>
+ The row that contains this value.
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.DataStorage.FeatherFormat.Value.Column">
+ <summary>
+ The column that contains this value.
+ </summary>
+</member>
+</members>
+</doc>
