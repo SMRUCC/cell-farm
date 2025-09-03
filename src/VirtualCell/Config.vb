@@ -3,7 +3,9 @@
 Public Class Config
 
     ''' <summary>
-    ''' the file path to the model files, usually be the relative path to this config file
+    ''' the file path to the model files, usually be the relative path to this config file.
+    ''' 
+    ''' multiple model file could be listed at here for run virtual cell simulation for synthetic microbiota.
     ''' </summary>
     ''' <returns></returns>
     Public Property models As String()

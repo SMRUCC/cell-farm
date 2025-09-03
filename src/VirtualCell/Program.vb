@@ -1,3 +1,4 @@
+Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.MIME.application.json
@@ -22,6 +23,7 @@ Module Program
     End Function
 
     <ExportAPI("--run")>
+    <Description("run the virtual cell simulation.")>
     <Usage("--run <config.json> [--time <default=2500> --resolution 5000 --output <result.dat>]")>
     Public Function Run(args As CommandLine) As Integer
         Dim config_file As String = args.Tokens(1)
@@ -30,6 +32,7 @@ Module Program
             .ReadAllText _
             .ParseJson _
             .CreateObject(Of Config)
+
 
     End Function
 End Module

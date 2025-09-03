@@ -1,5 +1,7 @@
 {
-    // the file path to the model files, usually be the relative path to this config file
+    // the file path to the model files, usually be the relative path to this config file.
+    //  
+    //  multiple model file could be listed at here for run virtual cell simulation for synthetic microbiota.
     "models":
     [
         "model.xml"
@@ -86,11 +88,11 @@
         // define of the cell initial status.
         "status":
         {
-            "ADENOSINE": 6716.202048918326,
-            "CYTIDINE": 3881.571965236949,
-            "GUANOSINE": 5177.406065714268,
-            "URIDINE": 6321.901486405126,
-            "THYMIDINE": 727.7759726754277
+            "ADENOSINE": 1130.5284039725216,
+            "CYTIDINE": 6936.534539301197,
+            "GUANOSINE": 1767.632640790023,
+            "URIDINE": 1777.0689641018719,
+            "THYMIDINE": 2966.0994061111005
         }
     },
     // parameter for configs the biological process kinetic behaviour
