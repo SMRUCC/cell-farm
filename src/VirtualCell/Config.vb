@@ -22,4 +22,9 @@ Public Class Config
     ''' <returns></returns>
     Public Property kinetics As FluxBaseline
 
+    Public Property iterations As Integer = 1000
+    Public Property resolution As Integer = 2000
+    Public Property tqdm_progress As Boolean = True
+    Public Property debug As Boolean = False
+
 End Class
