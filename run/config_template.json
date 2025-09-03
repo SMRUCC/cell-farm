@@ -88,11 +88,11 @@
         // define of the cell initial status.
         "status":
         {
-            "ADENOSINE": 1130.5284039725216,
-            "CYTIDINE": 6936.534539301197,
-            "GUANOSINE": 1767.632640790023,
-            "URIDINE": 1777.0689641018719,
-            "THYMIDINE": 2966.0994061111005
+            "ADENOSINE": 6151.183306309946,
+            "CYTIDINE": 3346.151510880399,
+            "GUANOSINE": 3104.8568352613865,
+            "URIDINE": 592.9690881599528,
+            "THYMIDINE": 8075.857780909099
         }
     },
     // parameter for configs the biological process kinetic behaviour
@@ -118,7 +118,11 @@
         "ribosomeDisassemblyCapacity": 5,
         // the cell copy number, which is used for reset the gene template number
         "numCells": 1000
-    }
+    },
+    "iterations": 1000,
+    "resolution": 2000,
+    "tqdm_progress": true,
+    "debug": false
 }
 
 
