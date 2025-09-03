@@ -285,6 +285,86 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  metabolite instance molecule object. 小分子化合物
  </summary>
 </member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable">
+ <summary>
+ the cellular mass environment 
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.CompartTable.Keys">
+ <summary>
+ get a collection of the cellular compartment id
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.CompartTable.variable(System.String,System.String,System.Double)">
+ <summary>
+ Create a mass factor link to the current mass environment
+ </summary>
+ <param name="mass"></param>
+ <param name="coefficient"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.GetMassValues">
+ <summary>
+ make a snapshot of current mass environment
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.Delete(System.String)">
+ <summary>
+ delete metabolites from all compartment
+ </summary>
+ <param name="key"></param>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.GetRole(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles)">
+ <summary>
+ filter all molecules with a specific <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles"/> filter condition.
+ </summary>
+ <param name="role"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable},System.Double,System.String)">
+ <summary>
+ refresh and make copy of the mass factor data to the simulator core links
+ </summary>
+ <param name="compounds"></param>
+ <param name="factor"></param>
+ <param name="compart_id"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.ComponentModel.EquaionModel.DefaultTypes.CompoundSpecieReference},Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
+ <summary>
+ create molecule variable in the flux model
+ </summary>
+ <param name="compounds"></param>
+ <param name="templates"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.variable(System.String,System.String,System.Double)">
+ <summary>
+ Create a mass factor link to the current mass environment
+ </summary>
+ <param name="mass"></param>
+ <param name="coefficient"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.GetByKey(System.Collections.Generic.IEnumerable{System.String},System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="keys">a collection of the molecule mass id</param>
+ <param name="compart_id"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.addNew(System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles,System.String)">
+ <summary>
+ 这个函数会先判断目标对象是否存在，只会添加不存在的对象
+ </summary>
+ <param name="entity"></param>
+ <returns>
+ this function returns the entity id back
+ </returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable">
  <summary>
  针对描述某一个生物学功能的参数变量

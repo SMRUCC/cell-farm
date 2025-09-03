@@ -100,7 +100,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  构建酶成熟的过程
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Extensions.variables(SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Molecule.Protein,System.String)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Extensions.variables(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Molecule.Protein,System.String)">
  <summary>
  Populate all the <paramref name="complex"/> related components.
  </summary>
@@ -389,86 +389,6 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  百分比接近于这个向量的百分比的时候就认为<see cref="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Status.name"/>状态或者细胞活动事件发生了
  </summary>
  <returns></returns>
-</member>
-<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable">
- <summary>
- the cellular mass environment 
- </summary>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.CompartTable.Keys">
- <summary>
- get a collection of the cellular compartment id
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.CompartTable.variable(System.String,System.String,System.Double)">
- <summary>
- Create a mass factor link to the current mass environment
- </summary>
- <param name="mass"></param>
- <param name="coefficient"></param>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetMassValues">
- <summary>
- make a snapshot of current mass environment
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.Delete(System.String)">
- <summary>
- delete metabolites from all compartment
- </summary>
- <param name="key"></param>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetRole(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles)">
- <summary>
- filter all molecules with a specific <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles"/> filter condition.
- </summary>
- <param name="role"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable},System.Double,System.String)">
- <summary>
- refresh and make copy of the mass factor data to the simulator core links
- </summary>
- <param name="compounds"></param>
- <param name="factor"></param>
- <param name="compart_id"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variables(System.Collections.Generic.IEnumerable{SMRUCC.genomics.ComponentModel.EquaionModel.DefaultTypes.CompoundSpecieReference},Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
- <summary>
- create molecule variable in the flux model
- </summary>
- <param name="compounds"></param>
- <param name="templates"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.variable(System.String,System.String,System.Double)">
- <summary>
- Create a mass factor link to the current mass environment
- </summary>
- <param name="mass"></param>
- <param name="coefficient"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.GetByKey(System.Collections.Generic.IEnumerable{System.String},System.String)">
- <summary>
- 
- </summary>
- <param name="keys">a collection of the molecule mass id</param>
- <param name="compart_id"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.MassTable.addNew(System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles,System.String)">
- <summary>
- 这个函数会先判断目标对象是否存在，只会添加不存在的对象
- </summary>
- <param name="entity"></param>
- <returns>
- this function returns the entity id back
- </returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.NamespaceDoc">
  <summary>
