@@ -1,11 +1,28 @@
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Serialization.JSON
+Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
 
 Module Program
 
     Public Function Main(args As String()) As Integer
-        Return GetType(Program).RunCLI(App.CommandLine)
+        Return GetType(Program).RunCLI(App.CommandLine, executeEmpty:=AddressOf getConfigTemplate)
+    End Function
+
+    Private Function getConfigTemplate() As Integer
+        Dim template As New Config With {
+            .models = {"model.xml"},
+            .mapping = New Definition With {
+                .AminoAcid = New AminoAcid,
+                .GenericCompounds = New Dictionary(Of String, GeneralCompound),
+                .NucleicAcid = New NucleicAcid,
+                .status = New Dictionary(Of String, Double)
+            }
+        }
+
+        Call Console.WriteLine(template.GetJson)
+
+        Return 0
     End Function
 
     <ExportAPI("--run")>
