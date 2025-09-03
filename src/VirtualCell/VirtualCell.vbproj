@@ -8,7 +8,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\core\Bio.Assembly\biocore-netcore5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\engine\BootstrapLoader\BootstrapLoader.NET5.vbproj" />
     <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\engine\Dynamics\Dynamics.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\engine\IO\GCMarkupLanguage\GCMarkupXML.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\engine\IO\Raw\vcXML.NET5.vbproj" />
+    <ProjectReference Include="..\..\..\GCModeller\src\GCModeller\engine\Model\Model.Core.NET5.vbproj" />
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\CloudKit\Centos\Centos.NET5.vbproj" />
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\computing\Parallel\parallel-netcore5.vbproj" />
     <ProjectReference Include="..\..\..\GCModeller\src\runtime\Darwinism\src\networking\networking.vbproj" />
