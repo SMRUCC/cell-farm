@@ -42,6 +42,7 @@ Module Program
         Dim modelData As CellularModule
         Dim processList As New List(Of Channel)
         Dim cellular_id As New List(Of String)
+        Dim modelList As New List(Of CellularModule)
 
         If config.models.IsNullOrEmpty Then
             Call "no virtual cell model was provided for run the experiment!".error
@@ -62,6 +63,7 @@ Module Program
             model = name.LoadXml(Of VirtualCell)
             modelData = model.CreateModel
             cellular_id.Add(modelData.CellularEnvironmentName)
+            modelList.Add(modelData)
 
             With loader.CreateEnvironment(modelData)
                 Call processList.AddRange(.processes)
@@ -72,7 +74,10 @@ Module Program
                                  config.iterations,
                                  config.resolution,
                                  config.tqdm_progress,
-                                 config.debug)
+                                 config.debug) With {
+            .models = modelList _
+                .ToArray
+        }
 
 
     End Function
