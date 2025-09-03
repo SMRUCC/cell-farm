@@ -1,1 +1,3 @@
-../host/VirtualCell > ./config_template.json
+@echo off
+
+"../host/VirtualCell" > ./config_template.json

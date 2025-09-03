@@ -1,0 +1,122 @@
+{
+    // the file path to the model files, usually be the relative path to this config file
+    "models":
+    [
+        "model.xml"
+    ],
+    // some specific biological process in the runtime compiler required some metabolite 
+    //  for links, example as ATP, O2, H2O. 
+    //  this config value provides the compound id mapping to such special metabolites
+    "mapping":
+    {
+        "ATP": "ATP",
+        "ADP": "ADP",
+        "Water": "WATER",
+        "Oxygen": "OXYGEN-MOLECULE",
+        "Ammonia": null,
+        // nucleotide metabolite id mapping for construct of the RNA molecule in the transcription process.
+        "NucleicAcid":
+        {
+            "A": "ADENOSINE",
+            "U": "URIDINE",
+            "G": "GUANOSINE",
+            "C": "CYTIDINE",
+            "T": "THYMIDINE"
+        },
+        // amino acid metabolite id mapping for construct of the polypeptide in translation process
+        "AminoAcid":
+        {
+            // L-Alanine
+            "A": "L-ALPHA-ALANINE",
+            "B": "Protein-L-asx",
+            // L-Arginine
+            "R": "ARG",
+            // L-Asparagine
+            "N": "ASN",
+            // L-Aspartic acid
+            "D": "L-ASPARTATE",
+            // L-Cysteine
+            "C": "CYS",
+            // L-Glutamic acid
+            "E": "GLT",
+            // L-Glutamine
+            "Q": "GLN",
+            // Glycine
+            "G": "GLY",
+            // L-Histidine
+            "H": "HIS",
+            // L-Isoleucine
+            "I": "ILE",
+            // L-Leucine
+            "L": "LEU",
+            // L-Lysine
+            "K": "LYS",
+            // L-Methionine
+            "M": "MET",
+            // L-Phenylalanine
+            "F": "PHE",
+            // L-Proline
+            "P": "PRO",
+            // L-Serine
+            "S": "SER",
+            // L-Threonine
+            "T": "THR",
+            // L-Tryptophan
+            "W": "TRP",
+            // L-Tyrosine
+            "Y": "TYR",
+            // L-Valine
+            "V": "VAL",
+            // L-Selenocysteine
+            "U": "L-SELENOCYSTEINE",
+            // L-Pyrrolysine
+            "O": "Protein-L-pyrrolysine",
+            "Z": "Protein-L-glx"
+        },
+        // define the id mapping to some general compounds
+        "GenericCompounds":
+        {
+            "Peptides": "Protein",
+            "DNA-Holder": "DNA",
+            "RNA-Holder": "RNA",
+            "Compounds-Holder-Class": "Compound"
+        },
+        // the compartment id of the Culture medium
+        "CultureMedium": "Extracellular",
+        // define of the cell initial status.
+        "status":
+        {
+            "ADENOSINE": 6716.202048918326,
+            "CYTIDINE": 3881.571965236949,
+            "GUANOSINE": 5177.406065714268,
+            "URIDINE": 6321.901486405126,
+            "THYMIDINE": 727.7759726754277
+        }
+    },
+    // parameter for configs the biological process kinetic behaviour
+    "kinetics":
+    {
+        // min rate of the transcription of gene template to RNA
+        "transcriptionBaseline": 100,
+        // the max capacity of the transcription process
+        "transcriptionCapacity": 1000,
+        // 对于翻译过程，因为需要有核糖体来介导，所以就不设置最低下限了
+        "translationCapacity": 1000,
+        "proteinMatureBaseline": 1000,
+        "proteinMatureCapacity": 10000,
+        "productInhibitionFactor": 1.25E-20,
+        // min kinetic rate for tRNA charged with amino acid
+        "tRNAChargeBaseline": 1,
+        "tRNAChargeCapacity": 10,
+        "RNADegradationBaseline": 1,
+        "RNADegradationCapacity": 10,
+        "ribosomeAssemblyBaseline": 3,
+        "ribosomeDisassemblyBaseline": 3,
+        "ribosomeAssemblyCapacity": 10,
+        "ribosomeDisassemblyCapacity": 5,
+        // the cell copy number, which is used for reset the gene template number
+        "numCells": 1000
+    }
+}
+
+
