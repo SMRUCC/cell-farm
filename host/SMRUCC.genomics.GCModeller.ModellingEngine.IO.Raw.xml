@@ -114,6 +114,16 @@ SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
  Data storage adapter driver
  </summary>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.StorageDriver.#ctor(System.String,SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine,System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="output">the file path for save the experiment data.</param>
+ <param name="engine"></param>
+ <param name="graph_debug">
+ write the cellular graph into the result data file if this options is config as TRUE. debug used only
+ </param>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer">
  <summary>
  The GCModeller raw data writer
