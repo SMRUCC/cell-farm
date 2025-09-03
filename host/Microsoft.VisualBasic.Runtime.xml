@@ -11156,6 +11156,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.op_Implicit(System.ValueTuple{System.String,`0})~Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{`0}">
+ <summary>
+ Convert from tuple
+ </summary>
+ <param name="tuple"></param>
+ <returns></returns>
+ 
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.PropertyValue`1">
  <summary>
  The <see cref="T:System.Reflection.PropertyInfo"/> like definition of the extension property.
@@ -13755,6 +13763,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <param name="saveTo$"></param>
  <param name="encoding"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.AsTable``2(System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
+ <summary>
+ tuple set to dictionary table
+ </summary>
+ <typeparam name="K"></typeparam>
+ <typeparam name="V"></typeparam>
+ <param name="tuples"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.KeyItem``1(System.Collections.Generic.IEnumerable{``0},System.String)">

@@ -6,22 +6,6 @@ SMRUCC.genomics.GCModeller.CompilerServices
 </name>
 </assembly>
 <members>
-<member name="T:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources">
-<summary>
-  A strongly-typed resource class, for looking up localized strings, etc.
-</summary>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources.ResourceManager">
-<summary>
-  Returns the cached ResourceManager instance used by this class.
-</summary>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.CompilerServices.My.Resources.Resources.Culture">
-<summary>
-  Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
-</summary>
-</member>
 <member name="T:SMRUCC.genomics.GCModeller.CompilerServices.Compiler`1">
  <summary>
  Model file of class type <see cref="T:SMRUCC.genomics.GCModeller.CompilerServices.ModelBaseType"></see> compiler.
