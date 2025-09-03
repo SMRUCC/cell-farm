@@ -6,7 +6,7 @@ VirtualCell
 </name>
 </assembly>
 <members>
-<member name="P:VirtualCell.Config.models">
+<member name="P:VirtualCellHost.Config.models">
  <summary>
  the file path to the model files, usually be the relative path to this config file.
  
@@ -14,7 +14,7 @@ VirtualCell
  </summary>
  <returns></returns>
 </member>
-<member name="P:VirtualCell.Config.mapping">
+<member name="P:VirtualCellHost.Config.mapping">
  <summary>
  some specific biological process in the runtime compiler required some metabolite 
  for links, example as ATP, O2, H2O. 
@@ -22,7 +22,7 @@ VirtualCell
  </summary>
  <returns></returns>
 </member>
-<member name="P:VirtualCell.Config.kinetics">
+<member name="P:VirtualCellHost.Config.kinetics">
  <summary>
  parameter for configs the biological process kinetic behaviour
  </summary>

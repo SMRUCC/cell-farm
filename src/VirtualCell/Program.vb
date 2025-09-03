@@ -1,7 +1,9 @@
 Imports System.ComponentModel
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.application.json
+Imports SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
 
 Module Program
@@ -32,7 +34,24 @@ Module Program
             .ReadAllText _
             .ParseJson _
             .CreateObject(Of Config)
+        Dim model As VirtualCell = Nothing
 
+        If config.models.IsNullOrEmpty Then
+            Call "no virtual cell model was provided for run the experiment!".error
+            Return 404
+        End If
+
+        For Each name As String In config.models
+            If Not name.FileExists Then
+                name = config_file.ParentPath & "/" & name
+            End If
+            If Not name.FileExists Then
+                Call $"missing virtual cell model file: {name}".error
+                Return 404
+            End If
+
+            model = name.LoadXml(Of VirtualCell)
+        Next
 
     End Function
 End Module
