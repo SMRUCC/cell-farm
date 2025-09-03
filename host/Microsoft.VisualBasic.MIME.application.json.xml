@@ -164,7 +164,7 @@ Microsoft.VisualBasic.MIME.application.json
  </summary>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.Add(System.String,System.Object)">
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.Add(System.String,System.Object,System.String)">
  <summary>
  
  </summary>
@@ -172,6 +172,13 @@ Microsoft.VisualBasic.MIME.application.json
  <param name="value">
  .NET clr runtime value, this parameter value should be a literal constant
  </param>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.GetCommentText(System.String)">
+ <summary>
+ get comment string about the associated property key, used for generates the Hjson style json output.
+ </summary>
+ <param name="key"></param>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.WriteBuffer(System.IO.FileStream)">
  <summary>
@@ -430,7 +437,7 @@ Microsoft.VisualBasic.MIME.application.json
  2. 然后添加属性
  </remarks>
 </member>
-<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONSerializer.GetJson``1(``0,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONSerializer.GetJson``1(``0,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
  <summary>
  
  </summary>
@@ -439,6 +446,28 @@ Microsoft.VisualBasic.MIME.application.json
  <param name="maskReadonly">
  如果这个参数为真，则不会序列化只读属性
  </param>
+ <param name="comment">
+ add property xml comment summary as comment into the generated json text? 
+ this option usually be apply to generates the config json file.
+ </param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions.comment">
+ <summary>
+ show xml comment text in json? this option usually be applied for generates the json config file
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions.digest">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions.createUniqueKey">
+ <summary>
+ create unique reference key for make internal schema cache reference 
+ </summary>
  <returns></returns>
 </member>
 <member name="F:Microsoft.VisualBasic.MIME.application.json.JSONWriter.unescape">
@@ -496,7 +525,7 @@ Microsoft.VisualBasic.MIME.application.json
  <param name="schema"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectSerializer.populateObjectJson(System.Type,System.Object,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectParser.populateObjectJson(System.Type,System.Object,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
  <summary>
  
  </summary>

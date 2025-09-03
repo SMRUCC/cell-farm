@@ -11036,6 +11036,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  just used for tagged on the <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/> property
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicMetadataAttribute.GetMetadata(System.Collections.Generic.IEnumerable{System.Reflection.PropertyInfo})">
+ <summary>
+ find the first <see cref="T:System.Reflection.PropertyInfo"/> which is tagged with <see cref="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicMetadataAttribute"/>
+ </summary>
+ <param name="properties"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicMetadataAttribute.GetMetadata(System.Type)">
  <summary>
  get the target <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/> its <see cref="T:System.Reflection.PropertyInfo"/>
@@ -11155,14 +11162,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="value"></param>
  <param name="table"></param>
  <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.op_Implicit(System.ValueTuple{System.String,`0})~Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{`0}">
- <summary>
- Convert from tuple
- </summary>
- <param name="tuple"></param>
- <returns></returns>
- 
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.PropertyValue`1">
  <summary>
@@ -13763,15 +13762,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <param name="saveTo$"></param>
  <param name="encoding"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.AsTable``2(System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
- <summary>
- tuple set to dictionary table
- </summary>
- <typeparam name="K"></typeparam>
- <typeparam name="V"></typeparam>
- <param name="tuples"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.KeyItem``1(System.Collections.Generic.IEnumerable{``0},System.String)">
