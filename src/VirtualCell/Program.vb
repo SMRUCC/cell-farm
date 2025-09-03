@@ -7,6 +7,7 @@ Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core
+Imports SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular
 
 Module Program
@@ -49,6 +50,8 @@ Module Program
             Return 404
         End If
 
+        Dim symbolNames As New Dictionary(Of String, String)
+
         For Each name As String In config.models
             If Not name.FileExists Then
                 name = config_file.ParentPath & "/" & name
@@ -65,6 +68,10 @@ Module Program
             cellular_id.Add(modelData.CellularEnvironmentName)
             modelList.Add(modelData)
 
+            For Each idName As KeyValuePair(Of String, String) In model.GetMetaboliteSymbolNames
+                symbolNames(idName.Key) = idName.Value
+            Next
+
             With loader.CreateEnvironment(modelData)
                 Call processList.AddRange(.processes)
             End With
@@ -79,6 +86,12 @@ Module Program
                 .ToArray
         }
 
+        Using storage As New StorageDriver(output, engine, graph_debug:=True)
+            Call storage.SetSymbolNames(symbolNames)
+            Call engine.AttachBiologicalStorage(storage)
+            Call engine.MakeNetworkSnapshot(storage.GetStream)
 
+            Return engine.Run()
+        End Using
     End Function
 End Module
