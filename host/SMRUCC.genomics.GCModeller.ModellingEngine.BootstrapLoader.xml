@@ -260,6 +260,24 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.NucleicAcid">
+ <summary>
+ nucleotide metabolite id mapping for construct of the RNA molecule in the transcription process.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.AminoAcid">
+ <summary>
+ amino acid metabolite id mapping for construct of the polypeptide in translation process
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.GenericCompounds">
+ <summary>
+ define the id mapping to some general compounds
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.CultureMedium">
  <summary>
  the compartment id of the Culture medium
@@ -268,15 +286,25 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
 </member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.status">
  <summary>
- 对细胞的初始状态的定义
- 初始物质浓度
+ define of the cell initial status.
  </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.MetaCyc(System.Collections.Generic.IEnumerable{System.String},System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="allCompounds"></param>
+ <param name="initMass">NaN for random value</param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.KEGG(System.Collections.Generic.IEnumerable{System.String},System.Double)">
  <summary>
  Get the KEGG compound <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition"/>
  </summary>
+ <param name="initMass">
+ NaN for random value
+ </param>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline">
@@ -293,9 +321,27 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.transcriptionCapacity">
+ <summary>
+ the max capacity of the transcription process
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.translationCapacity">
  <summary>
  对于翻译过程，因为需要有核糖体来介导，所以就不设置最低下限了
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.tRNAChargeBaseline">
+ <summary>
+ min kinetic rate for tRNA charged with amino acid
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.numCells">
+ <summary>
+ the cell copy number, which is used for reset the gene template number
  </summary>
  <returns></returns>
 </member>
