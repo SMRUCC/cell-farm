@@ -41,6 +41,7 @@ Module Program
         Dim massTable As New MassTable
         Dim modelData As CellularModule
         Dim processList As New List(Of Channel)
+        Dim cellular_id As New List(Of String)
 
         If config.models.IsNullOrEmpty Then
             Call "no virtual cell model was provided for run the experiment!".error
@@ -60,13 +61,14 @@ Module Program
 
             model = name.LoadXml(Of VirtualCell)
             modelData = model.CreateModel
+            cellular_id.Add(modelData.CellularEnvironmentName)
 
             With loader.CreateEnvironment(modelData)
                 Call processList.AddRange(.processes)
             End With
         Next
 
-        Dim engine As New Engine(config.mapping, config.kinetics, Nothing,
+        Dim engine As New Engine(config.mapping, config.kinetics, cellular_id.ToArray,
                                  config.iterations,
                                  config.resolution,
                                  config.tqdm_progress,
