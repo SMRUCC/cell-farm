@@ -61,12 +61,13 @@ Module Program
                 Return 404
             End If
 
-            Dim loader As New Loader(config.mapping, config.kinetics, massTable:=massTable)
-
             model = name.LoadXml(Of VirtualCell)
             modelData = model.CreateModel
             cellular_id.Add(modelData.CellularEnvironmentName)
             modelList.Add(modelData)
+            massTable.SetDefaultCompartmentId(modelData.CellularEnvironmentName)
+
+            Dim loader As New Loader(config.mapping, config.kinetics, massTable:=massTable)
 
             For Each idName As KeyValuePair(Of String, String) In model.GetMetaboliteSymbolNames
                 symbolNames(idName.Key) = idName.Value
