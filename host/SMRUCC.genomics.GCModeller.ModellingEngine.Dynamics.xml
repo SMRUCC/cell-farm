@@ -204,6 +204,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  this mass factor value
  </summary>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Factor.#ctor(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Factor)">
+ <summary>
+ make value copy of the mass factor model
+ </summary>
+ <param name="copy"></param>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Factor.#ctor(System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles,System.String)">
  <summary>
  create a new mass factor inside the runtime environment with value assigned ZERO.
