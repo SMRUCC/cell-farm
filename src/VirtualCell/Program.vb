@@ -45,6 +45,9 @@ Module Program
         Dim cellular_id As New List(Of String)
         Dim modelList As New List(Of CellularModule)
 
+        If output.ExtensionSuffix <> "vcellpack" Then
+            Call $"The output result file '{output}' is not has the '*.vcellPack' extension name!".warning
+        End If
         If config.models.IsNullOrEmpty Then
             Call "no virtual cell model was provided for run the experiment!".error
             Return 404
