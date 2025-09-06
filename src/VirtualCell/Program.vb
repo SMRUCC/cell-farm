@@ -95,7 +95,12 @@ Module Program
                                  config.tqdm_progress,
                                  config.debug) With {
             .models = modelList _
-                .ToArray
+                .ToArray,
+            .fluxIndex = fluxIndex _
+                .ToDictionary(Function(a) a.Key,
+                              Function(a)
+                                  Return a.Value.ToArray
+                              End Function)
         }
 
         Call engine.SetModel(massTable, processList)
