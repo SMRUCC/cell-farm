@@ -30,10 +30,10 @@ Module Program
 
     <ExportAPI("--run")>
     <Description("run the virtual cell simulation.")>
-    <Usage("--run <config.json> [--time <default=2500> --resolution 5000 --output <result.dat>]")>
+    <Usage("--run <config.json> [--time <default=2500> --resolution 5000 --output <result.vcellPack>]")>
     Public Function Run(args As CommandLine) As Integer
         Dim config_file As String = args.Tokens(1)
-        Dim output As String = args("--output") Or config_file.ChangeSuffix(".dat")
+        Dim output As String = args("--output") Or config_file.ChangeSuffix(".vcellPack")
         Dim config As Config = config_file _
             .ReadAllText _
             .ParseJson _
