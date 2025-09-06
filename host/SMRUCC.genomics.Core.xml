@@ -13444,6 +13444,16 @@ to take away yo [rest of string was truncated]&quot;;.
  </param>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceByLength(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
+ <summary>
+ Cut sequence by given left loci and segment length.
+ </summary>
+ <param name="seq"></param>
+ <param name="left"></param>
+ <param name="length"></param>
+ <param name="tag$">the tag information about this sequence segment.</param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.SequenceModel.CutSequence.ReadComplement(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
  <summary>
  将目标序列之中的给定区域的序列剪下，并返回该片段的互补序列
