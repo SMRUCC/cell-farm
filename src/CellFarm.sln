@@ -696,8 +696,8 @@ Global
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.Docker|x86.Build.0 = Release|Any CPU
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|Any CPU.Build.0 = Release|Any CPU
-		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x64.ActiveCfg = Release|Any CPU
-		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x64.Build.0 = Release|Any CPU
+		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x64.ActiveCfg = Release|x64
+		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x64.Build.0 = Release|x64
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x86.ActiveCfg = Release|Any CPU
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.gcmodeller_desktop|x86.Build.0 = Release|Any CPU
 		{0B4E91CC-77FC-C3C7-55E3-7CC4B4C0A748}.LipidSearch|Any CPU.ActiveCfg = Debug|Any CPU
@@ -1086,8 +1086,8 @@ Global
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.Docker|x86.Build.0 = Release|Any CPU
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|Any CPU.ActiveCfg = Release|Any CPU
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|Any CPU.Build.0 = Release|Any CPU
-		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x64.ActiveCfg = Release|Any CPU
-		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x64.Build.0 = Release|Any CPU
+		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x64.ActiveCfg = Release|x64
+		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x64.Build.0 = Release|x64
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x86.ActiveCfg = Release|Any CPU
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.gcmodeller_desktop|x86.Build.0 = Release|Any CPU
 		{2A7C87AF-634C-53CC-2971-1B32B92A9F2B}.LipidSearch|Any CPU.ActiveCfg = Debug|Any CPU
