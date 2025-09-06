@@ -51,6 +51,7 @@ Module Program
         End If
 
         Dim symbolNames As New Dictionary(Of String, String)
+        Dim fluxIndex As New Dictionary(Of String, List(Of String))
 
         For Each name As String In config.models
             If Not name.FileExists Then
@@ -76,6 +77,16 @@ Module Program
             With loader.CreateEnvironment(modelData)
                 Call processList.AddRange(.processes)
             End With
+
+            Dim modelFluxIndex = loader.GetFluxIndex
+
+            For Each part_key As String In modelFluxIndex.Keys
+                If Not fluxIndex.ContainsKey(part_key) Then
+                    Call fluxIndex.Add(part_key, New List(Of String))
+                End If
+
+                Call fluxIndex(part_key).AddRange(modelFluxIndex(part_key))
+            Next
         Next
 
         Dim engine As New Engine(config.mapping, config.kinetics, cellular_id.ToArray,
