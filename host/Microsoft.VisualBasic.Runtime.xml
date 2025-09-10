@@ -19492,6 +19492,26 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="frameSize"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.Rotate(System.Double[]@,System.Double[]@,System.Double)">
+ <summary>
+ 绕多边形自身中心旋转指定弧度
+ </summary>
+ <param name="theta">旋转角度（弧度），逆时针为正</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.Translate(System.Double[]@,System.Double[]@,System.Double,System.Double)">
+ <summary>
+ 平移多边形
+ </summary>
+ <param name="tx">X轴平移量</param>
+ <param name="ty">Y轴平移量</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.Scale(System.Double[]@,System.Double[]@,System.Double,System.Double)">
+ <summary>
+ 缩放多边形
+ </summary>
+ <param name="sx">X轴缩放因子</param>
+ <param name="sy">Y轴缩放因子</param>
+</member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.Intersections">
  <summary>
  几何体之间的关系类型
@@ -19532,6 +19552,36 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns>
  observed is the calculated moran-I value
  </returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.theta">
+ <summary>
+ angle for rotation
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.tx">
+ <summary>
+ translate x
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.ty">
+ <summary>
+ translate y
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.scalex">
+ <summary>
+ scale x
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.scaley">
+ <summary>
+ scale y
+ </summary>
+ <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.Line2D">
  <summary>
@@ -19940,7 +19990,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="points"></param>
 </member>
-<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.#ctor(System.Drawing.RectangleF)">
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.#ctor(System.Drawing.RectangleF[])">
  <summary>
  
  </summary>

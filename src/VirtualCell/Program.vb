@@ -1,4 +1,5 @@
 Imports System.ComponentModel
+Imports System.IO
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.MIME.application.json
@@ -7,6 +8,7 @@ Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core
+Imports SMRUCC.genomics.GCModeller.ModellingEngine.IO
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular
 
@@ -28,12 +30,28 @@ Module Program
         Return 0
     End Function
 
+    <ExportAPI("--convert")>
+    <Usage("--convert --data <result.vcelldata> [--output <output.vcellPack>]")>
+    Public Function ConvertMatrix(data As String, args As CommandLine)
+        Dim output As String = args("--output") Or data.ChangeSuffix("vcellPack")
+        Dim rawdata As New Reader(data.OpenReadonly)
+
+        Using save As Stream = output.Open(FileMode.OpenOrCreate, doClear:=True, [readOnly]:=False),
+            matrixPack = New VCellMatrixWriter(save)
+
+            Call rawdata.LoadIndex()
+            Call matrixPack.ConvertPackData(rawdata)
+        End Using
+
+        Return 0
+    End Function
+
     <ExportAPI("--run")>
     <Description("run the virtual cell simulation.")>
-    <Usage("--run <config.json> [--time <default=2500> --resolution 5000 --output <result.vcellPack>]")>
+    <Usage("--run <config.json> [--time <default=2500> --resolution 5000 --output <result.vcelldata>]")>
     Public Function Run(args As CommandLine) As Integer
         Dim config_file As String = args.Tokens(1)
-        Dim output As String = args("--output") Or config_file.ChangeSuffix(".vcellPack")
+        Dim output As String = args("--output") Or config_file.ChangeSuffix(".vcelldata")
         Dim config As Config = config_file _
             .ReadAllText _
             .ParseJson _
@@ -45,8 +63,8 @@ Module Program
         Dim cellular_id As New List(Of String)
         Dim modelList As New List(Of CellularModule)
 
-        If output.ExtensionSuffix <> "vcellpack" Then
-            Call $"The output result file '{output}' is not has the '*.vcellPack' extension name!".warning
+        If output.ExtensionSuffix <> "vcelldata" Then
+            Call $"The output result file '{output}' is not has the '*.vcelldata' extension name!".warning
         End If
         If config.models.IsNullOrEmpty Then
             Call "no virtual cell model was provided for run the experiment!".error

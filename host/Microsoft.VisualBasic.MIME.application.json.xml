@@ -510,12 +510,14 @@ Microsoft.VisualBasic.MIME.application.json
 </member>
 <member name="M:Microsoft.VisualBasic.MIME.application.json.Deserializer.CreateObject``1(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonElement,System.Boolean)">
  <summary>
- 
+ Cast the json element data as specific clr type object
  </summary>
  <typeparam name="T">add know types for object by using the <see cref="T:System.Runtime.Serialization.KnownTypeAttribute"/>.</typeparam>
  <param name="json"></param>
  <param name="decodeMetachar"></param>
- <returns></returns>
+ <returns>
+ this function will returns nothing if the input json element is nothing
+ </returns>
 </member>
 <member name="M:Microsoft.VisualBasic.MIME.application.json.Deserializer.CreateObject(Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject,Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph,System.Type,System.Boolean)">
  <summary>
