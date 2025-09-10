@@ -6,7 +6,7 @@
     },
     "file-conversion": {
       "commandName": "Project",
-      "commandLineArgs": "--convert --data \"F:\\ecoli\\ecoli.vcelldata\""
+      "commandLineArgs": "--convert --data \"F:\\ecoli\\config.vcelldata\""
     }
   }
 }
