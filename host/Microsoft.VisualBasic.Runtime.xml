@@ -23144,6 +23144,91 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <typeparam name="T"></typeparam>
  <remarks>这个对象的用途和<see cref="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1"/>对象的用途是一致的，只不过差异在于所想要表达的寓意上面</remarks>
 </member>
+<member name="T:Microsoft.VisualBasic.Text.Parser.Scanner">
+ <summary>
+ 模拟Java Scanner类功能的VB.NET类。
+ 注意：此类未实现Java Scanner的所有方法，仅提供核心功能。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.#ctor(System.IO.TextReader)">
+ <summary>
+ 构造函数，基于TextReader创建VBNetScanner。
+ </summary>
+ <param name="reader">输入的TextReader对象</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.#ctor">
+ <summary>
+ 从控制台标准输入创建VBNetScanner。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.#ctor(System.String)">
+ <summary>
+ 从字符串创建VBNetScanner。
+ </summary>
+ <param name="input">输入的字符串</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.UseDelimiter(System.String)">
+ <summary>
+ 设置分隔符（支持正则表达式）。
+ </summary>
+ <param name="pattern">分隔符的正则表达式模式</param>
+ <returns>返回当前VBNetScanner实例，支持链式调用</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.HasNext">
+ <summary>
+ 检查是否还有下一个令牌（使用当前分隔符）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.Next">
+ <summary>
+ 读取下一个令牌（字符串）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.HasNextLine">
+ <summary>
+ 检查是否还有下一行。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.NextLine">
+ <summary>
+ 读取下一行内容。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.NextInt">
+ <summary>
+ 读取下一个整数。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.HasNextInt">
+ <summary>
+ 检查是否还有下一个整数。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.NextDouble">
+ <summary>
+ 读取下一个双精度浮点数。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.HasNextDouble">
+ <summary>
+ 检查是否还有下一个双精度浮点数。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.Close">
+ <summary>
+ 关闭扫描器并释放资源。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.Dispose">
+ <summary>
+ 释放资源。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.Parser.Scanner.ReadNextLine">
+ <summary>
+ 尝试读取下一行并按分隔符拆分。
+ </summary>
+</member>
 <member name="F:Microsoft.VisualBasic.Text.Parser.TryParseOptions.Empty">
  <summary>
  Function should returns empty string when try parse failed.
