@@ -88,6 +88,13 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <param name="reaction"></param>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Extensions.jsonView(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Channel)">
+ <summary>
+ json string of <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.FluxEdge"/>
+ </summary>
+ <param name="flux"></param>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.AdditiveControls">
  <summary>
  基于累加效应的动力学模型
