@@ -95,6 +95,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <param name="flux"></param>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.FluxEdge.regulation">
+ <summary>
+ regulation or enzyme catalysis
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.AdditiveControls">
  <summary>
  基于累加效应的动力学模型

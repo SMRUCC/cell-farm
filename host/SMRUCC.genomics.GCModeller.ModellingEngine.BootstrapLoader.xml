@@ -73,6 +73,13 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader.create(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule)">
+ <summary>
+ Create the flux network in the target cellular module
+ </summary>
+ <param name="cell"></param>
+ <returns></returns>
+</member>
 <member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MassLoader.proteinComplex">
  <summary>
  link mapping from protein to protein complex
@@ -80,7 +87,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.MassLoader.doMassLoadingOn(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule)">
  <summary>
- create mass table from the virtual cell model
+ Create mass table from the virtual cell model
  </summary>
  <param name="cell"></param>
 </member>
