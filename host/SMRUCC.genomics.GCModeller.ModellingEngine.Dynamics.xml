@@ -127,6 +127,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  对反应过程的某一个方向的控制效应
  </summary>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Controls.coefficient">
+ <summary>
+ the regulation coefficient factor based on various related regulation factors
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Controls.baseline">
  <summary>
  没有任何调控的时候的基准反应单位，因为有些过程是不需要调控以及催化的
@@ -137,6 +143,13 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <summary>
  如果抑制的总量大于激活的总量，那么这个调控的反应过程将不会进行
  </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Controls.op_Explicit(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Controls)~System.Double">
+ <summary>
+ Convert the control model as coefficient factor number
+ </summary>
+ <param name="ctl"></param>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.KineticsControls">
