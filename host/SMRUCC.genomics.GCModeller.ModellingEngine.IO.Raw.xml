@@ -144,13 +144,39 @@ SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
  </summary>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer.Write(System.String,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double},System.Boolean)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer.WriteMassData(System.String,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double})">
  <summary>
  
  </summary>
  <param name="module">the molecule data types</param>
  <param name="time">the time tick point</param>
  <param name="snapshot">The snapshot value after the loop cycle in <paramref name="time"/> point</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Writer.WriteFluxData(System.String,System.Double,System.Collections.Generic.Dictionary{System.String,System.Double})">
+ <summary>
+ 
+ </summary>
+ <param name="module">the molecule data types</param>
+ <param name="time">the time tick point</param>
+ <param name="snapshot">The snapshot value after the loop cycle in <paramref name="time"/> point</param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.IO.VCellMatrix">
+ <summary>
+ the in-memory model of the virtual cell result data pack
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.VCellMatrix.expressionData">
+ <summary>
+ the molecule expression data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.IO.VCellMatrix.fluxomics">
+ <summary>
+ the biological process activity expression data
+ </summary>
  <returns></returns>
 </member>
 <member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.IO.vcXML.Reader.index">
