@@ -101,6 +101,14 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.FluxEdge.FactorIds">
+ <summary>
+ populate all related factor in current flux model:
+ 
+ left + right + regulation
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.AdditiveControls">
  <summary>
  基于累加效应的动力学模型

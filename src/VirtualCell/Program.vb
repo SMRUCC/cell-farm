@@ -126,7 +126,7 @@ Module Program
 
         Call engine.SetModel(massTable, processList)
 
-        Using storage As New StorageDriver(output, engine, graph_debug:=True)
+        Using storage As New StorageDriver(output, engine, graph_debug:=False)
             Call storage.SetSymbolNames(symbolNames)
             Call engine.AttachBiologicalStorage(storage)
             Call engine.MakeNetworkSnapshot(storage.GetStream)
