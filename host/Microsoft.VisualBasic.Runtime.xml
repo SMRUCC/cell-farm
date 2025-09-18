@@ -15130,11 +15130,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  Transform a numeric value in this <see cref="T:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange"/> into 
  target numeric range: ``<paramref name="valueRange"/>``.
- (将当前的范围内的一个实数映射到另外的一个范围内的实数区间之中)
  </summary>
- <param name="x#">A numeric value in this <see cref="T:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange"/></param>
+ <param name="x">A numeric value in this <see cref="T:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange"/></param>
  <param name="valueRange"></param>
  <returns></returns>
+ <remarks>
+ (将当前的范围内的一个实数映射到另外的一个范围内的实数区间之中)
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange.ScaleMapping(System.Double,Microsoft.VisualBasic.ComponentModel.Ranges.Model.IntRange)">
  <summary>
