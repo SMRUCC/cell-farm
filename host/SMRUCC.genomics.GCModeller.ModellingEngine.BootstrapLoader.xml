@@ -107,7 +107,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  构建酶成熟的过程
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Extensions.variables(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Molecule.Protein,System.String)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Extensions.variables(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Molecule.Protein,System.String,Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
  <summary>
  Populate all the <paramref name="complex"/> related components.
  </summary>
