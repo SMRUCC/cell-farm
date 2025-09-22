@@ -126,7 +126,9 @@ Module Program
                               End Function)
         }
 
-        Call engine.SetModel(massTable, processList)
+        Call engine _
+            .SetModel(massTable, processList) _
+            .MakeKnockout(config.knockouts)
 
         Using storage As New StorageDriver(output, engine, graph_debug:=False)
             Call storage.SetSymbolNames(symbolNames)

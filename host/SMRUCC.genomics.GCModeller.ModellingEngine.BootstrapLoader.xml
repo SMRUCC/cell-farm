@@ -435,6 +435,14 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  <param name="driver"></param>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.MakeKnockout(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ should be call after the model was loaded, via function <see cref="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.SetModel(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable,System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Channel})"/> or 
+ <see cref="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.LoadModel(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule,SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader@,System.Boolean)"/>
+ </summary>
+ <param name="knockouts"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.Reset">
  <summary>
  Reset the reactor engine. (Do reset of the biological mass contents)
