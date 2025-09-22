@@ -38,5 +38,6 @@ Public Class Config
     ''' </summary>
     ''' <returns></returns>
     Public Property copy_number As Dictionary(Of String, Integer)
+    Public Property cultureMedium As Dictionary(Of String, Double)
 
 End Class

@@ -346,12 +346,6 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
-<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.FluxBaseline.numCells">
- <summary>
- the cell copy number, which is used for reset the gene template number
- </summary>
- <returns></returns>
-</member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.NucleicAcid.A">
  <summary>
  
@@ -433,6 +427,20 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  Attach the biological data storage driver
  </summary>
  <param name="driver"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.SetCopyNumbers(System.Int32)">
+ <summary>
+ set all genes its copy number to a given value
+ </summary>
+ <param name="copyNum"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.SetCopyNumbers(System.Collections.Generic.Dictionary{System.String,System.Int32})">
+ <summary>
+ set gene copy numbers
+ </summary>
+ <param name="copyNum">a tuple list of [gene_id => copyNumber]</param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Engine.Engine.MakeKnockout(System.Collections.Generic.IEnumerable{System.String})">
