@@ -28,5 +28,11 @@ VirtualCell
  </summary>
  <returns></returns>
 </member>
+<member name="P:VirtualCellHost.Config.knockouts">
+ <summary>
+ a list of gene ids for knockout, example as ["b0002","b0008"]
+ </summary>
+ <returns></returns>
+</member>
 </members>
 </doc>

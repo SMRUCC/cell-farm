@@ -22,7 +22,9 @@ Module Program
         Dim template As New Config With {
             .models = {"model.xml"},
             .mapping = Definition.MetaCyc({"ADENOSINE", "CYTIDINE", "GUANOSINE", "URIDINE", "THYMIDINE"}, Double.NaN),
-            .kinetics = New FluxBaseline
+            .kinetics = New FluxBaseline,
+            .debug = False,
+            .knockouts = {"b0002", "b0008"}
         }
 
         Call Console.WriteLine(template.GetJson(indent:=True, comment:=True))

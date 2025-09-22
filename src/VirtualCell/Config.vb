@@ -27,4 +27,10 @@ Public Class Config
     Public Property tqdm_progress As Boolean = True
     Public Property debug As Boolean = False
 
+    ''' <summary>
+    ''' a list of gene ids for knockout, example as ["b0002","b0008"]
+    ''' </summary>
+    ''' <returns></returns>
+    Public Property knockouts As String()
+
 End Class
