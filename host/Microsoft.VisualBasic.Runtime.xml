@@ -22641,6 +22641,35 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns></returns>
  <remarks></remarks>
 </member>
+<member name="T:Microsoft.VisualBasic.Text.UnbufferedStreamReader">
+ <summary>
+ 提供无缓冲的按行读取文本流的功能。
+ 用于避免 StreamReader 内部缓冲区导致流位置超出实际内容末尾的问题。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.UnbufferedStreamReader.#ctor(System.IO.Stream,System.Text.Encoding,System.Boolean)">
+ <summary>
+ 初始化 UnbufferedStreamReader 类的新实例。
+ </summary>
+ <param name="stream">要读取的流。</param>
+ <param name="encoding">要使用的字符编码。默认为 UTF-8。</param>
+ <param name="leaveOpen">在释放 Reader 后是否保持流打开。默认为 False。</param>
+ <exception cref="T:System.ArgumentNullException">stream 为 Nothing。</exception>
+ <exception cref="T:System.ArgumentException">流不支持读取。</exception>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.UnbufferedStreamReader.ReadLine">
+ <summary>
+ 从当前流中读取一行字符。
+ </summary>
+ <returns>当前行内容；如果已到达流末尾，则为 Nothing。</returns>
+ <exception cref="T:System.ObjectDisposedException">方法在流被释放后调用。</exception>
+</member>
+<member name="M:Microsoft.VisualBasic.Text.UnbufferedStreamReader.Dispose(System.Boolean)">
+ <summary>
+ 释放由 UnbufferedStreamReader 使用的所有资源。
+ </summary>
+ <param name="disposing">为 True 则释放托管资源和非托管资源；为 False 则仅释放非托管资源。</param>
+</member>
 <member name="T:Microsoft.VisualBasic.Text.UnbufferedStringReader">
  <summary>
  Represents a reader that can read a sequential series of characters.
@@ -25355,6 +25384,48 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="url"></param>
  <returns></returns>
  
+</member>
+<member name="T:Microsoft.VisualBasic.FileIO.FileModeDescriptor">
+ <summary>
+ Specifies how the operating system should open a file.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.FileIO.FileModeDescriptor.Open">
+ <summary>
+ (r) Specifies that the operating system should open an existing file. The ability
+     to open the file is dependent on the value specified by the System.IO.FileAccess
+     enumeration. A System.IO.FileNotFoundException exception is thrown if the file
+     does not exist.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.FileIO.FileModeDescriptor.OpenOrCreate">
+ <summary>
+ (w) Specifies that the operating system should open a file if it exists; otherwise,
+     a new file should be created. If the file is opened with FileAccess.Read, System.Security.Permissions.FileIOPermissionAccess.Read
+     permission is required. If the file access is FileAccess.Write, System.Security.Permissions.FileIOPermissionAccess.Write
+     permission is required. If the file is opened with FileAccess.ReadWrite, both
+     System.Security.Permissions.FileIOPermissionAccess.Read and System.Security.Permissions.FileIOPermissionAccess.Write
+     permissions are required.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.FileIO.FileModeDescriptor.Truncate">
+ <summary>
+ (w+) Specifies that the operating system should open an existing file. When the file
+     is opened, it should be truncated so that its size is zero bytes. This requires
+     System.Security.Permissions.FileIOPermissionAccess.Write permission. Attempts
+     to read from a file opened with FileMode.Truncate cause an System.ArgumentException
+     exception.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.FileIO.FileModeDescriptor.Append">
+ <summary>
+ (a+) Opens the file if it exists and seeks to the end of the file, or creates a new
+     file. This requires System.Security.Permissions.FileIOPermissionAccess.Append
+     permission. FileMode.Append can be used only in conjunction with FileAccess.Write.
+     Trying to seek to a position before the end of the file throws an System.IO.IOException
+     exception, and any attempt to read fails and throws a System.NotSupportedException
+     exception.
+ </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.FileIO.CopyDirectoryAction.Copy(System.String,System.String,System.Boolean)">
  <summary>
@@ -28947,7 +29018,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="deli">
  a delimiter string for join multiple flag enumeration value theirs enum string
  </param>
- <returns></returns>
+ <returns>
+ this function always returns a non-null string value:
+ 
+ for thoese enum member which it has been tagged with <see cref="T:System.ComponentModel.DescriptionAttribute"/>, 
+ the description data string will returns from this function;
+ otherwise the string value from the enum member its toString() function will be returned.
+ </returns>
  <remarks>
  this extension function has an internal cache table for get the description
  text of a given enum value
