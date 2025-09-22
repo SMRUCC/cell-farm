@@ -32,6 +32,11 @@ Public Class Config
     ''' </summary>
     ''' <returns></returns>
     Public Property knockouts As String()
+
+    ''' <summary>
+    ''' the cell copy number, which is used for reset the gene template number
+    ''' </summary>
+    ''' <returns></returns>
     Public Property copy_number As Dictionary(Of String, Integer)
 
 End Class
