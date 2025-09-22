@@ -32,5 +32,6 @@ Public Class Config
     ''' </summary>
     ''' <returns></returns>
     Public Property knockouts As String()
+    Public Property copy_number As Dictionary(Of String, Integer)
 
 End Class
