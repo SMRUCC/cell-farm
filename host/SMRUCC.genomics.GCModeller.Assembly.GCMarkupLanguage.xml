@@ -345,6 +345,13 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.MetabolismStructure.GetImpactedMetabolicNetwork(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="protein_id"></param>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup">
  <summary>
  the reaction collection
