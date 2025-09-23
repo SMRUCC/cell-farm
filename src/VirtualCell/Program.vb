@@ -128,7 +128,12 @@ Module Program
 
         Call engine _
             .SetModel(massTable, processList) _
-            .MakeKnockout(config.knockouts)
+            .MakeKnockout(config.knockouts) _
+            .SetCultureMedium(config.cultureMedium)
+
+        If Not config.copy_number.IsNullOrEmpty Then
+
+        End If
 
         Using storage As New StorageDriver(output, engine, graph_debug:=False)
             Call storage.SetSymbolNames(symbolNames)
