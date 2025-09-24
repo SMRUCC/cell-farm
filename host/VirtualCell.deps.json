@@ -46,10 +46,10 @@
           "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558",
           "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference": "1.0.0.0",
           "SMRUCC.genomics.Core.Reference": "6.3.256.3655",
-          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.9396.40034",
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.9398.36577",
           "SMRUCC.genomics.GCModeller.CompilerServices.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference": "5.0.1.2389",
-          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9396.40035",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9398.36575",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference": "5.0.1.2389",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference": "1.0.0.0",
@@ -1395,10 +1395,10 @@
           }
         }
       },
-      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9396.40034": {
+      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9398.36577": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.dll": {
-            "assemblyVersion": "5.33.9396.40034",
+            "assemblyVersion": "5.33.9398.36577",
             "fileVersion": "5.33.0.0"
           }
         }
@@ -1419,10 +1419,10 @@
           }
         }
       },
-      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9396.40035": {
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9398.36575": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.dll": {
-            "assemblyVersion": "5.33.9396.40035",
+            "assemblyVersion": "5.33.9398.36575",
             "fileVersion": "5.33.0.0"
           }
         }
@@ -2263,7 +2263,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9396.40034": {
+    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9398.36577": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2278,7 +2278,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9396.40035": {
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9398.36575": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
