@@ -350,6 +350,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.SetDefaultCompartmentId(System.String)">
+ <summary>
+ set current mass environment its <see cref="F:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.defaultCompartment"/> label as given input <paramref name="id"/>.
+ </summary>
+ <param name="id"></param>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.Delete(System.String)">
  <summary>
  delete metabolites from all compartment
