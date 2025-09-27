@@ -6335,6 +6335,14 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <param name="name">函数名</param>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.MathExpression.ExpressionEngine.SetSymbol(System.String,System.Double)">
+ <summary>
+ set the symbol value
+ </summary>
+ <param name="symbol"></param>
+ <param name="value"></param>
+ <returns></returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Math.Scripting.MathExpression.Impl.BinaryExpression">
  <summary>
  left op right
@@ -6358,6 +6366,13 @@ Microsoft.VisualBasic.Math.Core
  <summary>
  the abstract math expression
  </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.MathExpression.Impl.Expression.Parse(System.String)">
+ <summary>
+ Parse a given math formula expression code as the math expression model
+ </summary>
+ <param name="str"></param>
+ <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Scripting.MathExpression.Impl.Factorial">
  <summary>
@@ -6437,6 +6452,31 @@ Microsoft.VisualBasic.Math.Core
 <member name="T:Microsoft.VisualBasic.Math.Scripting.NamedVectorFactory">
  <summary>
  Factory for <see cref="T:System.Collections.Generic.Dictionary`2"/> to <see cref="T:Microsoft.VisualBasic.Math.LinearAlgebra.Vector"/>
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.formula">
+ <summary>
+ the value expression of the target symbol: symbol = formula_expression
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.dependency">
+ <summary>
+ a collection of the <see cref="P:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.symbol"/> dependency in the 
+ current <see cref="P:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.formula"/> expression.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.Sort(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Math.Scripting.FormulaDependency})">
+ <summary>
+ sort of the given formula list via the formula <see cref="P:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.dependency"/>
+ </summary>
+ <param name="formulas"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.FormulaDependency.Visit(Microsoft.VisualBasic.Math.Scripting.FormulaDependency@,System.Collections.Generic.Dictionary{System.String,Microsoft.VisualBasic.Math.Scripting.FormulaDependency}@,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}@,System.Collections.Generic.Dictionary{System.String,System.Boolean}@,System.Collections.Generic.Dictionary{System.String,System.Boolean}@,System.Collections.Generic.List{Microsoft.VisualBasic.Math.Scripting.FormulaDependency}@)">
+ <summary>
+ 深度优先访问节点，检测循环依赖
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Scripting.ParameterExpressionScript">
@@ -6537,6 +6577,30 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <param name="name"></param>
  <param name="expr"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.ScriptEngine.ParseExpression(System.String,System.Boolean)">
+ <summary>
+ Parse the given expression string as the math expression
+ </summary>
+ <param name="expression"></param>
+ <param name="throwEx">
+ throw exception if the parser error occured.
+ </param>
+ <returns>
+ this function will returns nothing if the expression parser error and also not throw exception
+ </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Scripting.ScriptEngine.CheckFormulaDependency(System.Collections.Generic.Dictionary{System.String,Microsoft.VisualBasic.Math.Scripting.MathExpression.Impl.Expression},Microsoft.VisualBasic.ComponentModel.Collection.Index{System.String})">
+ <summary>
+ check of the formula symbol dependency and sort the formulas in asc order by dependency list
+ </summary>
+ <param name="formulas">
+ a collection of the symbol value assigned expression: [symbol &lt;- expression]
+ </param>
+ <param name="ignores"></param>
+ <returns>
+ the given formula dependency result list is sorted via the dependency order
+ </returns>
 </member>
 <member name="P:Microsoft.VisualBasic.Math.Scripting.IVector`1.Item(System.String)">
  <summary>
