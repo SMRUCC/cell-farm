@@ -69,7 +69,7 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  基因组之中的基因发生了缺失突变
  </summary>
  <param name="model"></param>
- <param name="geneList$"></param>
+ <param name="knockoutGeneList$"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.OperationExtensions.Trim(SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.VirtualCell)">
