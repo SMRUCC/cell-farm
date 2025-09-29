@@ -46,6 +46,8 @@ Module Program
             Call matrixPack.ConvertPackData(rawdata)
         End Using
 
+        Call Console.WriteLine($"File Conversion Success: {output.GetFullPath} !")
+
         Return 0
     End Function
 
