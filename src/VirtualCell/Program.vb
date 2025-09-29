@@ -49,6 +49,8 @@ Module Program
         Return 0
     End Function
 
+    ' virtualcell --run F:/ecoli/config.json /@set tqdm=false
+
     <ExportAPI("--run")>
     <Description("run the virtual cell simulation.")>
     <Usage("--run <config.json> [--output <result.vcelldata>]")>
