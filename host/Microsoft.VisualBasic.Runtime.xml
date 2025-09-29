@@ -4631,6 +4631,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="current">The current progress.</param>
  <param name="total">The total number of iterations expected. This will update the internal total counter given in the constructor.</param>
 </member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Tqdm.ProgressBar.Progress(System.Int32,System.String)">
+ <summary>
+ adapter interface for <see cref="T:Microsoft.VisualBasic.CommandLine.InteropService.Pipeline.RunSlavePipeline.SetProgressEventHandler"/>
+ </summary>
+ <param name="current"></param>
+ <param name="message"></param>
+</member>
 <member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Tqdm.ProgressBar.Progress(System.Int32)">
  <summary>
  Updates the progress bar with the current progress.
