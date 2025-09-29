@@ -63,6 +63,10 @@ Module Program
         Dim modelData As CellularModule
         Dim modelList As New List(Of CellularModule)
 
+        If Not App.EnableTqdm Then
+            Call "print feature of tqdm progressbar in console has been disable.".debug
+        End If
+
         If output.ExtensionSuffix <> "vcelldata" Then
             Call $"The output result file '{output}' is not has the '*.vcelldata' extension name!".warning
         End If
