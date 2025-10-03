@@ -36663,10 +36663,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 <member name="M:Microsoft.VisualBasic.Language.i32.op_UnaryPlus(Microsoft.VisualBasic.Language.i32)">
  <summary>
  Auto increment value with step 1 and then returns the previous value.
- (自增1然后返回之前的值)
  </summary>
  <param name="x"></param>
- <returns></returns>
+ <returns>自增1然后返回之前的值</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Language.i32.op_Addition(Microsoft.VisualBasic.Language.i32,System.Int32)">
  <summary>
