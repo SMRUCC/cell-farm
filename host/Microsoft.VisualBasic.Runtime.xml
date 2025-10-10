@@ -16760,6 +16760,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  (线程不安全的图片数据对象)
  </remarks>
 </member>
+<member name="F:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.handle">
+ <summary>
+ BitmapData
+ </summary>
+</member>
 <member name="F:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.memoryBuffer">
  <summary>
  current bitmap data is construct from a pixel data array, not read from memory via pointer.
@@ -28904,13 +28909,19 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="P:Microsoft.VisualBasic.Emit.Marshal.Span`1.Length">
  <summary>
- the span size
+ current span view size
  </summary>
  <returns></returns>
 </member>
 <member name="P:Microsoft.VisualBasic.Emit.Marshal.Span`1.ArrayLength">
  <summary>
  the length of the entire array
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Emit.Marshal.Span`1.OffsetEnds">
+ <summary>
+ the offset ends in the raw input buffer
  </summary>
  <returns></returns>
 </member>
@@ -33434,7 +33445,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  @author  Josh Bloch
  @author  Neal Gafter </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Language.Java.Collections.binarySearch``1(Microsoft.VisualBasic.Language.List{``0},``0)">
+<member name="M:Microsoft.VisualBasic.Language.Java.Collections.binarySearch``1(``0[],``0)">
  <summary>
  Searches the specified list for the specified object using the binary
  search algorithm.  The list must be sorted into ascending order
@@ -33469,7 +33480,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  list listIterator.
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Language.Java.Collections.binarySearch``1(Microsoft.VisualBasic.Language.List{``0},``0,System.Collections.Generic.IComparer{``0})">
+<member name="M:Microsoft.VisualBasic.Language.Java.Collections.binarySearch``1(``0[],``0,System.Collections.Generic.IComparer{``0})">
  <summary>
  Searches the specified list for the specified object using the binary
  search algorithm.  The list must be sorted into ascending order
