@@ -75,6 +75,51 @@ Microsoft.VisualBasic.Math.Core
  <returns></returns>
  
 </member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.Center">
+ <summary>
+ 椭圆的中心点（h,k）
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.SemiMajorAxis">
+ <summary>
+ 长半轴
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.SemiMinorAxis">
+ <summary>
+ 短半轴
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.RotationAngle">
+ <summary>
+ 旋转角度（弧度）
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.Coefficients">
+ <summary>
+ 原始系数向量 [A, B, C, D, E, F]
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.BuildDesignMatrix(System.Drawing.PointF[])">
+ <summary>
+ 构建设计矩阵 M = [x², xy, y², x, y, 1]
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.ExtractEllipseParameters(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
+ <summary>
+ 从系数向量提取椭圆几何参数[1](@ref)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.NormalizeAngle(System.Double)">
+ <summary>
+ 规范化角度到 [0, π) 范围
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.Extensions.subscriptN(System.Int32)">
  <summary>
  Convert an integer into a multi-character subscript.
