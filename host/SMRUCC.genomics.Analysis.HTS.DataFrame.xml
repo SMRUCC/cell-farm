@@ -441,9 +441,22 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  with the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.expression"/> rows.
  </returns>
 </member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.GetIndex">
+ <summary>
+ get sample index
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.IndexOf(SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup)">
+ <summary>
+ get the ordinal offset in the matrix of the samples inside the given sample group data
+ </summary>
+ <param name="sampleGroup"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.Project(System.String[])">
  <summary>
- make column projection via <see cref="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.TakeSamples(SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow[],System.Int32[],System.Boolean)"/>.
+ make column sample data projection via <see cref="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.TakeSamples(SMRUCC.genomics.Analysis.HTS.DataFrame.DataFrameRow[],System.Int32[],System.Boolean)"/>.
  </summary>
  <param name="sampleNames"></param>
  <returns></returns>
