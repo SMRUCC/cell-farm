@@ -16873,6 +16873,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  helper function for hqx algorithm module
  </remarks>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.Unpack(System.Drawing.Color[0:,0:],System.Drawing.Size)">
+ <summary>
+ argb channels=4
+ </summary>
+ <param name="pixels"></param>
+ <param name="size"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.WriteARGBStream(System.UInt32[])">
  <summary>
  helper function for hqx algorithm module
@@ -16952,6 +16960,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="offset%"></param>
  <returns></returns>
  
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapChannels.RGB(Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer,System.Boolean)">
+ <summary>
+ split the bitmap into rgb channels
+ </summary>
+ <param name="bitmap"></param>
+ <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapReader">
  <summary>
@@ -17055,9 +17070,29 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  https://stackoverflow.com/questions/3115076/adjust-the-contrast-of-an-image-in-c-sharp-efficiently
  </remarks>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale.AdjustContrast(Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer@,System.Double)">
+ <summary>
+ Adjust the contrast of an image.
+ (调整图像的对比度)
+ </summary>
+ <param name="destPixels">target bitmap data buffer for make contrast processing.</param>
+ <param name="contrast">
+ Used to set the contrast (-100 to 100)
+ </param>
+ <remarks>
+ https://stackoverflow.com/questions/3115076/adjust-the-contrast-of-an-image-in-c-sharp-efficiently
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale.Grayscale(Microsoft.VisualBasic.Imaging.Image)">
  <summary>
  convert color bitmaps to grayscale.(灰度图)
+ </summary>
+ <param name="source"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale.Grayscale(Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer@,System.Single,System.Single,System.Single)">
+ <summary>
+ 将彩色图转换为灰度图
  </summary>
  <param name="source"></param>
  <returns></returns>
@@ -17458,6 +17493,30 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <remarks>
  All color channel in this color class should be in value range of ``[0,1]``.
  </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.CMYKColor.C">
+ <summary>
+ cyan
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.CMYKColor.M">
+ <summary>
+ magenta
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.CMYKColor.Y">
+ <summary>
+ yellow
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.CMYKColor.K">
+ <summary>
+ key (black)
+ </summary>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Imaging.CMYKColor.ToString">
  <summary>
