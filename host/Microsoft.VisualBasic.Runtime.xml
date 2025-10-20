@@ -19656,6 +19656,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Transform.ApplyTo(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D)">
+ <summary>
+ Apply the current transformation parameters to the target polygon object.
+ </summary>
+ <param name="polygon"></param>
+ <returns></returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.Line2D">
  <summary>
  This <code>Line2D</code> represents a line segment in {@code (x,y)}

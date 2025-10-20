@@ -112,7 +112,7 @@ Microsoft.VisualBasic.Math.Core
 </member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.ExtractEllipseParameters(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
  <summary>
- 从系数向量提取椭圆几何参数[1](@ref)
+ 从系数向量提取椭圆几何参数
  </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.NormalizeAngle(System.Double)">
