@@ -19421,6 +19421,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="y2#"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.DistanceTo``1(``0,``0)">
+ <summary>
+ Euclidean distance
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.Distance(System.Decimal,System.Decimal,System.Decimal,System.Decimal)">
  <summary>
  计算两个二维坐标的欧几里得距离
@@ -19624,6 +19633,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns>
  observed is the calculated moran-I value
  </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Math2D.Transform">
+ <summary>
+ 2D transformation parameters
+ </summary>
 </member>
 <member name="P:Microsoft.VisualBasic.Imaging.Math2D.Transform.theta">
  <summary>
@@ -20028,9 +20042,16 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  this object is a vector of x and y or a collection of the 2d points.
  </remarks>
 </member>
-<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.length">
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.Item(System.Int32)">
  <summary>
- the size of the polygon points collection
+ get/set the point data by a given index
+ </summary>
+ <param name="index"></param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.centroid">
+ <summary>
+ get centroid point of this 2d polygon shape
  </summary>
  <returns></returns>
 </member>
@@ -20043,6 +20064,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  [right, bottom]
  </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.length">
+ <summary>
+ the size of the polygon points collection
+ </summary>
+ <returns></returns>
 </member>
 <member name="P:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.height">
  <summary>
@@ -20201,6 +20228,26 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  quadrant 4 = 270,360 ~ -270, -360 ~ 0, 90
  </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Math2D.RasterData">
+ <summary>
+ 栅格化结果容器：每个栅格存储该区域内点的列表
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Rasterizer.Rasterize(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D,System.Double)">
+ <summary>
+ 对Polygon2D点云进行栅格化
+ </summary>
+ <param name="pointCloud">输入点云数据</param>
+ <param name="resolution">栅格分辨率（每个栅格的边长）</param>
+ <returns>栅格化结果，包含每个栅格内的点集</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Rasterizer.EstimateResolution(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D,System.Int32)">
+ <summary>
+ 计算点云的平均最近邻距离，作为分辨率估算的基础
+ </summary>
+ <param name="pointCloud">输入的点云数据</param>
+ <returns>估算出的平均点间距（分辨率）</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.VectorMath2D">
  <summary>
