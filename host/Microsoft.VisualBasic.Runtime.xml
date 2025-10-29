@@ -10006,6 +10006,23 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="source"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.DistanceMap`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`0,System.Double})">
+ <summary>
+ NxN distance matrix
+ </summary>
+ <param name="points"></param>
+ <param name="metric">
+ 具有对称性的距离计算公式，通常为欧几里得距离
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.DistanceMap`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{`0},System.Func{`0,`0,System.Double})">
+ <summary>
+ MxN distance matrix
+ </summary>
+ <param name="pts1"></param>
+ <param name="pts2"></param>
+ <param name="metric">具有对称性的距离计算公式，通常为欧几里得距离</param>
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Algorithm.base.SlideWindowExtensions">
  <summary>
  Create a collection of slide Windows data for the target collection object.
@@ -10025,7 +10042,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.SlideWindowExtensions.SlideWindows``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Boolean)">
  <summary>
- Create a collection of slide Windows data for the target collection object.(创建一个滑窗集合)
+ Create a collection of slide Windows data for the target collection object.
  </summary>
  <typeparam name="T"></typeparam>
  <param name="data"></param>
@@ -10033,7 +10050,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="offset">在序列之上移动的步长</param>
  <returns></returns>
  <param name="extTails">引用类型不建议打开这个参数</param>
- <remarks></remarks>
+ <remarks>(创建一个滑窗集合)</remarks>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Algorithm.base.SlideWindow`1">
  <summary>
@@ -12514,15 +12531,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <remarks>(这个对象具有一个用于指明该对象在列表对象中的位置的对象句柄值)</remarks>
 </member>
-<member name="T:Microsoft.VisualBasic.ComponentModel.IAddress`1">
- <summary>
- This object gets a object handle value to indicated that the position this object exists 
- in the list collection structure. 
- (这个对象具有一个用于指明该对象在列表对象中的位置的对象句柄值)
- </summary>
- <remarks></remarks>
-</member>
-<member name="P:Microsoft.VisualBasic.ComponentModel.IAddress`1.Address">
+<member name="P:Microsoft.VisualBasic.ComponentModel.IIndexOf`1.Address">
  <summary>
  The ID that this object in a list instance.
  (本对象在一个列表对象中的位置索引号) 
@@ -12530,6 +12539,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <value></value>
  <returns></returns>
  <remarks>因为索引号在赋值之后是不可以被修改了的，所以这个属性使用ReadOnly</remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.IAddress`1">
+ <summary>
+ This object gets a object handle value to indicated that the position this object exists 
+ in the list collection structure. 
+ (这个对象具有一个用于指明该对象在列表对象中的位置的对象句柄值)
+ </summary>
+ <remarks></remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.CapacityQueue`1.#ctor(System.Int32)">
  <summary>
@@ -13012,6 +13029,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Deque.ReverseQueue`1.Reverse">
  <summary>
  returns 
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Generic.BucketSet`1.ForEachBucket">
+ <summary>
+ populate each pack data from the bucket data
  </summary>
  <returns></returns>
 </member>
@@ -16812,6 +16835,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  may be not matched with width * pixel_size on .net 4.8 runtime
  </returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.White(System.Int32,System.Int32)">
+ <summary>
+ Create a new blank bitmap data with all pixel fill with color white
+ </summary>
+ <param name="width"></param>
+ <param name="height"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.GetPixelChannels">
  <summary>
  get the pixel channels in memory buffer
@@ -19202,6 +19233,60 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  postscript
  </summary>
 </member>
+<member name="T:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform">
+ <summary>
+ 2D Affine Transformation parameters.
+ This represents a more general transform than similarity, allowing for non-uniform scaling and shearing.
+ x' = ax + by + c
+ y' = dx + ey + f
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.a">
+ <summary>
+ The ‘a’ parameter in x’ = ax + by + c
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.b">
+ <summary>
+ The ‘b’ parameter in x’ = ax + by + c
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.c">
+ <summary>
+ The ‘c’ parameter (translation x) in x’ = ax + by + c
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.d">
+ <summary>
+ The ‘d’ parameter in y’ = dx + ey + f
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.e">
+ <summary>
+ The ‘e’ parameter in y’ = dx + ey + f
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.f">
+ <summary>
+ The ‘f’ parameter (translation y) in y’ = dx + ey + f
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.#ctor">
+ <summary>
+ Creates an identity (no-op) transform.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform.ApplyToPoint(System.Drawing.PointF)">
+ <summary>
+ Applies this transform to a point.
+ </summary>
+</member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.GeometryMath">
  <summary>
  https://stackoverflow.com/questions/30080/how-to-know-if-a-line-intersects-a-plane-in-c-basic-2d-geometry
@@ -19633,6 +19718,18 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns>
  observed is the calculated moran-I value
  </returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform">
+ <summary>
+ make geometry transform of a given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D"/> with given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Transform"/> or <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform"/> parameters.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform.ApplyTo(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D)">
+ <summary>
+ Apply the current transformation parameters to the target polygon object.
+ </summary>
+ <param name="polygon"></param>
+ <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.Transform">
  <summary>
@@ -20175,6 +20272,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  Calculates the area of a simple polygon using the shoelace algorithm.
  
  https://myengineeringworld.net/2014/06/shoelace-polygon-area-excel.html
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D.GetFillPoints">
+ <summary>
+ Get scan line result for fill the space inside of this polygon object
  </summary>
  <returns></returns>
 </member>
@@ -26776,6 +26879,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="v"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.Correlations.DistanceMethods.SquareDistance(System.Double[],System.Double[])">
+ <summary>
+ SUM((a - v) ^ 2)
+ </summary>
+ <param name="v"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.Correlations.DistanceMethods.SquareDistance(Microsoft.VisualBasic.Math.IVector,System.Double[])">
  <summary>
  SUM((a - v) ^ 2)
@@ -26785,6 +26895,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Correlations.DistanceMethods.SquareDistance(Microsoft.VisualBasic.Emit.Marshal.Span{System.Double},Microsoft.VisualBasic.Emit.Marshal.Span{System.Double})">
+ <summary>
+ Reduced Euclidean distance
+ </summary>
+ <remarks>
+ SUM((x - y) ^ 2)
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Correlations.DistanceMethods.SquareDistance(Microsoft.VisualBasic.Imaging.Layout2D,Microsoft.VisualBasic.Imaging.Layout2D)">
  <summary>
  Reduced Euclidean distance
  </summary>
@@ -28440,6 +28558,22 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="p"></param>
  <returns></returns>
  
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Trigonometric.Distance(System.Drawing.Point,System.Drawing.Point)">
+ <summary>
+ Calculate the Euclidean distance between two points.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Trigonometric.Distance(System.Drawing.PointF,System.Drawing.PointF)">
+ <summary>
+ Calculate the Euclidean distance between two points.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Trigonometric.GetAngle(System.Drawing.Point,System.Drawing.Point)">
  <summary>
@@ -30120,6 +30254,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="sb"></param>
  <param name="find$"></param>
  <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.StringFormats.Format(System.Collections.Generic.IEnumerable{System.Double},System.String)">
+ <summary>
+ Format the given number collection with a given <paramref name="numberFormat"/> string.
+ </summary>
+ <param name="x"></param>
+ <param name="numberFormat"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.StringFormats.Lanudry(System.Double)">

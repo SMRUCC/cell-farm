@@ -105,12 +105,18 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <returns></returns>
 </member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.Area">
+ <summary>
+ 计算并返回椭圆的面积。
+ </summary>
+ <returns>椭圆的面积，类型为 Double。</returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.BuildDesignMatrix(System.Drawing.PointF[])">
  <summary>
  构建设计矩阵 M = [x², xy, y², x, y, 1]
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.ExtractEllipseParameters(Microsoft.VisualBasic.Math.LinearAlgebra.Vector)">
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.ExtractEllipseParameters(Microsoft.VisualBasic.Math.LinearAlgebra.Vector,System.Boolean)">
  <summary>
  从系数向量提取椭圆几何参数
  </summary>

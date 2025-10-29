@@ -1469,6 +1469,12 @@ Microsoft.VisualBasic.Data.GraphTheory
  </summary>
  <param name="m"></param>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdNodeAccessor`1">
+ <summary>
+ Helper class for access the node data by different dimensions
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdNodeAccessor`1.metric(`0,`0)">
  <summary>
  measuring of the node distance
@@ -1543,7 +1549,9 @@ Microsoft.VisualBasic.Data.GraphTheory
  <summary>
  total number of nodes 
  </summary>
- <returns></returns>
+ <returns>
+ count nodes number from the <see cref="F:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTree`1.root"/>
+ </returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTree`1.nearest(`0,System.Int32,System.Nullable{System.Double})">
  <summary>
@@ -1557,7 +1565,7 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="maxNodes">
  k
  </param>
- <returns></returns>
+ <returns>KNN search result</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTree`1.nearestSearch(Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTreeNode{`0},Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTreeNode{`0},System.Int32,Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdNodeHeapItem{`0}},System.Int32)">
  <summary>
@@ -1590,13 +1598,19 @@ Microsoft.VisualBasic.Data.GraphTheory
  </summary>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.KdTree.Utils.Push``1(System.Collections.Generic.List{Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdNodeHeapItem{``0}},Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdNodeHeapItem{``0})">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdUtils.AverageDistance``1(Microsoft.VisualBasic.Data.GraphTheory.KdTree.KdTree{``0},System.Int32,System.Int32,System.Double[]@)">
  <summary>
- add new item with check duplicated item
+ take sampling of some nodes and then evaluated the near neighbor distance
  </summary>
  <typeparam name="T"></typeparam>
- <param name="list"></param>
- <param name="item"></param>
+ <param name="kdtree"></param>
+ <param name="sample">
+ number of the random samples 
+ </param>
+ <param name="k">
+ k for knn search based on the kd-tree
+ </param>
+ <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.TermTree`1">
  <summary>
