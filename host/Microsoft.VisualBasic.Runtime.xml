@@ -25146,13 +25146,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.Extensions.InlineCopy``1(``0@,``0)">
  <summary>
- Value assignment to the target variable.(将<paramref name="value"/>参数里面的值赋值给<paramref name="var"/>参数然后返回<paramref name="value"/>)
+ Value assignment to the target variable.
  </summary>
  <typeparam name="T"></typeparam>
  <param name="var"></param>
  <param name="value"></param>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(将<paramref name="value"/>参数里面的值赋值给<paramref name="var"/>参数然后返回<paramref name="value"/>)</remarks>
  
 </member>
 <member name="M:Microsoft.VisualBasic.Extensions.ShadowCopy``1(``0,``0@,``0@)">
