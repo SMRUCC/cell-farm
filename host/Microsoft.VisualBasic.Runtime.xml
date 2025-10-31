@@ -16903,6 +16903,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  helper function for hqx algorithm module
  </remarks>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.Unpack(System.Drawing.Color[],System.Drawing.Size)">
+ <summary>
+ argb channels=4
+ </summary>
+ <param name="pixels"></param>
+ <param name="size"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.Unpack(System.Drawing.Color[0:,0:],System.Drawing.Size)">
  <summary>
  argb channels=4
@@ -21256,6 +21264,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  create index value with default index zero
  </summary>
  <param name="value"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Linq.SeqValue`1.op_Explicit(Microsoft.VisualBasic.Linq.SeqValue{`0})~`0">
+ <summary>
+ get value from the indexed object
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Linq.SeqValue`1.op_Explicit(Microsoft.VisualBasic.Linq.SeqValue{`0})~System.Int32">
+ <summary>
+ get ordinal index offset from the given indexed object.
+ </summary>
+ <param name="x"></param>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Linq.SeqValue`1.op_Modulus(Microsoft.VisualBasic.Linq.SeqValue{`0},System.Int32)">
  <summary>
