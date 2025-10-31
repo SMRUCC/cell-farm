@@ -103,6 +103,12 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.expression_level">
+ <summary>
+ apply for the gene overexpress
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.gene.strand">
  <summary>
  
