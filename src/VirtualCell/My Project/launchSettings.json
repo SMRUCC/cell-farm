@@ -2,7 +2,7 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"F:\\ecoli\\config.json\""
+      "commandLineArgs": "--run \"G:\\BlueprintCAD\\demo\\run.json\""
     },
     "file-conversion": {
       "commandName": "Project",
