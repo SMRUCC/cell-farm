@@ -82,6 +82,7 @@ Module Program
         Dim cellular_id As New List(Of String)
         Dim symbolNames As New Dictionary(Of String, String)
         Dim modelDataList As New List(Of CellularModule)
+        Dim refIds As New Dictionary(Of String, String)
 
         For Each name As String In config.models
             If Not name.FileExists Then
@@ -101,10 +102,14 @@ Module Program
                 symbolNames(idName.Key) = idName.Value
             Next
 
+            Call refIds.AddRange(model.GetMetaboliteReferenceMaps, replaceDuplicated:=True)
             Call modelDataList.Add(modelData)
         Next
 
-        Dim pull = SyntheticMicrobialNetwork.CreateNetwork(modelDataList, config.mapping, config.kinetics)
+        Dim pull = SyntheticMicrobialNetwork.CreateNetwork(modelDataList,
+                                                           config.mapping,
+                                                           config.kinetics,
+                                                           refIds)
         Dim engine As New Engine(config.mapping, config.kinetics, cellular_id.ToArray,
                                  config.iterations,
                                  config.resolution,
