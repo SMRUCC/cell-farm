@@ -22,7 +22,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Extensions.LoadSymbols(SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reader)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Extensions.LoadSymbols(SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.IStreamContainer)">
  <summary>
  load symbol names from the result pack file
  </summary>
