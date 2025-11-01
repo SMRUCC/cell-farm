@@ -2,7 +2,7 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"G:\\BlueprintCAD\\demo\\run.json\""
+      "commandLineArgs": "--run \"M:\\20251101_czp\\run.json\""
     },
     "file-conversion": {
       "commandName": "Project",
