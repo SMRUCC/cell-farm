@@ -247,8 +247,9 @@ Microsoft.VisualBasic.Math.Statistics
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Statistics.Distributions.MethodOfMoments.Normal">
- 
  <summary>
+ normal distribution
+ 
  @author Will_and_Sara
  </summary>
 </member>

@@ -441,6 +441,13 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  with the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.expression"/> rows.
  </returns>
 </member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.GetSampleArray(System.String)">
+ <summary>
+ get sample data column vector
+ </summary>
+ <param name="name"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.GetIndex">
  <summary>
  get sample index
