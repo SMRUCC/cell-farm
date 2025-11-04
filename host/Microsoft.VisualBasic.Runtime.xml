@@ -38272,6 +38272,28 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns></returns>
  
 </member>
+<member name="T:Microsoft.VisualBasic.Scripting.Runtime.ClrConversion">
+ <summary>
+ helper for make clr value type conversion
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.ClrConversion.CreatePrimitiveType(System.TypeCode)">
+ <summary>
+ ``<see cref="T:System.TypeCode"/> -> <see cref="T:System.Type"/>``
+ </summary>
+ <param name="type"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.ClrConversion.CreateArray(System.Collections.IEnumerable,System.Type,System.Boolean)">
+ <summary>
+ the given <paramref name="type"/> is the array element type
+ </summary>
+ <param name="data"></param>
+ <param name="type">
+ the element type of the generated target array
+ </param>
+ <returns>a generic type array</returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Scripting.Runtime.IParser">
  <summary>
  Custom user object parser
@@ -38617,23 +38639,6 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns>
  如果目标是字节数组，则会被转换为base64字符串
  </returns>
-</member>
-<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Extensions.CreatePrimitiveType(System.TypeCode)">
- <summary>
- ``<see cref="T:System.TypeCode"/> -> <see cref="T:System.Type"/>``
- </summary>
- <param name="type"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Extensions.CreateArray(System.Collections.IEnumerable,System.Type,System.Boolean)">
- <summary>
- the given <paramref name="type"/> is the array element type
- </summary>
- <param name="data"></param>
- <param name="type">
- the element type of the generated target array
- </param>
- <returns>a generic type array</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Scripting.Runtime.OverloadsFunction.Align(System.Reflection.MethodInfo,System.Type[])">
  <summary>
