@@ -493,7 +493,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.My.Log4VB.Print(System.String,System.String,System.ConsoleColor,System.Int32)">
  <summary>
- 头部和消息字符串都是放在一个task之中进行输出的，<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>的输出也是和内部的debugger输出使用的同一个消息线程
+ 头部和消息字符串都是放在一个task之中进行输出的
  </summary>
  <param name="header"></param>
  <param name="msg"></param>
@@ -502,21 +502,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.My.Log4VB.Print(System.String,System.ConsoleColor,System.ConsoleColor)">
  <summary>
- 输出的终端消息带有指定的终端颜色色彩，当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>为True的时候，
- <paramref name="msg"/>参数之中的文本字符串兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法，
- 而<paramref name="color"/>将会被<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>覆盖而不会起作用
+ 输出的终端消息带有指定的终端颜色色彩
  </summary>
- <param name="msg">兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法</param>
- <param name="color">当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>参数为True的时候，这个函数参数将不会起作用</param>
 </member>
 <member name="M:Microsoft.VisualBasic.My.Log4VB.Println(System.String,System.ConsoleColor,System.ConsoleColor)">
  <summary>
- 输出的终端消息带有指定的终端颜色色彩，当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>为True的时候，
- <paramref name="msg"/>参数之中的文本字符串兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法，
- 而<paramref name="color"/>将会被<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>覆盖而不会起作用
+ 输出的终端消息带有指定的终端颜色色彩
  </summary>
- <param name="msg">兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法</param>
- <param name="color">当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>参数为True的时候，这个函数参数将不会起作用</param>
 </member>
 <member name="M:Microsoft.VisualBasic.My.RlangInterop.ProcessingRUniCode(System.String)">
  <summary>
@@ -4282,6 +4274,816 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  prints the character found in the animation according to the current index
  </summary>
 </member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1">
+ <summary>
+ An element of a ProgressBar
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.#ctor(`0,System.ConsoleColor,System.ConsoleColor)">
+ <summary>
+ Ctor
+ </summary>
+ <param name="value"></param>
+ <param name="foregroundColor"></param>
+ <param name="backgroundColor"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetVisible(System.Boolean)">
+ <summary>
+ Sets the ProgressBar element visible (or not)
+ </summary>
+ <param name="show"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetVisible(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Boolean})">
+ <summary>
+ Sets the ProgressBar element visible (or not)
+ </summary>
+ <param name="showGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.GetVisible(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the ProgressBar element visibility
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetValue(`0)">
+ <summary>
+ Sets the Value of the ProgressBar element
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetValue(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,`0})">
+ <summary>
+ Sets the Value of the ProgressBar element
+ </summary>
+ <param name="valueGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.GetValue(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the Value of the ProgressBar element
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetForegroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the ForegroundColor of the ProgressBar element
+ </summary>
+ <param name="foregroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetForegroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the ForegroundColor of the ProgressBar element
+ </summary>
+ <param name="foregroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.GetForegroundColor(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the ForegroundColor of the ProgressBar element
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetBackgroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the BackgroundColor of the ProgressBar element
+ </summary>
+ <param name="backgroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.SetBackgroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the BackgroundColor of the ProgressBar element
+ </summary>
+ <param name="backgroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element`1.GetBackgroundColor(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the BackgroundColor of the ProgressBar element
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ElementList`1">
+ <summary>
+ A list of Elements of a ProgressBar
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ElementList`1.List">
+ <summary>
+ The List of Elements of a Progressbar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ElementList`1.Clear">
+ <summary>
+ Clears the List of elements of a ProgressBar
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ElementList`1.AddNew">
+ <summary>
+ Adds new Element to the List
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.ElementExtensions">
+ <summary>
+ Extensions for Element
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.ElementExtensions.GetRenderActions(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element{System.String},Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Func{System.String,System.String})">
+ <summary>
+ Returns a list of Actions to write the element in Console
+ </summary>
+ <param name="element"></param>
+ <param name="progressBar"></param>
+ <param name="valueTransformer">Function to Transform the value before write</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.ElementExtensions.GetRenderActions(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Element{System.Char},Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Int32)">
+ <summary>
+ Returns a list of Actions to write the element in Console
+ </summary>
+ <param name="element"></param>
+ <param name="progressBar"></param>
+ <param name="repetition"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.StringExtensions">
+ <summary>
+ Extensions for String
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.StringExtensions.AdaptToConsole(System.String,System.Boolean)">
+ <summary>
+ Returns a string that occupy all console line/s
+ </summary>
+ <param name="value">The string to write in console</param>
+ <param name="allowMultipleLines">To allow print the string in muliple lines or only in one:
+     True: The text can be represented in more than one Console line (fill spaces to the end of last line)
+     False: The text must be represented in only ONE line (truncate to fit or fill spaces to the end of line)
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.StringExtensions.AdaptToMaxWidth(System.String,System.Int32,System.String)">
+ <summary>
+ Returns a string with exactly maxChars: Truncates string value or fill with spaces to fits exact length
+ </summary>
+ <param name="value"></param>
+ <param name="maxWidth"></param>
+ <param name="append">Text appended when it is truncated. Default: "..."</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.TimeSpanExtensions">
+ <summary>
+ TimeSpan extensions
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.TimeSpanExtensions.ToStringAsSumarizedRemainingText(System.Nullable{System.TimeSpan})">
+ <summary>
+ Gets a textual Sumarized for remaining time: X days, or Y hours, or Z minutes, etc.
+ </summary>
+ <param name="ts"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.TimeSpanExtensions.ToStringAsSumarizedRemainingText(System.TimeSpan)">
+ <summary>
+ Gets a textual Sumarized for remaining time: X days, or Y hours, or Z minutes, etc.
+ </summary>
+ <param name="ts"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.TimeSpanExtensions.ToStringWithAllHours(System.Nullable{System.TimeSpan},System.Boolean)">
+ <summary>
+ Converts a TimeSpan to String, showing all hours
+ </summary>
+ <param name="ts"></param>
+ <param name="includeMilliseconds"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Extensions.TimeSpanExtensions.ToStringWithAllHours(System.TimeSpan,System.Boolean)">
+ <summary>
+ Converts a TimeSpan to String, showing all hours
+ </summary>
+ <param name="ts"></param>
+ <param name="includeMilliseconds"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout">
+ <summary>
+ Definition of a Layout for a ProgressBar representation
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody">
+ <summary>
+ Definition of the Layout used to Render the Body of the ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.Pending">
+ <summary>
+ Element To show in Pending Section
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.Progress">
+ <summary>
+ Element to show in Progress Section
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.Text">
+ <summary>
+ Layout for the Text 
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetValue(System.Char)">
+ <summary>
+ Sets the LayoutBody value for Pending and Progress elements
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetValue(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Char})">
+ <summary>
+ Sets the LayoutBody value for Pending and Progress elements
+ </summary>
+ <param name="valueGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetForegroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the ForegroundColor for Pending and Progress elements
+ </summary>
+ <param name="foregroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetForegroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the ForegroundColor for Pending and Progress elements
+ </summary>
+ <param name="foregroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetBackgroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the BackgroundColor for Pending and Progress elements
+ </summary>
+ <param name="backgroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.SetBackgroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the BackgroundColor for Pending and Progress elements
+ </summary>
+ <param name="backgroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutBody.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.Margins">
+ <summary>
+ Layout definition for Margins
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.Marquee">
+ <summary>
+ Layout definition for Marquee (character moving around the ProgressBar)
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.Body">
+ <summary>
+ Layout definition for Body
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.ProgressBarWidth">
+ <summary>
+ Width of entire ProgressBar
+ Default = 30
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.GetInnerWidth(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the internal Width of the ProgressBar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.GetRenderActions(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Returns the Actions to do in order to Render the ProgressBar with this Layout
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin">
+ <summary>
+ Definition of the Layout used to Render the Margins of the ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.Start">
+ <summary>
+ Element to show at the Margin Left (Start of the ProgressBar) 
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.End">
+ <summary>
+ Element to show at the Margin Right (End of the ProgressBar)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetValue(System.String)">
+ <summary>
+ Sets the LayoutMargin value for Start and End elements
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetValue(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.String})">
+ <summary>
+ Sets the LayoutMargin value for Start and End elements
+ </summary>
+ <param name="valueGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetForegroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the ForegroundColor for Start and End elements
+ </summary>
+ <param name="foregroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetForegroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the ForegroundColor for Start and End elements
+ </summary>
+ <param name="foregroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetBackgroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the BackgroundColor for Start and End elements
+ </summary>
+ <param name="backgroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetBackgroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the BackgroundColor for Start and End elements
+ </summary>
+ <param name="backgroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetVisible(System.Boolean)">
+ <summary>
+ Sets the visibility for Start and End elements
+ </summary>
+ <param name="visible"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.SetVisible(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Boolean})">
+ <summary>
+ Sets the visibility for Start and End elements
+ </summary>
+ <param name="showGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.GetLength(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Return the length of Margins
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMargin.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee">
+ <summary>
+ Definition for the Marquee
+ The Marquee is a char that moves around the ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.OverPending">
+ <summary>
+ Marquee definition when it moves over 'Pending' section
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.OverProgress">
+ <summary>
+ Marquee definition when it moves over 'Progress' section
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetValue(System.Char)">
+ <summary>
+ Sets the Marqee definition when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetValue(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Char})">
+ <summary>
+ Sets the Marqee definition when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="valueGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetForegroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the Marqee Foreground Color when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="foregroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetForegroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the Marqee Foreground Color when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="foregroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetBackgroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the Marqee Background Color when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="backgroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetBackgroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the Marqee Background Color when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="backgroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetVisible(System.Boolean)">
+ <summary>
+ Sets the Marqee Visibility when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="visible"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.SetVisible(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Boolean})">
+ <summary>
+ Sets the Marqee Visibility when it moves over 'Pending' or 'Progress' section
+ </summary>
+ <param name="showGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Layout.LayoutMarquee.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar">
+ <summary>
+ A ProgressBar for Console
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar._IsStarted">
+ <summary>
+ True if ProgressBar is Started
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar._IsPaused">
+ <summary>
+ True if ProgressBar is Paused
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Layout">
+ <summary>
+ Layout of the ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Text">
+ <summary>
+ Text definitions for the ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Tag">
+ <summary>
+ Tag object
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Maximum">
+ <summary>
+ The Maximum value
+ Default = 100
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Value">
+ <summary>
+ The current Value
+ If Value is greater than Maximum, then updates Maximum value
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Percentage">
+ <summary>
+ Percentage of progress
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.HasProgress">
+ <summary>
+ Indicates if the ProgressBar has Progress defined (Maximum defined)
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Step">
+ <summary>
+ The amount by which to increment the ProgressBar with each call to the PerformStep() method.
+ Default = 1
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.ElementName">
+ <summary>
+ The Name of the Curent Element
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.FixedInBottom">
+ <summary>
+ True to Print the ProgressBar always in last Console Line
+ False to Print the ProgressBar fixed in Console (Current position at Starting)
+ You can Write at Console and ProgressBar will always be below your lines
+ Default = true
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Delay">
+ <summary>
+ Delay for repaint and recalculate all ProgressBar
+ Default = 75
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.IsDone">
+ <summary>
+ True if ProgresBar is Done: when disposing or Progress is finished
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.TimeProcessing">
+ <summary>
+ Processing time (time paused excluded)
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.TimePerElement">
+ <summary>
+ Processing time per element (median)
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.TimeRemaining">
+ <summary>
+ Estimated time finish (to Value = Maximum)
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.ConsoleWriterLock">
+ <summary>
+ A Lock for Writing to Console
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.#ctor(System.Nullable{System.Int32},System.Boolean)">
+ <summary>
+ Creates an instance of ConsoleProgressBar
+ </summary>
+ <param name="initialPosition">Initial position of the ProgressBar</param>
+ <param name="autoStart">True if ProgressBar starts automatically</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Start">
+ <summary>
+ Starts the ProgressBar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Pause">
+ <summary>
+ Pauses the ProgressBar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Resume">
+ <summary>
+ Resume the ProgresBar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.SetValue(System.Int32,System.String,System.Object)">
+ <summary>
+ Assigns the current Value, and optionally current ElementName and Tag
+ If Value is greater than Maximum, updates Maximum as Value
+ </summary>
+ <param name="value"></param>
+ <param name="elementName"></param>
+ <param name="tag"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.PerformStep(System.String,System.Object)">
+ <summary>
+ Advances the current position of the progress bar by the amount of the Step property
+ </summary>
+ <param name="elementName">The name of the new Element</param>
+ <param name="tag"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.PerformStep(System.Int32,System.String,System.Object)">
+ <summary>
+ Advances the current position of the progress bar by the amount of the Step property
+ </summary>
+ <param name="step">Step to perform</param>
+ <param name="elementName">The name of the new Element</param>
+ <param name="tag"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.WriteLine">
+ <summary>
+ WriteLine in Console when ProgressBar is running
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.WriteLine(System.String)">
+ <summary>
+ WriteLine in Console when ProgressBar is running
+ </summary>
+ <param name="value"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.WriteLine(System.String,System.Boolean)">
+ <summary>
+ WriteLine in Console when ProgressBar is running
+ </summary>
+ <param name="value"></param>
+ <param name="truncateToOneLine"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.WriteLine(System.String,System.Nullable{System.ConsoleColor},System.Nullable{System.ConsoleColor},System.Boolean)">
+ <summary>
+ WriteLine in Console when ProgressBar is running
+ </summary>
+ <param name="value"></param>
+ <param name="foregroundColor"></param>
+ <param name="backgroundColor"></param>
+ <param name="truncateToOneLine"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Render">
+ <summary>
+ Renders in Console the ProgressBar
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Unrender">
+ <summary>
+ Unrenders (remove) from Console last ProgressBar printed
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Dispose">
+ <summary>
+ Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text">
+ <summary>
+ Definitions for Texts in a ProgressBar
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody">
+ <summary>
+ Definition for the Texts in a ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.Processing">
+ <summary>
+ Text in Body definition when ProgressBar is "Processing"
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.Paused">
+ <summary>
+ Text in Body definition when ProgressBar is "Paused"
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.Done">
+ <summary>
+ Text in Body definition when ProgressBar is "Done"
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetVisible(System.Boolean)">
+ <summary>
+ Sets the Body Text visibility
+ </summary>
+ <param name="show"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetVisible(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.Boolean})">
+ <summary>
+ Sets the Body Text visibility
+ </summary>
+ <param name="showGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetValue(System.String)">
+ <summary>
+ Sets the Body Text definition in all ProgressBar states ("Processing", "Paused", "Done")
+ </summary>
+ <param name="value"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetValue(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.String})">
+ <summary>
+ Sets the Body Text definition in all ProgressBar states ("Processing", "Paused", "Done")
+ </summary>
+ <param name="valueGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetForegroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the Body Text Foreground Color
+ </summary>
+ <param name="foregroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetForegroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the Body Text Foreground Color
+ </summary>
+ <param name="foregroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetBackgroundColor(System.ConsoleColor)">
+ <summary>
+ Sets the Body Text Background Color
+ </summary>
+ <param name="backgroundColor"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.SetBackgroundColor(System.Func{Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar,System.ConsoleColor})">
+ <summary>
+ Sets the Body Text Background Color
+ </summary>
+ <param name="backgroundColorGetter"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextBody.GetCurrentText(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the current Text Body definition by the ProgressBar context ("Processing", "Paused" or "Done")
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription">
+ <summary>
+ Definition for the Description lines in a ProgressBar
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.Processing">
+ <summary>
+ Description lines definition when ProgressBar is "Processing"
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.Paused">
+ <summary>
+ Description lines definition when ProgressBar is "Paused"
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.Done">
+ <summary>
+ Description lines definition when ProgressBar is "Done"
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.Indentation">
+ <summary>
+ Indentation for Description lines
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.#ctor">
+ <summary>
+ Ctor
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.Clear">
+ <summary>
+ Clears Description Lines
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.TextDescription.GetCurrentDefinitionList(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar)">
+ <summary>
+ Gets the current Description Lines definition by the ProgressBar context ("Processing", "Paused" or "Done")
+ </summary>
+ <param name="progressBar"></param>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.Body">
+ <summary>
+ Definition of the text in the same line as ProgressBar (Body)
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.Text.Description">
+ <summary>
+ Definition of the texts in the lines below a ProgressBar (Description)
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Program.Run(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.AbstractBar,System.Int32,System.Int32)">
  <summary>
  
@@ -4332,107 +5134,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  The default color theme values
  </summary>
  <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.IProgressBar.WriteLine(System.String)">
- <summary>
- This writes a new line above the progress bar to <see cref="P:System.Console.Out"/>.
- Use <see cref="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.IProgressBar.Message"/> to update the message inside the progress bar
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.IProgressBar.WriteErrorLine(System.String)">
- <summary> This writes a new line above the progress bar to <see cref="P:System.Console.Error"/></summary>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBar">
- <summary>
- Visualize (concurrent) progress in your console application
- </summary>
- <remarks>
- https://github.com/Mpdreamz/shellprogressbar
- </remarks>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions">
- <summary>
- Control the behaviour of your progressbar
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ForegroundColor">
- <summary> The foreground color of the progress bar, message and time</summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ForegroundColorDone">
- <summary> The foreground color the progressbar has reached a 100 percent</summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ForegroundColorError">
- <summary>
- The foreground color the progressbar when it has observed an error
- <para>If set this takes priority over any other color as soon as an error is observed</para>
- Use either <see cref="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarBase.ObservedError"/> or <see cref="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarBase.WriteErrorLine(System.String)"/> to
- put the progressbar in errored state
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.BackgroundColor">
- <summary> The background color of the remainder of the progressbar</summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ProgressCharacter">
- <summary> The character to use to draw the progressbar</summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.BackgroundCharacter">
- <summary>
- The character to use for the background of the progress defaults to <see cref="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ProgressCharacter"/>
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.DisplayTimeInRealTime">
- <summary>
- When true will redraw the progressbar using a timer, otherwise only update when
- <see cref="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarBase.Tick(System.Int32,System.String)"/> is called.
- Defaults to true
-  </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.CollapseWhenFinished">
- <summary>
- Collapse the progressbar when done, very useful for child progressbars
- Defaults to true
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ProgressBarOnBottom">
- <summary>
- By default the text and time information is displayed at the bottom and the progress bar at the top.
- This setting swaps their position
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.DenseProgressBar">
- <summary>
- Progressbar is written on a single line
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.ShowEstimatedDuration">
- <summary>
- Whether to show the estimated time. It can be set when
- <see cref="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarBase.Tick(System.Int32,System.String)"/> is called or the property
- <see cref="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarBase.EstimatedDuration"/> is set.
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.DisableBottomPercentage">
- <summary>
- Whether to show the percentage number
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.PercentageFormat">
- <summary> Set percentage decimal format. By default is {0:N2}. </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.EnableTaskBarProgress">
- <summary>
- Use Windows' task bar to display progress.
- </summary>
- <remarks>
- This feature is available on the Windows platform.
- </remarks>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.ProgressBarOptions.WriteQueuedMessage">
- <summary>
- Take ownership of writing a message that is intended to be displayed above the progressbar.
- The delegate is expected to return the number of messages written to the console as a result of the string argument.
- <para>Use case: pretty print or change the console colors, the progressbar will reset back</para>
- </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.SwayBar">
  <summary>
@@ -4623,306 +5324,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="printsPerSecond"></param>
  <param name="useColor"></param>
  <returns>a range of sequential integral numbers.</returns>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer">
- <summary>
- This can compute the input then return back the most appropriate word.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.Word">
- <summary>
- This is the word to find
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.Description">
- <summary>
- Descrizione
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.Points">
- <summary>
- Init to 0!
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.#ctor(System.String,System.Int32)">
- <summary>
- Initliaze a new instance
- </summary>
- <param name="w">The word to find</param>
- <param name="p">It's should be 0</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.#ctor(System.String)">
- <summary>
- Initliaze a new instance
- </summary>
- <param name="w">The word to find</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.#ctor(System.String,System.String)">
- <summary>
- Initliaze a new instance
- </summary>
- <param name="w">The word to find</param>
- <param name="desc">Description (do nothing)</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer.Find(System.String,Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Comparer}@)">
- <summary>
- Find a word from an input abbreviation (es n > name)
- </summary>
- <returns></returns>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.CoolWriteSettings.CoolWriting">
- <summary>
- Gradual typing the output into console
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.CoolWriteSettings.CoolWritingDelay">
- <summary>
- Write speed
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.CoolWriteSettings.CWRDDelay">
- <summary>
- Set the delay when write a new line or dots. (Default = 200).
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Helpers">
- <summary>
- Console helper. http://blogs.microsoft.co.il/blogs/pavely/archive/2009/07/23/changing-console-fonts.aspx
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Helpers.ConsoleFont">
- <summary>
- http://blogs.microsoft.co.il/blogs/pavely/archive/2009/07/23/changing-console-fonts.aspx
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner">
- <summary>
- A list of spinners for your console ❤
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.Spinners">
- <summary>
- List of available spinners (you can add new)
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.inLoop">
- <summary>
- looplooplooplooplooplooplooplooplooploop[...]
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.SpinText">
- <summary>
- The base string for spinning. {0} will display the spinner. COLOR is SUPPORTED! 🆒
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.#ctor(System.Int32,System.String)">
- <summary>
- Initialize the spinner
- </summary>
- <param name="i">Index of the spinner to use</param>
- <param name="txt">Base string. `{0} show the spinner`</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.#ctor(System.Char[])">
- <summary>
- Initialize a custom spinner
- </summary>
- <param name="spinner">Set a custom spinner, no size limit.</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.Break">
- <summary>
- Breaks the spinner
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.Spinner.Turn(System.Int32)">
- <summary>
- Turn the spin!
- </summary>
- <param name="time">Waiting time. Default 130 ms</param>
- <returns>False if it has been stopped</returns>
- <example>while(spinner.Turn());</example>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole">
- <summary>
- Allows you to color and animate the console. ~ overpowered.it ~ TheTrigger - 💸
- </summary>
- <remarks>http://www.codeproject.com/Tips/626856/xConsole-Project</remarks>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.CoolWrite(System.Object)">
- <summary>
- Gradual output animation 👍👍
- </summary>
- <param name="obj">The object to convert</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.CoolWrite(System.String,System.Object[])">
- <summary>
- Gradual output animation 👍👍
- </summary>
- <param name="format">The input string</param>
- <param name="args"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.CoolWriteLine(System.String,System.Object[])">
- <summary>
- Gradual output animation
- </summary>
- <param name="format">The input string</param>
- <param name="args">Arguments</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.WriteLine">
- <summary>
- Allows you to write in the console-output with custom colors, followed by the current line terminator
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.WriteLine(System.Object)">
- <summary>
- Allows you to write in the console-output with custom colors, followed by the current line terminator
- </summary>
- <param name="obj">The object to convert</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.WriteLine(System.String,System.Object[])">
- <summary>
- Allows you to write in the console-output with custom colors, followed by the current line terminator
- </summary>
- <param name="format">The input string</param>
- <param name="args">Arguments</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Write(System.String,System.Object[])">
- <summary>
- Allows you to write in the console-output with custom colors
- </summary>
- <param name="format">The input string</param>
- <param name="args">Arguments</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Implode(Microsoft.VisualBasic.Language.List{System.String},System.String,System.Int32)">
- <summary>
- (php-like) Implode function
- </summary>
- <param name="args">The list input</param>
- <param name="delimiter">Delimiter</param>
- <param name="start">Index offset</param>
- <returns>Imploded string</returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Implode(Microsoft.VisualBasic.Language.List{System.String},System.Int32)">
- <summary>
- (php-like) Implode a List of strings
- </summary>
- <param name="args">The list input</param>
- <param name="start">Index offset</param>
- <returns>Imploded string</returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Wait(System.Int32)">
- <summary>
- Just wait. in milliseconds
- </summary>
- <param name="time"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.RestoreColors">
- <summary>
- Restore default colors
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Credits">
- <summary>
- Show credits
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ReadLine(System.Boolean)">
- <summary>
- Read the line, then parse it.
- </summary>
- <param name="ClearInput">Clear the buffer input</param>
- <returns>Return a List of strings</returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ClearInput(System.Boolean)">
- <summary>
- Give back a ConsoleKeyInfo list
- </summary>
- <param name="Return"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ClearInput">
- <summary>
- Clear the user input in stack
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ParseLine(System.String)">
- <summary>
- Parse the input string
- </summary>
- <param name="s">Input string</param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ReadKeys(System.Boolean)">
- <summary>
- Read EACH keys from the buffer input (visible and hidden chars)
- </summary>
- <param name="ClearInput">Clear the buffer input</param>
- <returns>string with all chars</returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.getColor(System.String,System.Nullable{System.ConsoleColor},System.Nullable{System.ConsoleColor})">
- <summary>
- Convert input to color
- </summary>
- <param name="s">Input string</param>
- <returns>👽👽👽👾</returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.Print(System.String)">
- <summary>
- The Parser
- </summary>
- <param name="input">Input string</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ListFonts">
- <summary>
- Show list of fonts
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.SetFont(System.UInt32)">
- <summary>
- Change console font
- </summary>
- <param name="i"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.SetWindowPos(System.Int32,System.Int32)">
- <summary>
- Set new window position
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.MyASM">
- <summary>
- My ASM FILE
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.FONT_COLOR">
- <summary>
- This value is used when restoring the colors of the console.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.BACKGROUND_COLOR">
- <summary>
- This value is used when restoring the colors of the console.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.NEW_LINE">
- <summary>
- Default line terminator
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ClearColorsAtEnd">
- <summary>
- Clear colors automatically at the end of each Writeline. (Default = false);
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ClosestConsoleColor(System.Byte,System.Byte,System.Byte)">
- <summary>
- Convert rgb color to ConsoleColor. From stackoverflow
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole.xConsole.ConvertHexStringToByteArray(System.String)">
- <summary>
- Convert String to byte array
- </summary>
- <param name="hexString"></param>
- <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.ApplicationServices.OSVersionInfo">
  <summary>
@@ -6205,20 +6606,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </remarks>
  
 </member>
-<member name="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole">
- <summary>
- 使用<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>输出消息
- </summary>
- <returns></returns>
-</member>
 <member name="M:Microsoft.VisualBasic.VBDebugger.WriteLine(System.String,System.ConsoleColor)">
  <summary>
- 输出的终端消息带有指定的终端颜色色彩，当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>为True的时候，
- <paramref name="msg"/>参数之中的文本字符串兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法，
- 而<paramref name="color"/>将会被<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>覆盖而不会起作用
+ 输出的终端消息带有指定的终端颜色色彩
  </summary>
- <param name="msg">兼容<see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.xConsole"/>语法</param>
- <param name="color">当<see cref="P:Microsoft.VisualBasic.VBDebugger.UsingxConsole"/>参数为True的时候，这个函数参数将不会起作用</param>
+ <param name="msg"></param>
+ <param name="color"></param>
  <remarks>
  works based on <see cref="F:Microsoft.VisualBasic.My.Log4VB.redirectInfo"/>
  </remarks>
