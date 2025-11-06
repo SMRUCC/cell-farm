@@ -4305,7 +4305,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ColorTheme">
  <summary>
- The <see cref="T:System.ConsoleColor"/> theme for the <see cref="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar"/>
+ The <see cref="T:System.ConsoleColor"/> theme for the <see cref="N:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar"/>
  </summary>
 </member>
 <member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ColorTheme.IsEmpty">
@@ -4331,105 +4331,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  The default color theme values
  </summary>
- <returns></returns>
-</member>
-<member name="T:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar">
- <summary>
- Progress bar for the <see cref="T:System.Console"/> Screen.
- </summary>
- <remarks>
- http://www.cnblogs.com/masonlu/p/4668232.html
- </remarks>
- 
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.current">
- <summary>
- The current progress percentage: [0, 100]
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.pinnedTop">
- <summary>
- If this global value is not null, then set y value in constructor will be disabled.
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.#ctor(System.String,System.Int32,System.Boolean,Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ColorTheme)">
- <summary>
- Create a console progress bar object with custom configuration.
- </summary>
- <param name="title">The title of the task which will takes long time for running.</param>
- <param name="Y">The row position number of the progress bar.</param>
- <param name="CLS">Clear the console screen?</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.#ctor(System.String)">
- <summary>
- Create a console progress bar with default theme color <see cref="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ColorTheme.DefaultTheme"/>
- (在当前位置之后设置进度条，这个构造函数不会清除整个终端屏幕)
- </summary>
- <param name="title$">The task title</param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.SetToEchoLine">
- <summary>
- 将终端的输出位置放置到详细信息的下一行
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.ElapsedMilliseconds">
- <summary>
- 获取当前实例测量得出的总运行时间（以毫秒为单位）。
- </summary>
- <returns>
- 一个只读长整型，表示当前实例测量得出的总毫秒数。
- </returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.tick(System.Int32,System.String)">
- <summary>
- 更新进度条的当前状态信息
- </summary>
- <param name="p%"></param>
- <param name="details$"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar.SetProgress(System.Int32,System.String)">
- <summary>
- <paramref name="percent"/>是进度条的百分比
- </summary>
- <param name="percent">Percentage, 假设是从p到current</param>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.Target">
- <summary>
- 整个工作的总的tick数
- </summary>
- <returns></returns>
-</member>
-<member name="P:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.Current">
- <summary>
- 当前已经完成的tick数
- </summary>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.#ctor(Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressBar,System.Int32)">
- <summary>
- 生成进度条的百分比值
- </summary>
- <param name="total"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.Step">
- <summary>
- 返回来的百分比小数，还需要乘以100才能得到进度
- </summary>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.StepProgress">
- <summary>
- 百分比进度，不需要再乘以100了
- </summary>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ProgressProvider.ETA(System.Double,System.Double,System.Int64)">
- <summary>
- 
- </summary>
- <param name="previous#">百分比</param>
- <param name="cur#">百分比</param>
- <param name="Elapsed#">当前的这个百分比差所经历过的时间</param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ShellProgressBar.IProgressBar.WriteLine(System.String)">
@@ -13038,6 +12939,21 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Generic.BucketSet`1.GetItemByGlobalIndex(System.Int64)">
+ <summary>
+ 根据全局索引获取元素
+ </summary>
+ <param name="index">全局索引（从0开始）</param>
+ <returns>指定索引处的元素</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Generic.BucketSet`1.GetRange(System.Int64,System.Int64)">
+ <summary>
+ 根据全局索引范围获取元素序列
+ </summary>
+ <param name="startIndex">起始索引（包含，从0开始）</param>
+ <param name="endIndex">结束索引（包含，从0开始）</param>
+ <returns>指定范围内的元素序列</returns>
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Collection.Generic.INamedValue">
  <summary>
  This type of object have a <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IKeyedEntity`1.Key"></see> property to 
@@ -16806,6 +16722,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="byts"></param>
  <param name="channel"></param>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.#ctor(Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer)">
+ <summary>
+ make in-memory data copy
+ </summary>
+ <param name="source"></param>
+</member>
 <member name="P:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.Width">
  <summary>
  The dimension width of the current bitmap buffer object
@@ -17134,6 +17056,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="source"></param>
  <returns></returns>
+ <remarks>
+ 这个函数会直接改变输入数据的值，如果不想对输入的位图对象做修改，请先复制一份，再使用这个函数进行灰度处理
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapScale.Grayscale(System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single)">
  <summary>
@@ -18043,6 +17968,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  load image from stream data
  </summary>
  <param name="s"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Driver.DriverLoad.MeasureTextSize(System.String,Microsoft.VisualBasic.Imaging.Font)">
+ <summary>
+ A helper function for measure string size
+ </summary>
+ <param name="text"></param>
+ <param name="font"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Imaging.Driver.DriverLoad.DefaultGraphicsDevice(System.Nullable{Microsoft.VisualBasic.Imaging.Driver.Drivers})">
@@ -19383,6 +19316,145 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="p"></param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform">
+ <summary>
+ make geometry transform of a given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D"/> with given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Transform"/> 
+ or <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform"/> parameters.
+ </summary>
+ <remarks>
+ + `Transform` (相似变换)** 是 **`AffineTransform` (仿射变换)** 的一个特例：从 Transform 到 AffineTransform：总是可以。因为 Transform 类所描述的变换（旋转、平移、缩放）是 AffineTransform 类（仿射变换）的一个子集。任何相似变换都可以用一个仿射变换矩阵来表示。
+ + `Transform` -> `AffineTransform`** 的转换是直接且总是可行的：从 AffineTransform 到 Transform：不一定可以。只有当 AffineTransform 不包含剪切效果时，才可以等价转换为一个 Transform 对象。如果 AffineTransform 包含剪切，那么它无法用 theta, scalex, scaley 这几个参数来唯一描述。
+ + `AffineTransform` -> `Transform`** 的转换需要检查是否存在剪切。通过检查矩阵左上角 2x2 部分的两个列向量是否正交（`a*b + d*e ≈ 0`）来判断。
+ 
+ ### 变换的矩阵表示
+ 
+ 一个 2D 点 (x, y) 用齐次坐标表示为 [x, y, 1]。变换矩阵 M 与之相乘得到新的点 [x', y', 1]。
+ 
+ #### Transform 的组合矩阵
+ 
+ Transform 类描述的变换顺序通常是：缩放 -> 旋转 -> 平移。
+ 
+ 缩放矩阵 (S):
+ 
+     | scalex   0      0 |
+     | 0        scaley 0 |
+     | 0        0      1 |
+     
+ 旋转矩阵 ® (注意：VB.NET 的 Math.Sin 和 Math.Cos 使用弧度):
+ 
+     | cos(theta)  -sin(theta)  0 |
+     | sin(theta)   cos(theta)  0 |
+     | 0            0           1 |
+     
+ 平移矩阵 (T):
+ 
+     | 1  0  tx |
+     | 0  1  ty |
+     | 0  0  1  |
+     
+ 最终的组合矩阵 M_transform 是 T * R * S：
+ 
+ M_transform = T * R * S =
+ | cos(theta)*scalex   -sin(theta)*scaley   tx |
+ | sin(theta)*scalex    cos(theta)*scaley   ty |
+ | 0                    0                   1  |
+ 
+ #### AffineTransform 的矩阵
+ 
+ AffineTransform 类直接定义了矩阵的元素：
+ 
+ M_affine =
+ | a  b  c |
+ | d  e  f |
+ | 0  0  1 |
+ 
+ 其中 x' = ax + by + c 和 y' = dx + ey + f。
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform.ApplyTo(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D)">
+ <summary>
+ Apply the current transformation parameters to the target polygon object.
+ </summary>
+ <param name="polygon"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.ToAffineTransform(Microsoft.VisualBasic.Imaging.Math2D.Transform)">
+ <summary>
+ 将一个 Transform 对象等价转换为 AffineTransform 对象。
+ 此转换总是可行的。
+ </summary>
+ <param name="source">源 Transform 对象。</param>
+ <returns>等价的 AffineTransform 对象。</returns>
+ <remarks>
+ 注意：此函数假设 source.theta 的单位是**弧度**。
+ 如果您的角度是度数，请先使用 `angle * Math.PI / 180.0` 进行转换。
+ 
+ + a = cos(theta) * scalex
+ + b = -sin(theta) * scaley
+ + c = tx
+ + d = sin(theta) * scalex
+ + e = cos(theta) * scaley
+ + f = ty
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.ToTransform(Microsoft.VisualBasic.Imaging.Math2D.AffineTransform)">
+ <summary>
+ 尝试将一个 AffineTransform 对象等价转换为 Transform 对象。
+ </summary>
+ <param name="source">源 AffineTransform 对象。</param>
+ <returns>
+ 如果转换成功，返回等价的 Transform 对象。
+ 如果源变换包含剪切效果，无法转换，则返回 Nothing。
+ </returns>
+ <remarks>
+ 注意：返回的 theta 单位是**弧度**。
+ 
+ #### `AffineTransform` -> `Transform` (有条件)
+ 
+ 我们需要从 `a, b, d, e` 中反解出 `theta`, `scalex`, `scaley`。
+ 
+ 1.  **平移部分很简单**：
+ 
+     *   `tx = c`
+     *   `ty = f`
+ 
+ 2.  **旋转和缩放部分**：
+ 
+     我们有：
+     
+     *   `a = cos(theta) * scalex`
+     *   `d = sin(theta) * scalex`
+     *   `b = -sin(theta) * scaley`
+     *   `e = cos(theta) * scaley`
+ 
+     *   **计算 `theta`**:
+     
+         使用 `Math.Atan2(y, x)` 是最稳健的方法，它可以正确处理所有象限。
+         
+         `theta = Atan2(d, a)`  (因为 `tan(theta) = d/a`)
+ 
+     *   **计算 `scalex` 和 `scaley`**:
+     
+         利用三角恒等式 `sin²θ + cos²θ = 1`，我们可以避免除以零的问题，并且结果更精确。
+         
+         *   `a² + d² = (cos²θ + sin²θ) * scalex² = scalex²`
+         *   `b² + e² = (sin²θ + cos²θ) * scaley² = scaley²`
+         
+         所以：
+         
+         *   `scalex = sqrt(a² + d²)`
+         *   `scaley = sqrt(b² + e²)`
+ 
+ 3.  **检测剪切**：
+ 
+     一个纯粹的旋转+缩放矩阵，其两个列向量 `[a, d]` 和 `[b, e]` 是**正交**的（点积为0）。
+     
+     *   点积 = `a*b + d*e`
+     *   如果这个值不为0（考虑到浮点数精度，只要不为0），就说明存在剪切。
+     
+ </remarks>
+ 
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeomTransform.SquareSize(System.Int32)">
  <summary>
  Returns a size value that its width equals height. 
@@ -19726,18 +19798,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns>
  observed is the calculated moran-I value
  </returns>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform">
- <summary>
- make geometry transform of a given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Polygon2D"/> with given <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.Transform"/> or <see cref="T:Microsoft.VisualBasic.Imaging.Math2D.AffineTransform"/> parameters.
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.Imaging.Math2D.GeometryTransform.ApplyTo(Microsoft.VisualBasic.Imaging.Math2D.Polygon2D)">
- <summary>
- Apply the current transformation parameters to the target polygon object.
- </summary>
- <param name="polygon"></param>
- <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.Transform">
  <summary>
@@ -21026,6 +21086,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <typeparam name="T"></typeparam>
  <param name="source"></param>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Linq.Extensions.ToArray``1(``0[])">
+ <summary>
+ make array data copy
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="source"></param>
+ <returns></returns>
+ 
 </member>
 <member name="M:Microsoft.VisualBasic.Linq.Extensions.SafeQuery``1(System.Collections.Generic.IEnumerable{``0},System.String)">
  <summary>
