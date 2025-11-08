@@ -2,11 +2,11 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"M:\\20251101_czp\\run.json\""
+      "commandLineArgs": "--run M:/20251101_czp/workflow_test/config.json --output M:/20251101_czp/workflow_test/run.vcelldata /@set tqdm=false"
     },
     "file-conversion": {
       "commandName": "Project",
-      "commandLineArgs": "--convert --data \"M:\\20251101_czp\\run.vcelldata\" --output \"M:\\20251101_czp\\20251101.vcellpack\""
+      "commandLineArgs": "--run M:/20251101_czp/workflow_test/config.json --output M:/20251101_czp/workflow_test/run.vcelldata /@set tqdm=false"
     }
   }
 }
