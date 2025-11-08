@@ -1,6 +1,7 @@
 Imports System.ComponentModel
 Imports System.IO
 Imports Microsoft.VisualBasic.CommandLine
+Imports Microsoft.VisualBasic.CommandLine.ManView
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.MIME.application.json
 Imports SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2
@@ -11,6 +12,9 @@ Imports SMRUCC.genomics.GCModeller.ModellingEngine.IO
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular
 
+<ExceptionHelp(Documentation:="http://developer.gcmodeller.org/",
+               EMailLink:="xie.guigang@gcmodeller.org; xieguigang@metabolomics.ac.cn",
+               Debugging:="https://github.com/SMRUCC/GCModeller/issues")>
 Module Program
 
     Public Function Main(args As String()) As Integer
