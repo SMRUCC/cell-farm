@@ -1864,6 +1864,25 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="nodes"></param>
  <param name="edges"></param>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.GraphTheory.Network.INode">
+ <summary>
+ Node model in the network
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Network.ExtensionsAPI.GetNullDirectedGuid(Microsoft.VisualBasic.Data.GraphTheory.Network.INetworkEdge,System.Boolean)">
+ <summary>
+ 返回没有方向性的统一标识符
+ </summary>
+ <returns></returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Network.ExtensionsAPI.GetDirectedGuid(Microsoft.VisualBasic.Data.GraphTheory.Network.INetworkEdge,System.Boolean)">
+ <summary>
+ 带有方向的互作关系字符串
+ </summary>
+ <returns></returns>
+ 
+</member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.Network.Node">
  <summary>
  A network node model

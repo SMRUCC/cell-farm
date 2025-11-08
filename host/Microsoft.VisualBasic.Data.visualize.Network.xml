@@ -310,25 +310,6 @@ Microsoft.VisualBasic.Data.visualize.Network
  ``[<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> => degree]``
  </returns>
 </member>
-<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INode">
- <summary>
- Node model in the network
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.ExtensionsAPI.GetNullDirectedGuid(Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INetworkEdge,System.Boolean)">
- <summary>
- 返回没有方向性的统一标识符
- </summary>
- <returns></returns>
- 
-</member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.ExtensionsAPI.GetDirectedGuid(Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.INetworkEdge,System.Boolean)">
- <summary>
- 带有方向的互作关系字符串
- </summary>
- <returns></returns>
- 
-</member>
 <member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.NodesID(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction})">
  <summary>
  Get all of the connected nodes ID from the edges data

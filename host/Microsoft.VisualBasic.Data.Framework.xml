@@ -2453,7 +2453,7 @@ Microsoft.VisualBasic.Data.Framework
  <param name="Column"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.Framework.IO.Linq.DataLinqStream.OpenHandle(System.String,System.Text.Encoding,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})">
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.Linq.DataLinqStream.OpenHandle(System.String,System.Text.Encoding,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String},System.Boolean)">
  <summary>
  所返回来的tuple对象之中的table字段，是跳过了第一行标题行的Linq迭代器
  </summary>

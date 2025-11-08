@@ -107,6 +107,7 @@ Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
  <param name="Node"></param>
  <returns></returns>
  <remarks></remarks>
+ 
 </member>
 <member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkTables">
  <summary>
