@@ -72,9 +72,9 @@ Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
 </member>
 <member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge">
  <summary>
- The edge between the two nodes in the network.(节点与节点之间的相互关系)
+ The edge between the two nodes in the network.
  </summary>
- <remarks></remarks>
+ <remarks>(节点与节点之间的相互关系)</remarks>
 </member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.NetworkEdge.value">
  <summary>

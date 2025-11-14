@@ -11035,16 +11035,24 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  The edit distance between two strings is defined as the minimum number of
  edit operations required to transform one string into another.
- (请注意，这函数是大小写敏感的。如果需要大小写不敏感，在使用前，请先将函数的两个字符串参数都转换为小写形式)
  </summary>
  <param name="reference"></param>
  <param name="hypotheses"></param>
  <param name="cost"></param>
  <returns></returns>
+ <remarks>
+ (请注意，这函数是大小写敏感的。如果需要大小写不敏感，在使用前，请先将函数的两个字符串参数都转换为小写形式)
+ </remarks>
 </member>
 <member name="P:Microsoft.VisualBasic.ComponentModel.Algorithm.DynamicProgramming.Levenshtein.DistResult.DistEdits">
  <summary>
  How doest the <see cref="P:Microsoft.VisualBasic.ComponentModel.Algorithm.DynamicProgramming.Levenshtein.DistResult.Hypotheses"/> evolve from <see cref="P:Microsoft.VisualBasic.ComponentModel.Algorithm.DynamicProgramming.Levenshtein.DistResult.Reference"/>.(这个结果描述了subject是如何变化成为Query的)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Algorithm.DynamicProgramming.Levenshtein.DistResult.Distance">
+ <summary>
+ the edit distance
  </summary>
  <returns></returns>
 </member>
@@ -11573,51 +11581,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="CaseSensitive">是否大小写敏感，默认不敏感</param>
  <returns></returns>
 </member>
-<member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework">
- <summary>
- Extensions for data query
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames``1(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{``0}},System.String[]@)">
- <summary>
- A general method for make the tuple name unique
- </summary>
- <typeparam name="T"></typeparam>
- <param name="list"></param>
- <param name="duplicated"></param>
- <returns></returns>
- <remarks>
- the name is uniqued via the <see cref="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)"/> method 
- via add numeric suffix to the name key string.
- </remarks>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.MakeUniqueNames``1(System.Collections.Generic.IEnumerable{``0},System.String[]@)">
- <summary>
- update and set the unique names to the index collection
- </summary>
- <typeparam name="T"></typeparam>
- <param name="list"></param>
- <param name="duplicated"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)">
- <summary>
- makes the name string unique by adding an additional numeric suffix
- </summary>
- <param name="names"></param>
- <param name="duplicated">
- get the duplicated names
- </param>
- <returns>
- this function is a safe function, it will returns an empty string collection 
- if the given <paramref name="names"/> is nothing. this function returns a string
- array with the same size equals to the input string collection with duplicated values
- renamed with numeric counter suffix
- </returns>
- <remarks>
- this function will erase the <paramref name="duplicated"/> at first and then make value assigned.
- </remarks>
-</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IMatched">
  <summary>
  The object implements on this interface can be matched with some rules.
@@ -11825,6 +11788,136 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <remarks>
  The inner exception is from whatever
  </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework">
+ <summary>
+ Extensions for data query
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames``1(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{``0}},System.String[]@)">
+ <summary>
+ A general method for make the tuple name unique
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="list"></param>
+ <param name="duplicated"></param>
+ <returns></returns>
+ <remarks>
+ the name is uniqued via the <see cref="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)"/> method 
+ via add numeric suffix to the name key string.
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.MakeUniqueNames``1(System.Collections.Generic.IEnumerable{``0},System.String[]@)">
+ <summary>
+ update and set the unique names to the index collection
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="list"></param>
+ <param name="duplicated"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)">
+ <summary>
+ makes the name string unique by adding an additional numeric suffix
+ </summary>
+ <param name="names"></param>
+ <param name="duplicated">
+ get the duplicated names
+ </param>
+ <returns>
+ this function is a safe function, it will returns an empty string collection 
+ if the given <paramref name="names"/> is nothing. this function returns a string
+ array with the same size equals to the input string collection with duplicated values
+ renamed with numeric counter suffix
+ </returns>
+ <remarks>
+ this function will erase the <paramref name="duplicated"/> at first and then make value assigned.
+ </remarks>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex._q">
+ <summary>
+ q-gram的长度
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.AddString(System.String)">
+ <summary>
+ 向索引中添加字符串
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.GenerateQGrams(System.String)">
+ <summary>
+ 生成字符串的所有q-grams
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.PadString(System.String)">
+ <summary>
+ 为短字符串添加填充字符
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.FindSimilar(System.String,System.Double)">
+ <summary>
+ 基于q-gram重叠度查找相似字符串
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.GetIndexStats">
+ <summary>
+ 获取索引统计信息
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex._hashSize">
+ <summary>
+ 哈希位数（通常为64或128）
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex._bands">
+ <summary>
+ 波段数量
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex._rows">
+ <summary>
+ 每波段行数
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.ComputeSimHash(System.String)">
+ <summary>
+ 计算字符串的SimHash指纹
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.ExtractFeatures(System.String)">
+ <summary>
+ 从文本中提取特征（使用3-grams作为特征）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.AddString(System.String)">
+ <summary>
+ 向索引中添加字符串
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.GetBandHash(System.Int64,System.Int32)">
+ <summary>
+ 获取指定波段的哈希值
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.FindSimilar(System.String,System.Int32)">
+ <summary>
+ 查找相似字符串（基于汉明距离）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.FindCandidates(System.Int64)">
+ <summary>
+ 通过LSH查找候选字符串
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.ComputeHammingDistance(System.Int64,System.Int64)">
+ <summary>
+ 计算两个指纹的汉明距离
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex.ComputeLevenshtein(System.String,System.String)">
+ <summary>
+ 计算Levenshtein编辑距离（与QGramIndex中相同）
+ </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.BindProperty`1">
  <summary>
@@ -18170,6 +18263,21 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="c"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.GDIColors.Rgba(System.Drawing.Color)">
+ <summary>
+ html rgba color
+ </summary>
+ <param name="c"></param>
+ <returns></returns>
+ <remarks>
+ |RGBA 成分|含义|取值范围|
+ |---------|----|--------|
+ |R (Red)|​红色通道的强度|0 - 255 的整数 或 0% - 100% 的百分比|
+ |G (Green)|​绿色通道的强度|0 - 255 的整数 或 0% - 100% 的百分比|
+ |B (Blue)|​蓝色通道的强度|0 - 255 的整数 或 0% - 100% 的百分比|
+ |A (Alpha)|​透明度（或不透明度）|0.0（完全透明）到 1.0（完全不透明）之间的小数| 
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.GDIColors.__getDotNetColors">
  <summary>
  Reads all of the color property from <see cref="T:System.Drawing.Color"/> and 
@@ -20537,7 +20645,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  distance to zero [0,0]
  </summary>
- <returns></returns>
+ <returns>Magnitude of the vector</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Imaging.Math2D.Vector2D.op_UnaryNegation(Microsoft.VisualBasic.Imaging.Math2D.Vector2D)">
  <summary>
@@ -20560,6 +20668,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="v"></param>
  <param name="scale#"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Math2D.Vector2D.DistanceToSegment(Microsoft.VisualBasic.Imaging.Math2D.Vector2D,Microsoft.VisualBasic.Imaging.Math2D.Vector2D,Microsoft.VisualBasic.Imaging.Math2D.Vector2D)">
+ <summary>
+ 计算点到线段的距离
+ </summary>
+ <param name="point">target 2d point</param>
+ <param name="segStart">target 2d line start</param>
+ <param name="segEnd">target 2d line ends</param>
  <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.NamespaceDoc">
@@ -20851,6 +20968,23 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns></returns>
 </member>
 <member name="P:Microsoft.VisualBasic.Imaging.Layout2D.Y">
+ <summary>
+ the y axis data
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.IReadOnlyPoint">
+ <summary>
+ a float 2d point
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.IReadOnlyPoint.X">
+ <summary>
+ the x axis data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.IReadOnlyPoint.Y">
  <summary>
  the y axis data
  </summary>

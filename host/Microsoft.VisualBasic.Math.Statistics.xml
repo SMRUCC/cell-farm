@@ -737,6 +737,12 @@ Microsoft.VisualBasic.Math.Statistics
  </param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Hypothesis.NullHypothesis`1.ZeroSet">
+ <summary>
+ generates the random set with <see cref="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.NullHypothesis`1.Permutation"/> elements.
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:Microsoft.VisualBasic.Math.Statistics.Hypothesis.TtestResult.DegreeFreedom">
  <summary>
  the degrees of freedom for the t-statistic.

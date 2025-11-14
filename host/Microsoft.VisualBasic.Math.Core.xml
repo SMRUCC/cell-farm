@@ -4119,6 +4119,19 @@ Microsoft.VisualBasic.Math.Core
  controls the width of the "bell"</param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.Distributions.Gaussian.StandadizedGaussianFunction(System.Double,System.Double)">
+ <summary>
+ the Gaussian Kernel
+ </summary>
+ <param name="diff"></param>
+ <param name="devi">
+ the bandwidth
+ </param>
+ <returns></returns>
+ <remarks>
+ 高斯核函数
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.Distributions.Gaussian.rnorm(System.Int32,System.Double,System.Double)">
  <summary>
  Returns a vector with specific parameters normal distribution of length n elements.
@@ -7333,6 +7346,15 @@ Microsoft.VisualBasic.Math.Core
  <paramref name="x"/> and <paramref name="y"/> should be length equals
  </remarks>
  
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Interpolation.PrincipalCurve.#ctor(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Imaging.Math2D.Vector2D},System.Double,System.Int32,System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="dataPoints">the input scatter data points</param>
+ <param name="bandwidth"></param>
+ <param name="maxIterations"></param>
+ <param name="tolerance"></param>
 </member>
 </members>
 </doc>
