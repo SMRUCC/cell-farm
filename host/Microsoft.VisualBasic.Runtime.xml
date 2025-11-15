@@ -2113,9 +2113,21 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  A virtual filesystem tree
  </summary>
 </member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.FileSystemTree.Name">
+ <summary>
+ the filename/folder name of this filesystem tree node
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:Microsoft.VisualBasic.ApplicationServices.FileSystemTree.Parent">
  <summary>
  the parent folder
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ApplicationServices.FileSystemTree.data">
+ <summary>
+ the tagged data that associated with this file node
  </summary>
  <returns></returns>
 </member>
@@ -2285,6 +2297,18 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  the workdir path of current workspace object
  </summary>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ApplicationServices.FileSystemView">
+ <summary>
+ A data view wrapper that used a specific subdir as workfolder
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.FileSystemView.#ctor(Microsoft.VisualBasic.ApplicationServices.IFileSystemEnvironment,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="fs">the root workspace model</param>
+ <param name="subdir">a specific sub-dir for create a wrapper view of the workspace</param>
 </member>
 <member name="T:Microsoft.VisualBasic.ApplicationServices.MemoryStreamPool">
  <summary>
