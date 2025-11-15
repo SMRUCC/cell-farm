@@ -17586,6 +17586,19 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="buffer"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapTools.CropBitmapBuffer(Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer,System.Drawing.Rectangle)">
+ <summary>
+ 裁剪BitmapBuffer的指定区域
+ </summary>
+ <param name="sourceBuffer">源BitmapBuffer</param>
+ <param name="cropRect">裁剪区域</param>
+ <returns>裁剪后的新BitmapBuffer</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapTools.GetValidCropRectangle(System.Drawing.Rectangle,System.Int32,System.Int32)">
+ <summary>
+ 确保裁剪矩形在图像有效范围内
+ </summary>
+</member>
 <member name="T:Microsoft.VisualBasic.Imaging.BitmapImage.FileStream.Bitmap">
  <summary>
  A in-memory bitmap image model
@@ -17826,110 +17839,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="stream"></param>
  <param name="format"></param>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.Image">
- <summary>
- the abstract image data model, example as gdi+ raster image bitmap, svg image, pdf image, etc
- </summary>
- <remarks>
- the image model implements the interface <see cref="T:Microsoft.VisualBasic.Imaging.IRasterMemory"/>
- </remarks>
-</member>
-<member name="P:Microsoft.VisualBasic.Imaging.Image.Size">
- <summary>
- the size of the image
- </summary>
- <returns></returns>
-</member>
-<member name="P:Microsoft.VisualBasic.Imaging.Image.Width">
- <summary>
- the width of the image <see cref="P:Microsoft.VisualBasic.Imaging.Image.Size"/>
- </summary>
- <returns></returns>
-</member>
-<member name="P:Microsoft.VisualBasic.Imaging.Image.Height">
- <summary>
- the height of the image <see cref="P:Microsoft.VisualBasic.Imaging.Image.Size"/>
- </summary>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.Imaging.Image.ConvertToBitmapStream">
- <summary>
- Convert current image object as bitmap file data
- </summary>
- <returns></returns>
- <remarks>
- function for make bitmap object constructor
- </remarks>
-</member>
-<member name="M:Microsoft.VisualBasic.Imaging.Image.FromStream(System.IO.Stream)">
- <summary>
- Load bitmap image from file stream
- </summary>
- <param name="s">only works for bitmap image file stream</param>
- <returns></returns>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.Bitmap">
- <summary>
- the gdi+ raster image data in memory
- </summary>
-</member>
-<member name="M:Microsoft.VisualBasic.Imaging.Bitmap.#ctor(Microsoft.VisualBasic.Imaging.Image)">
- <summary>
- make memory data copy
- </summary>
- <param name="copy"></param>
-</member>
-<member name="M:Microsoft.VisualBasic.Imaging.Bitmap.Save(System.IO.Stream,Microsoft.VisualBasic.Imaging.ImageFormats)">
- <summary>
- Save current bitmap object into a specific file
- </summary>
- <param name="s"></param>
- <param name="format"></param>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.PixelFormat">
- <summary>
- Specifies the format of the color data for each pixel in the image.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Imaging.PixelFormat.Format32bppArgb">
- <summary>
- Specifies that the format Is 32 bits per pixel; 8 bits each are used for the
- alpha, red, green, And blue components.
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.Pen">
- <summary>
- The stroke pen wrapper for .net 8.0
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.Imaging.LineJoin">
- <summary>
- Specifies how to join consecutive line Or curve segments in a figure (subpath)
- contained in a System.Drawing.Drawing2D.GraphicsPath object.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Miter">
- <summary>
- Specifies a mitered join. This produces a sharp corner Or a clipped corner, depending
- on whether the length of the miter exceeds the miter limit.
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Bevel">
- <summary>
- Specifies a beveled join. This produces a diagonal corner.    
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Round">
- <summary>
- Specifies a circular join. This produces a smooth, circular arc between the lines.    
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.MiterClipped">
- <summary>
- Specifies a mitered join. This produces a sharp corner Or a beveled corner, depending
- on whether the length of the miter exceeds the miter limit.
- </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.CMYKColor">
  <summary>
@@ -18812,6 +18721,51 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  both width and height in current size object must be greater than zero
  </summary>
  <param name="size"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.ImageTools.ImageCrop(Microsoft.VisualBasic.Imaging.Image,System.Drawing.Rectangle)">
+ <summary>
+ Crop an image 
+ </summary>
+ <param name="img">image to crop</param>
+ <param name="cropArea">rectangle to crop</param>
+ <returns>resulting image</returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.ImageTools.ImageCrop(Microsoft.VisualBasic.Imaging.Bitmap,System.Drawing.Rectangle)">
+ <summary>
+ Crop region on an bitmap image 
+ </summary>
+ <param name="bmpImage">bitmap image to crop</param>
+ <param name="cropArea">rectangle to crop</param>
+ <returns>resulting bitmap image object</returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.ImageTools.CorpBlank(Microsoft.VisualBasic.Imaging.Image,System.Int32,System.Drawing.Color,System.String)">
+ <summary>
+ 将图像的多余的空白处给剪裁掉，确定边界，然后进行剪裁，使用这个函数需要注意下设置空白色，默认使用的空白色为<see cref="P:System.Drawing.Color.White"/>
+ </summary>
+ <param name="res"></param>
+ <param name="margin"></param>
+ <param name="blankColor">默认白色为空白色</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.ImageTools.CorpBlank(Microsoft.VisualBasic.Imaging.Bitmap,System.Int32,System.Drawing.Color,System.String)">
+ <summary>
+ 将图像的多余的空白处给剪裁掉，确定边界，然后进行剪裁，使用这个函数需要注意下设置空白色，默认使用的空白色为<see cref="P:System.Drawing.Color.White"/>
+ </summary>
+ <param name="res"></param>
+ <param name="margin"></param>
+ <param name="blankColor">默认白色为空白色</param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.ImageTools.CorpBlankInternal(Microsoft.VisualBasic.Imaging.Bitmap,System.Int32,System.Drawing.Color,System.Boolean,System.String)">
+ <summary>
+ 将图像的多余的空白处给剪裁掉，确定边界，然后进行剪裁，使用这个函数需要注意下设置空白色，默认使用的空白色为<see cref="P:System.Drawing.Color.White"/>
+ </summary>
+ <param name="res"></param>
+ <param name="margin"></param>
+ <param name="blankColor">默认白色为空白色</param>
  <returns></returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.IGraphics">
@@ -20933,6 +20887,110 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.VectorMath2D">
  <summary>
  
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Image">
+ <summary>
+ the abstract image data model, example as gdi+ raster image bitmap, svg image, pdf image, etc
+ </summary>
+ <remarks>
+ the image model implements the interface <see cref="T:Microsoft.VisualBasic.Imaging.IRasterMemory"/>
+ </remarks>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Image.Size">
+ <summary>
+ the size of the image
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Image.Width">
+ <summary>
+ the width of the image <see cref="P:Microsoft.VisualBasic.Imaging.Image.Size"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Imaging.Image.Height">
+ <summary>
+ the height of the image <see cref="P:Microsoft.VisualBasic.Imaging.Image.Size"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Image.ConvertToBitmapStream">
+ <summary>
+ Convert current image object as bitmap file data
+ </summary>
+ <returns></returns>
+ <remarks>
+ function for make bitmap object constructor
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Image.FromStream(System.IO.Stream)">
+ <summary>
+ Load bitmap image from file stream
+ </summary>
+ <param name="s">only works for bitmap image file stream</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Bitmap">
+ <summary>
+ the gdi+ raster image data in memory
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Bitmap.#ctor(Microsoft.VisualBasic.Imaging.Image)">
+ <summary>
+ make memory data copy
+ </summary>
+ <param name="copy"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Imaging.Bitmap.Save(System.IO.Stream,Microsoft.VisualBasic.Imaging.ImageFormats)">
+ <summary>
+ Save current bitmap object into a specific file
+ </summary>
+ <param name="s"></param>
+ <param name="format"></param>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.PixelFormat">
+ <summary>
+ Specifies the format of the color data for each pixel in the image.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.PixelFormat.Format32bppArgb">
+ <summary>
+ Specifies that the format Is 32 bits per pixel; 8 bits each are used for the
+ alpha, red, green, And blue components.
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.Pen">
+ <summary>
+ The stroke pen wrapper for .net 8.0
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Imaging.LineJoin">
+ <summary>
+ Specifies how to join consecutive line Or curve segments in a figure (subpath)
+ contained in a System.Drawing.Drawing2D.GraphicsPath object.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Miter">
+ <summary>
+ Specifies a mitered join. This produces a sharp corner Or a clipped corner, depending
+ on whether the length of the miter exceeds the miter limit.
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Bevel">
+ <summary>
+ Specifies a beveled join. This produces a diagonal corner.    
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.Round">
+ <summary>
+ Specifies a circular join. This produces a smooth, circular arc between the lines.    
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.LineJoin.MiterClipped">
+ <summary>
+ Specifies a mitered join. This produces a sharp corner Or a beveled corner, depending
+ on whether the length of the miter exceeds the miter limit.
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.PointF3D">
@@ -25056,6 +25114,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  The vector length for counting the elements in <see cref="P:Microsoft.VisualBasic.Text.Xml.Models.NumericVector.vector"/> property.
  </summary>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Text.Xml.Models.TermsVector">
+ <summary>
+ a collection of the string terms 
+ </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Text.Xml.Models.XmlBuilder">
  <summary>
