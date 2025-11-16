@@ -818,8 +818,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 <member name="M:Microsoft.VisualBasic.App.JoinVariable(System.String,System.String)">
  <summary>
  add/update the environment variable in sciBASIC.NET framework.
- 
- (添加参数到应用程序的环境变量之中)
  </summary>
  <param name="name">
  if target variable symbol name is exists in the framework, 
@@ -829,6 +827,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  
  (如果给定的当前这个参数名称存在于当前框架环境中，则会更新原来的值)</param>
  <param name="value"></param>
+ <remarks>
+ (添加参数到应用程序的环境变量之中)
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.App.JoinVariables(Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{System.String}[])">
  <summary>
