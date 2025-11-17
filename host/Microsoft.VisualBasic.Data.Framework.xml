@@ -1239,6 +1239,13 @@ Microsoft.VisualBasic.Data.Framework
  </param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.CSVFile.RowHelpers.GetColumns(System.Collections.Generic.ICollection{Microsoft.VisualBasic.Data.Framework.IO.RowObject})">
+ <summary>
+ get all column data
+ </summary>
+ <param name="table"></param>
+ <returns></returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.Framework.IO.CSVFile.RowTokenizer">
  <summary>
  Parse the csv row by char scanning
@@ -1902,6 +1909,12 @@ Microsoft.VisualBasic.Data.Framework
  <returns></returns>
  
 </member>
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.MeasureTypeSchema">
+ <summary>
+ make measuring of the possible column data type
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.CreateDataSource">
  <summary>
  Get the lines data for the convinent data operation.(为了保持一致的顺序，这个函数是非并行化的)
@@ -2033,6 +2046,18 @@ Microsoft.VisualBasic.Data.Framework
  get row line by its row number
  </summary>
  <param name="i"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.GetRowData">
+ <summary>
+ get current row data vector
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.GetRow">
+ <summary>
+ get current row string vector
+ </summary>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.Select(System.String[])">
