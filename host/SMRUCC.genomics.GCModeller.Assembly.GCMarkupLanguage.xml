@@ -259,9 +259,9 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <returns></returns>
 </member>
-<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.formula">
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.db_xrefs">
  <summary>
- the chemical composition formula of this metabolite
+ the cross reference id of this compound, used for search on the workbench ui
  </summary>
  <returns></returns>
 </member>
