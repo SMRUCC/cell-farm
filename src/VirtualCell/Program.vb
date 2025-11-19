@@ -69,6 +69,10 @@ Module Program
         Dim modelData As CellularModule
         Dim modelList As New List(Of CellularModule)
 
+        For Each line As String In Banner.BannerInformation.LineTokens
+            Call Console.WriteLine(line)
+        Next
+
         If Not App.EnableTqdm Then
             Call "print feature of tqdm progressbar in console has been disable.".debug
         End If
