@@ -124,7 +124,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw
  write the cellular graph into the result data file if this options is config as TRUE. debug used only
  </param>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.StorageDriver.SetSymbolNames(System.Collections.Generic.Dictionary{System.String,System.String})">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.StorageDriver.SetSymbolNames(System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.IO.CompoundInfo})">
  <summary>
  set molecule symbol names
  </summary>

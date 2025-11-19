@@ -3,6 +3,7 @@ Imports System.IO
 Imports Microsoft.VisualBasic.CommandLine
 Imports Microsoft.VisualBasic.CommandLine.ManView
 Imports Microsoft.VisualBasic.CommandLine.Reflection
+Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.application.json
 Imports SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
@@ -86,7 +87,7 @@ Module Program
         End If
 
         Dim cellular_id As New List(Of String)
-        Dim symbolNames As New Dictionary(Of String, String)
+        Dim symbolNames As New Dictionary(Of String, CompoundInfo)
         Dim modelDataList As New List(Of CellularModule)
         Dim refIds As New Dictionary(Of String, String)
 
@@ -104,8 +105,12 @@ Module Program
             modelList.Add(modelData)
             cellular_id.Add(modelData.CellularEnvironmentName)
 
-            For Each idName As KeyValuePair(Of String, String) In model.GetMetaboliteSymbolNames
-                symbolNames(idName.Key) = idName.Value
+            For Each idName As Compound In model.metabolismStructure.compounds.SafeQuery
+                symbolNames(idName.ID) = New CompoundInfo With {
+                    .id = idName.ID,
+                    .name = idName.name,
+                    .db_xrefs = idName.db_xrefs
+                }
             Next
 
             Call refIds.AddRange(model.GetMetaboliteReferenceMaps, replaceDuplicated:=True)
