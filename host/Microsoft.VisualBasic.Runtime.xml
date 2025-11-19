@@ -333,9 +333,17 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.My.JavaScript.JavaScriptObject.CreateDynamicObject(System.String[],System.Object[])">
  <summary>
- A wrapper for <see cref="M:Microsoft.VisualBasic.DynamicType.Create"/>
+ A wrapper for <see cref="M:Microsoft.VisualBasic.DynamicType.Create(System.Collections.Generic.Dictionary{System.String,System.Object})"/>
  </summary>
  <param name="names"></param>
+ <param name="values"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.My.JavaScript.JavaScriptObject.CreateDynamicObject(System.Type,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}})">
+ <summary>
+ Create runtime object and then assign the property value
+ </summary>
+ <param name="dynamic"></param>
  <param name="values"></param>
  <returns></returns>
 </member>
@@ -29921,6 +29929,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  [optional] the name display string for tagged the <see cref="T:System.ComponentModel.DisplayNameAttribute"/> value to current property.
  </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.DynamicType.Create(System.String,System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="name">the generated clr type name</param>
+ <param name="asm_module">the assembly module name</param>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.DynamicType.AddDisplayName(System.Reflection.Emit.PropertyBuilder,System.String)">
  <summary>
