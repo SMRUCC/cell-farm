@@ -11872,7 +11872,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  q-gram的长度
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.AddString(System.String)">
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.AddString(System.String,System.Nullable{System.Int32})">
  <summary>
  向索引中添加字符串
  </summary>
