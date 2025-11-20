@@ -5,6 +5,7 @@ Imports Microsoft.VisualBasic.CommandLine.ManView
 Imports Microsoft.VisualBasic.CommandLine.Reflection
 Imports Microsoft.VisualBasic.Linq
 Imports Microsoft.VisualBasic.MIME.application.json
+Imports SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
 Imports SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
 Imports SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions
@@ -70,9 +71,7 @@ Module Program
         Dim modelData As CellularModule
         Dim modelList As New List(Of CellularModule)
 
-        For Each line As String In Banner.BannerInformation.LineTokens
-            Call Console.WriteLine(line)
-        Next
+        Call Banner.Print(App.StdOut)
 
         If Not App.EnableTqdm Then
             Call "print feature of tqdm progressbar in console has been disable.".debug
