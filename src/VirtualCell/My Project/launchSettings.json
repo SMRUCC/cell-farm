@@ -2,7 +2,7 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"Z:\\ssss.json\" --output Z:/demo.vcelldata "
+      "commandLineArgs": "--run Z:/ffff.json --output Z:/run.vcelldata /@set tqdm=false\r\n"
     },
     "file-conversion": {
       "commandName": "Project",
