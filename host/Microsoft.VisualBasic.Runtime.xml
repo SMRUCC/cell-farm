@@ -13859,6 +13859,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="x"></param>
  <returns></returns>
+ <remarks>
+ Please note that this function is a iterator function. <b>which means your MUST
+ call the ToArray or ToList method to execute this function</b>, <span style="color: red;">or the items
+ will not be added into current index object.</span>
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Index`1.Clear">
  <summary>
