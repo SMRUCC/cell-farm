@@ -375,6 +375,12 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup.transportation">
+ <summary>
+ a collection of the reaction id index that used for transportation between compartments
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Reaction">
  <summary>
  the reaction graph model
