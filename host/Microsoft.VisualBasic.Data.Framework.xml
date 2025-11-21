@@ -1977,7 +1977,7 @@ Microsoft.VisualBasic.Data.Framework
  just check for the table header and give the warning message
  </remarks>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.CreateObject(Microsoft.VisualBasic.Data.Framework.IO.File)">
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.CreateObject(Microsoft.VisualBasic.Data.Framework.IO.File,System.Boolean)">
  <summary>
  Creates the data frame object from the csv docs.
  </summary>
@@ -1993,7 +1993,7 @@ Microsoft.VisualBasic.Data.Framework
  <param name="rows">the table data that exlcudes the first header row.</param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.Initialize(Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.Framework.IO.RowObject},Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver@)">
+<member name="M:Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver.Initialize(Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.Framework.IO.RowObject},Microsoft.VisualBasic.Data.Framework.IO.DataFrameResolver@,System.Boolean)">
  <summary>
  just needs to assign the table value and the column names
  </summary>
