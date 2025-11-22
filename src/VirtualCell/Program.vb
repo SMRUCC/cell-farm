@@ -134,6 +134,9 @@ Module Program
                               End Function)
         }
 
+        Call "inspect of the cellular dynamics parameters:".info
+        Call config.kinetics.GetJson.info
+
         Call engine _
             .SetModel(pull.mass, pull.network) _
             .MakeKnockout(config.knockouts) _
