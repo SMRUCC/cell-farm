@@ -273,7 +273,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  这个因子向量是相对于反应过程从左到右而言的
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassDynamics.PopulateDynamics(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassDynamics.PopulateDynamics(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Vessel,System.Double)">
  <summary>
  create dynamics equation for RK4 ODEs solver
  </summary>
