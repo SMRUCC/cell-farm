@@ -140,7 +140,8 @@ Module Program
         Call engine _
             .SetModel(pull.mass, pull.network) _
             .MakeKnockout(config.knockouts) _
-            .SetCultureMedium(config.cultureMedium)
+            .SetCultureMedium(config.cultureMedium) _
+            .SetCellCopyNumber(config.copy_number)
 
         Using storage As New StorageDriver(output, engine, graph_debug:=False)
             Call storage.SetSymbolNames(symbolNames)
