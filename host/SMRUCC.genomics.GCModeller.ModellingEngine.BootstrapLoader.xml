@@ -295,7 +295,9 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  <summary>
  define of the cell initial status.
  </summary>
- <returns></returns>
+ <returns>
+ [cell_id => [metabolite => content data]]
+ </returns>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Definitions.Definition.MetaCyc(System.Collections.Generic.IEnumerable{System.String},System.Double)">
  <summary>
