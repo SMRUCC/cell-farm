@@ -435,5 +435,10 @@ Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
  <param name="DIR"></param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.SigmaJs">
+ <summary>
+ Create json for sigma.js
+ </summary>
+</member>
 </members>
 </doc>
