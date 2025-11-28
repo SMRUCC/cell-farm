@@ -11883,6 +11883,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  获取索引统计信息
  </summary>
+ 
 </member>
 <member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SimHashIndex._hashSize">
  <summary>
