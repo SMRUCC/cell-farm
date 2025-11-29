@@ -47,6 +47,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Channel.name">
+ <summary>
+ the debug name
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Channel.CoverLeft(System.Collections.Generic.Dictionary{System.String,System.Double},System.Double)">
  <summary>
  
@@ -98,6 +104,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.FluxEdge.regulation">
  <summary>
  regulation or enzyme catalysis
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.FluxEdge.name">
+ <summary>
+ the name of this biological process, used for debug used
  </summary>
  <returns></returns>
 </member>

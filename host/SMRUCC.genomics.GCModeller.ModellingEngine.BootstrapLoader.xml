@@ -73,6 +73,13 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader.CreateEnvironment(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule)">
+ <summary>
+ Convert the virtual cell model as computational network model
+ </summary>
+ <param name="cell"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.Loader.create(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.CellularModule)">
  <summary>
  Create the flux network in the target cellular module
