@@ -4882,6 +4882,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  Starts the ProgressBar
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.WaitForExit">
+ <summary>
+ wait for <see cref="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.ThreadAction"/> exit
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.ConsoleProgressBar.ProgressBar.Pause">
  <summary>
  Pauses the ProgressBar

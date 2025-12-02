@@ -148,6 +148,11 @@ Microsoft.VisualBasic.Math.Core
  可以使用objectfunction的系数长度来取出原来的输入的变量名称的列表
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.originalConstraintTypes">
+ <summary>
+ 添加字段保存原始约束类型
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.#ctor(Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.OptimizationType,System.String[],System.Double[],System.Double[0:,0:],System.String[],System.Double[],System.Double)">
  <summary>
  
@@ -160,11 +165,17 @@ Microsoft.VisualBasic.Math.Core
  <param name="constraintRightHandSides">方程组的右边：方程组之中每一个方程的结果值</param>
  <param name="objectiveFunctionValue">目标方程的目标结果值</param>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.#ctor(Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPModel)">
+ <summary>
+ 从一个模型的xml反序列化结果对象中的数据创建当前的这个LPP算法
+ </summary>
+ <param name="lppModel"></param>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.#ctor(System.String,System.String[],System.Double[],System.Double[][],System.String[],System.Double[],System.Double)">
  <summary>
  
  </summary>
- <param name="objectiveFunctionType$">目标函数的类型，是求取极大值还是极小值</param>
+ <param name="objectiveFunctionType">目标函数的类型，是求取极大值还是极小值</param>
  <param name="variableNames">方程之中的未知变量的名称，可以省略这个函数，程序会默认会自动使用x1, x2, x3...等来自动命名</param>
  <param name="objectiveFunctionCoefficients">目标函数之中每一个未知变量所对应的系数</param>
  <param name="constraintCoefficients">方程组的左边：系数矩阵</param>
@@ -182,6 +193,12 @@ Microsoft.VisualBasic.Math.Core
  Change signs to = by adding variables
  </summary>
  <param name="artificialVariables"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.ArtificialVariableAssignments">
+ <summary>
+ 根据约束类型和添加的变量系数判断是否需要人工变量
+ </summary>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPP.addVariableAt(System.Int32,System.Double)">
  <summary>
@@ -225,6 +242,88 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <param name="varIndex"></param>
  <param name="constIndex"></param>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased">
+ <summary>
+ 使用两阶段法改进的单纯形法求解器
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.Phase1(System.Boolean,System.Text.StringBuilder)">
+ <summary>
+ 第一阶段：最小化人工变量之和（完整修正版本）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.InitializePhase1BasicVariables">
+ <summary>
+ 初始化第一阶段基变量
+ 在第一阶段，人工变量作为初始基变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.IsUnitVector(System.Int32,System.Int32)">
+ <summary>
+ 检查变量是否构成单位向量（在指定行系数为1，其他行为0）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.RestoreOriginalObjective(System.Double[],System.Double)">
+ <summary>
+ 恢复原始目标函数
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.GetArtificialVariablesList">
+ <summary>
+ 获取人工变量列表
+ 识别所有以'a'开头或索引大于原始变量数的变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.IsArtificialVariable(System.Int32)">
+ <summary>
+ 判断是否为人工变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.Phase2(System.Boolean,System.Text.StringBuilder)">
+ <summary>
+ 第二阶段：求解原问题
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.RunSimplexIteration(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Text.StringBuilder,System.Boolean)">
+ <summary>
+ 核心单纯形迭代逻辑
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.Pivot(System.Int32,System.Int32)">
+ <summary>
+ 改进的旋转操作（增加数值稳定性检查）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.GetCurrentBasicVariables">
+ <summary>
+ 获取当前基变量（改进的数值稳定性版本）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.IsPotentialBasicVariable(System.Int32,System.Int32)">
+ <summary>
+ 检查变量是否可能成为基变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.RemoveArtificialVariables(System.Collections.Generic.List{System.Int32})">
+ <summary>
+ 移除人工变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.ExtractSolution">
+ <summary>
+ 提取解信息（修正版本）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.ChooseEnteringVariable(System.Collections.Generic.List{System.Int32})">
+ <summary>
+ 选择入基变量（改进检验数计算）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.LPPSolverTwoPhased.ChooseLeavingConstraint(System.Int32)">
+ <summary>
+ 选择出基约束（改进最小比值规则）
+ </summary>
 </member>
 <member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.OptimizationType.MAX">
  <summary>
