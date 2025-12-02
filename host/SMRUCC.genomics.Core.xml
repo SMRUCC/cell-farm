@@ -2342,12 +2342,18 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  Target List
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.Assembly.Uniprot.Web.WebServices.CreateQuery(System.String,System.String)">
+<member name="T:SMRUCC.genomics.Assembly.Uniprot.Web.WebServices">
+ <summary>
+ https://www.uniprot.org/help/api_queries
+ https://www.uniprot.org/help/text-search
+ https://www.uniprot.org/help/query-fields
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.Uniprot.Web.WebServices.CreateQuery(System.String,System.Nullable{System.UInt32})">
  <summary>
  Create a protein query url. 
  </summary>
- <param name="geneId"></param>
- <param name="taxonomy"></param>
+ <param name="q"></param>
  <returns></returns>
  <remarks></remarks>
  
@@ -2359,15 +2365,6 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  （从http://www.uniprot.org/网站之上下载一条蛋白质序列）
  </summary>
  <param name="UniprotId">The uniprot id of a protein sequence.(蛋白质在Uniprot数据库之中的编号)</param>
- <returns></returns>
- <remarks></remarks>
- 
-</member>
-<member name="M:SMRUCC.genomics.Assembly.Uniprot.Web.WebServices.GetEntries(System.String)">
- <summary>
- 
- </summary>
- <param name="url">CreateQuery(geneId, taxonomy)</param>
  <returns></returns>
  <remarks></remarks>
  
@@ -2412,7 +2409,9 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  获取蛋白质的功能结构信息
  </summary>
  <param name="prot"></param>
- <returns></returns>
+ <returns>
+ get domain type feature information
+ </returns>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.Uniprot.XML.Extensions.Term2Gene(SMRUCC.genomics.Assembly.Uniprot.XML.UniProtXML,System.String,SMRUCC.genomics.Assembly.Uniprot.XML.GetIDs.IDTypes)">
  <summary>
@@ -8920,16 +8919,19 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  <param name="gbk"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins_Short(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File,System.Boolean)">
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins_Short(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File,System.Boolean,System.Boolean)">
  <summary>
- Locus_tag Product_Description
+ fasta sequence title header in format: locus_tag product_description
  </summary>
  <param name="gb"></param>
+ <param name="duplicateOldLocusTag">
+ andalso populate an duplicated sequence data if ``old_locus_tag`` is existed inside thse CDS feature.
+ </param>
  <returns></returns>
  <remarks></remarks>
 
 </member>
-<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.__protShort(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature,System.Boolean)">
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.makeProtSeqShort(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature,System.Boolean,System.Boolean)">
  <summary>
  假若是新注释的基因组还没有基因号，则默认使用位置来做唯一标示
  </summary>
@@ -8947,6 +8949,13 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  <returns>{locus_tag, gene}</returns>
  <remarks></remarks>
 
+</member>
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions._16SribosomalRNA(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File)">
+ <summary>
+ make export of the annotated 16s RNA from the given genbank assembly
+ </summary>
+ <param name="Gbk"></param>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.IgbComponent">
  <summary>
@@ -9302,6 +9311,9 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
  <returns>
  this function returns nothing if the given key is not found in current feature.
  </returns>
+ <remarks>
+ query by a <see cref="T:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.FeatureQualifiers"/> key string name
+ </remarks>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature.Query(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.FeatureQualifiers)">
  <summary>
@@ -10614,7 +10626,7 @@ Get feature site data by nucleotide location.
  The NCBI genbank data api handler
  </summary>
 </member>
-<member name="T:SMRUCC.genomics.Assembly.NCBI.Entrez.Entry">
+<member name="T:SMRUCC.genomics.Assembly.NCBI.Entrez.EntrezEntry">
  <summary>
  查询某一个蛋白质或者基因对象所返回的结果数据下载入口点
  </summary>
@@ -10832,6 +10844,42 @@ Get feature site data by nucleotide location.
  </summary>
  <param name="contigs"></param>
  <param name="offsets"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.ComponentModel.Annotation.IBlastHit">
+ <summary>
+ A simple alignment annotation result model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.IBlastHit.queryName">
+ <summary>
+ the target molecule to be annotated
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.IBlastHit.hitName">
+ <summary>
+ the id of the subject reference molecule data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.IBlastHit.description">
+ <summary>
+ the description of the subject hit reference object, will be used as 
+ the annotation text result of the corresponding <see cref="P:SMRUCC.genomics.ComponentModel.Annotation.IBlastHit.queryName"/> 
+ target.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.ComponentModel.Annotation.IQueryHits">
+ <summary>
+ the annotation alignment result model with score value
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.IQueryHits.identities">
+ <summary>
+ the alignment silimarity score
+ </summary>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.ECNumber">
@@ -11813,9 +11861,9 @@ Get feature site data by nucleotide location.
 <member name="T:SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation">
  <summary>
  Loci segment location information on an nucleotide sequence, this object added an <see cref="P:SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation.Strand"></see> 
- information on <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"></see> data.(会自动根据LEFT和RIGHT的值来修正属性值)
+ information on <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"></see> data.
  </summary>
- <remarks></remarks>
+ <remarks>(会自动根据LEFT和RIGHT的值来修正属性值)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation.Strand">
  <summary>
@@ -12077,6 +12125,21 @@ Get feature site data by nucleotide location.
  Sanger Institute to bundle a FASTA formatted sequence and its quality data, 
  but has recently become the de facto standard for storing the output of 
  high-throughput sequencing instruments such as the Illumina Genome Analyzer.
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.MimeTypes.FastAProt">
+ <summary>
+ Fasta file for protein sequence data
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.MimeTypes.FastANucl">
+ <summary>
+ Fasta file for nucleotide sequence data
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.MimeTypes.GFF3Table">
+ <summary>
+ Generic Feature Format version 3
  </summary>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.FormulaData">
@@ -12501,7 +12564,7 @@ Get feature site data by nucleotide location.
  <param name="length%"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.ContextModel.Promoter.Extensions.GetUpstreamSeq(SMRUCC.genomics.Assembly.NCBI.GenBank.TabularFormat.ComponentModels.GeneBrief,SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32)">
+<member name="M:SMRUCC.genomics.ContextModel.Promoter.Extensions.GetUpstreamSeq(SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief,SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32)">
  <summary>
  Get upstream nt sequence in a specific length for target gene.
  (在这个函数之中，位点的计算的时候会有一个碱基的偏移量是因为为了不将起始密码子ATG之中的A包含在结果序列之中)
@@ -12738,6 +12801,16 @@ to take away yo [rest of string was truncated]&quot;;.
  </summary>
  <param name="biomString"></param>
  <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1.Query(System.String,System.Double)">
+ <summary>
+ 
+ </summary>
+ <param name="name"></param>
+ <param name="cutoff"></param>
+ <returns>
+ the query output result has already been sorted with <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.FindResult.similarity"/> in decreasing order.
+ </returns>
 </member>
 <member name="T:SMRUCC.genomics.Metagenomics.OTUData`1">
  <summary>
@@ -13612,7 +13685,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.DocParser(System.String[],System.String)">
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.DocParser(System.Collections.Generic.IEnumerable{System.String},System.String)">
  <summary>
  当<paramref name="lines"/>参数为空的时候，会返回一个空集合而非返回空值
  </summary>
@@ -13663,7 +13736,7 @@ to take away yo [rest of string was truncated]&quot;;.
  </param>
  <remarks>this function will split sequence data by 60 chars per line</remarks>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Save(System.Int32,System.String,Microsoft.VisualBasic.Text.Encodings)">
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Save(System.Int32,System.String,System.String,Microsoft.VisualBasic.Text.Encodings)">
  <summary>
  Save the fasta file into the local filesystem.
  </summary>
@@ -13676,15 +13749,15 @@ to take away yo [rest of string was truncated]&quot;;.
  </param>
  <remarks></remarks>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Save(System.Int32,System.String,System.Text.Encoding)">
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Save(System.Int32,System.String,System.String,System.Text.Encoding)">
  <summary>
  Save the fasta file into the local filesystem.
  </summary>
- <param name="Path"></param>
+ <param name="path">the file path for save the fasta sequence data</param>
  <param name="encoding">不同的程序会对这个由要求，例如meme程序在linux系统之中要求序列文件为unicode编码格式而windows版本的meme程序则要求ascii格式</param>
  <remarks></remarks>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Generate">
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Generate(System.Int32,System.String)">
  <summary>
  在写入数据到文本文件之前需要将目标对象转换为文本字符串
  </summary>
@@ -13699,12 +13772,13 @@ to take away yo [rest of string was truncated]&quot;;.
  The target FASTA file that to append this FASTA sequences.(将要拓展这些FASTA序列的目标FASTA文件)
  </param>
  <remarks></remarks>
+ 
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaFile.Match(System.String,System.Text.RegularExpressions.RegexOptions)">
  <summary>
  使用正则表达式来搜索在序列中含有特定模式的序列对象
  </summary>
- <param name="regxText"></param>
+ <param name="regxText">the regular expression pattern for matches of the fasta sequence data</param>
  <returns></returns>
  <remarks></remarks>
 </member>
@@ -13998,6 +14072,34 @@ to take away yo [rest of string was truncated]&quot;;.
  k-mer sequence model
  </summary>
 </member>
+<member name="P:SMRUCC.genomics.SequenceModel.FASTA.KSeq.seq">
+ <summary>
+ the kmer sequence
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.FASTA.KSeq.location">
+ <summary>
+ location of the left
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
+ <summary>
+ 计算DNA k-mer的直接四进制哈希值。
+ </summary>
+ <param name="kmer">输入的k-mer字符串（例如 "ATCG"）。</param>
+ <returns>计算出的哈希值（一个Long整数）。如果输入无效，则抛出异常。</returns>
+ <remarks>
+ 算法原理：
+ 1. 将k-mer的每个碱基映射为一个数字 (A=0, C=1, G=2, T=3)。
+ 2. 将整个k-mer串视为一个k位的四进制数。
+ 3. 通过迭代方式计算其十进制值：hash = (hash * 4) + current_value。
+ 例如，对于 k-mer "ACGT" (k=4):
+  A(0) C(1) G(2) T(3)
+  哈希值 = (((0 * 4 + 1) * 4 + 2) * 4 + 3) = 27
+ </remarks>
+</member>
 <member name="T:SMRUCC.genomics.SequenceModel.FASTA.StreamIterator">
  <summary>
  读取超大型的fasta文件所需要的一个数据对象
@@ -14015,7 +14117,7 @@ to take away yo [rest of string was truncated]&quot;;.
  </summary>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.StreamIterator.__loops(System.Collections.Generic.List{System.String})">
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.StreamIterator.Loops(System.Collections.Generic.List{System.String})">
  <summary>
  Loops on each block of data
  </summary>
@@ -14142,9 +14244,9 @@ to take away yo [rest of string was truncated]&quot;;.
 </member>
 <member name="T:SMRUCC.genomics.SequenceModel.ISequenceModel">
  <summary>
- The biological sequence molecular model.(蛋白质序列，核酸序列都可以使用本对象来表示)
+ The biological sequence molecular model.
  </summary>
- <remarks></remarks>
+ <remarks>(蛋白质序列，核酸序列都可以使用本对象来表示)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.ISequenceModel.SequenceData">
  <summary>
@@ -14478,10 +14580,64 @@ to take away yo [rest of string was truncated]&quot;;.
  <remarks></remarks>
  
 </member>
+<member name="T:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta">
+ <summary>
+ 分块存储的FASTA序列对象，用于处理大型基因组序列，例如植物基因组，动物基因组这些序列长度超过了2GB的基因组序列
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.title">
+ <summary>
+ 序列的标题/描述
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.Length">
+ <summary>
+ 序列的总长度（碱基数）
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.LoadDocument(System.IO.Stream,System.Int32)">
+ <summary>
+ 从文件流中加载FASTA文档
+ </summary>
+ <param name="s">输入文件流</param>
+ <param name="chunkSize">分块大小，默认32MB</param>
+ <returns>FASTA序列对象的枚举</returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.GetRegion(System.Int64,System.Int64)">
+ <summary>
+ 获取指定区域的序列字符串
+ </summary>
+ <param name="left">起始位置（从1开始）</param>
+ <param name="right">结束位置（从1开始）</param>
+ <returns>指定区域的序列字符串</returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.CharToDNA(System.Char)">
+ <summary>
+ 将字符转换为DNA枚举值
+ </summary>
+ <param name="c">字符</param>
+ <returns>对应的DNA碱基</returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.DNAToChar(SMRUCC.genomics.SequenceModel.NucleotideModels.DNA)">
+ <summary>
+ 将DNA枚举值转换为字符
+ </summary>
+ <param name="base">DNA碱基</param>
+ <returns>对应的字符</returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.ToString">
+ <summary>
+ 获取序列的字符串表示（用于调试，可能不返回完整序列）
+ </summary>
+ <returns>序列的字符串表示</returns>
+</member>
 <member name="T:SMRUCC.genomics.SequenceModel.NucleotideModels.Contig">
  <summary>
- 这个基础的模型对象只有在基因组上面的位置信息
+ a model for nucleotide sequence region on genomics sequence
  </summary>
+ <remarks>
+ 这个基础的模型对象只有在基因组上面的位置信息
+ </remarks>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.NucleotideModels.Contig.MappingLocation(System.Boolean)">
  <summary>
@@ -14574,9 +14730,8 @@ to take away yo [rest of string was truncated]&quot;;.
 <member name="T:SMRUCC.genomics.SequenceModel.NucleotideModels.DNA">
  <summary>
  Deoxyribonucleotides NT base which consist of the DNA sequence.
- (枚举所有的脱氧核糖核苷酸)
  </summary>
- <remarks></remarks>
+ <remarks>(枚举所有的脱氧核糖核苷酸)</remarks>
 </member>
 <member name="F:SMRUCC.genomics.SequenceModel.NucleotideModels.DNA.NA">
  <summary>
@@ -15211,7 +15366,13 @@ to take away yo [rest of string was truncated]&quot;;.
  Fasta格式的多序列比对的结果
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.Patterns.Clustal.Clustal.__initCommon">
+<member name="M:SMRUCC.genomics.SequenceModel.Patterns.Clustal.Clustal.#ctor(System.String)">
+ <summary>
+ read the alignment result file.
+ </summary>
+ <param name="path"></param>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Patterns.Clustal.Clustal.Initialize">
  <summary>
  计算每一个位点上面的保守性
  </summary>
@@ -15280,6 +15441,24 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="chMAT">频率矩阵</param>
  <param name="index"></param>
  <param name="width"></param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.Patterns.IPatternSite.Bits">
+ <summary>
+ The information of this site can give us.
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Patterns.IPatternSite.EnumerateKeys">
+ <summary>
+ get alphabets of current site
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Patterns.IPatternSite.EnumerateValues">
+ <summary>
+ get the pwm data column
+ </summary>
  <returns></returns>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.Patterns.SimpleSite.IsConserved">
