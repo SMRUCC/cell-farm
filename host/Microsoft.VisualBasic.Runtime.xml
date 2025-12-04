@@ -5338,6 +5338,17 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="useColor">Indicates whether to use colored output for the progress bar.</param>
  <returns>An enumerable that iterates over the collection with progress tracking.</returns>
 </member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Tqdm.TqdmWrapper.StreamReader(System.IO.StreamReader)">
+ <summary>
+ 
+ </summary>
+ <param name="str"></param>
+ <returns>
+ this function returns a string line populator function,
+ each time call this result function pointer will populate a new line and move to next line. 
+ if this function returns nothing, that it means read the end of the stream.
+ </returns>
+</member>
 <member name="M:Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Tqdm.TqdmWrapper.Range(System.Int32,System.Int32,Microsoft.VisualBasic.ApplicationServices.Terminal.ProgressBar.Tqdm.ProgressBar@,System.Int32,System.Int32,System.Boolean,System.Boolean)">
  <summary>
  Generates a sequence of integral numbers within a specified range.
@@ -11590,6 +11601,76 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="name"></param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter">
+ <summary>
+ 提供布隆过滤器的实现。
+ 布隆过滤器是一种空间效率很高的概率型数据结构，用于判断一个元素是否在集合中。
+ 它允许一定的假阳性，但绝不允许假阴性。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.FalsePositiveRate(System.Int32)">
+ <summary>
+ 获取当前布隆过滤器的理论假阳性率。
+ </summary>
+ <param name="currentItemCount">当前已插入的元素数量。</param>
+ <returns>理论假阳性率。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.#ctor(System.Int32,System.Int32)">
+ <summary>
+ 使用指定的位数组大小和哈希函数数量初始化 BloomFilter 类的新实例。
+ </summary>
+ <param name="m">位数组的大小。必须为正数。</param>
+ <param name="k">哈希函数的数量。必须为正数。</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.Create(System.Int32,System.Double)">
+ <summary>
+ 根据期望的元素数量和目标假阳性率，自动计算最优参数并初始化 BloomFilter 类的新实例。
+ </summary>
+ <param name="expectedItems">预计将要插入的元素数量。必须为正数。</param>
+ <param name="desiredFalsePositiveRate">期望的假阳性率，范围在 (0, 1) 之间。</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.Add(System.String)">
+ <summary>
+ 将指定的元素添加到布隆过滤器中。
+ </summary>
+ <param name="item">要添加的元素。不能为 Nothing。</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.Contains(System.String)">
+ <summary>
+ 检查布隆过滤器中是否可能包含指定的元素。
+ </summary>
+ <param name="item">要检查的元素。不能为 Nothing。</param>
+ <returns>如果元素可能存在，则为 true；如果元素绝对不存在，则为 false。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.OptimalM(System.Int32,System.Double)">
+ <summary>
+ 根据给定的元素数量和假阳性率，计算最优的位数组大小。
+ </summary>
+ <param name="n">预计插入的元素数量。</param>
+ <param name="p">期望的假阳性率。</param>
+ <returns>最优的位数组大小。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.OptimalK(System.Int32,System.Int32)">
+ <summary>
+ 根据给定的位数组大小和元素数量，计算最优的哈希函数数量。
+ </summary>
+ <param name="m">位数组的大小。</param>
+ <param name="n">预计插入的元素数量。</param>
+ <returns>最优的哈希函数数量。</returns>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.prime">
+ <summary>
+ Knuth's multiplicative constant
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.GetHashPositions(System.String)">
+ <summary>
+ 获取元素在位数组中映射的 k 个位置。
+ 这里使用双哈希技术来生成 k 个独立的哈希值。
+ </summary>
+ <param name="item">要哈希的元素。</param>
+ <returns>包含 k 个位置的整数数组。</returns>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.ILocalSearchHandle.Matches(System.String,Microsoft.VisualBasic.CompareMethod)">
  <summary>
  
@@ -16848,6 +16929,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <remarks>
  http://www.isthe.com/chongo/tech/comp/fnv/index.html
  </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.Repository.MurmurHash.MurmurHashCode3_x86_32(System.Byte[],System.UInt32)">
+ <summary>
+ 计算给定数据的32位MurmurHash3值。
+ </summary>
+ <param name="data">输入数据。</param>
+ <param name="seed">哈希种子。</param>
+ <returns>32位无符号哈希值。</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.Repository.Nilsimsa">
  <summary>
