@@ -11945,6 +11945,30 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  q-gram的长度
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex._index">
+ <summary>
+ the q-gram index set
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex._strings">
+ <summary>
+ the raw input string collection
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex._counts">
+ <summary>
+ the q-gram count for each raw input string
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.#ctor(System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="q"></param>
+ <remarks>
+ for make search index of the metabolite/chemical/gene/protein name, q = 3 is recommended as the name size is vary from short to long
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.AddString(System.String,System.Nullable{System.Int32})">
  <summary>
  向索引中添加字符串
@@ -11964,6 +11988,8 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  基于q-gram重叠度查找相似字符串
  </summary>
+ <remarks>大小写不敏感</remarks>
+ <returns>the returns similarity text search result has already been sorted via <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.FindResult.similarity"/> in descending order.</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex.GetIndexStats">
  <summary>
