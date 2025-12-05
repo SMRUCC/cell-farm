@@ -2,7 +2,7 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"K:\\test\\run.json\""
+      "commandLineArgs": "--run Z:/aaaaaa.json --output Z:/tmp/1/Sophia/35520/vc_datastore_927173.vcelldata /@set tqdm=false\r\n"
     },
     "file-conversion": {
       "commandName": "Project",
