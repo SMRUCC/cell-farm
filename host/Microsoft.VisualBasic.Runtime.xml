@@ -9290,6 +9290,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="argv"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.CommandLine.Interpreter.IsPossibleRequestFile(System.String)">
+ <summary>
+ 
+ </summary>
+ <param name="target"></param>
+ <returns>
+ returns true if the given <paramref name="target"/> is local file path or http/https/ftp url
+ </returns>
+</member>
 <member name="M:Microsoft.VisualBasic.CommandLine.Interpreter.SDKdocs">
  <summary>
  Generate the sdk document for the target program assembly.(生成目标应用程序的命令行帮助文档，markdown格式的)
@@ -11703,6 +11712,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  一般是一些短的字符串所构成的能够唯一标记该<see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IKeyIndex`1.Entity"/>对象的术语列表
  </summary>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.InMemoryDb.EnumerateAllKeys">
+ <summary>
+ 枚举数据库中所有的键。
+ 此操作会遍历所有数据文件，可能比较耗时，建议在需要时调用。
+ </summary>
+ <returns>返回一个包含所有键的字符串集合。</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QueryCacheFactory`1">
  <summary>
@@ -25869,7 +25885,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.Extensions.AddRange``2(System.Collections.Generic.Dictionary{``0,``1}@,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{``0,``1}},System.Boolean)">
  <summary>
- 
+ merge the given data key-value pair data into current directory and then returns the current directory object
  </summary>
  <typeparam name="TKey"></typeparam>
  <typeparam name="TValue"></typeparam>
@@ -33765,6 +33781,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="ip"></param>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Net.WebClient.Axel">
+ <summary>
+ linux axel liked multiple thread http file download module
+ </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.Net.WebClient.WebClient.OpenSaveStream">
  <summary>
