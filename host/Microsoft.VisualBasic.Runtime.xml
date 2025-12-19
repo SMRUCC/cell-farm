@@ -556,7 +556,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.My.UNIX.LinuxRunHelper.BashShell">
+<member name="M:Microsoft.VisualBasic.My.UNIX.LinuxRunHelper.BashShell(System.Boolean)">
  <summary>
  这里比perl脚本掉调用有一个缺点，在运行前还需要使用命令修改为可执行权限
  
@@ -564,6 +564,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  'sudo chmod 777 cmd.sh'
  ```
  </summary>
+ <param name="install_root">
+ install command to root location: /usr/local/bin/
+ </param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.My.UNIX.LinuxRunHelper.Shell(System.String,System.String,System.Boolean,System.String)">
@@ -11617,6 +11620,23 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  它允许一定的假阳性，但绝不允许假阴性。
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.bitmap">
+ <summary>
+ 使用 BitArray 来高效地存储位数组
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.m">
+ <summary>
+ length of the <see cref="T:System.Collections.BitArray"/> 
+ </summary>
+ <returns>位数组的长度</returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.k">
+ <summary>
+ 哈希函数的数量
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.FalsePositiveRate(System.Int32)">
  <summary>
  获取当前布隆过滤器的理论假阳性率。
@@ -11658,6 +11678,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="n">预计插入的元素数量。</param>
  <param name="p">期望的假阳性率。</param>
  <returns>最优的位数组大小。</returns>
+ 
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.OptimalK(System.Int32,System.Int32)">
  <summary>
@@ -11666,6 +11687,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="m">位数组的大小。</param>
  <param name="n">预计插入的元素数量。</param>
  <returns>最优的哈希函数数量。</returns>
+ 
 </member>
 <member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.BloomFilter.prime">
  <summary>
@@ -11719,6 +11741,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  此操作会遍历所有数据文件，可能比较耗时，建议在需要时调用。
  </summary>
  <returns>返回一个包含所有键的字符串集合。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.InMemoryDb.Close">
+ <summary>
+ close the database connection
+ </summary>
+ <remarks>
+ this function will be called on dispose
+ </remarks>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QueryCacheFactory`1">
  <summary>

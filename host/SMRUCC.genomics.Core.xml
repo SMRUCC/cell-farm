@@ -6,92 +6,258 @@ SMRUCC.genomics.Core
 </name>
 </assembly>
 <members>
-<member name="T:SMRUCC.genomics.My.Resources.Resources">
+<member name="T:SMRUCC.genomics.My.Resources._Default">
 <summary>
   A strongly-typed resource class, for looking up localized strings, etc.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.ResourceManager">
+<member name="P:SMRUCC.genomics.My.Resources._Default.ResourceManager">
 <summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.Culture">
+<member name="P:SMRUCC.genomics.My.Resources._Default.Culture">
 <summary>
   Overrides the current thread's CurrentUICulture property for all
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08201">
+<member name="P:SMRUCC.genomics.My.Resources._Default.MiST2">
 <summary>
-  Looks up a localized string similar to +E	Reaction
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Enzymatic Reactions&lt;/h2&gt;
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.My.Resources.KEGGCompounds">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08001">
+<summary>
+  Looks up a localized string similar to +D	Biochemical compound
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Compounds with Biological Roles&lt;/h2&gt;
 !
-A&lt;b&gt;1. Oxidoreductase reactions&lt;/b&gt;
-B  1.1  Acting on the CH-OH group of donors
-C    1.1.1  With NAD+ or NADP+ as acceptor
-D      1.1.1.1
-E        R00623  Primary alcohol + NAD+ &lt;=&gt; Aldehyde + NADH + H+
-E        R00624  Secondary alcohol + NAD+ &lt;=&gt; Ketone + NADH + H+
-E        R00754  Ethanol + NAD+ &lt;=&gt; Acetaldehyde + NADH + H+
-E        R02124  Retinol + NAD+ &lt;=&gt; Retinal +  [rest of string was truncated]&quot;;.
+A&lt;b&gt;Organic acids&lt;/b&gt;
+B  Carboxylic acids [Fig]
+C    Monocarboxylic acids
+D      C00058  Formate; Methanoate
+D      C00033  Acetate; Ethanoate
+D      C00163  Propionate; Propanoate
+D      C00246  Butyrate; Butanoate
+D      C00803  Valerate; Pentanoate
+D      C01585  Capronate; Hexanoate
+D      C17714  Enanthate; Heptanoate
+D      C06423  Caprylate;  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08202">
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08002">
 <summary>
-  Looks up a localized string similar to +D	Reaction	Substrate	Product	Substrate2	Product2
-%&lt;style type=&quot;text/css&quot;&gt;&lt;!--#grid{table-layout:fixed;font-family:monospace;position:relative;color:black;width:1400px;}.col1{position:relative;background:white;z-index:1;overflow:hidden;width:200px;}.col2{position:relative;background:white;z-index:2;padding-left:10px;overflow:hidden;width:300px;}.col3{position:relative;background:white;z-index:3;padding-left:10px;overflow:hidden;width:300px;}.col4{position:relative;background:white;z-index:2;padding-left:10p [rest of string was truncated]&quot;;.
-</summary>
-</member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08203">
-<summary>
-  Looks up a localized string similar to +B	Glycosyltransferase reaction
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt; &amp;nbsp; Glycosyltransferase Reactions&lt;/h2&gt;
+  Looks up a localized string similar to +E	Lipid
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Lipids&lt;/h2&gt;
 !
-A&lt;b&gt;Glucosyltransferase reactions&lt;/b&gt;
-B  R06264  Glc a1-2 Glc [KO:K03850] [PATH:rn00510]
-B  R03118  Glc a1-3 Glc [KO:K00706] [PATH:rn00500]
-B  R06263  Glc a1-3 Glc [KO:K03849] [PATH:rn00510]
-B  R00292  Glc a1-4 Glc [KO:K00693] [PATH:rn00500]
-B  R06184  Glc a1-6 Glc
-B  R06018  Glc b1-3 Glc
-B  R01994  Glc a1-2 Gal [KO:K03276] [PATH:rn00540]
-B   [rest of string was truncated]&quot;;.
+A&lt;b&gt;FA  Fatty acyls&lt;/b&gt;
+B  FA01 Fatty Acids and Conjugates
+C    FA0101 Straight chain fatty acids
+D      C00058  Formic acid
+D      C00033  Acetic acid
+D      C00163  Propanoic acid
+D      C00246  Butanoic acid
+D      C00803  Pentanoic acid
+D      C01585  Hexanoic acid
+D      C17714  Heptanoic acid
+D      C06423  Octanoic acid
+D      C01601  Nonanoic acid
+D      C17715  Undecanoic acid
+D  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08204">
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08003">
 <summary>
-  Looks up a localized string similar to +E	RClass
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Reaction Class&lt;/h2&gt;
+  Looks up a localized string similar to +D
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Phytochemical Compounds&lt;/h2&gt;
 !
-A&lt;b&gt;1. Oxidoreductase reactions&lt;/b&gt;
-B  1.1  Acting on the CH-OH group of donors
-C    1.1.1  With NAD+ or NADP+ as acceptor
-D      1.1.1.1
-E        RC00050
-E        RC00087
-E        RC00088
-E        RC00099
-E        RC00116
-E        RC00649
-E        RC00955
-E        RC01734
-E        RC02273
-D      1.1.1.2
-E        RC00050
-E        RC00087
-E        RC00088
-E     [rest of string was truncated]&quot;;.
+A&lt;b&gt;Alkaloids&lt;/b&gt;
+B  Alkaloids derived from ornithine
+C    Pyrrolidine alkaloids
+D      C06179  Hygrine
+D      C11359  (-)-Hygrine
+D      C06521  Cuscohygrine
+D      C10152  (-)-Hygroline
+D      C10172  Stachydrine
+D      C08283  Homostachydrine
+D      C10151  3-Hydroxystachydrine
+C    Pyrrolizidine alkaloids
+D      C10124  Alexine
+D      C10263  Amabiline
+D      C10132  Austra [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08610">
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08005">
 <summary>
-  Looks up a localized string similar to +U
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Organisms in the NCBI Taxonomy&lt;/h2&gt;
-#&lt;!---
-#ENTRY       br08610
-#DEFINITION  KEGG Organisms in the NCBI taxonomy
-#---&gt;
+  Looks up a localized string similar to +C	Peptide
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Bioactive Peptides&lt;/h2&gt;
+!
+A&lt;b&gt;Neuropeptides&lt;/b&gt;
+B  Tachykinin
+C    C16094  Substance P
+C    C16095  Neuropeptide K
+C    C16096  Neuropeptide gamma
+C    C16097  Neurokinin A
+C    C16098  Neurokinin B
+C    C16099  Endokinin A/B
+C    C16100  Endokinin C
+C    C16101  Endokinin D
+B  Neurotensin
+C    C01836  Neurotensin
+C    C15868  Neuromedin N
+B  Feeding-related peptide
+C    C16025  Ghrelin
+C    C15901   [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08006">
+<summary>
+  Looks up a localized string similar to +C	Environmental compound
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt; &amp;nbsp; Endocrine Disrupting Compounds&lt;/h2&gt;
+!
+A&lt;b&gt;Pesticides and herbicides&lt;/b&gt;
+B  Carbamate pesticides
+C    C11015  Aldicarb
+C    C10896  Benlate
+C    C07491  Carbaryl
+C    C11196  Methomyl
+C    C10981  Vinclozolin
+B  Dithiocarbamate pesticides
+C    C15225  Mancozeb
+C    C15231  Maneb
+C    C18144  Metiram
+C    C15232  Zineb
+C    C15229  Ziram
+B  Organochlorine pesticides
+C    C07552  Aldrin
+ [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08007">
+<summary>
+  Looks up a localized string similar to +D
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Pesticides&lt;/h2&gt;
+!
+A&lt;b&gt;Pesticides&lt;/b&gt;
+B  Fungicides
+C    Aliphatic nitrogen fungicides
+D      C18498  Cymoxanil
+D      C18723  Dodine
+D      C18568  Iminoctadine acetate
+C    Amide fungicides
+D      C18581  Amisulbrom
+D      C10929  Benalaxyl
+D      C18547  Boscalid
+D      C11255  Carboxin
+D      C10932  Carpropamid
+D      C18573  Cyazofamid
+D      C18516  Cyflufenamid
+D      C18820  Dichlofluanid
+D      C185 [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08008">
+<summary>
+  Looks up a localized string similar to +C	Carcinogen	Cancer site
+#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Carcinogens&lt;/h2&gt;
+%&lt;style type=&quot;text/css&quot;&gt;&lt;!--#grid{table-layout:fixed;font-family:monospace;position:relative;color:black;width:1000px;}.col1{position:relative;background:white;z-index:1;overflow:hidden;width:600px;}.col2{position:relative;background:white;z-index:2;padding-left:10px;}--&gt;&lt;/style&gt;
+!
+A&lt;b&gt;Group 1: Carcinogenic to humans&lt;/b&gt;
+B  Compounds
+C    C06800  Aflatoxin B1	Liv [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08009">
+<summary>
+  Looks up a localized string similar to +D
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Natural Toxins&lt;/h2&gt;
+!
+A&lt;b&gt;Fungal toxins&lt;/b&gt;
+B  Mushroom toxins
+C    Alkaloids
+D      C07473  Muscarine
+D      C08311  Muscimol
+D      C19959  Orellanine
+D      C08312  Psilocin
+D      C07576  Psilocybin
+C    Cyclic peptides
+D      C08438  alpha-Amanitin
+D      C08439  Phalloidin
+C    Terpenoids
+D      C19957  Fasciculol E
+D      C19958  Fasciculol F
+D      C09687  Illudin M
+D      C09688  Illudin S
+D      C1 [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08010">
+<summary>
+  Looks up a localized string similar to +E	Compound	Remark
+#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Target-based Classification of Compounds&lt;/h2&gt;
+%&lt;style type=&quot;text/css&quot;&gt;&lt;!--#grid{table-layout:fixed;font-family:monospace;position:relative;color:black;width:1000px;}.col1{position:relative;background:white;z-index:1;overflow:hidden;width:600px;}.col2{position:relative;background:white;z-index:2;padding-left:10px;}--&gt;&lt;/style&gt;
+!
+A&lt;b&gt;G Protein-coupled receptors&lt;/b&gt;
+B  Rhodopsin family: amin [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGCompounds.br08021">
+<summary>
+  Looks up a localized string similar to +D	Glycoside
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Glycosides&lt;/h2&gt;
+!
+A&lt;b&gt;O-glycosides&lt;/b&gt;
+B  Phenolic glycosides
+C    C06186  Arbutin
+C    C01451  Salicin
+C    C06188  Salicin 6-phosphate
+C    C06046  Salidroside
+C    C01604  Phlorizin
+C    C10823  Populin
+C    C09973  Tremulacin
+C    C10501  Verbascoside
+B  Anthraquinone glycosides
+C    C10303  Aurantio-obtusin beta-D-glucoside
+C    C10313  Chryso-obtusin glucoside
+C    C10316  Chrysophanol 8-O-be [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.My.Resources.KEGG">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.br08610">
+<summary>
+  Looks up a localized string similar to +W
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Organisms in the NCBI Taxonomy&lt;/h2&gt;
 !
 AEukaryota
 B  Metazoa
@@ -105,47 +271,80 @@ I                Euarchontoglires
 J                  Primates
 K                    Haplorrhini
 L                      Catarrhini
-M              [rest of string was truncated]&quot;;.
+M                        Hominidae
+N                          Homo
+O                            H [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.br08901">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.br08901">
 <summary>
   Looks up a localized string similar to +C	Map number
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Pathway Maps&lt;/h2&gt;
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Pathway Maps&lt;/h2&gt;
 !
 A&lt;b&gt;Metabolism&lt;/b&gt;
 B  Global and overview maps
 C    01100  Metabolic pathways
 C    01110  Biosynthesis of secondary metabolites
 C    01120  Microbial metabolism in diverse environments
-C    01130  Biosynthesis of antibiotics
 C    01200  Carbon metabolism
 C    01210  2-Oxocarboxylic acid metabolism
 C    01212  Fatty acid metabolism
-C    01230  Biosynthesis of am [rest of string was truncated]&quot;;.
+C    01230  Biosynthesis of amino acids
+C    01232  Nucleotide metabolism
+C    012 [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.ko00000">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.br08902">
 <summary>
-  Looks up a localized string similar to +D	KO
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt; &amp;nbsp; KEGG Orthology (KO) - All Categories&lt;/h2&gt;
+  Looks up a localized string similar to +C	Br number
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; BRITE Hierarchy Files&lt;/h2&gt;
 !
-A09100 Metabolism
-B
-B  09101 Carbohydrate metabolism
-C    00010 Glycolysis / Gluconeogenesis [PATH:ko00010]
-D      K00844  HK; hexokinase
-D      K12407  GCK; glucokinase
-D      K00845  glk; glucokinase
-D      K01810  GPI, pgi; glucose-6-phosphate isomerase
-D      K06859  pgi1; glucose-6-phosphate isomerase, archaeal
-D      K13810  tal-pgi; transaldolase / gluco [rest of string was truncated]&quot;;.
+A&lt;b&gt;Pathway and Brite&lt;/b&gt;
+B  Pathway
+C    br08901  KEGG pathway maps
+B  Brite
+C    br08902  BRITE hierarchy files
+C    br08904  BRITE table files
+C    br08906  BRITE binary relation files
+B  Network
+C    br08907  KEGG network variation maps
+B  Taxonomy
+C    br08908  Taxonomy files
+#
+A&lt;b&gt;Genes and Proteins&lt;/b&gt;
+B  Orthologs and modules
+C    ko00001  KEGG Orthology (KO)
+C  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.ko00001">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.br08907">
+<summary>
+  Looks up a localized string similar to +C	nt
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Network Variation Maps&lt;/h2&gt;
+!
+A&lt;b&gt;Pathway view&lt;/b&gt;
+B  Carbohydrate metabolism
+C    06031  Citrate cycle and pyruvate metabolism
+C    06017  Glycogen metabolism
+C    06023  Galactose degradation
+B  Lipid/glycolipid metabolism
+C    06020  beta-Oxidation in mitochondria
+C    06021  beta-Oxidation in peroxisome
+C    06034  Cholesterol biosynthesis
+C    06019  Steroid hormone biosynthesis
+C    06022  Bile [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ko00000">
+<summary>
+  Looks up a localized string similar to (404) Not Found!
+.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ko00001">
 <summary>
   Looks up a localized string similar to +D	KO
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt; &amp;nbsp; KEGG Orthology (KO)&lt;/h2&gt;
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt; &amp;nbsp; KEGG Orthology (KO)&lt;/h2&gt;
 !
 A09100 Metabolism
 B
@@ -154,45 +353,171 @@ C    00010 Glycolysis / Gluconeogenesis [PATH:ko00010]
 D      K00844  HK; hexokinase [EC:2.7.1.1]
 D      K12407  GCK; glucokinase [EC:2.7.1.2]
 D      K00845  glk; glucokinase [EC:2.7.1.2]
+D      K25026  glk; glucokinase [EC:2.7.1.2]
 D      K01810  GPI, pgi; glucose-6-phosphate isomerase [EC:5.3.1.9]
-D      K06859  pgi1; glucose-6-phosphate isomerase, archaeal [rest of string was truncated]&quot;;.
+D      K06859  pgi1; gluco [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.ko00002_keg">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ko00002">
 <summary>
-  Looks up a localized string similar to +E	Module
-#&lt;h2&gt;&lt;a href=&quot;/kegg/kegg2.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Modules&lt;/h2&gt;
+  Looks up a localized string similar to +D	Module
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Modules&lt;/h2&gt;
 !
-A&lt;b&gt;Pathway module&lt;/b&gt;
+A&lt;b&gt;Pathway modules&lt;/b&gt;
 B
-B  &lt;b&gt;Energy metabolism&lt;/b&gt;
-C    Carbon fixation
-D      M00165  Reductive pentose phosphate cycle (Calvin cycle) [PATH:map00710 map01200 map01100 map01120]
-E        K00855  PRK, prkB; phosphoribulokinase [EC:2.7.1.19]
-E        K01601  rbcL; ribulose-bisphosphate carboxylase large chain [EC:4.1.1.39]
-E        K01602  rbcS; ribulose-bisphosphate carboxylase s [rest of string was truncated]&quot;;.
+B  &lt;b&gt;Carbohydrate metabolism&lt;/b&gt;
+C    Central carbohydrate metabolism
+D      M00001  Glycolysis (Embden-Meyerhof pathway), glucose =&gt; pyruvate [PATH:map00010 map01200 map01100]
+D      M00002  Glycolysis, core module involving three-carbon compounds [PATH:map00010 map01200 map01230 map01100]
+D      M00003  Gluconeogenesis, oxaloacetate =&gt; fructose-6P [PATH [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.MiST2">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ko00003">
 <summary>
-  Looks up a localized string similar to Pfam AccessionId,Signaling domain ID,Domain name,Kind,Function,Marker
-PF01339,CheB_methylest,CheB_methylest,chemotaxis,Chemotaxis,Yes
-PF04509,CheC,CheC,chemotaxis,Chemotaxis,Yes
-PF03975,CheD,CheD,chemotaxis,Chemotaxis,Yes
-PF01739,CheR,CheR,chemotaxis,Chemotaxis,Yes
-PF03705,CheR_N,CheR_N,chemotaxis,Chemotaxis,Yes
-PF01584,CheW,CheW,chemotaxis,Chemotaxis,Yes
-PF09078,CheY-binding,CheY-binding,chemotaxis,Chemotaxis,Yes
-PF04344,CheZ,CheZ,chemotaxis,Chemotaxis,Yes
-PF02895,H-kinase_dim,H-kinase_dim,chemotaxis,Chemo [rest of string was truncated]&quot;;.
+  Looks up a localized string similar to +E	RModule
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; KEGG Reaction Modules&lt;/h2&gt;
+!
+A&lt;b&gt;Reaction modules&lt;/b&gt;
+B
+B  &lt;b&gt;Carboxylic acid metabolism&lt;/b&gt;
+C    2-Oxocarboxylic acid chain extension
+D      RM001  2-Oxocarboxylic acid chain extension by tricarboxylic acid pathway
+E        M00010  Citrate cycle, first carbon oxidation, oxaloacetate =&gt; 2-oxoglutarate
+E        M00433  Lysine biosynthesis, 2-oxoglutarate =&gt; 2-oxoadipate
+E        M00608  2-Oxocarboxyli [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.String1">
+<member name="P:SMRUCC.genomics.My.Resources.KEGG.ko01000">
 <summary>
-  Looks up a localized string similar to Test.
+  Looks up a localized string similar to +E	Enzyme
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Enzymes&lt;/h2&gt;
+!
+A&lt;b&gt;1. Oxidoreductases&lt;/b&gt;
+B  1.1  Acting on the CH-OH group of donors
+C    1.1.1  With NAD+ or NADP+ as acceptor
+D      1.1.1.1  alcohol dehydrogenase
+E        K00001  E1.1.1.1, adh; alcohol dehydrogenase [EC:1.1.1.1]
+E        K00121  frmA, ADH5, adhC; S-(hydroxymethyl)glutathione dehydrogenase / alcohol dehydrogenase [EC:1.1.1.284 1.1.1.1]
+E        K04072  adhE; acetaldehyde dehydroge [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_1">
+<member name="T:SMRUCC.genomics.My.Resources.KEGGReactions">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.br08201">
+<summary>
+  Looks up a localized string similar to +E	Reaction
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Enzymatic Reactions&lt;/h2&gt;
+!
+A&lt;b&gt;1. Oxidoreductase reactions&lt;/b&gt;
+B  1.1  Acting on the CH-OH group of donors
+C    1.1.1  With NAD+ or NADP+ as acceptor
+D      1.1.1.1
+E        R00623  Primary alcohol + NAD+ &lt;=&gt; Aldehyde + NADH + H+
+E        R00624  Secondary alcohol + NAD+ &lt;=&gt; Ketone + NADH + H+
+E        R00754  Ethanol + NAD+ &lt;=&gt; Acetaldehyde + NADH + H+
+E        R02124  Retinol + NAD+ &lt;=&gt; Retinal +  [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.br08202">
+<summary>
+  Looks up a localized string similar to +D	Reaction	Substrate	Product	Substrate2	Product2
+%&lt;!-- w=200,300,300,300 --&gt;
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; IUBMB Reaction Hierarchy&lt;/h2&gt;
+!
+A&lt;b&gt;1. Oxidoreductase reactions&lt;/b&gt;
+B  1.1.1.1
+C    R00623	C00226  Primary alcohol	C00071  Aldehyde
+D      R00754	C00469  Ethanol	C00084  Acetaldehyde
+D      R02124	C00473  Retinol	C00376  Retinal
+D      R02878	C00756  1-Octanol	C01545  Octanal
+D      R04805	C05444  3alpha,7alpha,26-Trihydroxy-5beta-cho [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.br08203">
+<summary>
+  Looks up a localized string similar to +B	Glycosyltransferase reaction
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Glycosyltransferase Reactions&lt;/h2&gt;
+!
+A&lt;b&gt;Glucosyltransferase reactions&lt;/b&gt;
+B  R06264  Glc a1-2 Glc [KO:K03850] [PATH:rn00510]
+B  R05164  Glc a1-2 Glc [KO:K13677] [PATH:rn00561]
+B  R03118  Glc a1-3 Glc [KO:K00706] [PATH:rn00500]
+B  R06263  Glc a1-3 Glc [KO:K03849] [PATH:rn00510]
+B  R06045  Glc a1-3 Glc [KO:K00749]
+B  R06018  Glc b1-3 Glc
+B  R06051  Glc a1-4 Glc [KO:K00693 K00750 K [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.KEGGReactions.br08204">
+<summary>
+  Looks up a localized string similar to +E	RClass
+#&lt;h2&gt;&lt;a href=&quot;/kegg/brite.html&quot;&gt;&lt;img src=&quot;/Fig/bget/kegg3.gif&quot; align=&quot;middle&quot; border=0&gt;&lt;/a&gt;&amp;nbsp; Reaction Class&lt;/h2&gt;
+!
+A&lt;b&gt;1. Oxidoreductase reactions&lt;/b&gt;
+B  1.1  Acting on the CH-OH group of donors
+C    1.1.1  With NAD+ or NADP+ as acceptor
+D      1.1.1.1
+E        RC00050
+E        RC00087
+E        RC00088
+E        RC00099
+E        RC00116
+E        RC00170
+E        RC00649
+E        RC00955
+E        RC01734
+E        RC02273
+D      1.1.1.2
+E        RC00050
+E        RC00087
+E        RC00088
+E        [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="T:SMRUCC.genomics.My.Resources.TranslTables">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.Genetic_Codes">
+<summary>
+  Looks up a localized string similar to The Genetic Codes
+
+Compiled by Andrzej (Anjay) Elzanowski and Jim Ostell at National Center for Biotechnology Information (NCBI), Bethesda, Maryland, U.S.A.
+
+Last update of the Genetic Codes: April 30, 2013
+
+
+
+NCBI takes great care to ensure that the translation for each coding sequence (CDS) present in GenBank records is correct. Central to this effort is careful checking on the taxonomy of each record and assignment of the correct genetic code (shown as a /transl_table qualifier on the CDS in the  [rest of string was truncated]&quot;;.
+</summary>
+</member>
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_1">
 <summary>
   Looks up a localized string similar to transl_table=1
 
@@ -206,10 +531,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu i    CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_10">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_10">
 <summary>
   Looks up a localized string similar to transl_table=10
 
@@ -223,10 +548,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_11">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_11">
 <summary>
   Looks up a localized string similar to transl_table=11
 
@@ -240,10 +565,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu i    CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile i    ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile i    ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_12">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_12">
 <summary>
   Looks up a localized string similar to transl_table=12
 
@@ -257,10 +582,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG S Ser i    CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_13">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_13">
 <summary>
   Looks up a localized string similar to transl_table=13
 
@@ -274,10 +599,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_14">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_14">
 <summary>
   Looks up a localized string similar to transl_table=14
 
@@ -291,10 +616,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_16">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_16">
 <summary>
   Looks up a localized string similar to transl_table=16
 
@@ -308,10 +633,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_2">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_2">
 <summary>
   Looks up a localized string similar to transl_table=2
 
@@ -325,10 +650,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile i    ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile i    ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_21">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_21">
 <summary>
   Looks up a localized string similar to transl_table=21
 
@@ -342,10 +667,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_22">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_22">
 <summary>
   Looks up a localized string similar to transl_table=22
 
@@ -359,10 +684,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_23">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_23">
 <summary>
   Looks up a localized string similar to transl_table=23
 
@@ -376,10 +701,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile i    ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile i    ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_24">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_24">
 <summary>
   Looks up a localized string similar to transl_table=24
 
@@ -393,10 +718,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu i    CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_25">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_25">
 <summary>
   Looks up a localized string similar to transl_table=25
 
@@ -410,10 +735,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N A [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr  [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_3">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_3">
 <summary>
   Looks up a localized string similar to transl_table=3
 
@@ -427,10 +752,10 @@ CTC T Thr      CCC P Pro      CAC H His      CGC R Arg
 CTA T Thr      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG T Thr      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_4">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_4">
 <summary>
   Looks up a localized string similar to transl_table=4
 
@@ -444,10 +769,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu i    CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile i    ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile i    ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_5">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_5">
 <summary>
   Looks up a localized string similar to transl_table=5
 
@@ -461,10 +786,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile i    ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile i    ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_6">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_6">
 <summary>
   Looks up a localized string similar to transl_table=6
 
@@ -478,10 +803,10 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
-<member name="P:SMRUCC.genomics.My.Resources.Resources.transl_table_9">
+<member name="P:SMRUCC.genomics.My.Resources.TranslTables.transl_table_9">
 <summary>
   Looks up a localized string similar to transl_table=9
 
@@ -495,7 +820,7 @@ CTC L Leu      CCC P Pro      CAC H His      CGC R Arg
 CTA L Leu      CCA P Pro      CAA Q Gln      CGA R Arg  
 CTG L Leu      CCG P Pro      CAG Q Gln      CGG R Arg  
 
-ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
+ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 </summary>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.Bac_sRNA.org.Interaction">
@@ -4114,9 +4439,9 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
 </member>
 <member name="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Pathway">
  <summary>
- The kegg pathway annotation data.(这个代谢途径模型是针对某一个物种而言的)
+ The kegg pathway annotation data.
  </summary>
- <remarks></remarks>
+ <remarks>(这个代谢途径模型是针对某一个物种而言的)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Pathway.modules">
  <summary>
@@ -4166,8 +4491,10 @@ ATT I Ile      ACT T Thr      AAT N As [rest of string was truncated]&quot;;.
 <member name="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.PathwayMap">
  <summary>
  <see cref="M:SMRUCC.genomics.Assembly.KEGG.DBGET.BriteHEntry.Pathway.LoadFromResource"/>.
- (相对于<see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Pathway"/>而言，这个对象是参考用的，并非某个特定的物种的)
  </summary>
+ <remarks>
+ (相对于<see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Pathway"/>而言，这个对象是参考用的，并非某个特定的物种的)
+ </remarks>
 </member>
 <member name="P:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.PathwayMap.Map">
  <summary>
@@ -10189,13 +10516,12 @@ Get feature site data by nucleotide location.
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.Accession2Taxid.ReadFile(System.String)">
  <summary>
- 在返回的数据之中，属性<see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.Description"/>是原始的行数据，
- Name属性不包含有Accession的版本号
+ 
  </summary>
- <param name="file$"></param>
+ <param name="file"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.Accession2Taxid.__loadData(System.String,System.Nullable{System.Boolean})">
+<member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.Accession2Taxid.LoadDataAll(System.String,System.Nullable{System.Boolean})">
  <summary>
  这个函数返回``{name: accession(不带版本号), value:taxid, description: raw_input_line}``
  </summary>
@@ -10411,6 +10737,9 @@ Get feature site data by nucleotide location.
  + phylum
  + superkingdom
  </summary>
+ <remarks>
+ use this index order for make comparision of the rank levels
+ </remarks>
 </member>
 <member name="P:SMRUCC.genomics.Assembly.NCBI.Taxonomy.NcbiTaxonomyTree.Taxonomy">
  <summary>
@@ -10455,7 +10784,14 @@ Get feature site data by nucleotide location.
  <param name="nodes"></param>
  <param name="names"></param>
 </member>
-<member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.NcbiTaxonomyTree.GetParent(System.Int32[])">
+<member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.NcbiTaxonomyTree.GetParent(System.Int32)">
+ <summary>
+ get parent node of current node its taxid
+ </summary>
+ <param name="taxid"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.NcbiTaxonomyTree.GetParents(System.Int32[])">
  <summary>
  Returns parent id
  </summary>
@@ -10473,9 +10809,12 @@ Get feature site data by nucleotide location.
  <summary>
  使用这个函数得到物种的具体分类，返回来的数据是从小到大排列的
  </summary>
- <param name="taxid"></param>
- <param name="only_std_ranks"></param>
- <returns></returns>
+ <param name="taxid">ncbi taxonomy数据库中的物种id</param>
+ <param name="only_std_ranks">是否仅返回标准分类层级</param>
+ <returns>目标物种在NCBI taxonomy物种分类树上的分类路径节点向量</returns>
+ <remarks>
+ 请注意：返回来的数据是从小到大排列的
+ </remarks>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.Taxonomy.NcbiTaxonomyTree.GetAscendantsWithRanksAndNames(System.Collections.Generic.IEnumerable{System.Int32},System.Boolean)">
  <summary>
@@ -11094,13 +11433,13 @@ Get feature site data by nucleotide location.
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="P:SMRUCC.genomics.ComponentModel.Annotation.GeneTable.SpeciesAccessionID">
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.GeneTable.replicon_accessionID">
  <summary>
  该蛋白质所位于的基因组的在NCBI之中的编号信息
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>the sequence id of the target genome(replicon).</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.GeneTable.COG">
  <summary>
@@ -12802,6 +13141,12 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="biomString"></param>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1.Size">
+ <summary>
+ size of the data pool
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1.Query(System.String,System.Double)">
  <summary>
  
@@ -12811,6 +13156,54 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns>
  the query output result has already been sorted with <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.FindResult.similarity"/> in decreasing order.
  </returns>
+</member>
+<member name="T:SMRUCC.genomics.Metagenomics.LCA">
+ <summary>
+ LCA（最低公共祖先）算法
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Int32,System.Int32)">
+ <summary>
+ 使用路径比较法计算两个taxid的最近公共祖先（LCA）
+ </summary>
+ <param name="taxid1">第一个taxonomy ID</param>
+ <param name="taxid2">第二个taxonomy ID</param>
+ <returns>最近公共祖先的TaxonomyNode，如果找不到返回Nothing</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Collections.Generic.IEnumerable{System.Int32})">
+ <summary>
+ 计算多个taxid的最近公共祖先
+ </summary>
+ <param name="taxids">taxonomy ID集合</param>
+ <returns>最近公共祖先的TaxonomyNode</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAByBinaryLifting(System.Int32,System.Int32)">
+ <summary>
+ 使用倍增法计算LCA（适用于深度较大的树，效率更高）
+ </summary>
+ <param name="taxid1">第一个taxonomy ID</param>
+ <param name="taxid2">第二个taxonomy ID</param>
+ <returns>最近公共祖先的TaxonomyNode</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetDepth(System.Int32)">
+ <summary>
+ 计算taxid在树中的深度（距离根节点的步数）
+ </summary>
+ <param name="taxid">taxonomy ID</param>
+ <returns>深度值</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAForMetagenomics(System.Collections.Generic.IEnumerable{System.Int32},System.Double)">
+ <summary>
+ 在宏基因组分类场景中常用的LCA方法：找到覆盖所有输入taxid的最小公共分类单元
+ </summary>
+ <param name="taxids">k-mer匹配到的所有taxonomy ID集合</param>
+ <param name="minSupport">最小支持度阈值（0-1之间）</param>
+ <returns>LCA结果及其支持度信息</returns>
+</member>
+<member name="T:SMRUCC.genomics.Metagenomics.LcaResult">
+ <summary>
+ LCA计算结果
+ </summary>
 </member>
 <member name="T:SMRUCC.genomics.Metagenomics.OTUData`1">
  <summary>
@@ -13577,30 +13970,34 @@ to take away yo [rest of string was truncated]&quot;;.
 </member>
 <member name="T:SMRUCC.genomics.SequenceModel.FASTA.IAbstractFastaToken">
  <summary>
- The fasta object is a sequence model object with a specific title to identify the sequence and a sequence data property to represents the specific molecule.
+ The fasta object is a sequence model object with a specific title to identify 
+ the sequence and a sequence data property to represents the specific molecule.
  </summary>
  <remarks></remarks>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.FASTA.IAbstractFastaToken.title">
  <summary>
  The title value which contains some brief information about this sequence.
- (这条序列数据的标题摘要信息)
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(这条序列数据的标题摘要信息)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.FASTA.IAbstractFastaToken.headers">
  <summary>
  The attribute header of this FASTA file. The fasta header usually have some format which can be parsed by some 
  specific loader and gets some well organized information about the sequence. The format of the header is 
- usually different between each biological database.(这个FASTA文件的属性头，标题的格式通常在不同的数据库之间是具有很大差异的)
+ usually different between each biological database.
  </summary>
  <returns></returns>
+ <remarks>
+ (这个FASTA文件的属性头，标题的格式通常在不同的数据库之间是具有很大差异的)
+ </remarks>
 </member>
 <member name="T:SMRUCC.genomics.SequenceModel.FASTA.ISequenceProvider">
  <summary>
- This object could provide a sequence data through <see cref="M:SMRUCC.genomics.SequenceModel.FASTA.ISequenceProvider.GetSequenceData"/> function.
+ This object could provide a biological sequence data
+ through <see cref="M:SMRUCC.genomics.SequenceModel.FASTA.ISequenceProvider.GetSequenceData"/> function.
  </summary>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.FASTA.Extensions.Index(SMRUCC.genomics.SequenceModel.FASTA.FastaFile,Microsoft.VisualBasic.Language.Variant{System.Int32,System.String})">
@@ -13833,7 +14230,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="F:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.innerList">
+<member name="F:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.metadata">
  <summary>
  方便通过<see cref="M:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.AddAttribute(System.String)">Add接口</see>向<see cref="P:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.Headers">Attribute列表</see>中添加数据
  </summary>
@@ -14082,6 +14479,14 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  location of the left
  </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.FASTA.KSeq.KmerSpans(System.String,System.Int32)">
+ <summary>
+ split the given sequence as kmer span for a speicific biological sequence.
+ </summary>
+ <param name="seq_str"></param>
+ <param name="k"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.FASTA.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
@@ -14584,6 +14989,9 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  分块存储的FASTA序列对象，用于处理大型基因组序列，例如植物基因组，动物基因组这些序列长度超过了2GB的基因组序列
  </summary>
+ <remarks>
+ all char in this sequence has already been converted to upper case
+ </remarks>
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.title">
  <summary>
@@ -14603,6 +15011,13 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="chunkSize">分块大小，默认32MB</param>
  <returns>FASTA序列对象的枚举</returns>
 </member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.Kmers(System.Int32)">
+ <summary>
+ all char in this sequence has already been converted to upper case
+ </summary>
+ <param name="k"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.GetRegion(System.Int64,System.Int64)">
  <summary>
  获取指定区域的序列字符串
@@ -14610,6 +15025,9 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="left">起始位置（从1开始）</param>
  <param name="right">结束位置（从1开始）</param>
  <returns>指定区域的序列字符串</returns>
+ <remarks>
+ all char in this sequence has already been converted to upper case
+ </remarks>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.ChunkedNtFasta.CharToDNA(System.Char)">
  <summary>
