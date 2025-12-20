@@ -26,6 +26,7 @@ Public Class Config
     Public Property resolution As Integer = 2000
     Public Property tqdm_progress As Boolean = True
     Public Property debug As Boolean = False
+    Public Property n_threads As Integer = 8
 
     ''' <summary>
     ''' a list of gene ids for knockout, example as ["b0002","b0008"]

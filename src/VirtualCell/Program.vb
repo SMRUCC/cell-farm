@@ -123,6 +123,7 @@ Module Program
         Dim engine As New Engine(config.mapping, config.kinetics, cellular_id.ToArray,
                                  config.iterations,
                                  config.resolution,
+                                 config.n_threads,
                                  config.tqdm_progress,
                                  config.debug) With {
             .models = modelList _
