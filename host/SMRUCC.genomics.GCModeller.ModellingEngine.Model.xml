@@ -623,6 +623,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Model
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition.Length">
+ <summary>
+ length of the gene sequence
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition.FromNtSequence(System.String,System.String)">
  <summary>
  因为这个是RNA序列，所以其构成应该是其基因模板的互补

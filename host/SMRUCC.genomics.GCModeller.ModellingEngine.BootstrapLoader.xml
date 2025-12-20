@@ -36,12 +36,26 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.transcriptionTemplate(System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.RNAElongation(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
  <summary>
- DNA模板加上碱基消耗
+ phase 2
  </summary>
- <param name="geneID$"></param>
+ <param name="cd"></param>
+ <param name="RPo"></param>
+ <param name="RPo_RNA"></param>
+ <param name="PPi"></param>
  <param name="matrix"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.RPoGenerator(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Regulation[],SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable)">
+ <summary>
+ phase 1
+ </summary>
+ <param name="cd"></param>
+ <param name="regulations"></param>
+ <param name="RNAp"></param>
+ <param name="DNAp"></param>
+ <param name="RPo"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.translationTemplate(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.ProteinComposition})">
