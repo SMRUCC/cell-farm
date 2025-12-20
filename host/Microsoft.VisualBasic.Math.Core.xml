@@ -4151,6 +4151,15 @@ Microsoft.VisualBasic.Math.Core
  <summary>
  gamma function (Γ) from mathematics
  </summary>
+ <remarks>
+ |特性|lngamm函数|lngamma函数|
+ |----|----------|-----------|
+ |实现的方法|Lanczos 近似|Spouge 近似​|
+ |核心注释|引用 Lanczos 1964 年的论文，翻译自 Alan Miller 的 FORTRAN 代码。|注释标明适用于大参数（large arguments）。|
+ |系数数组|使用数组 p|使用数组 p_ln|
+ |函数定义|标准函数|扩展方法（带有 Extension 属性）|
+ |主要适用场景|通用的高精度计算|特别适合处理较大的参数值|
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Distributions.MathGamma.lngamm(System.Double)">
  <summary>
@@ -4161,6 +4170,15 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <param name="Z"></param>
  <returns></returns>
+ <remarks>
+ Lanczos 近似算法实现的log gamma函数，是一个通用的高精度计算方法
+
+ 参考资料：
+ 
+ - Lanczos, C. "A precision approximation of the gamma function", J. SIAM Numer. Anal., B, 1, 86-96, 1964.
+ - Alan Miller的FORTRAN实现翻译
+ - [http://lib.stat.cmu.edu/apstat/245](http://lib.stat.cmu.edu/apstat/245)
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Distributions.MathGamma.lngamma(System.Double)">
  <summary>
@@ -4169,6 +4187,9 @@ Microsoft.VisualBasic.Math.Core
  <param name="z"></param>
  <returns></returns>
  <remarks>
+ Spouge 近似算法实现的log gamma函数，适用于大参数
+
+ 参考资料：
  http://lib.stat.cmu.edu/apstat/245
  </remarks>
 </member>
