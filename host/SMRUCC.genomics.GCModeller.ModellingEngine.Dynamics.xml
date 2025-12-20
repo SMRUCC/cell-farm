@@ -427,6 +427,9 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <returns>
  this function returns the entity id back
  </returns>
+ <remarks>
+ 假若目标对象已经存在，则不会进行任何操作，直接返回已经存在的对象id
+ </remarks>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.StatusMapFactor">
  <summary>
