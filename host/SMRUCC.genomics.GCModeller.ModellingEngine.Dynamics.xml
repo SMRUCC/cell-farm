@@ -337,6 +337,11 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  metabolite instance molecule object. 小分子化合物
  </summary>
 </member>
+<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassRoles.status">
+ <summary>
+ mapping to the cell status view: <see cref="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.StatusMapFactor"/>
+ </summary>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable">
  <summary>
  the cellular mass environment 
@@ -422,6 +427,17 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <returns>
  this function returns the entity id back
  </returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.StatusMapFactor">
+ <summary>
+ 用于估算细胞内的某些状态的只读的状态视图，例如使用总蛋白质量来估算细胞的生长状态，（ATP，NADH/NADPH）的总量来估算细胞内的能量与代谢活跃度
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.StatusMapFactor.mass">
+ <summary>
+ 定义这个视图的质量组成
+ </summary>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable">
  <summary>
