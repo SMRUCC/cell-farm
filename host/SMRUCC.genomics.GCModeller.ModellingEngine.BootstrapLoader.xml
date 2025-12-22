@@ -48,7 +48,16 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  https://stack.xieguigang.me/2025/modelling-virtualcell-transcription-event/
  </remarks>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.RNAElongation(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.TranscriptionEvents.terminateDisassembled(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable)">
+ <summary>
+ phase 3
+ </summary>
+ <param name="cd"></param>
+ <param name="RPo"></param>
+ <param name="RPo_RNA"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.TranscriptionEvents.RNAElongation(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
  <summary>
  phase 2
  </summary>
@@ -59,7 +68,7 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  <param name="matrix"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.RPoGenerator(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Regulation[],SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable)">
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.TranscriptionEvents.RPoGenerator(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Regulation[],SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable)">
  <summary>
  phase 1
  </summary>
@@ -68,14 +77,6 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  <param name="RNAp"></param>
  <param name="DNAp"></param>
  <param name="RPo"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.translationTemplate(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.ProteinComposition})">
- <summary>
- mRNA模板加上氨基酸消耗，请注意，在这里并不是直接消耗的氨基酸，而是消耗的已经荷载的tRNA分子
- </summary>
- <param name="gene">The name of the mRNA molecule</param>
- <param name="matrix"></param>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.FluxLoader">
