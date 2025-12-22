@@ -135,6 +135,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.ProteinComplexGenerator.GetComplexSet">
+ <summary>
+ get a set of the protein complex that defined inside this cell model
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.ProteinMatureFluxLoader">
  <summary>
  构建酶成熟的过程
