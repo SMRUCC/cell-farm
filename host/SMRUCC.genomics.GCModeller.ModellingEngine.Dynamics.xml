@@ -411,6 +411,14 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <param name="coefficient"></param>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.Exists(System.String,System.String)">
+ <summary>
+ check whether the specific mass entity exists inside the current mass environment
+ </summary>
+ <param name="mass_id"></param>
+ <param name="compart_id"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.GetByKey(System.Collections.Generic.IEnumerable{System.String},System.String)">
  <summary>
  
