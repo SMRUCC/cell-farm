@@ -35,6 +35,18 @@ SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader
  is a reversiable process
  </summary>
  <returns></returns>
+ <remarks>
+ https://stack.xieguigang.me/2025/modelling-virtualcell-translation-event/
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.transcriptionEvents">
+ <summary>
+ 
+ </summary>
+ <returns></returns>
+ <remarks>
+ https://stack.xieguigang.me/2025/modelling-virtualcell-transcription-event/
+ </remarks>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.ModelLoader.CentralDogmaFluxLoader.RNAElongation(SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.CentralDogma,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Variable,System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Vector.RNAComposition})">
  <summary>
