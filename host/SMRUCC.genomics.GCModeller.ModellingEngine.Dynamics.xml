@@ -210,6 +210,20 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  主要是应用于温度和ph值对蛋白变性过程的影响的动力学建模
  </summary>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.CompartTable.Keys">
+ <summary>
+ get a collection of the cellular compartment id
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.CompartTable.variable(System.String,System.String,System.Double)">
+ <summary>
+ Create a mass factor link to the current mass environment
+ </summary>
+ <param name="mass"></param>
+ <param name="coefficient"></param>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.Factor">
  <summary>
  A mass factor(molecule entity) insdie the simulator runtime environment
@@ -346,20 +360,6 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <summary>
  the cellular mass environment 
  </summary>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.CompartTable.Keys">
- <summary>
- get a collection of the cellular compartment id
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.CompartTable.variable(System.String,System.String,System.Double)">
- <summary>
- Create a mass factor link to the current mass environment
- </summary>
- <param name="mass"></param>
- <param name="coefficient"></param>
- <returns></returns>
 </member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Core.MassTable.GetMassValues">
  <summary>
