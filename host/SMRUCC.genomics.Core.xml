@@ -10537,6 +10537,11 @@ Get feature site data by nucleotide location.
  <param name="DIR$"></param>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.AccessionTaxID">
+ <summary>
+ database for <see cref="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.Accession2Taxid"/>
+ </summary>
+</member>
 <member name="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.TaxidMaps.Mapping">
  <summary>
  将所给定的编号映射为taxid的一个操作
@@ -13141,6 +13146,12 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="biomString"></param>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1">
+ <summary>
+ in-memory name search
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
 <member name="P:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1.Size">
  <summary>
  size of the data pool
@@ -13162,20 +13173,13 @@ to take away yo [rest of string was truncated]&quot;;.
  LCA（最低公共祖先）算法
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Int32,System.Int32)">
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Int32,System.Int32,System.Int32@)">
  <summary>
  使用路径比较法计算两个taxid的最近公共祖先（LCA）
  </summary>
  <param name="taxid1">第一个taxonomy ID</param>
  <param name="taxid2">第二个taxonomy ID</param>
  <returns>最近公共祖先的TaxonomyNode，如果找不到返回Nothing</returns>
-</member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Collections.Generic.IEnumerable{System.Int32})">
- <summary>
- 计算多个taxid的最近公共祖先
- </summary>
- <param name="taxids">taxonomy ID集合</param>
- <returns>最近公共祖先的TaxonomyNode</returns>
 </member>
 <member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAByBinaryLifting(System.Int32,System.Int32)">
  <summary>
@@ -13192,7 +13196,14 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="taxid">taxonomy ID</param>
  <returns>深度值</returns>
 </member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAForMetagenomics(System.Collections.Generic.IEnumerable{System.Int32},System.Double)">
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Collections.Generic.IEnumerable{System.Int32},System.Double,System.Int32)">
+ <summary>
+ 计算多个taxid的最近公共祖先
+ </summary>
+ <param name="taxids">taxonomy ID集合</param>
+ <returns>最近公共祖先的TaxonomyNode</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAForMetagenomics(System.Collections.Generic.IEnumerable{System.Int32},System.Double,System.Int32)">
  <summary>
  在宏基因组分类场景中常用的LCA方法：找到覆盖所有输入taxid的最小公共分类单元
  </summary>

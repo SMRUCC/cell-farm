@@ -547,6 +547,12 @@ Microsoft.VisualBasic.Data.BinaryData
  <exception cref="T:System.ArgumentException">The stream does not support reading, is null, or is already closed.
  </exception>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.IO.BinaryDataReader.#ctor(System.Collections.Generic.IEnumerable{System.Byte},Microsoft.VisualBasic.Data.IO.ByteOrder)">
+ <summary>
+ Create binary data reader from the in-memory data buffer
+ </summary>
+ <param name="data"></param>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.IO.BinaryDataReader.#ctor(System.IO.Stream,System.Boolean)">
  <summary>
  Initializes a new instance of the <see cref="T:Microsoft.VisualBasic.Data.IO.BinaryDataReader"/> class based on the specified stream, UTF-8
