@@ -11702,6 +11702,85 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="item">要哈希的元素。</param>
  <returns>包含 k 个位置的整数数组。</returns>
 </member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter">
+ <summary>
+ 提供布谷鸟过滤器的实现。
+ 布谷鸟过滤器是一种基于布谷鸟哈希的紧凑型概率数据结构，支持插入、删除和成员查询。
+ 相比布隆过滤器，它支持动态删除元素，且在中等假阳性率下通常具有更高的空间效率。
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter._buckets">
+ <summary>
+ 存储桶的数组。使用一维数组模拟二维结构以提升性能。
+ 索引计算公式：index = bucketIndex * bucketSize + slotIndex
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.BucketCount">
+ <summary>
+ 桶的数量
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.BucketSize">
+ <summary>
+ 每个桶中包含的槽位数量（即每个桶能存多少个指纹）。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.MaxKicks">
+ <summary>
+ 插入失败时的最大重试（踢出）次数。
+ 如果超过此次数仍无法插入，则认为过滤器已满。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.#ctor(System.Int32,System.Int32,System.Int32)">
+ <summary>
+ 使用指定的期望容量和桶参数初始化 CuckooFilter 类的新实例。
+ </summary>
+ <param name="capacity">期望插入的元素数量。</param>
+ <param name="bucketSize">每个桶的槽位数。默认为 4，推荐的值为 4 或 8。</param>
+ <param name="maxKicks">最大踢出重试次数。默认为 500。</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.Add(System.String)">
+ <summary>
+ 将指定的元素添加到布谷鸟过滤器中。
+ </summary>
+ <param name="item">要添加的元素。不能为 Nothing。</param>
+ <returns>如果添加成功则为 true；如果过滤器已满且插入失败则为 false。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.Contains(System.String)">
+ <summary>
+ 检查布谷鸟过滤器中是否可能包含指定的元素。
+ </summary>
+ <param name="item">要检查的元素。不能为 Nothing。</param>
+ <returns>如果元素可能存在，则为 true；如果元素绝对不存在，则为 false。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.Delete(System.String)">
+ <summary>
+ 从过滤器中删除指定的元素。
+ </summary>
+ <param name="item">要删除的元素。不能为 Nothing。</param>
+ <returns>如果元素存在并被删除，则为 true；如果元素不存在，则为 false。</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.GetAltIndex(System.Int32,System.UInt32)">
+ <summary>
+ 计算备用索引位置。
+ 公式：i2 = i1 XOR hash(fp)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.TryInsert(System.Int32,System.UInt32)">
+ <summary>
+ 尝试将指纹插入到指定桶的任意空槽位中。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.Lookup(System.Int32,System.UInt32)">
+ <summary>
+ 在指定桶中查找是否存在特定指纹。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.CuckooFilter.TryDelete(System.Int32,System.UInt32)">
+ <summary>
+ 尝试从指定桶中删除特定指纹。
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.ILocalSearchHandle.Matches(System.String,Microsoft.VisualBasic.CompareMethod)">
  <summary>
  
@@ -13907,6 +13986,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  请注意，这里的数据源请尽量使用Distinct的，否则对于重复的数据，只会记录下第一个位置
  </summary>
  <param name="source"></param>
+ <remarks>
+ this constructor will create an empty index object if the given <paramref name="source"/> input is nothing.
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.Index`1.#ctor(System.Int32)">
  <summary>
@@ -27277,9 +27359,8 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  Gets the name of the target file or directory, if the target is a file, then the name without 
  the extension suffix name.
- (获取目标文件夹的名称或者文件的不包含拓展名的名称)
  </summary>
- <returns></returns>
+ <returns>获取目标文件夹的名称或者文件的不包含拓展名的名称</returns>
  <remarks>
  ###### 2017-2-14 
  
@@ -27504,6 +27585,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="a"></param>
  <param name="b"></param>
  <param name="equal"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Correlations.Correlations.JaccardIndex(System.Collections.Generic.IReadOnlyCollection{System.String},System.Collections.Generic.IReadOnlyCollection{System.String})">
+ <summary>
+ The Jaccard index, also known as Intersection over Union and the Jaccard similarity coefficient 
+ (originally coined coefficient de communauté by Paul Jaccard), is a statistic used for comparing 
+ the similarity and diversity of sample sets. The Jaccard coefficient measures similarity between 
+ finite sample sets, and is defined as the size of the intersection divided by the size of the 
+ union of the sample sets.
+ 
+ https://en.wikipedia.org/wiki/Jaccard_index
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Correlations.Correlations.SW(System.Double[],System.Double[])">
@@ -27972,7 +28067,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  xi in the input data sequence
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Math.Correlations.RankOrder`1.Ranking(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Math.Correlations.RankOrder{`0}},System.Boolean)">
+<member name="M:Microsoft.VisualBasic.Math.Correlations.RankOrder`1.Input(System.Collections.Generic.IEnumerable{`0})">
+ <summary>
+ tagged input data with the input orders
+ </summary>
+ <param name="data"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Correlations.RankOrder`1.Ranking(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Math.Correlations.RankOrder{`0}},System.Boolean,Microsoft.VisualBasic.ComponentModel.Collection.Index{`0})">
  <summary>
  
  </summary>
@@ -36219,7 +36321,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.Language.UnixBash.PS1.W">
  <summary>
- ``\W`` 利用``<see cref="M:Microsoft.VisualBasic.PathExtensions.BaseName(System.String,System.Boolean)"/>``取得工作目录名称，所以仅会列出最后一个目录名。
+ ``\W`` 利用``<see cref="M:Microsoft.VisualBasic.PathExtensions.BaseName(System.Collections.Generic.IEnumerable{System.String},System.Boolean)"/>``取得工作目录名称，所以仅会列出最后一个目录名。
  </summary>
  <returns></returns>
 </member>

@@ -6,6 +6,15 @@ Microsoft.VisualBasic.Math.Core
 </name>
 </assembly>
 <members>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.HelperExtensions.GetColumn(System.Double[0:,0:],System.Int32)">
+ <summary>
+ 从二维数组中提取指定的一列
+ </summary>
+ <param name="matrix">二维矩阵</param>
+ <param name="columnIndex">要提取的列索引（0表示第一列）</param>
+ <returns>包含该列数据的一维数组</returns>
+ 
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.HelperExtensions.IsNaNImaginary(System.Collections.Generic.IEnumerable{System.Double})">
  <summary>
  get a logical vector for indicates that which elements inside the given numeric vector is invalid number, like NaN, Inf
@@ -73,7 +82,6 @@ Microsoft.VisualBasic.Math.Core
  <param name="b"></param>
  <param name="symmetrize"></param>
  <returns></returns>
- 
 </member>
 <member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.Center">
  <summary>
@@ -111,6 +119,17 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <returns>椭圆的面积，类型为 Double。</returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.FitEllipse(System.Drawing.PointF[],System.Boolean)">
+ <summary>
+ 这个模块实现的是代数拟合椭圆（Algebraic ellipse fitting），通过 SVD 对给定点集拟合一条二次曲线，使其在最小二乘意义下逼近这些点。
+ </summary>
+ <param name="points"></param>
+ <param name="strict"></param>
+ <returns></returns>
+ <remarks>
+ 不适用于PCA的统计椭圆的拟合
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.BuildDesignMatrix(System.Drawing.PointF[])">
  <summary>
  构建设计矩阵 M = [x², xy, y², x, y, 1]
@@ -124,6 +143,139 @@ Microsoft.VisualBasic.Math.Core
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.EllipseFitResult.NormalizeAngle(System.Double)">
  <summary>
  规范化角度到 [0, π) 范围
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult">
+ <summary>
+ PCA统计椭圆计算结果
+ 基于协方差矩阵和分布假设的数据椭圆/置信椭圆
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.Center">
+ <summary>
+ 椭圆中心点（均值）
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.SemiMajorAxis">
+ <summary>
+ 长半轴长度
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.SemiMinorAxis">
+ <summary>
+ 短半轴长度
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.RotationAngle">
+ <summary>
+ 旋转角度（弧度，从X轴逆时针方向）
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.ConfidenceLevel">
+ <summary>
+ 置信水平（例如0.95表示95%置信椭圆）
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.CovarianceMatrix">
+ <summary>
+ 协方差矩阵 [2x2]
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.EigenValues">
+ <summary>
+ 特征值数组 [2]
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.EigenVectors">
+ <summary>
+ 特征向量矩阵 [2x2]，每列是一个特征向量
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.Area">
+ <summary>
+ 计算椭圆面积
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseResult.CreateShape">
+ <summary>
+ 创建椭圆形状对象
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator">
+ <summary>
+ PCA椭圆计算器
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType">
+ <summary>
+ 椭圆类型枚举
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType.Normal">
+ <summary>
+ 基于多元正态分布的置信椭圆
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType.T">
+ <summary>
+ 基于多元t分布的数据椭圆（更稳健，对离群点不敏感）
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType.Euclidean">
+ <summary>
+ 欧几里得距离圆（不考虑协方差结构）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.CalculateEllipse(System.Drawing.PointF[],System.Single,Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType,System.Nullable{System.Int32})">
+ <summary>
+ 计算PCA统计椭圆
+ </summary>
+ <param name="points">PCA得分散点集合</param>
+ <param name="confidenceLevel">置信水平（0-1之间，默认0.95）</param>
+ <param name="ellipseType">椭圆类型（默认Normal）</param>
+ <param name="degreesOfFreedom">t分布的自由度（默认None，自动计算）</param>
+ <returns>PCA椭圆计算结果</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EigenDecompose(System.Double[0:,0:])">
+ <summary>
+ 2x2对称矩阵的特征分解
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.CalculateScaleFactor(System.Single,Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.EllipseType,System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ 计算缩放因子
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.ChiSquareQuantile(System.Double,System.Int32)">
+ <summary>
+ 卡方分布分位数近似计算
+ 使用Wilson-Hilferty近似
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.FQuantile(System.Double,System.Int32,System.Int32)">
+ <summary>
+ F分布分位数近似计算
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.NormalQuantile(System.Double)">
+ <summary>
+ 标准正态分布分位数近似计算
+ 使用Beasley-Springer-Moro近似
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.NormalizeVector(System.Double[])">
+ <summary>
+ 向量归一化
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.PCAEllipseCalculator.NormalizeAngle(System.Double)">
+ <summary>
+ 角度规范化到[0, π)
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.EigenDecompositionResult">
+ <summary>
+ 特征分解结果
  </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.LinearProgramming.Extensions.subscriptN(System.Int32)">
