@@ -10287,6 +10287,33 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="size"></param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CartesianProduct">
+ <summary>
+ 笛卡尔积是集合论中的一个基本概念，它描述了如何从两个或多个集合中生成所有可能的有序组合。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CartesianProduct.CreateCombos``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})">
+ <summary>
+ 生成两个序列的两两组合 ``{<paramref name="seq_1"/> -> <paramref name="seq_2"/>}[]``
+ </summary>
+ <typeparam name="TA"></typeparam>
+ <typeparam name="TB"></typeparam>
+ <param name="seq_1"></param>
+ <param name="seq_2"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CartesianProduct.CreateTripleCartesianProduct``3(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},System.Collections.Generic.IEnumerable{``2})">
+ <summary>
+ 生成三个序列的笛卡尔积（所有可能的三元组组合）
+ </summary>
+ <typeparam name="TA">第一个序列的元素类型</typeparam>
+ <typeparam name="TB">第二个序列的元素类型</typeparam>
+ <typeparam name="TC">第三个序列的元素类型</typeparam>
+ <param name="seq1">第一个序列</param>
+ <param name="seq2">第二个序列</param>
+ <param name="seq3">第三个序列</param>
+ <returns>包含所有可能三元组的序列</returns>
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Algorithm.base.Comb`1">
  <summary>
  对象类型的组合输出工具，即目标类型的集合之中的元素两两组合配对
@@ -10330,23 +10357,23 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <remarks></remarks>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CombinationExtensions.CreateCombos``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1})">
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CombinationExtensions.Generate``1(``0[][])">
  <summary>
- 生成两个序列的两两组合 ``{<paramref name="seq_1"/> -> <paramref name="seq_2"/>}()``
- </summary>
- <typeparam name="TA"></typeparam>
- <typeparam name="TB"></typeparam>
- <param name="seq_1"></param>
- <param name="seq_2"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.CombinationExtensions.Iteration``1(``0[][])">
- <summary>
- create a vs b vs c ...
+ wrapper call for <see cref="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.NDimensionCartesianProduct.CreateMultiCartesianProduct``1(System.Collections.Generic.IEnumerable{``0}[])"/>
  </summary>
  <typeparam name="T"></typeparam>
  <param name="source"></param>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.Algorithm.base.NDimensionCartesianProduct">
+ <summary>
+ Create a vs b vs c ...
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.NDimensionCartesianProduct.CreateMultiCartesianProduct``1(System.Collections.Generic.IEnumerable{``0}[])">
+ <summary>
+ 生成任意数量集合的笛卡尔积（递归实现）
+ </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Algorithm.base.DistanceMap`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Func{`0,`0,System.Double})">
  <summary>
@@ -12064,6 +12091,24 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <remarks>
  this function will erase the <paramref name="duplicated"/> at first and then make value assigned.
  </remarks>
+</member>
+<member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate">
+ <summary>
+ 
+ </summary>
+ <remarks>
+ template syntax example:
+ 
+ &lt;locus_tag>|taxid|&lt;product>
+ </remarks>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate.CreateString``1(``0)">
+ <summary>
+ Create a string based on the given template
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="i"></param>
+ <returns></returns>
 </member>
 <member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.QGramIndex._q">
  <summary>
@@ -14486,7 +14531,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="source"></param>
  <param name="key"></param>
  <returns>
- nothing will be return if the <paramref name="key"/> is not exists
+ nothing will be return if the <paramref name="key"/> is not exists or source sequence is nothing
  </returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.Takes``1(System.Collections.Generic.IEnumerable{``0},System.String)">
@@ -17054,6 +17099,27 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="value"></param>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.Repository.FileHashCheckSum.HashType">
+ <summary>
+ 支持的哈希算法类型
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.Repository.FileHashCheckSum.ComputeHash(System.String,Microsoft.VisualBasic.Data.Repository.FileHashCheckSum.HashType,System.Int32)">
+ <summary>
+ 计算文件的哈希值 (优化版，适合大文件)
+ </summary>
+ <param name="filePath">文件路径</param>
+ <param name="algo">哈希算法类型</param>
+ <param name="bufferSize">
+ 应该小于2GB
+ </param>
+ <returns>哈希值的十六进制字符串</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.Repository.FileHashCheckSum.CreateHashAlgorithm(Microsoft.VisualBasic.Data.Repository.FileHashCheckSum.HashType)">
+ <summary>
+ 工厂方法：根据枚举创建具体的 HashAlgorithm 对象
+ </summary>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.Repository.FNV1a.GetDeterministicHashCode(System.String)">
  <summary>
@@ -34154,7 +34220,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  Example for xx-net tool:
  
  ```
- http://127.0.0.1:8087/
+ http://127.0.0.1:10809/
  ```
  </summary>
  <returns></returns>
