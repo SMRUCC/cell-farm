@@ -12102,6 +12102,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  &lt;locus_tag>|taxid|&lt;product>
  </remarks>
 </member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate.keys">
+ <summary>
+ a collection mapping of [key -> &lt;key>] for get value and make string template interpolation
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate.CreateString``1(``0)">
  <summary>
  Create a string based on the given template
@@ -40863,6 +40868,18 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="simpleDict"></param>
  <returns></returns>
  
+</member>
+<member name="M:Microsoft.VisualBasic.Serialization.JSON.JsonContract.LoadJSONL``1(System.String,System.Text.Encoding,System.Boolean,System.Collections.Generic.IEnumerable{System.Type},System.Boolean)">
+ <summary>
+ load json list file
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="file"></param>
+ <param name="encoding"></param>
+ <param name="simpleDict"></param>
+ <param name="knownTypes"></param>
+ <param name="throwEx"></param>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Serialization.JSON.JsonContract.LoadJsonFile``1(System.String,System.Text.Encoding,System.Boolean,System.Collections.Generic.IEnumerable{System.Type},System.Boolean)">
  <summary>
