@@ -32,29 +32,24 @@
           "Microsoft.VisualBasic.Data.Framework.Reference": "5.0.123.0",
           "Microsoft.VisualBasic.Data.GraphTheory.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Data.IO.MessagePack.Reference": "1.0.0.0",
-          "Microsoft.VisualBasic.Data.Storage.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Data.visualize.Network.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.Reference": "1.0.0.0",
-          "Microsoft.VisualBasic.DataStorage.FeatherFormat.Reference": "0.6.0.0",
           "Microsoft.VisualBasic.DataStorage.HDSPack.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Math.Core.Reference": "5.0.1.2389",
           "Microsoft.VisualBasic.Math.ODEsSolver.Reference": "5.0.1.2389",
           "Microsoft.VisualBasic.Math.Statistics.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.MIME.application.json.Reference": "1.0.0.0",
-          "Microsoft.VisualBasic.MIME.application.rdf_xml.Reference": "1.0.0.0",
-          "Microsoft.VisualBasic.MIME.application.xml.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558",
           "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference": "1.0.0.0",
           "SMRUCC.genomics.Core.Reference": "6.3.256.3655",
-          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.9512.27786",
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.9515.13735",
           "SMRUCC.genomics.GCModeller.CompilerServices.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference": "5.0.1.2389",
-          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9512.27783",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9515.13747",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference": "5.0.1.2389",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference": "1.0.0.0",
-          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference": "1.0.0.0",
-          "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9.Reference": "1.0.0.0"
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference": "1.0.0.0"
         },
         "runtime": {
           "VirtualCell.dll": {}
@@ -322,23 +317,6 @@
           }
         }
       },
-      "Microsoft.VisualBasic.Data.Storage/1.0.0": {
-        "dependencies": {
-          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
-          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
-          "Microsoft.VisualBasic.DataStorage.FeatherFormat": "0.6.0",
-          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
-          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
-          "System.Composition": "10.0.1",
-          "System.Diagnostics.DiagnosticSource": "10.0.1",
-          "System.Resources.Extensions": "10.0.1"
-        },
-        "runtime": {
-          "Microsoft.VisualBasic.Data.Storage.dll": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Microsoft.VisualBasic.Data.visualize.Network/1.0.0": {
         "dependencies": {
           "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
@@ -362,20 +340,6 @@
         },
         "runtime": {
           "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.dll": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Microsoft.VisualBasic.DataStorage.FeatherFormat/0.6.0": {
-        "dependencies": {
-          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
-          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
-          "System.Composition": "10.0.1",
-          "System.Diagnostics.DiagnosticSource": "10.0.1",
-          "System.Resources.Extensions": "10.0.1"
-        },
-        "runtime": {
-          "Microsoft.VisualBasic.DataStorage.FeatherFormat.dll": {
             "fileVersion": "0.0.0.0"
           }
         }
@@ -447,32 +411,6 @@
           }
         }
       },
-      "Microsoft.VisualBasic.MIME.application.rdf_xml/1.0.0": {
-        "dependencies": {
-          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
-          "System.Composition": "10.0.1",
-          "System.Diagnostics.DiagnosticSource": "10.0.1",
-          "System.Resources.Extensions": "10.0.1"
-        },
-        "runtime": {
-          "Microsoft.VisualBasic.MIME.application.rdf_xml.dll": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Microsoft.VisualBasic.MIME.application.xml/1.0.0": {
-        "dependencies": {
-          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
-          "System.Composition": "10.0.1",
-          "System.Diagnostics.DiagnosticSource": "10.0.1",
-          "System.Resources.Extensions": "10.0.1"
-        },
-        "runtime": {
-          "Microsoft.VisualBasic.MIME.application.xml.dll": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Microsoft.VisualBasic.Runtime/5.0.1.2389": {
         "dependencies": {
           "System.Composition": "10.0.1",
@@ -518,15 +456,9 @@
       },
       "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage/5.0.1.2389": {
         "dependencies": {
-          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
-          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
-          "Microsoft.VisualBasic.Data.Storage": "1.0.0",
           "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
           "SMRUCC.genomics.GCModeller.CompilerServices": "1.0.0",
-          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader": "5.0.1.2389",
-          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
-          "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9": "1.0.0",
           "System.Composition": "10.0.1",
           "System.Diagnostics.DiagnosticSource": "10.0.1",
           "System.Resources.Extensions": "10.0.1",
@@ -657,22 +589,6 @@
           }
         }
       },
-      "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9/1.0.0": {
-        "dependencies": {
-          "Microsoft.VisualBasic.MIME.application.rdf_xml": "1.0.0",
-          "Microsoft.VisualBasic.MIME.application.xml": "1.0.0",
-          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
-          "SMRUCC.genomics.Core": "6.3.256.3655",
-          "System.Composition": "10.0.1",
-          "System.Diagnostics.DiagnosticSource": "10.0.1",
-          "System.Resources.Extensions": "10.0.1"
-        },
-        "runtime": {
-          "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9.dll": {
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Centos.Reference/1.0.0.0": {
         "runtime": {
           "Centos.dll": {
@@ -737,14 +653,6 @@
           }
         }
       },
-      "Microsoft.VisualBasic.Data.Storage.Reference/1.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualBasic.Data.Storage.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Microsoft.VisualBasic.Data.visualize.Network.Reference/1.0.0.0": {
         "runtime": {
           "Microsoft.VisualBasic.Data.visualize.Network.dll": {
@@ -758,14 +666,6 @@
           "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Microsoft.VisualBasic.DataStorage.FeatherFormat.Reference/0.6.0.0": {
-        "runtime": {
-          "Microsoft.VisualBasic.DataStorage.FeatherFormat.dll": {
-            "assemblyVersion": "0.6.0.0",
-            "fileVersion": "0.6.0.0"
           }
         }
       },
@@ -809,22 +709,6 @@
           }
         }
       },
-      "Microsoft.VisualBasic.MIME.application.rdf_xml.Reference/1.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualBasic.MIME.application.rdf_xml.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Microsoft.VisualBasic.MIME.application.xml.Reference/1.0.0.0": {
-        "runtime": {
-          "Microsoft.VisualBasic.MIME.application.xml.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "Microsoft.VisualBasic.Runtime.Reference/5.33.69.2558": {
         "runtime": {
           "Microsoft.VisualBasic.Runtime.dll": {
@@ -849,10 +733,10 @@
           }
         }
       },
-      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9512.27786": {
+      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9515.13735": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.dll": {
-            "assemblyVersion": "5.33.9512.27786",
+            "assemblyVersion": "5.33.9515.13735",
             "fileVersion": "5.33.0.0"
           }
         }
@@ -873,10 +757,10 @@
           }
         }
       },
-      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9512.27783": {
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9515.13747": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.dll": {
-            "assemblyVersion": "5.33.9512.27783",
+            "assemblyVersion": "5.33.9515.13747",
             "fileVersion": "5.33.0.0"
           }
         }
@@ -908,14 +792,6 @@
       "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference/1.0.0.0": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9.Reference/1.0.0.0": {
-        "runtime": {
-          "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -1065,22 +941,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.VisualBasic.Data.Storage/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Microsoft.VisualBasic.Data.visualize.Network/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualBasic.DataStorage.FeatherFormat/0.6.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1106,16 +972,6 @@
       "sha512": ""
     },
     "Microsoft.VisualBasic.MIME.application.json/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualBasic.MIME.application.rdf_xml/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualBasic.MIME.application.xml/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1175,11 +1031,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Centos.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -1220,22 +1071,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.VisualBasic.Data.Storage.Reference/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Microsoft.VisualBasic.Data.visualize.Network.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.Reference/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualBasic.DataStorage.FeatherFormat.Reference/0.6.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1265,16 +1106,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.VisualBasic.MIME.application.rdf_xml.Reference/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.VisualBasic.MIME.application.xml.Reference/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Microsoft.VisualBasic.Runtime.Reference/5.33.69.2558": {
       "type": "reference",
       "serviceable": false,
@@ -1290,7 +1121,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9512.27786": {
+    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9515.13735": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1305,7 +1136,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9512.27783": {
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9515.13747": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1326,11 +1157,6 @@
       "sha512": ""
     },
     "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "SMRUCC.genomics.Model.SBML_v1.0_2.0.22.0__a8b9cc5dce5d8b0cc9.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

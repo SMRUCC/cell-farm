@@ -643,6 +643,12 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Model
  <param name="vector"></param>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.WebJSON.Molecule.id">
+ <summary>
+ usually be an integer id of this metabolite molecule
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.NamespaceDoc">
  <summary>
  这个模块主要是提供GCModeller内部的生物组件的通用的基础类型的描述，基于这个基础类型的通用描述
