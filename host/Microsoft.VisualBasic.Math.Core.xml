@@ -637,6 +637,14 @@ Microsoft.VisualBasic.Math.Core
  <returns>     V
  </returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.LargeScaleEigenSolver.GetTopKEigenvalues(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix,System.Int32)">
+ <summary>
+ 计算稀疏对称矩阵的前 k 个最大特征值（使用 Lanczos 算法）
+ </summary>
+ <param name="sparseMatrix">稀疏矩阵（必须是对称的，如无向图邻接矩阵）</param>
+ <param name="k">需要计算的特征值数量</param>
+ <returns>前 k 个特征值（近似值）</returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.LUDecomposition">
  <summary>LU Decomposition.
  For an m-by-n matrix A with m >= n, the LU decomposition is an m-by-n

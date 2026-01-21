@@ -310,6 +310,13 @@ Microsoft.VisualBasic.Data.visualize.Network
  ``[<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> => degree]``
  </returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.ConvertToMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean)">
+ <summary>
+ 将自定义的Graph对象转换为Dijkstra算法所需的二维整数矩阵。
+ </summary>
+ <param name="networkGraph">自定义的网络图对象</param>
+ <returns>邻接矩阵</returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.NodesID(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction})">
  <summary>
  Get all of the connected nodes ID from the edges data

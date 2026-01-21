@@ -64,6 +64,19 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="endPos"></param>
  <returns>当函数找不到路径的时候会返回空值</returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.Node">
+ <summary>
+ Holds all the details of a node in the graph.
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinder(System.Int32[0:,0:],System.Int32,System.Int32)">
+ <summary>
+ Calculates the minimum possible distance from root node to all other nodes.
+ </summary>
+ <param name="graph"></param>
+ <param name="startIndex"></param>
+ <returns></returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Calculator`1">
  <summary>
  calculates all-pairs shortest paths or shortest paths from a single node
@@ -106,22 +119,22 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="prevCost"></param>
  <returns></returns>
 </member>
-<member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Route">
- <summary>
- 从出发点到终点所经过的路径
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Route.Cost">
+<member name="P:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.RoutePathway.Cost">
  <summary>
  sum edge weight as cost
  </summary>
  <returns></returns>
 </member>
-<member name="P:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Route.Count">
+<member name="P:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.RoutePathway.Count">
  <summary>
  size/length of the route path
  </summary>
  <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Route">
+ <summary>
+ 从出发点到终点所经过的路径
+ </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.FastUnfolding.FastUnfolding">
  <summary>
