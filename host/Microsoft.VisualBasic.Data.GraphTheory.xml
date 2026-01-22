@@ -69,7 +69,7 @@ Microsoft.VisualBasic.Data.GraphTheory
  Holds all the details of a node in the graph.
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinder(System.Int32[][]@,System.Int32,System.Int32)">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinder(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix@,System.Int32,System.Int32)">
  <summary>
  Calculates the minimum possible distance from root node to all other nodes.
  </summary>
@@ -77,7 +77,7 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="startIndex"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinderInternal(System.Int32[][]@,System.Int32,System.Int32,System.Nullable{System.Int32})">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinderInternal(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix@,System.Int32,System.Int32,System.Nullable{System.Int32})">
  <summary>
  Calculates the minimum possible distance from root node to all other nodes.
  </summary>
@@ -85,7 +85,7 @@ Microsoft.VisualBasic.Data.GraphTheory
  <param name="startIndex"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.FindPath(System.Int32[][]@,System.Int32,System.Int32,System.Int32)">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.FindPath(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix@,System.Int32,System.Int32,System.Int32)">
  <summary>
  Calculates the shortest path from startIndex to endIndex specifically.
  </summary>

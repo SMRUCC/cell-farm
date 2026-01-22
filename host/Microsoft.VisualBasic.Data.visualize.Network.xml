@@ -310,7 +310,14 @@ Microsoft.VisualBasic.Data.visualize.Network
  ``[<see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> => degree]``
  </returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.ConvertToMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean)">
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.LoadMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean)">
+ <summary>
+ 将自定义的Graph对象转换为Dijkstra算法所需的二维整数矩阵。
+ </summary>
+ <param name="networkGraph">自定义的网络图对象</param>
+ <returns>邻接矩阵</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.ConvertToMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node}@,System.Collections.Generic.Dictionary{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,System.Int32}@,System.Func{Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge,System.Double})">
  <summary>
  将自定义的Graph对象转换为Dijkstra算法所需的二维整数矩阵。
  </summary>
