@@ -69,13 +69,31 @@ Microsoft.VisualBasic.Data.GraphTheory
  Holds all the details of a node in the graph.
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinder(System.Int32[0:,0:],System.Int32,System.Int32)">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinder(System.Int32[][]@,System.Int32,System.Int32)">
  <summary>
  Calculates the minimum possible distance from root node to all other nodes.
  </summary>
  <param name="graph"></param>
  <param name="startIndex"></param>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinderInternal(System.Int32[][]@,System.Int32,System.Int32,System.Nullable{System.Int32})">
+ <summary>
+ Calculates the minimum possible distance from root node to all other nodes.
+ </summary>
+ <param name="graph"></param>
+ <param name="startIndex"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.FindPath(System.Int32[][]@,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ Calculates the shortest path from startIndex to endIndex specifically.
+ </summary>
+ <param name="graph">The adjacency matrix of the graph.</param>
+ <param name="vertices">Total number of vertices.</param>
+ <param name="startIndex">The starting node index.</param>
+ <param name="endIndex">The target node index.</param>
+ <returns>Returns the target Node containing path and distance info. Returns Nothing if path not found.</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.Calculator`1">
  <summary>
