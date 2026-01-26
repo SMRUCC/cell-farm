@@ -430,6 +430,7 @@ Microsoft.VisualBasic.Data.visualize.Network
  For 2d layout <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector2"/> / 3d layout <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Layouts.FDGVector3"/>
  </summary>
  <returns></returns>
+ 
 </member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.NodeData.color">
  <summary>
@@ -855,6 +856,7 @@ Microsoft.VisualBasic.Data.visualize.Network
  这个节点是被钉住的？在进行布局计算的时候，钉住的节点将不会更新位置
  </summary>
  <returns></returns>
+ 
 </member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.Metadata(System.String)">
  <summary>

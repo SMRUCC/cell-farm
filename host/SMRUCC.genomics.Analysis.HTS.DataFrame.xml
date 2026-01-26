@@ -462,6 +462,12 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  this function returns ZERO if the sample count is ZERO
  </remarks>
 </member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.IGeneExpression.Expression">
+ <summary>
+ the gene expression values across all samples
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix">
  <summary>
  a data matrix of samples in column and gene features in row
@@ -616,6 +622,19 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  <param name="matrix"></param>
  <param name="sampleInfo"></param>
  <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder">
+ <summary>
+ Expression abundance matrix builder
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder.BuildAndNormalizeAbundanceMatrix(Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{System.Collections.Generic.Dictionary{System.String,System.Double}}[],System.Boolean)">
+ <summary>
+ 将所有样本的物种丰度结果构建并归一化为一个丰度矩阵。
+ </summary>
+ <param name="allSampleAbundances">聚合后的数据，Key为样本ID，Value为该样本的物种丰度字典。</param>
+ <param name="performNormalization">是否执行按列（样本）的总和归一化，使每个样本的相对丰度之和为1。</param>
+ <returns>一个包含物种和样本丰度信息的DataTable。</returns>
 </member>
 </members>
 </doc>

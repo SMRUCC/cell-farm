@@ -6697,6 +6697,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  works based on <see cref="F:Microsoft.VisualBasic.My.Log4VB.redirectInfo"/>
  </remarks>
 </member>
+<member name="M:Microsoft.VisualBasic.VBDebugger.echo(System.String)">
+ <summary>
+ wrapper for console.write
+ </summary>
+ <param name="str"></param>
+</member>
 <member name="M:Microsoft.VisualBasic.VBDebugger.echo(System.Char)">
  <summary>
  Alias for <see cref="M:System.Console.Write(System.Boolean)"/>
@@ -14438,6 +14444,30 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <typeparam name="T"></typeparam>
 </member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.count">
+ <summary>
+ number of elements in queue
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.top">
+ <summary>
+ the top element (the min element as defined by lessThan)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.empty">
+ <summary>
+ true if no more elements in queue
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.isHeap">
+ <summary>
+ check heap condition (for testing)
+ </summary>
+ <returns>true if queue is in valid state</returns>
+</member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.#ctor(System.Func{`0,`0,System.Boolean})">
  <summary>
  ```
@@ -14446,11 +14476,32 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="lessThan"></param>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.top">
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.push(`0[])">
  <summary>
- the top element (the min element as defined by lessThan)
+ put things on the heap
+ </summary>
+ <param name="args"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.forEach(System.Action{`0,Microsoft.VisualBasic.ComponentModel.Collection.PairingHeap{`0}})">
+ <summary>
+ apply f to each element of the queue
+ </summary>
+ <param name="f">function to apply</param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.pop">
+ <summary>
+ remove and return the min element from the queue
  </summary>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.PriorityQueue`1.reduceKey(Microsoft.VisualBasic.ComponentModel.Collection.PairingHeap{`0},`0,System.Action{`0,Microsoft.VisualBasic.ComponentModel.Collection.PairingHeap{`0}})">
+ <summary>
+ reduce the key value of the specified heap node
+ </summary>
+ <param name="heapNode"></param>
+ <param name="newKey"></param>
+ <param name="setHeapNode"></param>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions">
  <summary>
