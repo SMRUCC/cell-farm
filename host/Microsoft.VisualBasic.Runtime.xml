@@ -8384,7 +8384,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="[in]"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.CommandLine.PipelineProcess.Call(System.String,System.String,System.String,System.Boolean,System.String@,System.Int32@)">
+<member name="M:Microsoft.VisualBasic.CommandLine.PipelineProcess.Call(System.String,System.String,System.String,System.Boolean,System.String@,System.Int32@,System.Boolean)">
  <summary>
  Run process and then gets the ``std_out`` of the child process
  </summary>
@@ -38500,6 +38500,15 @@ to take away yo [rest of string was truncated]&quot;;.
  https://github.com/xieguigang/sciBASIC
  </summary>
  
+</member>
+<member name="M:Microsoft.VisualBasic.LLMs.LLMsTalk(System.String)">
+ <summary>
+ A proxy function for LLMs talk in framework runtime
+ </summary>
+ <param name="msg"></param>
+ <returns>
+ this proxy function will returns nothing if there is no ollama client is hooked
+ </returns>
 </member>
 <member name="T:Microsoft.VisualBasic.NamespaceDoc">
  <summary>
