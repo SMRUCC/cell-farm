@@ -1483,6 +1483,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="clone"></param>
 </member>
+<member name="M:Microsoft.VisualBasic.ApplicationServices.Debugging.Diagnostics.StackFrame.GetBreakpointHashCode">
+ <summary>
+ 计算当前堆栈帧位置的哈希值，用于断点匹配。
+ 哈希计算基于：标准化后的文件路径 + 行号。
+ 如果文件路径为空，则回退到 Method 全名 + 行号。
+ </summary>
+ <returns>一个整数哈希值，可用于 HashSet 或 Dictionary 的 Key</returns>
+</member>
 <member name="T:Microsoft.VisualBasic.ApplicationServices.Debugging.ExceptionHandler">
  <summary>
  处理错误的工作逻辑的抽象接口
@@ -14503,6 +14511,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="newKey"></param>
  <param name="setHeapNode"></param>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.RewindableEnumerator`1.Previous">
+ <summary>
+ 将枚举器回退一步，使得下一次 MoveNext() 再次返回当前元素。
+ </summary>
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions">
  <summary>
  KeyValue pair data related extensions API.
@@ -25768,6 +25781,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  (通过具有缓存的流对象读取文本数据，使用迭代器来读取文件之中的所有的行，大文件推荐使用这个方法进行读取操作)
  </remarks>
 </member>
+<member name="M:Microsoft.VisualBasic.TextDoc.ReadLines(System.IO.StreamReader)">
+ <summary>
+ Read large text file lines with tqdm progress bar
+ </summary>
+ <param name="reader"></param>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.TextDoc.ReadFirstLine(System.String,System.Text.Encoding)">
  <summary>
  Read the first line of the text in the file.
@@ -27741,15 +27761,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="P"></param>
  <param name="Q"></param>
- <returns></returns>
+ <returns>
+ jsd value is not in range [0,1], value maybe in any real number.
+ </returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Correlations.Correlations.KLD(System.Double[],System.Double[])">
  <summary>
- Kullback-Leibler divergence, <paramref name="x"/>和<paramref name="y"/>必须是等长的
+ Kullback-Leibler divergence, (KL散度/相对熵)
  </summary>
- <param name="x"></param>
+ <param name="x"><paramref name="x"/>和<paramref name="y"/>必须是等长的</param>
  <param name="y"></param>
  <returns></returns>
+ <remarks>
+ 计算 D_KL(P || Q) = Σ P(i) * ln(P(i) / Q(i))
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Correlations.Correlations.rankKendallTauBeta(System.Double[],System.Double[])">
  <summary>
@@ -34878,6 +34903,17 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
          elements in the list are less than the specified key.  Note
          that this guarantees that the return value will be &gt;= 0 if
          and only if the key is found. </returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Language.Java.Collections.retainAll``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ 模拟 Java Collection 中的 retainAll 方法。
+ 仅保留当前集合中包含在指定集合中的元素（即求交集）。
+ 如果集合发生了更改，则返回 True。
+ </summary>
+ <typeparam name="T">集合元素类型</typeparam>
+ <param name="source">原集合（会被修改）</param>
+ <param name="itemsToKeep">要保留的元素集合</param>
+ <returns>如果原集合被修改了返回 True，否则返回 False</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Language.Java.JavaMath">
  <summary>
