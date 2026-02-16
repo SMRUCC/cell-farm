@@ -1,0 +1,1025 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "VirtualCell/1.0.0": {
+        "dependencies": {
+          "CellFarm": "1.0.0",
+          "Centos": "1.0.0",
+          "Darwinism.HPC.Parallel": "6.0.231.5699",
+          "Darwinism.IPC.Networking": "1.0.0",
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Data.IO.MessagePack": "1.0.0",
+          "Microsoft.VisualBasic.MIME.application.json": "1.0.0",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.ODEsSolver": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
+          "Centos.Reference": "1.0.0.0",
+          "Darwinism.HPC.Parallel.Reference": "6.0.231.5699",
+          "Darwinism.IPC.Networking.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Data.BinaryData.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Data.Bootstrapping.Fittings.Reference": "5.0.1.2389",
+          "Microsoft.VisualBasic.Data.Framework.Reference": "5.0.123.0",
+          "Microsoft.VisualBasic.Data.GraphTheory.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Data.IO.MessagePack.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.DataStorage.HDSPack.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Math.Core.Reference": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.ODEsSolver.Reference": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.Statistics.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.MIME.application.json.Reference": "1.0.0.0",
+          "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558",
+          "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference": "1.0.0.0",
+          "SMRUCC.genomics.Core.Reference": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.9544.1546",
+          "SMRUCC.genomics.GCModeller.CompilerServices.Reference": "1.0.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9544.1557",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference": "1.0.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference": "1.0.0.0",
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference": "1.0.0.0"
+        },
+        "runtime": {
+          "VirtualCell.dll": {}
+        }
+      },
+      "System.Composition/10.0.3": {
+        "dependencies": {
+          "System.Composition.AttributedModel": "10.0.3",
+          "System.Composition.Convention": "10.0.3",
+          "System.Composition.Hosting": "10.0.3",
+          "System.Composition.Runtime": "10.0.3",
+          "System.Composition.TypedParts": "10.0.3"
+        }
+      },
+      "System.Composition.AttributedModel/10.0.3": {
+        "runtime": {
+          "lib/net10.0/System.Composition.AttributedModel.dll": {
+            "assemblyVersion": "10.0.0.3",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Composition.Convention/10.0.3": {
+        "dependencies": {
+          "System.Composition.AttributedModel": "10.0.3"
+        },
+        "runtime": {
+          "lib/net10.0/System.Composition.Convention.dll": {
+            "assemblyVersion": "10.0.0.3",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Composition.Hosting/10.0.3": {
+        "dependencies": {
+          "System.Composition.Runtime": "10.0.3"
+        },
+        "runtime": {
+          "lib/net10.0/System.Composition.Hosting.dll": {
+            "assemblyVersion": "10.0.0.3",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Composition.Runtime/10.0.3": {
+        "runtime": {
+          "lib/net10.0/System.Composition.Runtime.dll": {
+            "assemblyVersion": "10.0.0.3",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Composition.TypedParts/10.0.3": {
+        "dependencies": {
+          "System.Composition.AttributedModel": "10.0.3",
+          "System.Composition.Hosting": "10.0.3",
+          "System.Composition.Runtime": "10.0.3"
+        },
+        "runtime": {
+          "lib/net10.0/System.Composition.TypedParts.dll": {
+            "assemblyVersion": "10.0.0.3",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Formats.Nrbf/10.0.3": {
+        "runtime": {
+          "lib/net10.0/System.Formats.Nrbf.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "System.Resources.Extensions/10.0.3": {
+        "dependencies": {
+          "System.Formats.Nrbf": "10.0.3"
+        },
+        "runtime": {
+          "lib/net10.0/System.Resources.Extensions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.326.7603"
+          }
+        }
+      },
+      "CellFarm/1.0.0": {
+        "dependencies": {
+          "Centos": "1.0.0",
+          "Darwinism.HPC.Parallel": "6.0.231.5699",
+          "Darwinism.IPC.Networking": "1.0.0",
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Data.IO.MessagePack": "1.0.0",
+          "Microsoft.VisualBasic.MIME.application.json": "1.0.0",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.ODEsSolver": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0"
+        },
+        "runtime": {
+          "CellFarm.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Centos/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Centos.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Darwinism.HPC.Parallel/6.0.231.5699": {
+        "dependencies": {
+          "Centos": "1.0.0",
+          "Darwinism.IPC.Networking": "1.0.0",
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Data.IO.MessagePack": "1.0.0",
+          "Microsoft.VisualBasic.MIME.application.json": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Darwinism.HPC.Parallel.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Darwinism.IPC.Networking/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Darwinism.IPC.Networking.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.BinaryData/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.BinaryData.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.Bootstrapping.Fittings/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.Bootstrapping.Fittings.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.Framework/5.0.123": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.Framework.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.GraphTheory/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.GraphTheory.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.IO.MessagePack/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.IO.MessagePack.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.visualize.Network/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.visualize.Network.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.DataStorage.HDSPack/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Data.IO.MessagePack": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.DataStorage.HDSPack.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.Core/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Math.Core.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.ODEsSolver/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Math.ODEsSolver.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.Statistics/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Math.Statistics.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.MIME.application.json/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.MIME.application.json.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Runtime/5.0.1.2389": {
+        "dependencies": {
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "Microsoft.VisualBasic.Runtime.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.Analysis.HTS.DataFrame/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Bootstrapping.Fittings": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.Statistics": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner": "1.0.0",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.Analysis.HTS.DataFrame.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.Core/6.3.256.3655": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.Core.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.CompilerServices": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.CompilerServices/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.CompilerServices.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.ODEsSolver": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw/5.0.1.2389": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.BinaryData": "1.0.0",
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions": "1.0.0",
+          "Microsoft.VisualBasic.DataStorage.HDSPack": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Analysis.HTS.DataFrame": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger": "5.0.1.2389",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Model/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Core": "6.3.256.3655"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "System.Composition": "10.0.3",
+          "System.Resources.Extensions": "10.0.3"
+        },
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Centos.Reference/1.0.0.0": {
+        "runtime": {
+          "Centos.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Darwinism.HPC.Parallel.Reference/6.0.231.5699": {
+        "runtime": {
+          "Darwinism.HPC.Parallel.dll": {
+            "assemblyVersion": "6.0.231.5699",
+            "fileVersion": "6.0.231.5699"
+          }
+        }
+      },
+      "Darwinism.IPC.Networking.Reference/1.0.0.0": {
+        "runtime": {
+          "Darwinism.IPC.Networking.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.BinaryData.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.BinaryData.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.Bootstrapping.Fittings.Reference/5.0.1.2389": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.Bootstrapping.Fittings.dll": {
+            "assemblyVersion": "5.0.1.2389",
+            "fileVersion": "5.0.1.2389"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.Framework.Reference/5.0.123.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.Framework.dll": {
+            "assemblyVersion": "5.0.123.0",
+            "fileVersion": "5.0.123.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.GraphTheory.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.GraphTheory.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.IO.MessagePack.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.IO.MessagePack.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.visualize.Network.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.visualize.Network.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.DataStorage.HDSPack.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.DataStorage.HDSPack.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.Core.Reference/5.0.1.2389": {
+        "runtime": {
+          "Microsoft.VisualBasic.Math.Core.dll": {
+            "assemblyVersion": "5.0.1.2389",
+            "fileVersion": "5.0.1.2389"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.ODEsSolver.Reference/5.0.1.2389": {
+        "runtime": {
+          "Microsoft.VisualBasic.Math.ODEsSolver.dll": {
+            "assemblyVersion": "5.0.1.2389",
+            "fileVersion": "5.0.1.2389"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Math.Statistics.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.Math.Statistics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.MIME.application.json.Reference/1.0.0.0": {
+        "runtime": {
+          "Microsoft.VisualBasic.MIME.application.json.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.VisualBasic.Runtime.Reference/5.33.69.2558": {
+        "runtime": {
+          "Microsoft.VisualBasic.Runtime.dll": {
+            "assemblyVersion": "5.33.69.2558",
+            "fileVersion": "5.33.69.2558"
+          }
+        }
+      },
+      "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.Analysis.HTS.DataFrame.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.Core.Reference/6.3.256.3655": {
+        "runtime": {
+          "SMRUCC.genomics.Core.dll": {
+            "assemblyVersion": "6.3.256.3655",
+            "fileVersion": "6.3.256.3655"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9544.1546": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.dll": {
+            "assemblyVersion": "5.33.9544.1546",
+            "fileVersion": "5.33.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.CompilerServices.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.CompilerServices.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference/5.0.1.2389": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.dll": {
+            "assemblyVersion": "5.0.1.2389",
+            "fileVersion": "5.0.1.2389"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9544.1557": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.dll": {
+            "assemblyVersion": "5.33.9544.1557",
+            "fileVersion": "5.33.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference/5.0.1.2389": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.dll": {
+            "assemblyVersion": "5.0.1.2389",
+            "fileVersion": "5.0.1.2389"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VirtualCell/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Composition/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sCMsrPnpHco09yyP4T3Yy84S3iFTyOiHGHTFlGvjJAk+vVRcBqPVDlK7kvkXH5/jj2eROTI80TU7BW4Ghcqtdg==",
+      "path": "system.composition/10.0.3",
+      "hashPath": "system.composition.10.0.3.nupkg.sha512"
+    },
+    "System.Composition.AttributedModel/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Pj+8+lQhO6XOm8HD4xQLf5Mxiq4z64sq5rXSwesCDUFAC4AtSmAScGuxDCyoEmr4O8p7ygxnh9FOvd9vfi3ApQ==",
+      "path": "system.composition.attributedmodel/10.0.3",
+      "hashPath": "system.composition.attributedmodel.10.0.3.nupkg.sha512"
+    },
+    "System.Composition.Convention/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-54QQpj0H9njit0OXvgUzfPulCQsHzWw+yxOjqEG+4P03DclWT+r1j0qcT+AnJnHWDOXDPIhJVakc8Sw851NbYg==",
+      "path": "system.composition.convention/10.0.3",
+      "hashPath": "system.composition.convention.10.0.3.nupkg.sha512"
+    },
+    "System.Composition.Hosting/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lspQaAjo7moZAlKGpk0kBouGgK1fEp1qP73SuvijZg6Q0hbD6GVeMCDwL66XP4ZhMnOwxRlyEtpyL0czl5TM3Q==",
+      "path": "system.composition.hosting/10.0.3",
+      "hashPath": "system.composition.hosting.10.0.3.nupkg.sha512"
+    },
+    "System.Composition.Runtime/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0d/fA/1xPx+W2M8ifYIpiFu5FhPGhCfSjRyWWB8EO0hoCtl0Nyu9baYntmV6UkrKYcNtbI1URFlUXbUIW24R/w==",
+      "path": "system.composition.runtime/10.0.3",
+      "hashPath": "system.composition.runtime.10.0.3.nupkg.sha512"
+    },
+    "System.Composition.TypedParts/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q51EbO0XjF/mRjzy7MYM/5tEHgKbfImBRUhtTSYdO2MuVZdCmlkUKCRNF18TyUQYr/SCzMZXptvrKc1xeQz/TA==",
+      "path": "system.composition.typedparts/10.0.3",
+      "hashPath": "system.composition.typedparts.10.0.3.nupkg.sha512"
+    },
+    "System.Formats.Nrbf/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hkH2eT6PRkHjoUSFNpGrXvy7chssPcLGBVg9aKRlfvpQQEhECNiZA6bqguXP1tJgZfe3/qK7NNEpXFwiCDfSag==",
+      "path": "system.formats.nrbf/10.0.3",
+      "hashPath": "system.formats.nrbf.10.0.3.nupkg.sha512"
+    },
+    "System.Resources.Extensions/10.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-C6hp8noEwczVopIm9zI3+El6PjD+/DuKt469IrJF8s9lo4foz5jynr7JfkOXYS8tQy/DNKuK8TLAQ3/jFCPvmw==",
+      "path": "system.resources.extensions/10.0.3",
+      "hashPath": "system.resources.extensions.10.0.3.nupkg.sha512"
+    },
+    "CellFarm/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Centos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Darwinism.HPC.Parallel/6.0.231.5699": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Darwinism.IPC.Networking/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.BinaryData/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.Bootstrapping.Fittings/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.Framework/5.0.123": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.GraphTheory/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.IO.MessagePack/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.visualize.Network/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.DataStorage.HDSPack/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.Core/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.ODEsSolver/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.Statistics/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.MIME.application.json/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Runtime/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.Analysis.HTS.DataFrame/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.Core/6.3.256.3655": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.CompilerServices/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Centos.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Darwinism.HPC.Parallel.Reference/6.0.231.5699": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Darwinism.IPC.Networking.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.BinaryData.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.Bootstrapping.Fittings.Reference/5.0.1.2389": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.Framework.Reference/5.0.123.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.GraphTheory.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.IO.MessagePack.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.visualize.Network.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.DataStorage.HDSPack.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.Core.Reference/5.0.1.2389": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.ODEsSolver.Reference/5.0.1.2389": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Math.Statistics.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.MIME.application.json.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.VisualBasic.Runtime.Reference/5.33.69.2558": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.Core.Reference/6.3.256.3655": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference/5.33.9544.1546": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.CompilerServices.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference/5.0.1.2389": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9544.1557": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference/5.0.1.2389": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

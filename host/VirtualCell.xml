@@ -1,0 +1,44 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+VirtualCell
+</name>
+</assembly>
+<members>
+<member name="P:VirtualCellHost.Config.models">
+ <summary>
+ the file path to the model files, usually be the relative path to this config file.
+ 
+ multiple model file could be listed at here for run virtual cell simulation for synthetic microbiota.
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:VirtualCellHost.Config.mapping">
+ <summary>
+ some specific biological process in the runtime compiler required some metabolite 
+ for links, example as ATP, O2, H2O. 
+ this config value provides the compound id mapping to such special metabolites
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:VirtualCellHost.Config.kinetics">
+ <summary>
+ parameter for configs the biological process kinetic behaviour
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:VirtualCellHost.Config.knockouts">
+ <summary>
+ a list of gene ids for knockout, example as ["b0002","b0008"]
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:VirtualCellHost.Config.copy_number">
+ <summary>
+ the cell copy number, which is used for reset the gene template number
+ </summary>
+ <returns></returns>
+</member>
+</members>
+</doc>
