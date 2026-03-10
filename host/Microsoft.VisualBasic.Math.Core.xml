@@ -5618,6 +5618,86 @@ Microsoft.VisualBasic.Math.Core
  <param name="key$"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.SimilarityIndex.IsUniqueHit">
+ <summary>
+ Check of the sequence <see cref="F:Microsoft.VisualBasic.Math.HashMaps.MinHash.SimilarityIndex.U"/> is a unique hit?
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.LSH.FindSimilarItems(Microsoft.VisualBasic.Math.HashMaps.MinHash.SequenceItem[],System.Int32,System.Int32,System.Boolean)">
+ <summary>
+ LSH 处理过程：将数据分桶，找出相似候选对
+ </summary>
+ <param name="allSequences"></param>
+ <param name="Num_Bands">
+ LSH波段数
+ </param>
+ <param name="Rows_Per_Band">
+ 每个波段的行数 (100 / 20 = 5)
+ </param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.LSH.CalculateSimilarity(System.UInt32[]@,System.UInt32[]@)">
+ <summary>
+ 辅助：计算两个签名的相似度 (海明距离或匹配度)
+ </summary>
+ <param name="sig1"></param>
+ <param name="sig2"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.LSHParameterEstimator.GetThresholdFromIdentity(System.Double,System.Int32)">
+ <summary>
+ 核心推荐函数：根据目标序列一致性，计算应该使用的 MinHash 相似度阈值
+ </summary>
+ <param name="targetIdentity">目标序列一致性 (如 CD-hit 的 0.8)</param>
+ <param name="k">k-mer 大小</param>
+ <returns>建议的 MinHash Jaccard 阈值</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.LSHParameterEstimator.EstimateLSHThreshold(System.Int32,System.Int32)">
+ <summary>
+ 估算当前 LSH 参数对应的“临界相似度”
+ 相似度高于此值的序列有极高概率被选中，低于此值的极大概率被过滤
+ </summary>
+ <param name="numBands">波段数</param>
+ <param name="rowsPerBand">每波段行数</param>
+ <returns>LSH 临界阈值</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.LSHParameterEstimator.RecommendConfig(System.Double,System.Int32)">
+ <summary>
+ 辅助工具：根据目标相似度推荐 b 和 r 的配置
+ </summary>
+ <param name="targetJaccard">目标 Jaccard 相似度</param>
+ <param name="totalHashFunctions">总哈希函数数量 (如 100)</param>
+ <returns>建议的波段数和每波段行数</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.MinHash.GenerateMinHashSignature(System.Collections.Generic.HashSet{System.String},System.Int32)">
+ <summary>
+ 生成MinHash签名
+ </summary>
+ <param name="shingles"></param>
+ <param name="Num_HashFunctions">
+ MinHash签名长度
+ </param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.HashMaps.MinHash.MinHash.CreateSequenceData(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.Int32)">
+ <summary>
+ Compute minhash for a given sequence
+ </summary>
+ <param name="items">对字符串序列进行n-gram切片后的结果</param>
+ <param name="id">sequence id</param>
+ <returns></returns>
+</member>
+<member name="T:Microsoft.VisualBasic.Math.HashMaps.MinHash.SequenceItem">
+ <summary>
+ 定义一个简单的数据结构来存储序列
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Math.HashMaps.MinHash.SequenceItem.Signature">
+ <summary>
+ 最终生成的MinHash签名
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:Microsoft.VisualBasic.Math.NumberExtension">
  <summary>
  https://github.com/cobaltblueocean/Mercury.Language.Extensions

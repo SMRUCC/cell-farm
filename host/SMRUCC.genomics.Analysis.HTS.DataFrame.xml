@@ -6,6 +6,13 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
 </name>
 </assembly>
 <members>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSDataFrame.IsNullOrEmpty(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix)">
+ <summary>
+ Check of the given expression matrix object is nothing or else has no data?
+ </summary>
+ <param name="m"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.HTSDataFrame.MergeMultipleHTSMatrix(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix[],System.Boolean)">
  <summary>
  merge multiple batches data directly

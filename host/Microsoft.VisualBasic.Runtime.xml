@@ -740,6 +740,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  Gets the name, without the extension, of the assembly file for the application.
  </summary>
  <returns></returns>
+ <remarks>
+ get <see cref="M:Microsoft.VisualBasic.PathExtensions.BaseName(System.String,System.Boolean)"/> of the <see cref="P:Microsoft.VisualBasic.App.ExecutablePath"/>.
+ </remarks>
 </member>
 <member name="P:Microsoft.VisualBasic.App.HOME">
  <summary>
@@ -11519,6 +11522,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  
  </summary>
  <param name="source">名称属性<see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.Name"/></param>必须是相同的
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedCollection`1.#ctor(System.Linq.IGrouping{System.String,`0})">
+ <summary>
+ Create from the linq group output
+ </summary>
+ <param name="group"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedCollection`1.#ctor(System.String,System.Collections.Generic.IEnumerable{`0},System.String)">
+ <summary>
+ make the given <paramref name="data"/> collection with a label <paramref name="name"/>.
+ </summary>
+ <param name="name"></param>
+ <param name="data"></param>
+ <param name="description"></param>
 </member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1">
  <summary>
@@ -25907,7 +25924,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <typeparam name="T"></typeparam>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.XmlExtensions.LoadXml``1(System.String,System.Text.Encoding,System.Boolean,System.Func{System.String,System.String},System.Boolean)">
+<member name="M:Microsoft.VisualBasic.XmlExtensions.LoadXml``1(System.String,System.Text.Encoding,System.Boolean,System.Func{System.String,System.String},System.Boolean,System.Boolean)">
  <summary>
  Load class object from the exists Xml document.
  </summary>
@@ -25924,7 +25941,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns></returns>
  <remarks>(从文件之中加载XML之中的数据至一个对象类型之中)</remarks>
 </member>
-<member name="M:Microsoft.VisualBasic.XmlExtensions.LoadXml(System.String,System.Type,System.Text.Encoding,System.Boolean,System.Func{System.String,System.String},System.Boolean)">
+<member name="M:Microsoft.VisualBasic.XmlExtensions.LoadXml(System.String,System.Type,System.Text.Encoding,System.Boolean,System.Func{System.String,System.String},System.Boolean,System.Boolean)">
  <summary>
  从文件之中加载XML之中的数据至一个对象类型之中
  </summary>
@@ -28513,6 +28530,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="weights">这个数组里面的值的和必须要等于1</param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.VBMath.WeightedMedian(System.Double[],System.Double[])">
+ <summary>
+ 计算加权中位数
+ </summary>
+ <param name="values">数据值数组</param>
+ <param name="weights">对应的权重数组</param>
+ <returns>加权中位数</returns>
+ 
+</member>
+<member name="M:Microsoft.VisualBasic.Math.VBMath.WeightedMedianOptimized(System.Double[],System.Double[])">
+ <summary>
+ 更高效的加权中位数计算（使用Value-Weight对结构）
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.VBMath.seq(Microsoft.VisualBasic.Language.Value{System.Double},System.Double,System.Double)">
  <summary>
  [Sequence Generation] Generate regular sequences. seq is a standard generic with a default method.
@@ -29637,6 +29668,21 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="other"></param>
  <returns>The Pearson of the sequence of values, or null if the source sequence is
  empty or contains only values that are null.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Linq.EnumerableStatsStandardDeviation.StandardDeviation(System.Collections.Generic.IEnumerable{System.Double})">
+ <summary>
+ Computes the StandardDeviation of a sequence of System.Double values.
+ </summary>
+ <param name="source">A sequence of System.Double values to calculate the StandardDeviation of.</param>
+ <returns>The StandardDeviation of the sequence of values.</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Linq.EnumerableStatsStandardDeviation.StandardDeviation(System.Collections.Generic.IEnumerable{System.Nullable{System.Single}})">
+ <summary>
+ Computes the StandardDeviation of a sequence of nullable System.Single values.
+ </summary>
+ <param name="source">A sequence of nullable System.Single values to calculate the StandardDeviation of.</param>
+ <returns>The StandardDeviation of the sequence of values, or null if the source sequence is
+     empty or contains only values that are null.</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Statistics.Linq.EnumerableStatsVariance">
  <summary>
@@ -38541,7 +38587,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  A proxy function for LLMs talk in framework runtime
  </summary>
- <param name="msg"></param>
+ <param name="prompt">the LLMs prompt text</param>
  <returns>
  this proxy function will returns nothing if there is no ollama client is hooked
  </returns>

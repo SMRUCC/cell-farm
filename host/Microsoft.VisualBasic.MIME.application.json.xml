@@ -205,6 +205,22 @@ Microsoft.VisualBasic.MIME.application.json
  <returns></returns>
  
 </member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.CreateObject(System.Type,System.Boolean)">
+ <summary>
+ Create clr object from this json object
+ </summary>
+ <param name="type"></param>
+ <param name="decodeMetachar"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonObject.Create``1(``0)">
+ <summary>
+ 
+ </summary>
+ <param name="obj"></param>
+ <returns></returns>
+ 
+</member>
 <member name="T:Microsoft.VisualBasic.MIME.application.json.Javascript.JsonValue">
  <summary>
  The primitive value type in javascript.

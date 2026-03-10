@@ -6,51 +6,6 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
 </name>
 </assembly>
 <members>
-<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis">
- <summary>
- the different expression analysis design
- </summary>
- <remarks>
- a collection of the sample <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> for run the different expression analysis.
- usually be <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.experiment"/> vs <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.control"/>.
- </remarks>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.designs">
- <summary>
- show be contains at least two sample group
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.size">
- <summary>
- number of sample groups to run analysis
- </summary>
- <returns></returns>
-</member>
-<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup">
- <summary>
- the group view of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/> data
- </summary>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sampleGroup">
- <summary>
- the sample group label: <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/>
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sample_id">
- <summary>
- a collection of the sample id that belongs to current sample data group
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.CreateDataGroups(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo})">
- <summary>
- create a collection of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> from the given <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/>
- </summary>
- <param name="samples"></param>
- <returns></returns>
-</member>
 <member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel">
  <summary>
  A generic model for different expression molecule
@@ -86,6 +41,17 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
 <member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DEGModel.nLog10p">
  <summary>
  -log10(p-value)
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg">
+ <summary>
+ a simple abstract model for the different expression gene object
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg.label">
+ <summary>
+ the gene unique id
  </summary>
  <returns></returns>
 </member>
@@ -197,15 +163,49 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
  属性的键名称应该都是<see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.ID"/>
  </param>
 </member>
-<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg">
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis">
  <summary>
- a simple abstract model for the different expression gene object
+ the different expression analysis design
+ </summary>
+ <remarks>
+ a collection of the sample <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> for run the different expression analysis.
+ usually be <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.experiment"/> vs <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.control"/>.
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.designs">
+ <summary>
+ show be contains at least two sample group
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataAnalysis.size">
+ <summary>
+ number of sample groups to run analysis
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup">
+ <summary>
+ the group view of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/> data
  </summary>
 </member>
-<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.IDeg.label">
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sampleGroup">
  <summary>
- the gene unique id
+ the sample group label: <see cref="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleGroup.sample_info"/>
  </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.sample_id">
+ <summary>
+ a collection of the sample id that belongs to current sample data group
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup.CreateDataGroups(System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo})">
+ <summary>
+ create a collection of the <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.DataGroup"/> from the given <see cref="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo"/>
+ </summary>
+ <param name="samples"></param>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleNames">
@@ -219,6 +219,17 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
  </summary>
  <param name="allSampleNames"></param>
  <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleNames.GroupIndexing(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo},System.Boolean)">
+ <summary>
+ apply for create vector index
+ </summary>
+ <param name="sampleId">the vector names, provides the vector element ordinal index</param>
+ <param name="sampleinfo"></param>
+ <param name="strict"></param>
+ <returns>
+ a set of the vector element ordinal index in groups for read vector data
+ </returns>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.AnalysisDesigner">
  <summary>
