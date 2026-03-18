@@ -2059,8 +2059,8 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <summary>
  Parse the fasta header of the sequence from UniProt database.
  </summary>
- <param name="s$"></param>
- <param name="id$"></param>
+ <param name="s"></param>
+ <param name="id"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.Uniprot.UniprotFasta.LoadFasta(System.String)">
@@ -2720,6 +2720,13 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  includes uniprot accession id and db entry in other database
  </summary>
  <param name="entry"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.Uniprot.XML.Extensions.ORF(SMRUCC.genomics.Assembly.Uniprot.XML.entry)">
+ <summary>
+ try get ORF locus_tag value
+ </summary>
+ <param name="protein"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.Uniprot.XML.Extensions.SubCellularLocations(SMRUCC.genomics.Assembly.Uniprot.XML.entry)">
@@ -3872,9 +3879,8 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 <member name="T:SMRUCC.genomics.Assembly.KEGG.DBGET.BriteHEntry.Pathway">
  <summary>
  The brief entry information for the pathway objects in the KEGG database.
- (KEGG数据库之中的代谢途径对象的分类以及入口点信息) 
  </summary>
- <remarks></remarks>
+ <remarks>(KEGG数据库之中的代谢途径对象的分类以及入口点信息) </remarks>
 </member>
 <member name="P:SMRUCC.genomics.Assembly.KEGG.DBGET.BriteHEntry.Pathway.class">
  <summary>
@@ -4086,6 +4092,17 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <summary>
  直系同源
  </summary>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.KEGG.DBGET.KOrthology">
+ <summary>
+ KEGG Orthology
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.DBGET.KOrthology.RequestKEGG">
+ <summary>
+ request of the KEGG orthology class data via the kegg rest api
+ </summary>
+ <returns></returns>
 </member>
 <member name="F:SMRUCC.genomics.Assembly.KEGG.DBGET.LinkDB.Relationships.equivalent">
  <summary>
@@ -4964,17 +4981,165 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  Network edges
  </summary>
 </member>
+<member name="T:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.relation">
+ <summary>
+ &lt;relation>元素表示通路中两个节点之间的关联关系，主要用于描述蛋白质（或基因产物）之间的相互作用，以及蛋白质与代谢物之间的调控关系。与&lt;reaction>描述化学转化不同，
+ &lt;relation>更侧重于调控和相互作用，例如一个蛋白质激活或抑制另一个蛋白质，或一个蛋白质结合一个代谢物等。&lt;relation>元素在KGML中通常用于表示蛋白质网络（protein network）
+ 或调控网络，即以蛋白质/基因为节点、调控关系为边的网络。
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.relation.entry1">
+ <summary>
+ 关系的源节点ID，即参与该关系的前一个节点。该属性值对应一个&lt;entry>的id。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.relation.entry2">
+ <summary>
+ 关系的目标节点ID，即参与该关系的后一个节点。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.relation.subtype">
+ <summary>
+ 一个或多个&lt;subtype>子元素，用于进一步细化关系的性质。每个&lt;subtype>有两个属性：
+ 
+ name表示子类型名称，value表示该子类型的具体值（通常用符号表示）。例如，&lt;subtype name="activation" value="-->"/>表示从entry1到entry2的激活关系，用箭头-->表示方向性。
+ 再如，&lt;subtype name="inhibition" value="--|"/>表示抑制关系，用T型线--|表示。通过subtype，可以明确关系的正负激活/抑制性质以及方向性。
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.reaction">
+ <summary>
+ &lt;reaction>元素表示通路中的一种生化反应，用于连接代谢物节点，形成代谢网络中的化学转化关系。在代谢通路中，&lt;reaction>元素主要涉及底物（substrates）
+ 和产物（products）两类代谢物节点。它描述了一个化学反应如何将一组底物转化为另一组产物，以及该反应是否可逆等信息。&lt;reaction>元素在KGML中通常用于
+ 表示化学网络（chemical network），即以代谢物为节点、反应为边的关系网络。
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.reaction.id">
+ <summary>
+ 该反应的唯一标识符，在通路范围内唯一。通常是一个整数，用于在KGML中引用该反应。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.reaction.name">
+ <summary>
+ 该反应的名称，通常以KEGG REACTION数据库的ID表示，例如name="rn:R00710"。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.reaction.substrates">
+ <summary>
+ 一个或多个&lt;substrate>子元素，表示该反应的底物。每个&lt;substrate>通过id属性引用一个代谢物节点的ID（即对应&lt;entry>的id），并通过name属性提供该代谢物的KEGG ID。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.reaction.products">
+ <summary>
+ 一个或多个&lt;product>子元素，表示该反应的产物。每个&lt;product>同样通过id引用代谢物节点ID，并通过name提供代谢物KEGG ID。
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry">
  <summary>
  Network nodes
  </summary>
+ <remarks>
+ &lt;entry>元素表示通路中的一个“节点”或“条目”，是构建代谢网络图的基本单元。每个&lt;entry>都有一个唯一的ID（通过id属性指定）和一个或多个名称（通过name属性指定），
+ 以及该条目的类型（通过type属性指定）。根据type的不同，&lt;entry>可以代表不同类型的生物学实体。
+ 
+ 每个&lt;entry>元素的核心作用是定义通路中的一个节点实体。例如，在糖酵解通路中，一个&lt;entry>可以表示己糖激酶（基因/酶），另一个可以表示葡萄糖-6-磷酸（代谢物）。
+ 节点之间通过&lt;reaction>和&lt;relation>元素连接，从而形成网络。
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.id">
+ <summary>
+ 该条目的唯一标识符（在当前通路中唯一），是一个正整数。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.name">
+ <summary>
+ 该条目对应的KEGG数据库标识符，通常以“数据库:ID”的形式表示。例如，name="hsa:124"表示人类基因ID 124，name="cpd:C00031"表示化合物C00031（葡萄糖）。name属性可以包含多个值（多个基因或化合物），多个值之间用空格分隔。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.type">
+ <summary>
+ 条目的类型，如gene、compound等，用于标识该节点的生物学类别。entry的类别包括有：
+ 
+ + gene：表示基因产物（通常是蛋白质），是代谢通路中的酶或其它蛋白质因子。
+ + enzyme：表示酶（有时与gene类似，但在参考通路中特指以EC编号表示的酶）。
+ + ortholog：表示直系同源群（以KO编号表示），在参考通路中代表一个保守的功能模块，可能在具体生物体中由一个或多个基因编码。
+ + compound：表示化学代谢物，是代谢反应的底物或产物。
+ + map：表示另一个通路的链接，相当于一个嵌套的子图节点（通常用于连接相关的通路图）。
+ + other：其它未分类的节点类型。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.link">
+ <summary>
+ 可选属性，提供该条目在KEGG数据库中的链接地址（例如基因或化合物的详情页面）。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.reaction">
+ <summary>
+ 可选属性，对于某些基因/酶类型的节点，可以指定其催化或参与的化学反应ID（例如reaction="rn:R00710"）。这通常用于酶节点，以表示该酶参与的反应。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.entry.graphics">
+ <summary>
+ 一个或多个&lt;graphics>子元素，用于描述该条目在官方通路图中的图形表示。
+ </summary>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway">
  <summary>
- The kegg pathway map data in KGML file format.
+ The kegg pathway map layout data in KGML file format.
  
- + pathway map: http://www.kegg.jp/kegg-bin/download?entry=xcb00280&amp;format=kgml
+ KEGG通过通路图（Pathway Map）来直观展示生物分子及其相互作用网络。为了便于计算机处理和通路可视化，KEGG引入了KGML（KEGG Markup Language）作为通路信息的交换格式。
+ KGML是一种基于XML的描述语言，用于表示KEGG通路图中的图形对象及其相互关系。它将通路中手动绘制的复杂图形信息转化为计算机可读的结构化数据，
+ 从而支持通路的自动绘制和计算分析。KGML文件通常对应KEGG中的某条通路，例如糖酵解通路（map00010）。一个KGML文件包含了该通路中所有节点（基因、酶、代谢物等）以及
+ 它们之间相互作用的详细信息。通过解析KGML文件，我们可以提取出基因、酶、反应和代谢物等关键元素，并构建出相应的代谢网络模型。这为后续的可视化分析和计算建模提供了基础。
  </summary>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.name">
+ <summary>
+ 通路的KEGG标识符，格式通常为path:&lt;organism>&lt;number>，例如path:hsa00010表示人类糖酵解通路。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.org">
+ <summary>
+ 通路所属的生物体分类，如ko表示参考通路（以KO编号表示），ec表示以酶EC编号表示的参考通路，或具体的三字母生物体代码（如hsa表示人类）。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.number">
+ <summary>
+ 通路的数字编号，如00010，用于唯一标识该通路。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.title">
+ <summary>
+ 通路的标题或名称，提供对通路内容的描述。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.image">
+ <summary>
+ 该通路的官方图像资源的URL地址，指向KEGG服务器上存储的通路图图片。
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.WebServices.KGML.pathway.link">
+ <summary>
+ 该通路在KEGG网站上的详细页面链接，提供进一步的信息。
+ </summary>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.KEGG.WebServices.LocalRender">
  <summary>
@@ -9239,11 +9404,20 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <param name="path"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File)">
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File,System.Boolean)">
  <summary>
  Export protein sequence with full annotation.
  </summary>
  <param name="gbk"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File,Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate,System.Boolean)">
+ <summary>
+ Export protein sequence with custom annotation title with given template.
+ </summary>
+ <param name="gb"></param>
+ <param name="headers">the fasta sequence header template</param>
+ <param name="filterEmpty"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.ExportProteins_Short(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File,System.Boolean,System.Boolean)">
@@ -9271,7 +9445,7 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.Extensions.GeneList(SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File)">
  <summary>
-
+ export all gene features: RNA + CDS
  </summary>
  <returns>{locus_tag, gene}</returns>
  <remarks></remarks>
@@ -9624,11 +9798,19 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="F:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature.innerList">
+<member name="F:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature.attrSet">
  <summary>
  请注意在值中有拼接断行所产生的空格，在导出CDS序列的时候，请注意消除该空格
  </summary>
  <remarks>这里不能够使用字典来进行储存数据，因为字典对大小写敏感并且这里面会有重复的Key出现</remarks>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature.ToGeneFasta(Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.StringTemplate)">
+ <summary>
+ create fasta sequence model for the gene nucleotide sequence
+ </summary>
+ <param name="title"></param>
+ <returns></returns>
+ 
 </member>
 <member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.FEATURES.Feature.Query(System.String)">
  <summary>
@@ -10077,6 +10259,12 @@ Get feature site data by nucleotide location.
 <member name="P:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.SOURCE.OrganismHierarchy">
  <summary>
  lineage
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.SOURCE.BiomString">
+ <summary>
+ taxonomy lineage string in BIOM format
  </summary>
  <returns></returns>
 </member>
@@ -10536,6 +10724,11 @@ Get feature site data by nucleotide location.
  <param name="acc_list"></param>
  <param name="DIR$"></param>
  <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.AccessionTaxID">
+ <summary>
+ database for <see cref="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.Accession2Taxid"/>
+ </summary>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.NCBI.Taxonomy.TaxidMaps.Mapping">
  <summary>
@@ -11115,6 +11308,14 @@ Get feature site data by nucleotide location.
  Extension methods for some common operations
  </summary>
 </member>
+<member name="M:SMRUCC.genomics.BioAssemblyExtensions.ExpressionValue``1(System.Collections.Generic.IEnumerable{``0})">
+ <summary>
+ Extract of the gene expression value
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="genes"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.BioAssemblyExtensions.IsUnknown(System.Char)">
  <summary>
  Current nt base is a unknown base?
@@ -11301,6 +11502,11 @@ Get feature site data by nucleotide location.
  </summary>
  <remarks></remarks>
 </member>
+<member name="F:SMRUCC.genomics.ComponentModel.Annotation.EnzymeClasses.Spontaneous">
+ <summary>
+ no needs for enzyme catalysis
+ </summary>
+</member>
 <member name="F:SMRUCC.genomics.ComponentModel.Annotation.EnzymeClasses.OxidoReductase">
  <summary>
  Oxido Reductase.(氧化还原酶)
@@ -11344,31 +11550,31 @@ Get feature site data by nucleotide location.
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief">
  <summary>
- The basically information of a gene object.(这个接口对象表示了一个在计算机程序之中的最基本的基因信息的载体对象)
+ The basically information of a gene object.
  </summary>
- <remarks></remarks>
+ <remarks>(这个接口对象表示了一个在计算机程序之中的最基本的基因信息的载体对象)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief.Product">
  <summary>
- The protein function annotation data of the gene coding product.(所编码的蛋白质产物的功能注释)
+ The protein function annotation data of the gene coding product.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(所编码的蛋白质产物的功能注释)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief.Length">
  <summary>
- The nucleotide sequence length.(基因的长度)
+ The nucleotide sequence length.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(基因的长度)</remarks>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.IFeatureDigest">
  <summary>
- The feature annotation data of the genes.(基因对象的特征注释结果)
+ The feature annotation data of the genes.
  </summary>
- <remarks></remarks>
+ <remarks>(基因对象的特征注释结果)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.IFeatureDigest.Feature">
  <summary>
@@ -11385,11 +11591,11 @@ Get feature site data by nucleotide location.
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.ICOGCatalog.COG">
  <summary>
- The gene object COG classification.(COG功能分类)
+ The gene object COG classification.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(COG功能分类)</remarks>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.GeneTable">
  <summary>
@@ -11596,6 +11802,13 @@ Get feature site data by nucleotide location.
  <summary>
  the url link to the object in the <see cref="P:SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLink.DBName"/> database
  </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLink.op_Explicit(SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLink)~System.String">
+ <summary>
+ cast to xref_id
+ </summary>
+ <param name="db_xref"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLinksManager`1.Remove(System.String,System.String)">
@@ -11839,6 +12052,29 @@ Get feature site data by nucleotide location.
  <param name="b"></param>
  <param name="cpEquals">反应物的等价性的判断方法</param>
  <param name="strict"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.ComponentModel.EquaionModel.Reaction">
+ <summary>
+ A general reaction model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.EquaionModel.Reaction.definition">
+ <summary>
+ the reaction equation in character string type
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.EquaionModel.Reaction.equation">
+ <summary>
+ the parsed reaction equaltion object based on the definition property
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.EquaionModel.Reaction.enzyme">
+ <summary>
+ should be the EC number
+ </summary>
  <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Loci.LociAPI">
@@ -12174,6 +12410,7 @@ Get feature site data by nucleotide location.
  <summary>
  ```
  388739 ==> 389772 #Forward
+ 388739~389772#Forward
  ```
  </summary>
  <param name="input"></param>
@@ -12510,13 +12747,6 @@ Get feature site data by nucleotide location.
  <summary>
  NCBI PTT和MetaCyc数据库所公用的多文件的数据库加载器的基本类型
  </summary>
-</member>
-<member name="T:SMRUCC.genomics.ComponentModel.KeyValuePairExtensions">
- <summary>
- String type key value pair.(两个字符串构成的键值对)
- </summary>
- <remarks></remarks>
-
 </member>
 <member name="T:SMRUCC.genomics.ContextModel.Context">
  <summary>
@@ -12906,13 +13136,14 @@ Get feature site data by nucleotide location.
 <member name="M:SMRUCC.genomics.ContextModel.Promoter.Extensions.GetUpstreamSeq(SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief,SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32)">
  <summary>
  Get upstream nt sequence in a specific length for target gene.
- (在这个函数之中，位点的计算的时候会有一个碱基的偏移量是因为为了不将起始密码子ATG之中的A包含在结果序列之中)
  </summary>
  <param name="gene"></param>
  <param name="nt"></param>
  <param name="len%"></param>
  <returns></returns>
- 
+ <remarks>
+ (在这个函数之中，位点的计算的时候会有一个碱基的偏移量是因为为了不将起始密码子ATG之中的A包含在结果序列之中)
+ </remarks>
 </member>
 <member name="T:SMRUCC.genomics.ContextModel.Promoter.PromoterRegionParser">
  <summary>
@@ -13138,8 +13369,16 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  parse auto
  </summary>
- <param name="biomString"></param>
+ <param name="biomString">
+ [Bifidobacterium [indicum] DSM 20214 = LMG 11587] k__Bacteria;p__Bacillati;c__Actinomycetota;o__Actinomycetes;f__Bifidobacteriales;g__Bifidobacteriaceae;s__Bifidobacterium.
+ </param>
  <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1">
+ <summary>
+ in-memory name search
+ </summary>
+ <typeparam name="T"></typeparam>
 </member>
 <member name="P:SMRUCC.genomics.Metagenomics.GenomeNameIndex`1.Size">
  <summary>
@@ -13162,20 +13401,13 @@ to take away yo [rest of string was truncated]&quot;;.
  LCA（最低公共祖先）算法
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Int32,System.Int32)">
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Int32,System.Int32,System.Int32@)">
  <summary>
  使用路径比较法计算两个taxid的最近公共祖先（LCA）
  </summary>
  <param name="taxid1">第一个taxonomy ID</param>
  <param name="taxid2">第二个taxonomy ID</param>
  <returns>最近公共祖先的TaxonomyNode，如果找不到返回Nothing</returns>
-</member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Collections.Generic.IEnumerable{System.Int32})">
- <summary>
- 计算多个taxid的最近公共祖先
- </summary>
- <param name="taxids">taxonomy ID集合</param>
- <returns>最近公共祖先的TaxonomyNode</returns>
 </member>
 <member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAByBinaryLifting(System.Int32,System.Int32)">
  <summary>
@@ -13192,7 +13424,14 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="taxid">taxonomy ID</param>
  <returns>深度值</returns>
 </member>
-<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAForMetagenomics(System.Collections.Generic.IEnumerable{System.Int32},System.Double)">
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCA(System.Collections.Generic.IEnumerable{System.Int32},System.Double,System.Int32)">
+ <summary>
+ 计算多个taxid的最近公共祖先
+ </summary>
+ <param name="taxids">taxonomy ID集合</param>
+ <returns>最近公共祖先的TaxonomyNode</returns>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.LCA.GetLCAForMetagenomics(System.Collections.Generic.IEnumerable{System.Int32},System.Double,System.Int32)">
  <summary>
  在宏基因组分类场景中常用的LCA方法：找到覆盖所有输入taxid的最小公共分类单元
  </summary>
@@ -13298,6 +13537,12 @@ to take away yo [rest of string was truncated]&quot;;.
  所以这个构造方法是安全的构造方法，不需要担心会因为缺少否些rank而抛出错误
  </summary>
  <param name="lineage"></param>
+</member>
+<member name="M:SMRUCC.genomics.Metagenomics.Taxonomy.#ctor(System.Collections.Generic.IEnumerable{SMRUCC.genomics.Assembly.NCBI.Taxonomy.TaxonomyNode})">
+ <summary>
+ construct of the taxonomy information from the ncbi taxonomy tree lineage data
+ </summary>
+ <param name="taxonomyNodes"></param>
 </member>
 <member name="M:SMRUCC.genomics.Metagenomics.Taxonomy.#ctor">
  <summary>
@@ -14464,47 +14709,6 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks></remarks>
 </member>
-<member name="T:SMRUCC.genomics.SequenceModel.FASTA.KSeq">
- <summary>
- k-mer sequence model
- </summary>
-</member>
-<member name="P:SMRUCC.genomics.SequenceModel.FASTA.KSeq.seq">
- <summary>
- the kmer sequence
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.SequenceModel.FASTA.KSeq.location">
- <summary>
- location of the left
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.KSeq.KmerSpans(System.String,System.Int32)">
- <summary>
- split the given sequence as kmer span for a speicific biological sequence.
- </summary>
- <param name="seq_str"></param>
- <param name="k"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.FASTA.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
- <summary>
- 计算DNA k-mer的直接四进制哈希值。
- </summary>
- <param name="kmer">输入的k-mer字符串（例如 "ATCG"）。</param>
- <returns>计算出的哈希值（一个Long整数）。如果输入无效，则抛出异常。</returns>
- <remarks>
- 算法原理：
- 1. 将k-mer的每个碱基映射为一个数字 (A=0, C=1, G=2, T=3)。
- 2. 将整个k-mer串视为一个k位的四进制数。
- 3. 通过迭代方式计算其十进制值：hash = (hash * 4) + current_value。
- 例如，对于 k-mer "ACGT" (k=4):
-  A(0) C(1) G(2) T(3)
-  哈希值 = (((0 * 4 + 1) * 4 + 2) * 4 + 3) = 27
- </remarks>
-</member>
 <member name="T:SMRUCC.genomics.SequenceModel.FASTA.StreamIterator">
  <summary>
  读取超大型的fasta文件所需要的一个数据对象
@@ -14702,6 +14906,58 @@ to take away yo [rest of string was truncated]&quot;;.
  </returns>
  <remarks></remarks>
 </member>
+<member name="T:SMRUCC.genomics.SequenceModel.KSeq">
+ <summary>
+ k-mer sequence model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.KSeq.seq">
+ <summary>
+ the kmer sequence
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.KSeq.location">
+ <summary>
+ location of the left
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.KSeq.KmerSpans(System.String,System.Int32)">
+ <summary>
+ split the given sequence as kmer span for a speicific biological sequence.
+ </summary>
+ <param name="seq_str"></param>
+ <param name="k"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
+ <summary>
+ 计算DNA k-mer的直接四进制哈希值。
+ </summary>
+ <param name="kmer">输入的k-mer字符串（例如 "ATCG"）。</param>
+ <returns>计算出的哈希值（一个Long整数）。如果输入无效，则抛出异常。</returns>
+ <remarks>
+ 算法原理：
+ 1. 将k-mer的每个碱基映射为一个数字 (A=0, C=1, G=2, T=3)。
+ 2. 将整个k-mer串视为一个k位的四进制数。
+ 3. 通过迭代方式计算其十进制值：hash = (hash * 4) + current_value。
+ 例如，对于 k-mer "ACGT" (k=4):
+  A(0) C(1) G(2) T(3)
+  哈希值 = (((0 * 4 + 1) * 4 + 2) * 4 + 3) = 27
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.SequenceModel.KSeqCartesianProduct">
+ <summary>
+ kmer sequence generator
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.KSeqCartesianProduct.KmerSeeds(System.Int32)">
+ <summary>
+ 根据序列类型和长度生成所有可能的排列组合
+ </summary>
+ <returns>包含所有排列组合结果的列表</returns>
+</member>
 <member name="T:SMRUCC.genomics.SequenceModel.MolecularWeightCalculator">
  <summary>
  核酸链或者多肽链分子的相对分子质量的计算工具
@@ -14861,12 +15117,22 @@ to take away yo [rest of string was truncated]&quot;;.
  </remarks>
  
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.Extensions.SegmentAssembler(System.Collections.Generic.IEnumerable{SMRUCC.genomics.SequenceModel.NucleotideModels.SimpleSegment})">
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.Extensions.CalculateJukesCantorDistance(System.Double)">
  <summary>
- 
+ 根据Jukes-Cantor模型计算校正后的进化距离。
  </summary>
- <param name="source"></param>
- <returns></returns>
+ <param name="p">观测到的序列差异比例 (范围 0 到 0.75)。</param>
+ <returns>校正后的进化距离。如果输入无效，返回 Double.NaN。</returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.Extensions.CalculateJCFromSequences(System.String,System.String,System.Boolean,System.String)">
+ <summary>
+ 比较两条已对齐的DNA序列，并计算它们之间的Jukes-Cantor距离。
+ </summary>
+ <param name="sequence1">第一条DNA序列。</param>
+ <param name="sequence2">第二条DNA序列。</param>
+ <param name="ignoreCase">是否忽略大小写（默认忽略）。</param>
+ <param name="gapPenalty">如何处理缺失位点（-）：‘N’=视为未知不计入， ‘P’=视为差异， ‘S’=跳过整个位点。</param>
+ <returns>Jukes-Cantor距离。如果计算失败，返回 Double.NaN。</returns>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.mRNA.Putative_mRNA(System.String,System.Int32@,System.Int32@,System.String@)">
  <summary>
@@ -15350,14 +15616,27 @@ to take away yo [rest of string was truncated]&quot;;.
 <member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.NucleicAcid.Complement(System.String)">
  <summary>
  Gets the complement sequence of a nucleotide sequence.
- (获取某一条核酸序列的互补序列，但是新得到的序列并不会首尾反转，
- 请注意，这个函数所输入的DNA序列字符串必须是大写字母的)
  </summary>
  <param name="DNAseq">
  The target dna nucleotide sequence to complement.(必须全部都是大写字母)
  </param>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(获取某一条核酸序列的互补序列，但是新得到的序列并不会首尾反转，
+ 请注意，这个函数所输入的DNA序列字符串必须是大写字母的)</remarks>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.NucleicAcid.GetReverseComplement(System.String)">
+ <summary>
+ 获取DNA序列的反向互补序列。
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.NucleicAcid.Canonical(System.String)">
+ <summary>
+ 忽略反向互补（reverse complement）
+ 
+ DNA 序列一般需要在两个链上比较，否则来自同一分子的正反链会被判定为不相似。
+ </summary>
+ <param name="DNAseq"></param>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.SequenceModel.NucleotideModels.SegmentObject">
  <summary>
@@ -16163,9 +16442,12 @@ to take away yo [rest of string was truncated]&quot;;.
 </member>
 <member name="P:SMRUCC.genomics.SequenceModel.Polypeptides.Polypeptide.MEGASchema">
  <summary>
- Protein sequence display color schema from MEGA software.(MEGA软件的显示蛋白质序列的残基颜色)
+ Protein sequence display color schema from MEGA software.
  </summary>
  <returns></returns>
+ <remarks>
+ (MEGA软件的显示蛋白质序列的残基颜色)
+ </remarks>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.Polypeptides.Polypeptide.GetCompositionVector(System.Char[])">
  <summary>
@@ -16235,6 +16517,14 @@ to take away yo [rest of string was truncated]&quot;;.
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.TypeExtensions.IsProteinSource(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel)">
+ <summary>
+ 目标序列数据是否为一条蛋白质序列
+ </summary>
+ <param name="seq"></param>
+ <returns></returns>
+ <remarks></remarks>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.TypeExtensions.IsProteinSource(System.String)">
  <summary>
  目标序列数据是否为一条蛋白质序列
  </summary>
