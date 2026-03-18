@@ -4,6 +4,7 @@
     <RootNamespace>CellFarm</RootNamespace>
     <TargetFrameworks>net10.0-windows;net10.0</TargetFrameworks>
     <Platforms>AnyCPU;x64</Platforms>
+    <Configurations>Debug;Release;CellaLAB-Desktop</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
