@@ -2964,11 +2964,6 @@ Microsoft.VisualBasic.Math.Core
  <param name="w"></param>
  <param name="v"></param>
 </member>
-<member name="F:Microsoft.VisualBasic.Math.LinearAlgebra.Tensor.data">
- <summary>
- the tensor data
- </summary>
-</member>
 <member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.Vector">
  <summary>
  A numeric vector
