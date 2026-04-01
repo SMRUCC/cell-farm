@@ -649,6 +649,57 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Model
  </summary>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData">
+ <summary>
+ 参与反应的代谢物热力学信息
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData.Id">
+ <summary>代谢物名称或ID (如 "atp_c")</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData.Stoichiometry">
+ <summary>化学计量数 (产物为正，反应物为负。如 ATP->ADP，ATP填-1，ADP填1)</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData.DeltaGf0">
+ <summary>标准生成吉布斯自由能 ΔGf'0 (单位: kJ/mol，需确保是特定pH和离子强度下的校正值)</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData.Concentration">
+ <summary>实际胞内浓度 (单位: M，摩尔/升。如 1mM 则填 0.001)</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult">
+ <summary>
+ 计算结果封装
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult.DeltaG0">
+ <summary>反应标准吉布斯自由能变 ΔG'0 (kJ/mol)</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult.DeltaGActual">
+ <summary>实际吉布斯自由能变 ΔG' (kJ/mol)</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult.Direction">
+ <summary>判定出的反应方向性描述</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult.LowerBound">
+ <summary>计算得出的 FBA 下界</summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoBoundResult.UpperBound">
+ <summary>计算得出的 FBA 上界</summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoFluxCalculator">
+ <summary>
+ 热力学通量边界计算器
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.ThermoFluxCalculator.CalculateBounds(System.Collections.Generic.List{SMRUCC.genomics.GCModeller.ModellingEngine.Model.MetabolicThermodynamics.MetaboliteThermoData},System.Double,System.Double)">
+ <summary>
+ 计算单个反应的热力学约束边界
+ </summary>
+ <param name="metabolites">该反应包含的所有代谢物列表</param>
+ <param name="temperatureK">绝对温度 (开尔文，如298.15)</param>
+ <param name="threshold">热力学阈值，防止刚好为0时的数值不稳定，通常设为 1.0 kJ/mol</param>
+ <returns>包含计算结果和FBA边界的对象</returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.NamespaceDoc">
  <summary>
  这个模块主要是提供GCModeller内部的生物组件的通用的基础类型的描述，基于这个基础类型的通用描述
