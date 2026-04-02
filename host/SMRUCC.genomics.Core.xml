@@ -1947,36 +1947,6 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  as are equivalent open terms of use.1
  </summary>
 </member>
-<member name="T:SMRUCC.genomics.Assembly.Uniprot.IdMapping">
- <summary>
- idmapping_selected.tab
- We also provide this tab-delimited table which includes
- the following mappings delimited by tab
- 
- 1. UniProtKB-AC
- 2. UniProtKB-ID
- 3. GeneID (EntrezGene)
- 4. RefSeq
- 5. GI
- 6. PDB
- 7. GO
- 8. UniRef100
- 9. UniRef90
- 10. UniRef50
- 11. UniParc
- 12. PIR
- 13. NCBI-taxon
- 14. MIM
- 15. UniGene
- 16. PubMed
- 17. EMBL
- 18. EMBL-CDS
- 19. Ensembl
- 20. Ensembl_TRS
- 21. Ensembl_PRO
- 22. Additional PubMed
- </summary>
-</member>
 <member name="P:SMRUCC.genomics.Assembly.Uniprot.FastaHeader.UniprotID">
  <summary>
  UniqueIdentifier Is the primary accession number of the UniProtKB entry.
@@ -2071,9 +2041,89 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks></remarks>
 </member>
+<member name="T:SMRUCC.genomics.Assembly.Uniprot.IdMapping">
+ <summary>
+ idmapping_selected.tab
+ We also provide this tab-delimited table which includes
+ the following mappings delimited by tab
+ 
+ 1. UniProtKB-AC
+ 2. UniProtKB-ID
+ 3. GeneID (EntrezGene)
+ 4. RefSeq
+ 5. GI
+ 6. PDB
+ 7. GO
+ 8. UniRef100
+ 9. UniRef90
+ 10. UniRef50
+ 11. UniParc
+ 12. PIR
+ 13. NCBI-taxon
+ 14. MIM
+ 15. UniGene
+ 16. PubMed
+ 17. EMBL
+ 18. EMBL-CDS
+ 19. Ensembl
+ 20. Ensembl_TRS
+ 21. Ensembl_PRO
+ 22. Additional PubMed
+ </summary>
+</member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.Web.Entry">
  <summary>
  tabular export of the protein list in tsv format
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.canonical">
+ <summary>
+ FASTA (canonical)
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.isoform">
+ <summary>
+ FASTA (canonical &amp; isoform)
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.tab">
+ <summary>
+ Tab-separated
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.txt">
+ <summary>
+ Text
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.xlsx">
+ <summary>
+ Excel
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.gff">
+ <summary>
+ GFF
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.xml">
+ <summary>
+ XML
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.mappingTable">
+ <summary>
+ Mapping Table
+ </summary>         
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.rdf">
+ <summary>
+ RDF/XML
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.list">
+ <summary>
+ Target List
  </summary>
 </member>
 <member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.ID_types.ACC_ID">
@@ -2617,56 +2667,6 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <param name="path$"></param>
  <returns></returns>
 </member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.canonical">
- <summary>
- FASTA (canonical)
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.isoform">
- <summary>
- FASTA (canonical &amp; isoform)
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.tab">
- <summary>
- Tab-separated
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.txt">
- <summary>
- Text
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.xlsx">
- <summary>
- Excel
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.gff">
- <summary>
- GFF
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.xml">
- <summary>
- XML
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.mappingTable">
- <summary>
- Mapping Table
- </summary>         
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.rdf">
- <summary>
- RDF/XML
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.Assembly.Uniprot.Web.Formats.list">
- <summary>
- Target List
- </summary>
-</member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.Web.WebServices">
  <summary>
  https://www.uniprot.org/help/api_queries
@@ -2776,9 +2776,84 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  </summary>
  <returns></returns>
 </member>
-<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.sequence">
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.type">
  <summary>
- the protein sequence data
+ 外部数据库的名称
+ </summary>
+ <returns></returns>
+ <remarks>
+ 对于RefSeq而言，RefSeq的编号是蛋白序列在NCBI数据库之中的编号，如果需要找到对应的核酸编号，
+ 则会需要通过<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.properties"/>列表之中的``nucleotide sequence ID``键值对来获取
+ </remarks>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.id">
+ <summary>
+ 外部数据库的编号
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.entry">
+ <summary>
+ Describes a UniProtKB entry.
+ (因为<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accessions"/>可能会出现多个值，所以会需要使用
+ <see cref="M:SMRUCC.genomics.Assembly.Uniprot.XML.entry.ShadowCopy"/>函数来解决实体多态的问题。
+ 经过shadow copy之后可以使用主键<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accession"/>来创建字典)
+ </summary>
+ 
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accession">
+ <summary>
+ shadow copy之后的唯一标识符
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accessions">
+ <summary>
+ 蛋白质的唯一标识符，可以用作为字典的键名
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.sequence">
+ <summary>
+ 当前的这个蛋白质的蛋白序列，在Uniprot数据库之中，蛋白记录只有蛋白序列
+ 没有核酸序列，如果需要核酸序列，则会需要通过accession编号从nt库之中
+ 提取出来
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.dbReferences">
+ <summary>
+ Dictionary table can be read from <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.xrefs"/> property
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.CommentList">
+ <summary>
+ indexed by <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.comment.type"/>
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.xrefs">
+ <summary>
+ <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.dbReferences"/> table
+ </summary>
+ <returns></returns>
+ <remarks>
+ indexed by the <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.type"/>
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.Uniprot.XML.entry.ShadowCopy">
+ <summary>
+ 这个是处理有多个accession的情况
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.featureTypes">
+ <summary>
+ Describes the type of a sequence annotation.
+ Equivalent to the flat file FT feature keys, but using full terms instead 
+ of acronyms. The string value enumeration of <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.feature.type"/>
+ property.
  </summary>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.gene">
@@ -2818,12 +2893,21 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  </summary>
  <returns></returns>
 </member>
-<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.featureTypes">
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.citation.name">
  <summary>
- Describes the type of a sequence annotation.
- Equivalent to the flat file FT feature keys, but using full terms instead 
- of acronyms. The string value enumeration of <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.feature.type"/>
- property.
+ 期刊名称
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.citation.title">
+ <summary>
+ ``submission``类型的引用的标题可能是空的
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.sequence">
+ <summary>
+ the protein sequence data
  </summary>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.feature">
@@ -2930,94 +3014,10 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  </summary>
  <returns></returns>
 </member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.type">
- <summary>
- 外部数据库的名称
- </summary>
- <returns></returns>
- <remarks>
- 对于RefSeq而言，RefSeq的编号是蛋白序列在NCBI数据库之中的编号，如果需要找到对应的核酸编号，
- 则会需要通过<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.properties"/>列表之中的``nucleotide sequence ID``键值对来获取
- </remarks>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.id">
- <summary>
- 外部数据库的编号
- </summary>
- <returns></returns>
-</member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.molecule">
  <summary>
  Describes a molecule by name or unique identifier.
  </summary>
-</member>
-<member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.entry">
- <summary>
- Describes a UniProtKB entry.
- (因为<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accessions"/>可能会出现多个值，所以会需要使用
- <see cref="M:SMRUCC.genomics.Assembly.Uniprot.XML.entry.ShadowCopy"/>函数来解决实体多态的问题。
- 经过shadow copy之后可以使用主键<see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accession"/>来创建字典)
- </summary>
- 
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accession">
- <summary>
- shadow copy之后的唯一标识符
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.accessions">
- <summary>
- 蛋白质的唯一标识符，可以用作为字典的键名
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.sequence">
- <summary>
- 当前的这个蛋白质的蛋白序列，在Uniprot数据库之中，蛋白记录只有蛋白序列
- 没有核酸序列，如果需要核酸序列，则会需要通过accession编号从nt库之中
- 提取出来
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.dbReferences">
- <summary>
- Dictionary table can be read from <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.xrefs"/> property
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.CommentList">
- <summary>
- indexed by <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.comment.type"/>
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.xrefs">
- <summary>
- <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.entry.dbReferences"/> table
- </summary>
- <returns></returns>
- <remarks>
- indexed by the <see cref="P:SMRUCC.genomics.Assembly.Uniprot.XML.dbReference.type"/>
- </remarks>
-</member>
-<member name="M:SMRUCC.genomics.Assembly.Uniprot.XML.entry.ShadowCopy">
- <summary>
- 这个是处理有多个accession的情况
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.citation.name">
- <summary>
- 期刊名称
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.Assembly.Uniprot.XML.citation.title">
- <summary>
- ``submission``类型的引用的标题可能是空的
- </summary>
- <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.Assembly.Uniprot.XML.UniProtXML">
  <summary>
@@ -11933,6 +11933,26 @@ Get feature site data by nucleotide location.
  </summary>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.ComponentModel.EquaionModel.ReactionDirection">
+ <summary>
+ Represents the direction of a reaction
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.EquaionModel.ReactionDirection.Equilibrium">
+ <summary>
+ Reaction is at or near equilibrium
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.EquaionModel.ReactionDirection.Forward">
+ <summary>
+ Reaction proceeds in the forward direction
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ComponentModel.EquaionModel.ReactionDirection.Reverse">
+ <summary>
+ Reaction proceeds in the reverse direction
+ </summary>
+</member>
 <member name="T:SMRUCC.genomics.ComponentModel.EquaionModel.DefaultTypes.CompoundSpecieReference">
  <summary>
  the compound model reference.
@@ -11969,13 +11989,19 @@ Get feature site data by nucleotide location.
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.ComponentModel.EquaionModel.Equation`1.Id">
+ <summary>
+ the reaction id, which should be uniqued in the reaction collection.
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.ComponentModel.EquaionModel.Equation`1.GetMetabolites">
  <summary>
  得到这个代谢反应过程之中的所有的代谢物，即左边加右边
  </summary>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.ComponentModel.EquaionModel.Equation`1.GetCoEfficient(System.String)">
+<member name="M:SMRUCC.genomics.ComponentModel.EquaionModel.Equation`1.GetCoefficient(System.String)">
  <summary>
  获取得到某个代谢物在本反应过程之中的化学计量数；
  [
@@ -13525,7 +13551,7 @@ to take away yo [rest of string was truncated]&quot;;.
  7E. 种
  </summary>
 </member>
-<member name="P:SMRUCC.genomics.Metagenomics.Taxonomy.lowestLevel">
+<member name="P:SMRUCC.genomics.Metagenomics.Taxonomy.RankLevel">
  <summary>
  获取当前的这个分类结果值的最小分类单元的等级
  </summary>

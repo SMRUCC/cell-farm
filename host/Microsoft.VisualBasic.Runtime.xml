@@ -7570,15 +7570,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <typeparam name="T">Group的元素的类型</typeparam>
  <typeparam name="Itag">Group的Key的类型</typeparam>
 </member>
-<member name="M:Microsoft.VisualBasic.Parallel.GroupAPI.ParallelGroup``2(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``1})">
- <summary>
- 貌似使用LINQ进行Group操作的时候是没有并行化的，灰非常慢，则可以使用这个拓展函数来获取较好的性能
- </summary>
- <typeparam name="T"></typeparam>
- <typeparam name="T_TAG"></typeparam>
- <param name="source"></param>
- <returns></returns>
-</member>
 <member name="T:Microsoft.VisualBasic.Parallel.Linq.LQuerySchedule">
  <summary>
  Parallel Linq query library for VisualBasic.
@@ -11594,14 +11585,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue`1.op_Implicit(System.ValueTuple{System.String,`0})~Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{`0}">
- <summary>
- Convert from tuple
- </summary>
- <param name="tuple"></param>
- <returns></returns>
- 
-</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.PropertyValue`1">
  <summary>
  The <see cref="T:System.Reflection.PropertyInfo"/> like definition of the extension property.
@@ -14610,15 +14593,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <param name="saveTo$"></param>
  <param name="encoding"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.AsTable``2(System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
- <summary>
- tuple set to dictionary table
- </summary>
- <typeparam name="K"></typeparam>
- <typeparam name="V"></typeparam>
- <param name="tuples"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.KeyItem``1(System.Collections.Generic.IEnumerable{``0},System.String)">
