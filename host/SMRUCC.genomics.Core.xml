@@ -9567,6 +9567,14 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <returns></returns>
  <remarks>(这个Genbank对象是否为一个质粒的基因组数据)</remarks>
 </member>
+<member name="P:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File.Species">
+ <summary>
+ the organism species name and strain information of this genbank data, 
+ this property is a combination of the source feature's species name and 
+ the source feature's strain qualifier value.
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.File.Taxon">
  <summary>
  get ncbi taxonomy id

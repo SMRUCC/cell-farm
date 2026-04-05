@@ -1342,6 +1342,25 @@ Microsoft.VisualBasic.Data.BinaryData
  <see cref="P:Microsoft.VisualBasic.Data.IO.Offset.Position"/>, then seeking back to the current position.
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.IO.ReadonlyStream.Flush">
+ <summary>
+ do nothing at here 
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.ReadonlyStream.SetLength(System.Int64)">
+ <summary>
+ do nothing at here
+ </summary>
+ <param name="value"></param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.ReadonlyStream.Write(System.Byte[],System.Int32,System.Int32)">
+ <summary>
+ do nothing at here
+ </summary>
+ <param name="buffer"></param>
+ <param name="offset"></param>
+ <param name="count"></param>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.IO.SeekTask">
  <summary>
  Represents a temporary seek to another position which is undone after the task has been disposed.
