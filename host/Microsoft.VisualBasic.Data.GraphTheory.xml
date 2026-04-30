@@ -69,6 +69,11 @@ Microsoft.VisualBasic.Data.GraphTheory
  Holds all the details of a node in the graph.
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.vertices">
+ <summary>
+ 网络图中的节点总数
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.#ctor(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix,System.Int32)">
  <param name="graph">The adjacency matrix of the graph.</param>
  <param name="vertices">Total number of vertices.</param>
@@ -1799,6 +1804,14 @@ Microsoft.VisualBasic.Data.GraphTheory
  query edge item exists or not by edge id
  </summary>
  <param name="u"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.Graph`3.GetEdge(`0,`0)">
+ <summary>
+ get direct edge link
+ </summary>
+ <param name="u"></param>
+ <param name="v"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.Graph`3.ExistEdge(`1)">

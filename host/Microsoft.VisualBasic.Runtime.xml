@@ -12086,7 +12086,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="duplicated"></param>
  <returns></returns>
  <remarks>
- the name is uniqued via the <see cref="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)"/> method 
+ the name is uniqued via the <see cref="!:UniqueNames(IEnumerable(Of String), ByRef String())"/> method 
  via add numeric suffix to the name key string.
  </remarks>
 </member>
@@ -12099,7 +12099,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="duplicated"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@)">
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@,System.String)">
  <summary>
  makes the name string unique by adding an additional numeric suffix
  </summary>
@@ -14604,15 +14604,6 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <param name="saveTo$"></param>
  <param name="encoding"></param>
- <returns></returns>
-</member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.AsTable``2(System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
- <summary>
- tuple set to dictionary table
- </summary>
- <typeparam name="K"></typeparam>
- <typeparam name="V"></typeparam>
- <param name="tuples"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.KeyItem``1(System.Collections.Generic.IEnumerable{``0},System.String)">
@@ -26143,6 +26134,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="b"></param>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Extensions.AddRange``1(System.Collections.Generic.Dictionary{System.String,``0}@,System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.String},System.Boolean)">
+ <summary>
+ add all elements inside the given data collection into the dictionary
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="table"></param>
+ <param name="data"></param>
+ <param name="key"></param>
+ <param name="replaceDuplicated"></param>
+ <returns></returns>
+ <remarks>
+ this function will skip add if the given <paramref name="data"/> collection is nothing
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.Extensions.AddRange``1(System.Collections.Generic.Dictionary{System.String,``0}@,System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{``0}},System.Boolean)">
  <summary>
@@ -38678,6 +38683,11 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="type"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Scripting.CCodeStringLiteralEscape.IsLegalCEscapeChar(System.Char,System.String,System.Int32)">
+ <summary>
+ 判断反斜杠后的字符是否构成了合法的C语言转义序列
+ </summary>
+</member>
 <member name="F:Microsoft.VisualBasic.Scripting.Expressions.Aggregates.Mean">
  <summary>
  the average value
@@ -39834,6 +39844,37 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="args">The type of the input parameter values</param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment">
+ <summary>
+ 脚本运行环境（支持作用域嵌套）
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment._slots">
+ <summary>
+ 当前作用域的变量字典
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment.DefineVariable(System.String,System.Boolean)">
+ <summary>
+ 显式声明一个变量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment.FindSlot(System.String,System.Boolean)">
+ <summary>
+ 查找变量槽位，支持向父级作用域查找
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot">
+ <summary>
+ 变量槽位：封装变量的类型、值和元数据
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot.SetBoolean(System.Boolean)">
+ <summary>
+ 
+ </summary>
+ <param name="value"></param>
+</member>
 <member name="F:Microsoft.VisualBasic.Scripting.Runtime.Logics.And">
  <summary>
  两边的逻辑表达式都会被计算
@@ -39868,7 +39909,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="tests"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Where.__or``1(``0,System.Func{``0,System.Boolean}[])">
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Where.LogicsOr``1(``0,System.Func{``0,System.Boolean}[])">
  <summary>
  <see cref="F:Microsoft.VisualBasic.Scripting.Runtime.Logics.Or"/>, 所有的表达式都会被计算
  </summary>
@@ -39877,7 +39918,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="tests"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Where.__and``1(``0,System.Func{``0,System.Boolean}[])">
+<member name="M:Microsoft.VisualBasic.Scripting.Runtime.Where.LogicsAnd``1(``0,System.Func{``0,System.Boolean}[])">
  <summary>
  <see cref="F:Microsoft.VisualBasic.Scripting.Runtime.Logics.And"/>, 所有的表达式都会被计算
  </summary>

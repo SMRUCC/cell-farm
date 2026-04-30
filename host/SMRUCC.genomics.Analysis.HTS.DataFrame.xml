@@ -371,6 +371,33 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  <param name="sampleinfo"></param>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.DESeq2Normalization.DESeq2Normalize(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix)">
+ <summary>
+ DESeq2 Median of Ratios normalization method.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.EdgeRTMMNormalization.CalcTMMFactors(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.Double,System.Double)">
+ <summary>
+ 计算 edgeR 的 TMM 归一化因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.EdgeRTMMNormalization.ApplyTMMNormalization(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.Boolean,System.Double,System.Double)">
+ <summary>
+ 应用 TMM 归一化因子生成归一化后的表达矩阵
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.EdgeRTMMNormalization.EdgeRTMMNormalize(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.Double,System.Double)">
+ <summary>
+ 计算 edgeR 风格的归一化表达矩阵（CPM 格式）
+ 这是最接近 edgeR 标准输出的方法
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.EdgeRTMMNormalization.EdgeRTMMNormalizeSimple(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,System.Double,System.Double)">
+ <summary>
+ 计算简单的 TMM 归一化矩阵（直接除以归一化因子）
+ 这更类似于 DESeq2 的输出格式
+ </summary>
+</member>
 <member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.TPM.Normalize(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix)">
  <summary>
  
@@ -552,6 +579,11 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  with the <see cref="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.expression"/> rows.
  </returns>
 </member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.EnsureGeneIndex">
+ <summary>
+ make ensure that <see cref="F:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.m_geneIndex"/> index hash been build
+ </summary>
+</member>
 <member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.GetSampleArray(System.String)">
  <summary>
  get sample data column vector
@@ -635,13 +667,34 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  Expression abundance matrix builder
  </summary>
 </member>
-<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder.BuildAndNormalizeAbundanceMatrix(Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{System.Collections.Generic.Dictionary{System.String,System.Double}}[],System.Boolean)">
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder.BuildAndNormalizeAbundanceMatrix(Microsoft.VisualBasic.ComponentModel.DataSourceModel.NamedValue{System.Collections.Generic.Dictionary{System.String,System.Double}}[],System.Boolean,System.String)">
  <summary>
  将所有样本的物种丰度结果构建并归一化为一个丰度矩阵。
  </summary>
  <param name="allSampleAbundances">聚合后的数据，Key为样本ID，Value为该样本的物种丰度字典。</param>
  <param name="performNormalization">是否执行按列（样本）的总和归一化，使每个样本的相对丰度之和为1。</param>
  <returns>一个包含物种和样本丰度信息的DataTable。</returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder.BuildMatrix``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+ <summary>
+ 
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="data">
+ collection of the gene expression data: [gene1, [samle1, sample2, sample3, ...]]
+ </param>
+ <param name="tag"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.HTS.DataFrame.MatrixBuilder.MatrixInternal(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.Double}},System.String[])">
+ <summary>
+ 
+ </summary>
+ <param name="allSamples">
+ collection of samples data: [sample1, [gene1, gene2,...]]
+ </param>
+ <param name="allSampleIds"></param>
+ <returns></returns>
 </member>
 </members>
 </doc>

@@ -4934,6 +4934,107 @@ ATT I Ile      ACT T Thr   [rest of string was truncated]&quot;;.
  <param name="drugs"></param>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.Assembly.KEGG.ReactionClassifier">
+ <summary>
+ the reaction class data helper, make index of the <see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.ReactionClass"/> data
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.KEGG.ReactionClassifier.compoundTransformIndex">
+ <summary>
+ [cid1_cid2 => ReactionClass[]]
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.KEGG.ReactionClassifier.compoundIndex">
+ <summary>
+ [cid => ReactionClass[]]
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionClassifier.haveClassification(System.String)">
+ <summary>
+ check target kegg reaction id is exists in current reaction_class repository or not?
+ </summary>
+ <param name="reactionId"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionClassifier.FromRepository(System.String)">
+ <summary>
+ A shortcut method based on the <see cref="M:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.ReactionClass.ScanRepository(System.String,System.Boolean)"/>
+ </summary>
+ <param name="directory"></param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Assembly.KEGG.ReactionRepository">
+ <summary>
+ KEGG的参考代谢反应模型库，封装了对<see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Reaction"/>的对象查询操作
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.table">
+ <summary>
+ ``{rxnID => reaction}``
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.metabolicNetwork">
+ <summary>
+ 这个Repository之中的所有的代谢过程的数据都在这里了
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.GetCompoundIndex">
+ <summary>
+ ``{compound_id => arrayOf(reactionId)}``
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.GetKoIndex">
+ <summary>
+ ``{koId => arrayOf(reactionId)}``
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.Subset(SMRUCC.genomics.ComponentModel.Annotation.ECNumber[])">
+ <summary>
+ Subset database by given EC number id list.
+ </summary>
+ <param name="ECNumbers"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.Subset(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Subset database by given KO id list.
+ </summary>
+ <param name="KOlist"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.Enzymetic">
+ <summary>
+ KEGG代谢反应模型数据之中还包含有非酶促过程
+ 使用这个函数将会筛选出所有的酶促过程
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.Exists(System.String)">
+ <summary>
+ Test if target reaction model is exists in current data repository or not. 
+ </summary>
+ <param name="rxnIdkey"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.GetByKey(System.String)">
+ <summary>
+ Get a reaction model data by a given reaction id as index key.
+ </summary>
+ <param name="rxnIdkey"></param>
+ <returns>
+ If the key is not exists in current repository, then nothing will be returned.
+ </returns>
+</member>
+<member name="M:SMRUCC.genomics.Assembly.KEGG.ReactionRepository.GetByKOMatch(System.Collections.Generic.IEnumerable{System.String})">
+ <summary>
+ Subset database by given KO id list.
+ </summary>
+ <param name="KO"></param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.Assembly.KEGG.WebServices.FetchSequence.parseSeqHtml(System.String,System.Type)">
  <summary>
  解析从KEGG数据库下载基因或者蛋白序列数据
@@ -10276,6 +10377,12 @@ Get feature site data by nucleotide location.
  </summary>
  <returns></returns>
 </member>
+<member name="M:SMRUCC.genomics.Assembly.NCBI.GenBank.GBFF.Keywords.SOURCE.GetTaxonomy">
+ <summary>
+ Get ncbi taxonomy information
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.Assembly.NCBI.GenBank.TabularFormat.FastaObjects.GenomeSequence">
  <summary>
  *.fna 基因组序列
@@ -11210,107 +11317,6 @@ Get feature site data by nucleotide location.
  <returns></returns>
  
 </member>
-<member name="T:SMRUCC.genomics.ReactionClassifier">
- <summary>
- the reaction class data helper, make index of the <see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.ReactionClass"/> data
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.ReactionClassifier.compoundTransformIndex">
- <summary>
- [cid1_cid2 => ReactionClass[]]
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.ReactionClassifier.compoundIndex">
- <summary>
- [cid => ReactionClass[]]
- </summary>
-</member>
-<member name="M:SMRUCC.genomics.ReactionClassifier.haveClassification(System.String)">
- <summary>
- check target kegg reaction id is exists in current reaction_class repository or not?
- </summary>
- <param name="reactionId"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionClassifier.FromRepository(System.String)">
- <summary>
- A shortcut method based on the <see cref="M:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.ReactionClass.ScanRepository(System.String,System.Boolean)"/>
- </summary>
- <param name="directory"></param>
- <returns></returns>
-</member>
-<member name="T:SMRUCC.genomics.ReactionRepository">
- <summary>
- KEGG的参考代谢反应模型库，封装了对<see cref="T:SMRUCC.genomics.Assembly.KEGG.DBGET.bGetObject.Reaction"/>的对象查询操作
- </summary>
-</member>
-<member name="F:SMRUCC.genomics.ReactionRepository.table">
- <summary>
- ``{rxnID => reaction}``
- </summary>
-</member>
-<member name="P:SMRUCC.genomics.ReactionRepository.metabolicNetwork">
- <summary>
- 这个Repository之中的所有的代谢过程的数据都在这里了
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.GetCompoundIndex">
- <summary>
- ``{compound_id => arrayOf(reactionId)}``
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.GetKoIndex">
- <summary>
- ``{koId => arrayOf(reactionId)}``
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.Subset(SMRUCC.genomics.ComponentModel.Annotation.ECNumber[])">
- <summary>
- Subset database by given EC number id list.
- </summary>
- <param name="ECNumbers"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.Subset(System.Collections.Generic.IEnumerable{System.String})">
- <summary>
- Subset database by given KO id list.
- </summary>
- <param name="KOlist"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.Enzymetic">
- <summary>
- KEGG代谢反应模型数据之中还包含有非酶促过程
- 使用这个函数将会筛选出所有的酶促过程
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.Exists(System.String)">
- <summary>
- Test if target reaction model is exists in current data repository or not. 
- </summary>
- <param name="rxnIdkey"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.GetByKey(System.String)">
- <summary>
- Get a reaction model data by a given reaction id as index key.
- </summary>
- <param name="rxnIdkey"></param>
- <returns>
- If the key is not exists in current repository, then nothing will be returned.
- </returns>
-</member>
-<member name="M:SMRUCC.genomics.ReactionRepository.GetByKOMatch(System.Collections.Generic.IEnumerable{System.String})">
- <summary>
- Subset database by given KO id list.
- </summary>
- <param name="KO"></param>
- <returns></returns>
-</member>
 <member name="T:SMRUCC.genomics.BioAssemblyExtensions">
  <summary>
  Extension methods for some common operations
@@ -11438,25 +11444,25 @@ Get feature site data by nucleotide location.
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.ECNumber.type">
  <summary>
- EC编号里面的第一个数字代表酶的分类号
+ 1. EC编号里面的第一个数字代表酶的分类号
  </summary>
  <remarks></remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.ECNumber.subType">
  <summary>
- 该大类之下的亚分类
+ 2. 该大类之下的亚分类
  </summary>
  <remarks>nothing means -</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.ECNumber.subCategory">
  <summary>
- 该亚类之下的小分类
+ 3. 该亚类之下的小分类
  </summary>
  <remarks>nothing means -</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Annotation.ECNumber.serialNumber">
  <summary>
- 该小分类之下的序号
+ 4. 该小分类之下的序号
  </summary>
  <remarks>nothing means -</remarks>
 </member>
@@ -11555,6 +11561,38 @@ Get feature site data by nucleotide location.
  <summary>
  http://www.enzyme-database.org
  </summary>
+</member>
+<member name="T:SMRUCC.genomics.ComponentModel.Annotation.EnzymeQuery`1">
+ <summary>
+ EC number query helper
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.EnzymeQuery`1.Size">
+ <summary>
+ get total count of the enzyme object inside this query pool
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ComponentModel.Annotation.EnzymeQuery`1.Query(System.String,System.Boolean,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="ec_number"></param>
+ <param name="fuzzy"></param>
+ <param name="fuzzyLevel"> 
+ max allow fuzzy level, value should be c(1,2,3,4), which means the class levels of the ec_number(which has 4 ranks).
+ 
+ example as 4, means only allows fuzzy matches on the last digit
+ 3, means allows fuzzy matches on the level 3 and level 4 digits</param>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.ComponentModel.Annotation.IEnzymeObject.ECNumber">
+ <summary>
+ An exact ec number: 1.1.1.1
+ An fuzzy ec number pattern: 1.1.-.-
+ </summary>
+ <returns></returns>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief">
  <summary>
@@ -11814,7 +11852,7 @@ Get feature site data by nucleotide location.
 </member>
 <member name="M:SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLink.op_Explicit(SMRUCC.genomics.ComponentModel.DBLinkBuilder.DBLink)~System.String">
  <summary>
- cast to xref_id
+ cast to xref_id string
  </summary>
  <param name="db_xref"></param>
  <returns></returns>
@@ -12147,19 +12185,19 @@ Get feature site data by nucleotide location.
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Abstract.ILocationSegment.UniqueId">
  <summary>
- Tag data on this location sequence segment.(当前的这个序列片段的标签信息)
+ Tag data on this location sequence segment.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(当前的这个序列片段的标签信息)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Abstract.ILocationSegment.Location">
  <summary>
- The location value of this sequence segment.(这个序列片段的位置信息)
+ The location value of this sequence segment.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(这个序列片段的位置信息)</remarks>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Loci.Abstract.IContig">
  <summary>
@@ -12187,11 +12225,11 @@ Get feature site data by nucleotide location.
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Abstract.ILoci.left">
  <summary>
- Left position of the loci site on sequence.(左端起始位点)
+ Left position of the loci site on sequence.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(左端起始位点)</remarks>
 </member>
 <member name="T:SMRUCC.genomics.ComponentModel.Loci.Abstract.ITagSite">
  <summary>
@@ -12234,19 +12272,19 @@ Get feature site data by nucleotide location.
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Location.left">
  <summary>
- <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"/>: Gets or set the left start value of the segment on the target sequence.(目标片段的左端起始区域，与链的方向无关)
+ <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"/>: Gets or set the left start value of the segment on the target sequence.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(目标片段的左端起始区域，与链的方向无关)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Location.right">
  <summary>
- <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"/>: Gets or set the right ends value of the segment on the target sequence.(目标片段的右端结束区域，与链的方向无关)
+ <see cref="T:SMRUCC.genomics.ComponentModel.Loci.Location"/>: Gets or set the right ends value of the segment on the target sequence.
  </summary>
  <value></value>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(目标片段的右端结束区域，与链的方向无关)</remarks>
 </member>
 <member name="P:SMRUCC.genomics.ComponentModel.Loci.Location.IsNormalized">
  <summary>
@@ -12258,7 +12296,7 @@ Get feature site data by nucleotide location.
 </member>
 <member name="M:SMRUCC.genomics.ComponentModel.Loci.Location.Normalization">
  <summary>
- 使用这个方法更正数据，使位置数据始终是右大于左，(Return Me: 修改自身之后返回自身)
+ 使用这个方法更正数据，使位置数据始终是右大于左
  </summary>
  <remarks></remarks>
 </member>
@@ -12408,17 +12446,32 @@ Get feature site data by nucleotide location.
  </param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.ComponentModel.Loci.LocusExtensions.GetRelationship(SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+<member name="M:SMRUCC.genomics.ComponentModel.Loci.LocusExtensions.GetRelationship(SMRUCC.genomics.ComponentModel.Loci.Location,SMRUCC.genomics.ComponentModel.Loci.Location)">
  <summary>
  Gets the location relationship of two loci segments.
- (判断获取两个位点片段之间的位置关系，请注意，这个函数只依靠左右位置来判断关系，
- 假若对核酸链的方向有要求在调用本函数之前请确保二者在同一条链之上)
  </summary>
  <param name="lcl">
  在计算之前请先调用<see cref="M:SMRUCC.genomics.ComponentModel.Loci.Location.Normalization"/>方法来修正
  </param>
  <returns></returns>
- <remarks></remarks>
+ <remarks>
+ (判断获取两个位点片段之间的位置关系，请注意，这个函数只依靠左右位置来判断关系，
+ 假若对核酸链的方向有要求在调用本函数之前请确保二者在同一条链之上)
+ </remarks>
+
+</member>
+<member name="M:SMRUCC.genomics.ComponentModel.Loci.LocusExtensions.GetRelationship(SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+ <summary>
+ Gets the location relationship of two loci segments.
+ </summary>
+ <param name="lcl">
+ 在计算之前请先调用<see cref="M:SMRUCC.genomics.ComponentModel.Loci.Location.Normalization"/>方法来修正
+ </param>
+ <returns></returns>
+ <remarks>
+ (判断获取两个位点片段之间的位置关系，请注意，这个函数只依靠左右位置来判断关系，
+ 假若对核酸链的方向有要求在调用本函数之前请确保二者在同一条链之上)
+ </remarks>
 
 </member>
 <member name="M:SMRUCC.genomics.ComponentModel.Loci.LocusExtensions.GetStrand(System.String)">
@@ -13111,15 +13164,59 @@ Get feature site data by nucleotide location.
  <param name="region"></param>
  <returns></returns>
 </member>
-<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.sequence">
+<member name="T:SMRUCC.genomics.ContextModel.GenomeContext`1">
  <summary>
- 按照<see cref="P:SMRUCC.genomics.ComponentModel.Loci.Location.left"/>从小到大排序的
+ 表示一个基因组上下文模型，用于在内存中高效地存储、索引和查询基因组特征（如基因）。
+ </summary>
+ <typeparam name="T">基因组特征的类型，必须实现 <see cref="T:SMRUCC.genomics.ComponentModel.Annotation.IGeneBrief"/> 接口。</typeparam>
+ <remarks>
+ 此对象在初始化时会对基因按照物理位置和链方向进行排序和索引，
+ 从而将区间查询的时间复杂度优化至 O(log N) 或通过提前跳出优化至近似 O(N)。
+ <para>
+ 注意：此类假设输入的基因组特征集合是基于同一条染色体或重叠群 的，
+ 跨越不同染色体的特征不应放入同一个上下文实例中。
+ </para>
+ </remarks>
+</member>
+<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.plus">
+ <summary>
+ 正链基因集合。按照 <see cref="P:SMRUCC.genomics.ComponentModel.Loci.Location.left"/> 升序排列。
  </summary>
 </member>
-<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.contextName">
+<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.minus">
  <summary>
- The name of this genome
+ 负链基因集合。按照 <see cref="P:SMRUCC.genomics.ComponentModel.Loci.Location.right"/> 降序排列（符合负链转录方向）。
  </summary>
+</member>
+<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.sequence">
+ <summary>
+ 所有基因的统一物理位置序列。严格按照 <see cref="P:SMRUCC.genomics.ComponentModel.Loci.Location.left"/> 从小到大排序。
+ 此数组是执行区间范围查询的基础，确保了空间局部性和提前跳出循环的正确性。
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.ContextModel.GenomeContext`1.featureTags">
+ <summary>
+ 按照 <see cref="P:SMRUCC.genomics.ComponentModel.Annotation.IFeatureDigest.Feature"/> 关键字分组的基因字典，用于快速按名称检索。
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.contextName">
+ <summary>
+ 当前基因组上下文的名称（如染色体名称或菌株名称）。
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.Feature(System.Int32)">
+ <summary>
+ 通过物理位置索引获取基因组特征
+ </summary>
+ <param name="i">在 <see cref="F:SMRUCC.genomics.ContextModel.GenomeContext`1.sequence"/> 中的零基索引。</param>
+ <returns>对应位置的特征对象。</returns>
+</member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.Feature(System.String)">
+ <summary>
+ 通过特征名称获取基因组特征。如果存在同名特征，返回第一个匹配项。
+ </summary>
+ <param name="name">特征的唯一标识符或功能名称。</param>
+ <returns>匹配的特征对象，如果未找到则返回类型的默认值 (Nothing)。</returns>
 </member>
 <member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.N">
  <summary>
@@ -13133,23 +13230,164 @@ Get feature site data by nucleotide location.
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.AllFeatureKeys">
+ <summary>
+ 获取当前基因组中所有不重复的特征标签名称。
+ </summary>
+ <returns>特征标签字符串数组。</returns>
+</member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.AverageGeneLength">
+ <summary>
+ 计算全基因组的平均基因长度
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.ContextModel.GenomeContext`1.AverageIntergenicDistance">
+ <summary>
+ 计算全基因组的平均基因间距
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.String)">
+ <summary>
+ 使用基因组特征集合初始化 <see cref="T:SMRUCC.genomics.ContextModel.GenomeContext`1"/> 类的新实例。
+ 此构造函数会执行数据预处理：按特征名分组、按链方向和物理坐标排序、计算基因组大小。
+ </summary>
+ <param name="genome">基因组特征的集合。</param>
+ <param name="name">上下文名称，默认为 "unnamed"。</param>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.selectByStrand(SMRUCC.genomics.ComponentModel.Loci.Strands)">
+ <summary>
+ A helper function for the constructor to select genes by strand and store them in the corresponding arrays.
+ </summary>
+ <param name="strand"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GeneDensity(System.Int32,System.Int32)">
+ <summary>
+ 获取指定滑动窗口内的基因密度 (基因数量 / 窗口大小)
+ </summary>
+ <param name="start">窗口起始</param>
+ <param name="end">窗口结束</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.SelectByPosition(System.Int32,System.Int32,SMRUCC.genomics.ComponentModel.Loci.Strands)">
+ <summary>
+ 查找距离指定坐标位点一定半径范围内的所有feature
+ </summary>
+ <param name="position">基因组上的具体坐标点</param>
+ <param name="radius">上下游的查找半径</param>
+ <param name="strand">限制查找的链方向，默认为Unknown，即双向都查找</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetPhysicalNeighbours(`0,System.Int32)">
+ <summary>
+ 获取指定基因在基因组物理位置上的左侧和右侧紧邻基因
+ </summary>
+ <param name="gene">目标基因</param>
+ <param name="distanceLimit">最大允许的物理间距，超过此间距则认为不相邻，默认无限制</param>
+ <returns>包含左侧邻居和右侧邻居的元组</returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetDirectionalNeighbours(`0,System.Int32)">
+ <summary>
+ 获取指定基因在转录方向上的上游和下游紧邻基因
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.FindOverlaps(SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,System.Boolean)">
+ <summary>
+ 查找与指定位点存在重叠的所有基因
+ </summary>
+ <param name="loci">目标位点</param>
+ <param name="overlapStrand">是否要求必须在同一条链上重叠</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.IsOverlapping(System.String,System.String)">
+ <summary>
+ 判断两个特征区间是否存在物理重叠
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetPhysicalDistance(SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+ <summary>
+ 计算两个位点的物理距离。如果重叠，返回0
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetFeatureDistance(System.String,System.String)">
+ <summary>
+ 计算两个基因特征之间的最短物理距离
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.SearchByProduct(System.String,System.Boolean)">
+ <summary>
+ 根据基因产物的注释关键词模糊搜索基因
+ </summary>
+ <param name="keyword">搜索关键词</param>
+ <param name="ignoreCase">是否忽略大小写，默认忽略</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetGenesByProduct(System.String,System.Boolean)">
+ <summary>
+ 获取所有具有相同功能注释的基因集合
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetNearbyFeatures(SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,System.Int32,System.Int32,System.Boolean,SMRUCC.genomics.ComponentModel.Loci.Strands)">
+ <summary>
+ 查找指定位点附近上下游范围内的feature。此函数会考虑链的方向性：
+ 对于正链，上游为坐标减小方向，下游为坐标增大方向；
+ 对于负链，上游为坐标增大方向，下游为坐标减小方向。
+ </summary>
+ <param name="loci">参考位点</param>
+ <param name="upstream">上游延伸长度</param>
+ <param name="downstream">下游延伸长度</param>
+ <param name="includeSelf">是否包含与参考位点完全重叠的feature</param>
+ <param name="strand">限制查找的链方向，默认为Unknown，即双向都查找</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetNearbyFeaturesByName(System.String,System.Int32,System.Int32,System.Boolean,SMRUCC.genomics.ComponentModel.Loci.Strands)">
+ <summary>
+ 查找指定名称的feature附近上下游范围内的feature
+ </summary>
+ <param name="featureName">目标feature的名称</param>
+ <param name="upstream">上游延伸长度</param>
+ <param name="downstream">下游延伸长度</param>
+ <param name="includeSelf">是否包含目标feature自身</param>
+ <param name="strand">限制查找的链方向</param>
+ <returns></returns>
+</member>
 <member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.Delta(System.String,System.String)">
  <summary>
- The number of genes between feature 1 and feature 2.
+ count the number of genes between feature 1 and feature 2.
  </summary>
- <param name="feature1$"></param>
- <param name="feature2$"></param>
+ <param name="feature1"></param>
+ <param name="feature2"></param>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.SelectByRange(System.Int32,System.Int32,SMRUCC.genomics.ComponentModel.Loci.Strands)">
  <summary>
  将基因组上面的某一区域内的基因对象都查找出来
  </summary>
- <param name="i%"></param>
- <param name="j%"></param>
+ <param name="i">left position</param>
+ <param name="j">right position</param>
  <param name="strand">
  默认不限制链的方向
  </param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GetByFeature(System.String)">
+ <summary>
+ Get features data via a given key id
+ </summary>
+ <param name="feature"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.Absent(System.String)">
+ <summary>
+ Check of the target feature is missing inside this genomics context model?
+ </summary>
+ <param name="feature"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.ContextModel.GenomeContext`1.GenericEnumerator">
+ <summary>
+ populate out the genomics feature <see cref="F:SMRUCC.genomics.ContextModel.GenomeContext`1.sequence"/> data
+ </summary>
  <returns></returns>
 </member>
 <member name="M:SMRUCC.genomics.ContextModel.Promoter.Extensions.GetPrefixLengths">
@@ -14156,86 +14394,6 @@ to take away yo [rest of string was truncated]&quot;;.
  主要是一个用于序列装配的帮助函数
  </remarks>
 </member>
-<member name="T:SMRUCC.genomics.SequenceModel.CutSequence">
- <summary>
- Cut sequence for DNA/protein
- </summary>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.Location)">
- <summary>
- 核酸分子和蛋白质分子都适用
- </summary>
- <param name="seq"></param>
- <param name="site"></param>
- <returns></returns>
- 
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceLinear(System.String@,System.Int32,System.Int32)">
- <summary>
- 
- </summary>
- <param name="seq$"></param>
- <param name="left">下标是从1开始的</param>
- <param name="right%"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
- <summary>
- 核酸分子和蛋白质分子都适用
- </summary>
- <param name="seq"></param>
- <param name="left">
- 下标是从1开始的
- </param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceByLength(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
- <summary>
- Cut sequence by given left loci and segment length.
- </summary>
- <param name="seq"></param>
- <param name="left"></param>
- <param name="length"></param>
- <param name="tag$">the tag information about this sequence segment.</param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.ReadComplement(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
- <summary>
- 将目标序列之中的给定区域的序列剪下，并返回该片段的互补序列
- </summary>
- <param name="seq"></param>
- <param name="left">请注意，这个参数是以1为起始的</param>
- <param name="length%"></param>
- <param name="tag$"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
- <summary>
- 
- </summary>
- <param name="seq"></param>
- <param name="loci"></param>
- <returns></returns>
- <remarks>Tested by XC_1184/XC_0012, no problem.</remarks>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceCircular(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
- <summary>
- 这个函数会自动计算出上半部分的位置
- </summary>
- <param name="seq"></param>
- <param name="site"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.CutSequence.CutSequenceCircular(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
- <summary>
- <paramref name="site"/> at the end of nt sequence join with <paramref name="join"/> location to consist a completed gene. 
- (请注意，在这里两个位点是直接进行序列拼接的，所以在这里两个参数是有顺序之分的)
- </summary>
- <param name="seq"></param>
- <param name="site">环状的分子只能够是DNA分子，所以这里是核酸序列的位置</param>
- <returns></returns>
- <remarks>Not sure, probably success.</remarks>
-</member>
 <member name="T:SMRUCC.genomics.SequenceModel.FASTA.IFastaProvider">
  <summary>
  A fasta sequence data provider
@@ -14618,11 +14776,11 @@ to take away yo [rest of string was truncated]&quot;;.
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.ParseFromStream(System.Collections.Generic.IEnumerable{System.String},System.Char[])">
  <summary>
- Parsing a fasta sequence object from a collection of string value.(从字符串数据之中解析出Fasta序列数据)
+ Parsing a fasta sequence object from a collection of string value.
  </summary>
  <param name="stream"></param>
  <returns></returns>
- <remarks></remarks>
+ <remarks>(从字符串数据之中解析出Fasta序列数据)</remarks>
  
 </member>
 <member name="M:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.TryParse(System.String,System.Char)">
@@ -14940,47 +15098,6 @@ to take away yo [rest of string was truncated]&quot;;.
  </returns>
  <remarks></remarks>
 </member>
-<member name="T:SMRUCC.genomics.SequenceModel.KSeq">
- <summary>
- k-mer sequence model
- </summary>
-</member>
-<member name="P:SMRUCC.genomics.SequenceModel.KSeq.seq">
- <summary>
- the kmer sequence
- </summary>
- <returns></returns>
-</member>
-<member name="P:SMRUCC.genomics.SequenceModel.KSeq.location">
- <summary>
- location of the left
- </summary>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.KSeq.KmerSpans(System.String,System.Int32)">
- <summary>
- split the given sequence as kmer span for a speicific biological sequence.
- </summary>
- <param name="seq_str"></param>
- <param name="k"></param>
- <returns></returns>
-</member>
-<member name="M:SMRUCC.genomics.SequenceModel.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
- <summary>
- 计算DNA k-mer的直接四进制哈希值。
- </summary>
- <param name="kmer">输入的k-mer字符串（例如 "ATCG"）。</param>
- <returns>计算出的哈希值（一个Long整数）。如果输入无效，则抛出异常。</returns>
- <remarks>
- 算法原理：
- 1. 将k-mer的每个碱基映射为一个数字 (A=0, C=1, G=2, T=3)。
- 2. 将整个k-mer串视为一个k位的四进制数。
- 3. 通过迭代方式计算其十进制值：hash = (hash * 4) + current_value。
- 例如，对于 k-mer "ACGT" (k=4):
-  A(0) C(1) G(2) T(3)
-  哈希值 = (((0 * 4 + 1) * 4 + 2) * 4 + 3) = 27
- </remarks>
-</member>
 <member name="T:SMRUCC.genomics.SequenceModel.KSeqCartesianProduct">
  <summary>
  kmer sequence generator
@@ -15254,7 +15371,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <param name="Circular"></param>
  <returns></returns>
 </member>
-<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.NucleicAcidStaticsProperty.__contentCommon(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.Boolean,System.Char[])">
+<member name="M:SMRUCC.genomics.SequenceModel.NucleotideModels.NucleicAcidStaticsProperty.ContentCommon(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.Boolean,System.Char[])">
  <summary>
  
  </summary>
@@ -16496,6 +16613,147 @@ to take away yo [rest of string was truncated]&quot;;.
  大小写不敏感
  </summary>
  <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.SequenceModel.Slicer.CutSequence">
+ <summary>
+ Cut sequence for DNA/protein
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.Location)">
+ <summary>
+ 核酸分子和蛋白质分子都适用
+ </summary>
+ <param name="seq"></param>
+ <param name="site"></param>
+ <returns></returns>
+ 
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceLinear(System.String@,System.Int32,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="seq$"></param>
+ <param name="left">下标是从1开始的</param>
+ <param name="right%"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
+ <summary>
+ 核酸分子和蛋白质分子都适用
+ </summary>
+ <param name="seq"></param>
+ <param name="left">
+ 下标是从1开始的
+ </param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceByLength(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
+ <summary>
+ Cut sequence by given left loci and segment length.
+ </summary>
+ <param name="seq"></param>
+ <param name="left"></param>
+ <param name="length"></param>
+ <param name="tag$">the tag information about this sequence segment.</param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.ReadComplement(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,System.Int32,System.Int32,System.String)">
+ <summary>
+ 将目标序列之中的给定区域的序列剪下，并返回该片段的互补序列
+ </summary>
+ <param name="seq"></param>
+ <param name="left">请注意，这个参数是以1为起始的</param>
+ <param name="length%"></param>
+ <param name="tag$"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceLinear(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+ <summary>
+ 
+ </summary>
+ <param name="seq"></param>
+ <param name="loci"></param>
+ <returns></returns>
+ <remarks>Tested by XC_1184/XC_0012, no problem.</remarks>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceCircular(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+ <summary>
+ 这个函数会自动计算出上半部分的位置
+ </summary>
+ <param name="seq"></param>
+ <param name="site"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.CutSequence.CutSequenceCircular(SMRUCC.genomics.SequenceModel.IPolymerSequenceModel,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation,SMRUCC.genomics.ComponentModel.Loci.NucleotideLocation)">
+ <summary>
+ <paramref name="site"/> at the end of nt sequence join with <paramref name="join"/> location to consist a completed gene. 
+ (请注意，在这里两个位点是直接进行序列拼接的，所以在这里两个参数是有顺序之分的)
+ </summary>
+ <param name="seq"></param>
+ <param name="site">环状的分子只能够是DNA分子，所以这里是核酸序列的位置</param>
+ <returns></returns>
+ <remarks>Not sure, probably success.</remarks>
+</member>
+<member name="T:SMRUCC.genomics.SequenceModel.Slicer.KSeq">
+ <summary>
+ k-mer sequence model
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.Slicer.KSeq.seq">
+ <summary>
+ the kmer sequence
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.SequenceModel.Slicer.KSeq.location">
+ <summary>
+ location of the left
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.KSeq.KmerSpans(System.String,System.Int32)">
+ <summary>
+ split the given sequence as kmer span for a speicific biological sequence.
+ </summary>
+ <param name="seq_str"></param>
+ <param name="k"></param>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.KSeq.CalculateDirectQuaternaryHashCode(System.String)">
+ <summary>
+ 计算DNA k-mer的直接四进制哈希值。
+ </summary>
+ <param name="kmer">输入的k-mer字符串（例如 "ATCG"）。</param>
+ <returns>计算出的哈希值（一个Long整数）。如果输入无效，则抛出异常。</returns>
+ <remarks>
+ 算法原理：
+ 1. 将k-mer的每个碱基映射为一个数字 (A=0, C=1, G=2, T=3)。
+ 2. 将整个k-mer串视为一个k位的四进制数。
+ 3. 通过迭代方式计算其十进制值：hash = (hash * 4) + current_value。
+ 例如，对于 k-mer "ACGT" (k=4):
+  A(0) C(1) G(2) T(3)
+  哈希值 = (((0 * 4 + 1) * 4 + 2) * 4 + 3) = 27
+ </remarks>
+</member>
+<member name="T:SMRUCC.genomics.SequenceModel.Slicer.ISlicer">
+ <summary>
+ A wrapper of the biological sequence region cutter, which can be used to cut a specific sequence region 
+ from a FASTA sequence or a chunked FASTA sequence
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.SequenceModel.Slicer.ISlicer.SliceRegionSite(System.Int32,System.Int32)">
+ <summary>
+ 
+ </summary>
+ <param name="start">1-based start index</param>
+ <param name="seqLength">string length of the target locus region</param>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.SequenceModel.Slicer.GenBankSlicer">
+ <summary>
+ slicer for the ncbi genbank origin sequence, which is stored in the GBFF file, 
+ this slicer can be used to cut a specific sequence region from a genbank sequence file
+ </summary>
 </member>
 <member name="T:SMRUCC.genomics.SequenceModel.TypeExtensions">
  <summary>

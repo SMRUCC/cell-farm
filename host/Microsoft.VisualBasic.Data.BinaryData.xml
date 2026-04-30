@@ -527,6 +527,362 @@ Microsoft.VisualBasic.Data.BinaryData
  <param name="pChar"></param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.ComplexNumber">
+ <summary>
+ 表示 Python 的复数类型 (complex)。
+ Python 原生支持复数运算，.NET 没有内置复数类型（System.Numerics.Complex 
+ 需要额外引用），因此提供此轻量级实现。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.ComplexNumber.Real">
+ <summary>实部</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.ComplexNumber.Imaginary">
+ <summary>虚部</summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler">
+ <summary>
+ Pickle 序列化器，将 .NET 对象序列化为 Pickle 协议4格式。
+ 生成的数据可被 Python 的 pickle.loads() 正确反序列化。
+ 
+ 支持的 .NET 类型到 Python 类型的映射：
+   Nothing / null    → None
+   Boolean           → bool
+   整数类型          → int
+   Single/Double     → float
+   Decimal           → float (精度可能损失)
+   String / Char     → str
+   Byte()            → bytes
+   IDictionary       → dict
+   IList / Array     → list
+   PythonTuple       → tuple
+   PythonSet         → list (简化处理，Python 可再转换)
+   PythonObject      → 通过 GLOBAL+REDUCE+BUILD 还原
+   ComplexNumber     → complex
+   DateTime          → datetime.datetime
+   其他对象          → 通过反射序列化属性为 dict
+ 
+ 特性：
+   - 支持 memo 机制，正确处理共享引用和循环引用
+   - 使用协议4格式，兼容 Python 3.4+
+   - 自动选择最优的整数编码（BININT1/BININT2/BININT/LONG1）
+   - 自动选择最优的字符串编码（SHORT_BINUNICODE/BINUNICODE）
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.Pickle(System.Object)">
+ <summary>
+ 将 .NET 对象序列化为 Pickle 格式的字节数组。
+ 这是最核心的序列化方法，生成的数据可被 Python 的 pickle.loads() 直接读取。
+ </summary>
+ <param name="obj">要序列化的 .NET 对象</param>
+ <returns>Pickle 协议4格式的字节数组</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.PickleToBase64(System.Object)">
+ <summary>
+ 将 .NET 对象序列化为 Base64 编码字符串。
+ 适合在文本协议（如 JSON、XML）中传输 Pickle 数据。
+ </summary>
+ <param name="obj">要序列化的 .NET 对象</param>
+ <returns>Base64 编码的 Pickle 数据</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.PickleToFile(System.Object,System.String)">
+ <summary>
+ 将 .NET 对象序列化并写入文件。
+ 生成的文件可被 Python 的 pickle.load(open('file', 'rb')) 读取。
+ </summary>
+ <param name="obj">要序列化的 .NET 对象</param>
+ <param name="filePath">输出文件路径</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.Serialize(System.Object)">
+ <summary>
+ 执行实际的序列化过程：写入协议头、序列化根对象、写入结束标记。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeObject(System.Object)">
+ <summary>
+ 核心序列化分派方法。根据对象类型选择合适的 Pickle 操作码进行序列化。
+ 处理 memo 查找（共享引用和循环引用），以及类型分派。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeBoolean(System.Boolean)">
+ <summary>
+ 序列化布尔值。使用 NEWTRUE/NEWFALSE 操作码（协议2+）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeLong(System.Int64)">
+ <summary>
+ 序列化有符号长整数。自动选择最紧凑的编码方式：
+   0-255       → BININT1 (2字节)
+   0-65535     → BININT2 (3字节)
+   Int32范围   → BININT (5字节)
+   超出范围    → LONG1 (变长)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeULong(System.UInt64)">
+ <summary>
+ 序列化无符号长整数（ULong）。处理超出 Long 范围的情况。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeFloat(System.Double)">
+ <summary>
+ 序列化双精度浮点数。使用 BINFLOAT 操作码（8字节大端序 IEEE 754）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeString(System.String)">
+ <summary>
+ 序列化 UTF-8 字符串。自动选择长度前缀大小：
+   UTF8字节长度 &lt;= 255  → SHORT_BINUNICODE (2字节头)
+   UTF8字节长度 > 255   → BINUNICODE (5字节头)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeBytes(System.Byte[])">
+ <summary>
+ 序列化字节数组。自动选择长度前缀大小：
+   长度 &lt;= 255  → SHORT_BINBYTES (2字节头)
+   长度 > 255   → BINBYTES (5字节头)
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeDict(System.Collections.IDictionary)">
+ <summary>
+ 序列化字典。使用 EMPTY_DICT + MEMOIZE + MARK + 键值对 + SETITEMS 模式。
+ 先将空字典注册到 memo（处理循环引用），然后批量设置键值对。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeList(System.Collections.IList)">
+ <summary>
+ 序列化列表。使用 EMPTY_LIST + MEMOIZE + MARK + 元素 + APPENDS 模式。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeArray(System.Array)">
+ <summary>
+ 序列化数组。与列表相同的 Pickle 表示（Python 没有区分数组和列表）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeTuple(Microsoft.VisualBasic.Data.IO.Pickle.PythonTuple)">
+ <summary>
+ 序列化 PythonTuple 元组。根据元素数量选择最优编码：
+   0元素 → EMPTY_TUPLE
+   1元素 → TUPLE1
+   2元素 → TUPLE2
+   3元素 → TUPLE3
+   4+元素 → MARK + items + TUPLE
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeSet(Microsoft.VisualBasic.Data.IO.Pickle.PythonSet)">
+ <summary>
+ 序列化 PythonSet 集合。
+ 由于 Python pickle 对 set 的序列化使用 GLOBAL+REDUCE 模式较复杂，
+ 此处简化为序列化为列表。Python 端可用 set() 转换回来。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeDateTime(System.DateTime)">
+ <summary>
+ 序列化 DateTime 为 Python datetime.datetime 对象。
+ 使用 GLOBAL + 参数元组 + REDUCE 模式。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeTimeSpan(System.TimeSpan)">
+ <summary>
+ 序列化 TimeSpan 为 Python datetime.timedelta 对象。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeComplex(Microsoft.VisualBasic.Data.IO.Pickle.ComplexNumber)">
+ <summary>
+ 序列化 ComplexNumber 为 Python complex 对象。
+ 使用 GLOBAL + 参数元组 + REDUCE 模式。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializePythonObject(Microsoft.VisualBasic.Data.IO.Pickle.PythonObject)">
+ <summary>
+ 序列化 PythonObject 自定义对象。
+ 使用 GLOBAL + 参数元组 + REDUCE + BUILD 模式，
+ 完整还原 Python 对象的类名、构造参数和状态。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.SerializeAsDict(System.Object)">
+ <summary>
+ 将任意 .NET 对象通过反射序列化。
+ 使用 GLOBAL + REDUCE + BUILD 模式，将对象的公共属性作为状态字典传递。
+ Python 端需要对应的类定义才能完整还原。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.EncodeLong(System.Int64)">
+ <summary>
+ 将有符号长整数编码为小端序补码字节序列。
+ 这是 Python LONG1/LONG4 操作码使用的编码格式。
+ 编码规则：
+   - 使用小端序（最低有效字节在前）
+   - 使用补码表示负数
+   - 如果最高字节的最高位与符号不一致，需要额外的符号字节
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPicklePickler.AddToMemo(System.Object)">
+ <summary>
+ 将对象添加到 memo 表，并写入 MEMOIZE 操作码。
+ Memo 机制用于处理共享引用（同一个对象被多次引用）
+ 和循环引用（对象直接或间接引用自身）。
+ 仅对引用类型进行 memo，值类型和字符串不需要。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler">
+ <summary>
+ 扩展的 Pickle 协议反序列化器，支持协议 0-5 的大部分操作码。
+ 能够将 Python Pickle 二进制数据反序列化为对应的 .NET 对象。
+ 
+ 类型映射关系：
+   Python None     → VB.NET Nothing
+   Python bool     → VB.NET Boolean
+   Python int      → VB.NET Long (或 Integer，取决于大小)
+   Python float    → VB.NET Double
+   Python str      → VB.NET String
+   Python bytes    → VB.NET Byte()
+   Python list     → VB.NET List(Of Object)
+   Python dict     → VB.NET Dictionary(Of Object, Object)
+   Python tuple    → PythonTuple
+   Python set      → PythonSet
+   Python complex  → ComplexNumber
+   Python datetime → VB.NET DateTime
+   其他自定义对象  → PythonObject
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.Unpickle(System.String)">
+ <summary>
+ 从 Base64 字符串反序列化 Pickle 数据。
+ 这是最便捷的入口方法，适合从文本传输或存储中恢复 Python 对象。
+ </summary>
+ <param name="base64Str">Base64 编码的 Pickle 数据</param>
+ <returns>反序列化后的 .NET 对象</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.UnpickleFromBytes(System.Byte[])">
+ <summary>
+ 从字节数组反序列化 Pickle 数据。
+ 适合从文件读取或网络接收的原始二进制数据。
+ </summary>
+ <param name="data">Pickle 格式的字节数组</param>
+ <returns>反序列化后的 .NET 对象</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.UnpickleFromStream(System.IO.Stream)">
+ <summary>
+ 从流反序列化 Pickle 数据。
+ 支持任意 Stream 来源，包括文件流、网络流、内存流等。
+ </summary>
+ <param name="stream">包含 Pickle 数据的流</param>
+ <returns>反序列化后的 .NET 对象</returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.ReadLine(System.IO.BinaryReader)">
+ <summary>
+ 读取一行文本（以 LF 换行符结尾）。协议0使用换行符作为分隔符。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.PopToMark(System.Collections.Generic.Stack{System.Object})">
+ <summary>
+ 弹出栈中到 MarkObject 为止的所有元素（不包括 MarkObject 本身），
+ 返回的列表保持原始压栈顺序（先压入的在前）。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.DecodeLong(System.Byte[])">
+ <summary>
+ 解码小端序有符号长整数。
+ Python 使用任意长度的补码表示法，最高字节的最高位为符号位。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.RawUnicodeEscapeDecode(System.String)">
+ <summary>
+ 解码 Python raw-unicode-escape 格式字符串。
+ 支持 \uXXXX（4位十六进制）和 \UXXXXXXXX（8位十六进制）转义序列，
+ 以及 \\ 反斜杠转义。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.EscapeDecode(System.String)">
+ <summary>
+ 解码 Python 字符串转义序列。
+ 支持 \n, \r, \t, \\, \', \", \xHH 和八进制转义 \OOO。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.ReduceCallable(System.Object,System.Object)">
+ <summary>
+ 处理 REDUCE 操作码：调用可调用对象并传入参数。
+ 如果可调用对象是 PythonGlobalRef，尝试构造对应的 .NET 对象；
+ 否则返回 PythonObject 包装器。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.NewObjf(System.Object,System.Object)">
+ <summary>
+ 处理 NEWOBJ 操作码：使用类引用和参数构造新式类实例。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.ExtractArgs(System.Object)">
+ <summary>
+ 从参数对象中提取参数数组。支持 PythonTuple、IList 和 Object()。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.ConstructPythonObject(Microsoft.VisualBasic.Data.IO.Pickle.PythonGlobalRef,System.Object)">
+ <summary>
+ 根据全局引用构造 Python 对象的 .NET 等价物。
+ 对常见的 Python 内置类型和标准库类型进行映射，
+ 未知类型则返回 PythonObject 包装器以保留信息。
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Data.IO.Pickle.MinimalPickleUnpickler.BuildObject(System.Object,System.Object)">
+ <summary>
+ 处理 BUILD 操作码：将状态应用到已构造的对象上。
+ 对于 PythonObject，将状态字典合并到 State 属性中；
+ 对于字典类型，将状态字典的键值对合并到目标字典中。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.PythonGlobalRef">
+ <summary>
+ 内部类型：表示 Python 全局引用（module.classname）。
+ 由 GLOBAL 操作码产生，供 REDUCE / NEWOBJ 消费。
+ 不对外公开，因为用户应通过 PythonObject 访问反序列化结果。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject">
+ <summary>
+ 表示从 Pickle 反序列化的未知 Python 对象。
+ 当遇到无法映射到 .NET 类型的 Python 类实例时，
+ 使用此包装器保存模块名、类名、构造参数和对象状态，
+ 以便后续代码能够识别和处理这些对象。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject.ModuleName">
+ <summary>Python 模块名（如 "collections"）</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject.ClassName">
+ <summary>Python 类名（如 "OrderedDict"）</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject.ConstructorArgs">
+ <summary>传递给 __init__ 的构造参数</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject.State">
+ <summary>对象的 __dict__ 状态（由 BUILD 操作码设置）</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonObject.FullName">
+ <summary>获取状态的完整限定类名</summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.PythonSet">
+ <summary>
+ 表示 Python 的 set 类型。Python 的 set 是无序且元素唯一的集合，
+ 类似于 .NET 的 HashSet，但提供与 Python 互操作所需的类型标识。
+ 支持 frozenset 和 set 两种语义（此类型不区分可变/不可变）。
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.IO.Pickle.PythonTuple">
+ <summary>
+ 表示 Python 的 tuple 类型。.NET 没有原生的不可变元组类型，
+ 因此使用此包装类来保持 Python 语义上的不可变性和有序性。
+ 元组在 Python 中常用于函数返回多值、字典键等场景。
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonTuple.Item(System.Int32)">
+ <summary>按索引访问元组元素</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonTuple.Length">
+ <summary>元组元素数量</summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.IO.Pickle.PythonTuple.Items">
+ <summary>获取元素数组的副本（防止外部修改）</summary>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.IO.BinaryDataReader">
  <summary>
  Represents an extended <see cref="T:System.IO.BinaryReader"/> supporting special file format data types.

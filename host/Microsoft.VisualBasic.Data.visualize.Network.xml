@@ -331,7 +331,7 @@ Microsoft.VisualBasic.Data.visualize.Network
  <param name="network"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.ApplyAnalysis(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@)">
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.ApplyAnalysis(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph@,System.Boolean)">
  <summary>
  生成诸如degree之类的信息
  </summary>

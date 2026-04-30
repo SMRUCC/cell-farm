@@ -572,11 +572,175 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  <param name="massInit"></param>
  <returns></returns>
 </member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState">
+ <summary>
+ 环境状态向量 X - 包含所有影响酶活性的环境因素
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState.Validate">
+ <summary>
+ 验证环境参数的有效性
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics">
+ <summary>
+ 酶的物理化学特征参数
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.RequiresCofactor">
+ <summary>
+ 是否需要辅因子
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Validate">
+ <summary>
+ 验证酶特征参数的有效性
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection">
+ <summary>
+ Km = Km[0] + E(X)
+ 
+ Km[0]为数据库中记录的常数值
+ E(X)为基于当前溶液环境条件下的修正项
+ </summary>
+ <remarks>
+ E(X) = a × (F_total - 1)
+ 
+ 其中 F_total = F_temp × F_pH × F_ion × F_sub × F_prod
+ 
+ 各分项函数如下：
+ 
+ 温度因子（Arrhenius型）：F_temp = exp[(Ea/R) × (1/T_ref - 1/T)]
+ pH因子（钟形曲线）：F_pH = exp[-(pH - pH_opt)² / (2 × σ_pH²)]
+ 离子强度因子：F_ion = exp[-k_ion × |I - I_opt|]
+ 底物抑制因子：F_sub = (Km_ref + [S]) / (Km_ref + [S] + [S]²/Ki_sub)
+ 产物抑制因子：F_prod = (Km_ref + [S]) / [Km_ref × (1 + [P]/Ki_prod) + [S]]
+ </remarks>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateCorrectedKm(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 计算修正后的 Km 值
+ Km_corrected = Km_ref × F_total
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateCorrectedKcat(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 计算修正后的 kcat 值
+ kcat_corrected = kcat_ref × F_total
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateTemperatureFactorKm(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 温度因子 (Km) - 基于结合焓
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateTemperatureFactorKcat(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 温度因子 (kcat) - Arrhenius方程
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateThermalDenaturationFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 高温失活因子 - Sigmoid函数
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculatepHFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ pH因子 - 双pKa机理模型
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateIonStrengthFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 离子强度因子 - 考虑电荷效应
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateSubstrateInhibitionFactor(System.Double,System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 底物抑制因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateProductCompetitiveInhibitionFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 产物竞争抑制因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateProductNoncompetitiveInhibitionFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 产物非竞争抑制因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateCofactorActivationFactor(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 辅因子激活因子 (Hill方程)
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateCrowdingEffect(System.Double)">
+ <summary>
+ 拥挤效应因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateViscosityEffect(System.Double)">
+ <summary>
+ 粘度效应因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateTemperaturepHInteraction(System.Double,System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 温度-pH交互作用因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateDynamicAdaptationEffect(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 动态适应效应因子
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.CalculateChangeRate(System.Collections.Generic.List{System.Double},System.Double)">
+ <summary>
+ 计算变化速率
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.AdvancedEnzymeKineticsCorrection.SafeExp(System.Double)">
+ <summary>
+ 安全的指数计算，防止溢出
+ </summary>
+</member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor.GetValue">
  <summary>
  The formulation evaluation.
  </summary>
  <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest">
+ <summary>
+ ============== 辅助工具函数 ==============
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest.SensitivityAnalysis(System.Double,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics,System.String,System.Double)">
+ <summary>
+ 参数敏感性分析
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest.CloneEnvironment(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState)">
+ <summary>
+ 克隆环境状态
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest.CloneEnzyme(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics)">
+ <summary>
+ 克隆酶特征
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest.RestoreEnvironment(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnvironmentState)">
+ <summary>
+ 恢复环境状态
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsTest.GetDefaultEnzymeCharacteristics">
+ <summary>
+ 获取默认酶特征参数
+ </summary>
 </member>
 <member name="M:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.ModularRateLaws.FluxRate(SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor,SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.KineticsFactor)">
  <summary>
