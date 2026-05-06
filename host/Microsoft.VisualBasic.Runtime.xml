@@ -16055,7 +16055,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="valueRange"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.Ranges.Model.IntRange.GetEnumerator">
+<member name="M:Microsoft.VisualBasic.ComponentModel.Ranges.Model.IntRange.GenericEnumerator">
  <summary>
  枚举出这个数值范围内的所有整数值，步长为1
  </summary>
@@ -39846,7 +39846,7 @@ to take away yo [rest of string was truncated]&quot;;.
 </member>
 <member name="T:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment">
  <summary>
- 脚本运行环境（支持作用域嵌套）
+ 脚本运行环境
  </summary>
 </member>
 <member name="F:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment._slots">
@@ -39862,6 +39862,16 @@ to take away yo [rest of string was truncated]&quot;;.
 <member name="M:Microsoft.VisualBasic.Scripting.Runtime.ScriptEnvironment.FindSlot(System.String,System.Boolean)">
  <summary>
  查找变量槽位，支持向父级作用域查找
+ </summary>
+</member>
+<member name="T:Microsoft.VisualBasic.Scripting.Runtime.NestedScriptEnvironment">
+ <summary>
+ 脚本运行环境（支持作用域嵌套）
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Scripting.Runtime.NestedScriptEnvironment._parent">
+ <summary>
+ 父级作用域（用于实现闭包或块级作用域）
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot">
@@ -41062,6 +41072,18 @@ to take away yo [rest of string was truncated]&quot;;.
  </summary>
  <typeparam name="T"></typeparam>
  <param name="file"></param>
+ <param name="encoding"></param>
+ <param name="simpleDict"></param>
+ <param name="knownTypes"></param>
+ <param name="throwEx"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Serialization.JSON.JsonContract.LoadJSONL``1(System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding,System.Boolean,System.Collections.Generic.IEnumerable{System.Type},System.Boolean)">
+ <summary>
+ load json list file
+ </summary>
+ <typeparam name="T"></typeparam>
+ <param name="jsonl">the file content of the jsonl file</param>
  <param name="encoding"></param>
  <param name="simpleDict"></param>
  <param name="knownTypes"></param>

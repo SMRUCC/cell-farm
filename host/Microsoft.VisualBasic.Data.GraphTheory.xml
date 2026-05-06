@@ -84,6 +84,7 @@ Microsoft.VisualBasic.Data.GraphTheory
  </summary>
  <param name="startIndex"></param>
  <returns></returns>
+ 
 </member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.DistanceFinderInternal(System.Int32,System.Nullable{System.Int32})">
  <summary>

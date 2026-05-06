@@ -317,7 +317,7 @@ Microsoft.VisualBasic.Data.visualize.Network
  <param name="networkGraph">自定义的网络图对象</param>
  <returns>邻接矩阵</returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.ConvertToMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node}@,System.Collections.Generic.Dictionary{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,System.Int32}@,System.Func{Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge,System.Double})">
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.GraphRouter.ConvertToMatrix(Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Boolean,Microsoft.VisualBasic.Language.List{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node}@,System.Collections.Generic.Dictionary{System.String,System.Int32}@,System.Func{Microsoft.VisualBasic.Data.visualize.Network.Graph.Edge,System.Double})">
  <summary>
  将自定义的Graph对象转换为Dijkstra算法所需的二维整数矩阵。
  </summary>
@@ -845,6 +845,12 @@ Microsoft.VisualBasic.Data.visualize.Network
  <see cref="P:Microsoft.VisualBasic.Data.GraphTheory.Vertex.label"/> -> <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.IKeyedEntity`1.Key"/>
  </summary>
 </member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.data">
+ <summary>
+ the graph node metadata, includes styles, groups, positions data
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Node.adjacencies">
  <summary>
  Get all of the edge collection that connect to current node object
@@ -953,6 +959,9 @@ Microsoft.VisualBasic.Data.visualize.Network
  <summary>
  The network graph object contains the dynamics property for contains the extra information of the object.
  </summary>
+ <remarks>
+ contains a string value dictionary object
+ </remarks>
 </member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.IDynamicsTable.Properties">
  <summary>
