@@ -12511,12 +12511,17 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  object schema provider for json/xml
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.isTable">
+ <summary>
+ the clr type is a dictionary?
+ </summary>
+</member>
 <member name="F:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.valueType">
  <summary>
  Value type of the dictionary
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.#ctor(System.Reflection.MethodInfo,System.Boolean,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Reflection.PropertyInfo},System.Type,System.Type,System.Type,System.Type[],Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.Serializations)">
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.#ctor(System.Reflection.MethodInfo,System.Boolean,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Reflection.PropertyInfo},System.Type,System.Type,System.Type,System.Type[],Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.Serializations,System.Boolean)">
  <summary>
  
  </summary>
@@ -12560,7 +12565,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <returns></returns>
  
 </member>
-<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.GetSchema(System.Type,Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.Serializations)">
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.SoapGraph.GetSchema(System.Type,Microsoft.VisualBasic.ComponentModel.DataSourceModel.SchemaMaps.Serializations,System.Boolean)">
  <summary>
  get (or cache a new schema graph object if not exists) a schema graph object
  </summary>
@@ -14604,6 +14609,15 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="table"></param>
  <param name="saveTo$"></param>
  <param name="encoding"></param>
+ <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.AsTable``2(System.Collections.Generic.IEnumerable{System.ValueTuple{``0,``1}})">
+ <summary>
+ tuple set to dictionary table
+ </summary>
+ <typeparam name="K"></typeparam>
+ <typeparam name="V"></typeparam>
+ <param name="tuples"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Collection.KeyValuePairExtensions.KeyItem``1(System.Collections.Generic.IEnumerable{``0},System.String)">

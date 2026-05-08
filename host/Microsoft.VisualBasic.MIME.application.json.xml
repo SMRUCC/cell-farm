@@ -397,6 +397,11 @@ Microsoft.VisualBasic.MIME.application.json
  <param name="decodeMetaChar"></param>
  <returns></returns>
 </member>
+<member name="F:Microsoft.VisualBasic.MIME.application.json.Token.JSONElements.Colon">
+ <summary>
+ :
+ </summary>
+</member>
 <member name="F:Microsoft.VisualBasic.MIME.application.json.Token.JSONElements.Comment">
  <summary>
  hjson comment
@@ -553,6 +558,21 @@ Microsoft.VisualBasic.MIME.application.json
  <param name="json"></param>
  <param name="schema"></param>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectParser.ParseSchemaWithIgnores(System.Type,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
+ <summary>
+ 
+ </summary>
+ <param name="schema"></param>
+ <param name="opt"></param>
+ <returns></returns>
+ <remarks>
+ ignores members property which is tagged with one of the attribute:
+ 
+ 1. <see cref="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.ScriptIgnoreAttribute"/>
+ 2. <see cref="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DataIgnoredAttribute"/>
+ 3. <see cref="T:System.Runtime.Serialization.IgnoreDataMemberAttribute"/>
+ </remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.MIME.application.json.ObjectParser.populateObjectJson(System.Type,System.Object,Microsoft.VisualBasic.MIME.application.json.JSONSerializerOptions)">
  <summary>
