@@ -12086,7 +12086,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="duplicated"></param>
  <returns></returns>
  <remarks>
- the name is uniqued via the <see cref="!:UniqueNames(IEnumerable(Of String), ByRef String())"/> method 
+ the name is uniqued via the <see cref="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Repository.SearchFramework.UniqueNames(System.Collections.Generic.IEnumerable{System.String},System.String[]@,System.String)"/> method 
  via add numeric suffix to the name key string.
  </remarks>
 </member>
@@ -21327,6 +21327,16 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 <member name="T:Microsoft.VisualBasic.Imaging.Math2D.VectorMath2D">
  <summary>
  
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.FontStyle.Regular">
+ <summary>
+ css normal
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Imaging.FontStyle.Bold">
+ <summary>
+ css strongs
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Imaging.Image">
@@ -39892,6 +39902,18 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  变量槽位：封装变量的类型、值和元数据
  </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot.IsReadOnly">
+ <summary>
+ current symbol value is constant lock binding in the environment?
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot.ObjValue">
+ <summary>
+ .NET clr class object value
+ </summary>
+ <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Scripting.Runtime.ScriptSlot.SetBoolean(System.Boolean)">
  <summary>

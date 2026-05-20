@@ -152,6 +152,11 @@ Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
  </summary>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.MetaData">
+ <summary>
+ the network metadata
+ </summary>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.GraphAPI">
  <summary>
  Data Model Extensions
@@ -227,13 +232,31 @@ Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions
 </member>
 <member name="T:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2">
  <summary>
- The network csv data information with specific type of the datamodel
+ The network csv/json data information with specific type of the datamodel
  </summary>
  <typeparam name="T_Node"></typeparam>
  <typeparam name="T_Edge"></typeparam>
  <remarks></remarks>
 </member>
-<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.IsEmpty">
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.meta">
+ <summary>
+ the network metadata
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.nodes">
+ <summary>
+ the node metadata, optional, could be missing, which means nodes has no metadata
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.edges">
+ <summary>
+ the network data
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.FileStream.Generic.Network`2.is_empty">
  <summary>
  判断这个网络模型之中是否是没有任何数据
  </summary>
