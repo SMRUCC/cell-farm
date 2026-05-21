@@ -74,6 +74,11 @@ Microsoft.VisualBasic.Data.GraphTheory
  网络图中的节点总数
  </summary>
 </member>
+<member name="F:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.pathCache">
+ <summary>
+ 缓存不同起点的计算结果，Key为startIndex
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.GraphTheory.Analysis.Dijkstra.DijkstraAlgoritm.#ctor(Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.SparseMatrix,System.Int32)">
  <param name="graph">The adjacency matrix of the graph.</param>
  <param name="vertices">Total number of vertices.</param>
