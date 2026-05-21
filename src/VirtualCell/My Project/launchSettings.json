@@ -2,7 +2,7 @@
   "profiles": {
     "VirtualCell": {
       "commandName": "Project",
-      "commandLineArgs": "--run \"G:\\BlueprintCAD\\demo\\run.json\" --output Z:/tmp/1/Sophia/35520/vc_datastore_927173.vcelldata /@set tqdm=false\r\n"
+      "commandLineArgs": "--run G:/GMN-Designer/test/acetoin/run_vc/run.json --output Z:/tmp/Sophia/40520/vc_datastore_37446b.vcelldata /@set tqdm=false"
     },
     "file-conversion": {
       "commandName": "Project",
