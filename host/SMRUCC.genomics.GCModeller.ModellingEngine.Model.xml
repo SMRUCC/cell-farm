@@ -240,31 +240,36 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Model
  </summary>
  <returns></returns>
 </member>
-<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.formula">
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.formula">
  <summary>
  body expression of the lambda expression
  </summary>
 </member>
-<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.parameters">
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.parameters">
  <summary>
  parameter names for create lambda expression
  </summary>
 </member>
-<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.paramVals">
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.paramVals">
  <summary>
- parameter value list data of the lambda <see cref="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.parameters"/>. 
+ parameter value list data of the lambda <see cref="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.parameters"/>. 
  numeric value means constant value and string value means
  id reference of the substrate
  </summary>
 </member>
-<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.enzyme">
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.enzyme">
  <summary>
  enzyme target
  </summary>
 </member>
-<member name="F:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.target">
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.target">
  <summary>
  target reaction id
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Kinetics.characters">
+ <summary>
+ characters
  </summary>
 </member>
 <member name="T:SMRUCC.genomics.GCModeller.ModellingEngine.Model.Cellular.Process.Reaction">

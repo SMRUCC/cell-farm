@@ -293,12 +293,6 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <returns></returns>
 </member>
-<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.temperature">
- <summary>
- 单位为摄氏度的温度参数值
- </summary>
- <returns></returns>
-</member>
 <member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Catalysis.formula">
  <summary>
  通过sabio-rk数据库得到的动力学函数方程

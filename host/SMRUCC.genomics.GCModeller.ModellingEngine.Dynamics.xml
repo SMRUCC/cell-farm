@@ -587,9 +587,159 @@ SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics
  酶的物理化学特征参数
  </summary>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.T_ref">
+ <summary>
+ 参考温度 (K)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.T_opt">
+ <summary>
+ 最适温度 (K)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Ea">
+ <summary>
+ kcat 活化能 (J/mol)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.DeltaH_bind">
+ <summary>
+ Km 结合焓 (J/mol)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.T_melt">
+ <summary>
+ 酶熔化温度 (K)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.k_denat">
+ <summary>
+ 失活陡峭度系数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.pH_opt">
+ <summary>
+ 最适 pH
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.pKa1">
+ <summary>
+ 催化残基质子解离常数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.pKa2">
+ <summary>
+ 催化残基去质子解离常数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.pH_width">
+ <summary>
+ pH活性曲线宽度
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.I_opt">
+ <summary>
+ 最适离子强度 (M)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.k_ion">
+ <summary>
+ 离子强度影响系数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.z_enzyme">
+ <summary>
+ 酶净电荷数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.z_substrate">
+ <summary>
+ 底物净电荷数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Ki_sub">
+ <summary>
+ 底物抑制常数 (M)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Ki_prod_comp">
+ <summary>
+ 产物竞争抑制常数 (M)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Ki_prod_uncomp">
+ <summary>
+ 产物非竞争抑制常数 (M)
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.RequiresCofactor">
  <summary>
  是否需要辅因子
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.Ka_cofactor">
+ <summary>
+ 辅因子激活常数 (M)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.n_cofactor">
+ <summary>
+ 辅因子结合协同性 (Hill系数)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.crowding_sensitivity">
+ <summary>
+ 拥挤敏感度 (0~1)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.viscosity_sensitivity">
+ <summary>
+ 粘度敏感度 (0~1), 1为纯扩散控制
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.alpha_temp_pH">
+ <summary>
+ 温度-pH交互作用系数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.beta_ion_pH">
+ <summary>
+ 离子强度-pH交互作用系数
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.tau_temp">
+ <summary>
+ 温度适应时间常数 (秒)
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Kinetics.EnzymeCharacteristics.tau_pH">
+ <summary>
+ pH适应时间常数 (秒)
  </summary>
  <returns></returns>
 </member>

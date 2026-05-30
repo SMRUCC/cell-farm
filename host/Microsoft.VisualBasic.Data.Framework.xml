@@ -2094,16 +2094,6 @@ Microsoft.VisualBasic.Data.Framework
  <param name="aggregate$"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.Framework.IO.Extensions.PropertyNames``1(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase{``0}})">
- <summary>
- Gets the union collection of the keys from <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/>.
- </summary>
- <param name="list"></param>
- <returns></returns>
- <remarks>
- (包含所有的已经去除重复了的属性名称)
- </remarks>
-</member>
 <member name="M:Microsoft.VisualBasic.Data.Framework.IO.Extensions.Vector(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.Framework.IO.DataSet},System.String)">
  <summary>
  Get feature vector column value from the given dataset via a specific feature name.

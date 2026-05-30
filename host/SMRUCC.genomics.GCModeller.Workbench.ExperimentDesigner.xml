@@ -324,13 +324,13 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
 </member>
 <member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.injectionOrder">
  <summary>
- index编号
+ sample injection order in current batch, example as 1,2,3,4,5
  </summary>
  <returns></returns>
 </member>
 <member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.batch">
  <summary>
- the experiment batch id
+ the experiment batch id, example as 1,2,3,4,5
  </summary>
  <returns></returns>
 </member>

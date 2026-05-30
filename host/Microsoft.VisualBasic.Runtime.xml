@@ -11389,6 +11389,16 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Extensions.PropertyNames``1(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase{``0}})">
+ <summary>
+ Gets the union collection of the keys from <see cref="P:Microsoft.VisualBasic.ComponentModel.DataSourceModel.DynamicPropertyBase`1.Properties"/>.
+ </summary>
+ <param name="list"></param>
+ <returns></returns>
+ <remarks>
+ (包含所有的已经去除重复了的属性名称)
+ </remarks>
+</member>
 <member name="T:Microsoft.VisualBasic.ComponentModel.DataSourceModel.Property`1">
  <summary>
  Dictionary for [<see cref="T:System.String"/>, <typeparamref name="T"/>]
@@ -26873,7 +26883,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="file"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.FileIO.Directory.CopyTo(System.String,System.IProgress{System.String},System.Boolean)">
+<member name="M:Microsoft.VisualBasic.FileIO.Directory.CopyTo(System.String,System.IProgress{System.String},System.Boolean,System.Boolean)">
  <summary>
  将当前的这个文件夹之中的内容拷贝到<paramref name="target"/>目标文件夹
  </summary>
@@ -38480,6 +38490,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Language.Value`1.Default">
+ <summary>
+ Create a new reference value with the default value of its underlying type, which is Nothing for reference type and zero for value type.
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Language.Value`1.op_UnaryPlus(Microsoft.VisualBasic.Language.Value{`0})">
  <summary>
  Gets the <see cref="P:Microsoft.VisualBasic.Language.Value`1.Value"/> property value.
@@ -41078,7 +41094,7 @@ to take away yo [rest of string was truncated]&quot;;.
  Create object instance from a given json text base on the template <see cref="T:System.Type"/>
  information.
  </summary>
- <param name="json">null -> Nothing</param>
+ <param name="json">parse this json string and then decoded as the required .NET clr object. some special json text mapping: null will be decoded as Nothing</param>
  <param name="type"></param>
  <returns></returns>
 </member>

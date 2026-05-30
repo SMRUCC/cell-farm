@@ -534,6 +534,9 @@ SMRUCC.genomics.Analysis.HTS.DataFrame
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.sample_count">
+ <summary>样本数量</summary>
+</member>
 <member name="P:SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix.gene(System.Int32)">
  <summary>
  take by row
