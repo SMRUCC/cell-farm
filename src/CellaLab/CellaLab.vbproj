@@ -16,8 +16,4 @@
     <ProjectReference Include="..\..\..\graphQL\src\mysqli\LibMySQL\libmysql.vbproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="GEMs\" />
-  </ItemGroup>
-
 </Project>
