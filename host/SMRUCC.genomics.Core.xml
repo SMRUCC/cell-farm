@@ -11510,6 +11510,14 @@ Get feature site data by nucleotide location.
  <returns></returns>
  
 </member>
+<member name="M:SMRUCC.genomics.ComponentModel.Annotation.ECNumber.MatchScore(SMRUCC.genomics.ComponentModel.Annotation.ECNumber,SMRUCC.genomics.ComponentModel.Annotation.ECNumber)">
+ <summary>
+ Evaluate of the match score between two EC numbers, the higher the score, the better the match.
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.ComponentModel.Annotation.EnzymeClasses">
  <summary>
  The enzyme types enumeration.
