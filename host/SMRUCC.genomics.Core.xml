@@ -12766,15 +12766,15 @@ Get feature site data by nucleotide location.
 </member>
 <member name="F:SMRUCC.genomics.ComponentModel.Loci.Strands.Forward">
  <summary>
- The loci site was on the DNA sequence.(这个片段在DNA链的正义链之上)
+ The loci site was on the DNA sequence.
  </summary>
- <remarks></remarks>
+ <remarks>(这个片段在DNA链的正义链之上)</remarks>
 </member>
 <member name="F:SMRUCC.genomics.ComponentModel.Loci.Strands.Reverse">
  <summary>
- The loci site was on the DNA complement strand.(这个片段在DNA链的互补链之上) 
+ The loci site was on the DNA complement strand.
  </summary>
- <remarks></remarks>
+ <remarks>(这个片段在DNA链的互补链之上)</remarks>
 </member>
 <member name="F:SMRUCC.genomics.ComponentModel.Loci.Strands.Unknown">
  <summary>
@@ -14723,7 +14723,7 @@ to take away yo [rest of string was truncated]&quot;;.
  <summary>
  split the first token of the headers inside title as the unique reference id of current sequence object.
  </summary>
- <returns></returns>
+ <returns>sequence id</returns>
 </member>
 <member name="F:SMRUCC.genomics.SequenceModel.FASTA.FastaSeq.DefaultHeaderDelimiter">
  <summary>
