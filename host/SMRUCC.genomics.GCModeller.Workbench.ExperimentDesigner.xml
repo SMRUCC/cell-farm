@@ -334,6 +334,12 @@ SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner
  </summary>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo.metadata">
+ <summary>
+ additional sample metadata, for example as "treatment", "control", "time point 1h", "time point 2h" etc.
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleTuple">
  <summary>
  Using for paired sample T-test
