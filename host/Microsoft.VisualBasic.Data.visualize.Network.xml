@@ -151,6 +151,15 @@ Microsoft.VisualBasic.Data.visualize.Network
  <param name="i"></param>
  <returns></returns>
 </member>
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.Add(`0)">
+ <summary>
+ add direct edge of U->V
+ </summary>
+ <param name="edge"></param>
+ <remarks>
+ edge target is V
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.visualize.Network.Analysis.Model.AdjacencySet`1.EnumerateAllEdges(Microsoft.VisualBasic.ComponentModel.Collection.Generic.INamedValue)">
  <summary>
  获取目标两个节点之间的所有的重复的边连接
@@ -324,6 +333,29 @@ Microsoft.VisualBasic.Data.visualize.Network
  <param name="networkGraph">自定义的网络图对象</param>
  <returns>邻接矩阵</returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.IGraphValueContainer`1">
+ <summary>
+ An class object that contains <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphData"/>
+ </summary>
+ <typeparam name="T"></typeparam>
+</member>
+<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.GraphTreeNode">
+ <summary>
+ 这是一个节点对象
+ </summary>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.GraphTreeNode.Parents">
+ <summary>
+ 从外部链接到当前节点的节点列表
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.GraphTreeNode.Childs">
+ <summary>
+ 从当前的节点出发，链接到的其他的节点列表
+ </summary>
+ <returns></returns>
+</member>
 <member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Extensions.NodesID(System.Collections.Generic.IEnumerable{Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction})">
  <summary>
  Get all of the connected nodes ID from the edges data
@@ -345,23 +377,6 @@ Microsoft.VisualBasic.Data.visualize.Network
  <param name="node"></param>
  <returns></returns>
 </member>
-<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode">
- <summary>
- 这是一个节点对象
- </summary>
-</member>
-<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode.Parents">
- <summary>
- 从外部链接到当前节点的节点列表
- </summary>
- <returns></returns>
-</member>
-<member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode.Childs">
- <summary>
- 从当前的节点出发，链接到的其他的节点列表
- </summary>
- <returns></returns>
-</member>
 <member name="P:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.Trees">
  <summary>
  一个大网络可能会是由几个小的独立的网络模块所构成，也可能由独立的节点构成
@@ -374,7 +389,7 @@ Microsoft.VisualBasic.Data.visualize.Network
  </summary>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.IterateTrees(Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode,Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Collections.Generic.Dictionary{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTreeNode}@)">
+<member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphTree.IterateTrees(Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.GraphTreeNode,Microsoft.VisualBasic.Data.visualize.Network.Graph.NetworkGraph,System.Collections.Generic.Dictionary{Microsoft.VisualBasic.Data.visualize.Network.Graph.Node,Microsoft.VisualBasic.Data.visualize.Network.Graph.Abstract.GraphTreeNode}@)">
  <summary>
  
  </summary>
@@ -921,12 +936,6 @@ Microsoft.VisualBasic.Data.visualize.Network
  <summary>
  Graph value selector by property name
  </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector.IGraphValueContainer`1">
- <summary>
- An class object that contains <see cref="T:Microsoft.VisualBasic.Data.visualize.Network.Graph.GraphData"/>
- </summary>
- <typeparam name="T"></typeparam>
 </member>
 <member name="M:Microsoft.VisualBasic.Data.visualize.Network.Graph.Selector.SelectNodeValue(System.String,System.Type@)">
  <summary>

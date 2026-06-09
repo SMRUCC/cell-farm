@@ -2529,6 +2529,22 @@ Microsoft.VisualBasic.Data.GraphTheory
  </param>
  <returns></returns>
 </member>
+<member name="T:Microsoft.VisualBasic.Data.GraphTheory.PQTree">
+ 
+ <summary>
+ @author santi
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.GraphTheory.PQTree.direction">
+ <summary>
+ left/right
+ </summary>
+</member>
+<member name="F:Microsoft.VisualBasic.Data.GraphTheory.PQTree.label">
+ <summary>
+ empty, partial, full
+ </summary>
+</member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.TermTree`1">
  <summary>
  A tree with string term as key
@@ -2632,24 +2648,24 @@ Microsoft.VisualBasic.Data.GraphTheory
  图对象的操作API，并不包括有I/O操作函数，这个模块仅仅是提供对象的逻辑操作的方法集合
  </summary>
 </member>
-<member name="P:Microsoft.VisualBasic.Data.GraphTheory.BipartiteMatching.Edge.fromVertex">
+<member name="P:Microsoft.VisualBasic.Data.GraphTheory.BipartiteEdge.fromVertex">
  <summary>
  an edge is composed of 2 vertices
  </summary>
 </member>
-<member name="F:Microsoft.VisualBasic.Data.GraphTheory.BipartiteMatching.Edge.m_capacity">
+<member name="F:Microsoft.VisualBasic.Data.GraphTheory.BipartiteEdge.m_capacity">
  <summary>
  edges also have a capacity &amp; a flow
  </summary>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.BipartiteMatching.Edge.getOtherEndNode(System.Int32)">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.BipartiteEdge.getOtherEndNode(System.Int32)">
  <summary>
  Given an end-node, Returns the other end-node (completes the edge)
  </summary>
  <param name="vertex"></param>
  <returns></returns>
 </member>
-<member name="M:Microsoft.VisualBasic.Data.GraphTheory.BipartiteMatching.Edge.ToString">
+<member name="M:Microsoft.VisualBasic.Data.GraphTheory.BipartiteEdge.ToString">
  <summary>
  Prints edge using Array indexes, not human readable ID's like "S" or "T"
  </summary>
@@ -2814,22 +2830,6 @@ Microsoft.VisualBasic.Data.GraphTheory
 <member name="F:Microsoft.VisualBasic.Data.GraphTheory.Network.SubNetworkComponents`3.edges">
  <summary>
  enable id data cache
- </summary>
-</member>
-<member name="T:Microsoft.VisualBasic.Data.GraphTheory.PQTree">
- 
- <summary>
- @author santi
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Data.GraphTheory.PQTree.direction">
- <summary>
- left/right
- </summary>
-</member>
-<member name="F:Microsoft.VisualBasic.Data.GraphTheory.PQTree.label">
- <summary>
- empty, partial, full
  </summary>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.GraphTheory.SparseGraph.IInteraction">

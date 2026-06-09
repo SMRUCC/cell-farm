@@ -17650,6 +17650,20 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  也可能是 BGR 3通道的
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.#ctor(System.IntPtr,System.Int32,System.Drawing.Size,System.Int32,System.Int32,System.Object)">
+ <summary>
+ 
+ </summary>
+ <param name="ptr"></param>
+ <param name="byts"></param>
+ <param name="size"></param>
+ <param name="stride"></param>
+ <param name="channel"></param>
+ <param name="handle"></param>
+ <remarks>
+ memory buffer is false
+ </remarks>
+</member>
 <member name="M:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.#ctor(System.IntPtr,System.Int32,System.Int32)">
  <summary>
  Make the memory data copy
@@ -17663,6 +17677,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  make in-memory data copy
  </summary>
  <param name="source"></param>
+ 
 </member>
 <member name="P:Microsoft.VisualBasic.Imaging.BitmapImage.BitmapBuffer.Width">
  <summary>
