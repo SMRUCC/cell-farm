@@ -15854,6 +15854,12 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
    
 </member>
+<member name="P:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange.Center">
+ <summary>
+ 范围的中点
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange.Length">
  <summary>
  Length of the range (deffirence between maximum and minimum values)
@@ -15910,14 +15916,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange.IsInside(System.Double)">
  <summary>
- Check if the specified value is inside this range
+ [Contains?] Check if the specified value is inside this range
  </summary>
  
  <param name="x">Value to check</param>
  
  <returns><b>True</b> if the specified value is inside this range or
  <b>false</b> otherwise.</returns>
- 
+ <remarks>判断值是否在范围内</remarks>
 </member>
 <member name="M:Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange.IsInside(Microsoft.VisualBasic.ComponentModel.Ranges.Model.DoubleRange)">
  <summary>
@@ -25879,7 +25885,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="path"></param>
  <param name="encoding">Default value is <see cref="P:System.Text.Encoding.UTF8"/></param>
  <param name="suppress">Suppress error message??</param>
- <returns></returns>
+ <returns>
+ this function returns empty string if the given file is not exists andalso <paramref name="throwEx"/> configured as false
+ </returns>
  <remarks>
  (这个函数只建议读取小文本文件的时候使用)
  </remarks>
