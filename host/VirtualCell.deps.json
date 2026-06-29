@@ -40,12 +40,13 @@
           "Microsoft.VisualBasic.Math.Statistics.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.MIME.application.json.Reference": "1.0.0.0",
           "Microsoft.VisualBasic.Runtime.Reference": "5.33.69.2558",
+          "SMRUCC.genomics.Analysis.BNLearn.Reference": "1.0.0.0",
           "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference": "1.0.0.0",
           "SMRUCC.genomics.Core.Reference": "6.3.256.3655",
           "SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.Reference": "5.33.1.25",
           "SMRUCC.genomics.GCModeller.CompilerServices.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader.Reference": "5.0.1.2389",
-          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9662.29099",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference": "5.33.9676.28019",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Reference": "1.0.0.0",
           "SMRUCC.genomics.GCModeller.ModellingEngine.IO.Raw.Reference": "5.0.1.2389",
           "SMRUCC.genomics.GCModeller.ModellingEngine.Model.Reference": "1.0.0.0",
@@ -131,6 +132,28 @@
           "lib/net10.0/System.Resources.Extensions.dll": {
             "assemblyVersion": "10.0.0.0",
             "fileVersion": "10.0.926.27113"
+          }
+        }
+      },
+      "Cella/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Data.GraphTheory": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network": "1.0.0",
+          "Microsoft.VisualBasic.Data.visualize.Network.IO.Extensions": "1.0.0",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Analysis.BNLearn": "1.0.0",
+          "SMRUCC.genomics.Analysis.HTS.DataFrame": "1.0.0",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics": "1.0.0",
+          "SMRUCC.genomics.GCModeller.ModellingEngine.Model": "1.0.0",
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner": "1.0.0"
+        },
+        "runtime": {
+          "Cella.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -336,6 +359,22 @@
           }
         }
       },
+      "SMRUCC.genomics.Analysis.BNLearn/1.0.0": {
+        "dependencies": {
+          "Microsoft.VisualBasic.Data.Framework": "5.0.123",
+          "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
+          "Microsoft.VisualBasic.Math.Statistics": "1.0.0",
+          "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
+          "SMRUCC.genomics.Analysis.HTS.DataFrame": "1.0.0",
+          "SMRUCC.genomics.Core": "6.3.256.3655",
+          "SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner": "1.0.0"
+        },
+        "runtime": {
+          "SMRUCC.genomics.Analysis.BNLearn.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "SMRUCC.genomics.Analysis.HTS.DataFrame/1.0.0": {
         "dependencies": {
           "Microsoft.VisualBasic.Data.Bootstrapping.Fittings": "5.0.1.2389",
@@ -391,6 +430,7 @@
       },
       "SMRUCC.genomics.GCModeller.ModellingEngine.BootstrapLoader/5.0.1.2389": {
         "dependencies": {
+          "Cella": "1.0.0",
           "Microsoft.VisualBasic.Data.Framework": "5.0.123",
           "Microsoft.VisualBasic.Math.Core": "5.0.1.2389",
           "Microsoft.VisualBasic.Runtime": "5.0.1.2389",
@@ -613,6 +653,14 @@
           }
         }
       },
+      "SMRUCC.genomics.Analysis.BNLearn.Reference/1.0.0.0": {
+        "runtime": {
+          "SMRUCC.genomics.Analysis.BNLearn.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference/1.0.0.0": {
         "runtime": {
           "SMRUCC.genomics.Analysis.HTS.DataFrame.dll": {
@@ -653,10 +701,10 @@
           }
         }
       },
-      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9662.29099": {
+      "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9676.28019": {
         "runtime": {
           "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.dll": {
-            "assemblyVersion": "5.33.9662.29099",
+            "assemblyVersion": "5.33.9676.28019",
             "fileVersion": "5.33.0.0"
           }
         }
@@ -757,6 +805,11 @@
       "path": "system.resources.extensions/10.0.9",
       "hashPath": "system.resources.extensions.10.0.9.nupkg.sha512"
     },
+    "Cella/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "CellFarm/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -838,6 +891,11 @@
       "sha512": ""
     },
     "Microsoft.VisualBasic.Runtime/5.0.1.2389": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SMRUCC.genomics.Analysis.BNLearn/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -972,6 +1030,11 @@
       "serviceable": false,
       "sha512": ""
     },
+    "SMRUCC.genomics.Analysis.BNLearn.Reference/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "SMRUCC.genomics.Analysis.HTS.DataFrame.Reference/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
@@ -997,7 +1060,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9662.29099": {
+    "SMRUCC.genomics.GCModeller.ModellingEngine.Dynamics.Debugger.Reference/5.33.9676.28019": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

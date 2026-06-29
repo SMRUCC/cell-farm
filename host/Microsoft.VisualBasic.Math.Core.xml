@@ -1597,6 +1597,50 @@ Microsoft.VisualBasic.Math.Core
  <param name="k">产生的n阶帕斯卡(Pascal)矩阵</param>
  <remarks>Pascal GeneralMatrix即产生n阶的帕斯卡矩阵由杨辉三角形表组成的矩阵称为帕斯卡(Pascal)矩阵</remarks>
 </member>
+<member name="T:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps">
+ <summary>
+ 矩阵运算模块 - 使用 VB.NET 基础数学函数实现线性代数运算
+ 包含：矩阵乘法、转置、求逆、行列式、特征值分解等
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Multiply(System.Double[0:,0:],System.Double[0:,0:])">
+ <summary>矩阵乘法 C = A × B</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Transpose(System.Double[0:,0:])">
+ <summary>矩阵转置</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Add(System.Double[0:,0:],System.Double[0:,0:])">
+ <summary>矩阵加法</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Subtract(System.Double[0:,0:],System.Double[0:,0:])">
+ <summary>矩阵减法</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Scale(System.Double[0:,0:],System.Double)">
+ <summary>标量乘矩阵</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.MultiplyVec(System.Double[0:,0:],System.Double[])">
+ <summary>矩阵向量乘法 y = A × x</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Inverse(System.Double[0:,0:],System.Boolean)">
+ <summary>
+ 矩阵求逆 - 使用 Gauss-Jordan 消元法带部分主元选取
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Determinant(System.Double[0:,0:])">
+ <summary>计算行列式（递归展开法，适用于小矩阵）</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.JacobiEigen(System.Double[0:,0:])">
+ <summary>
+ 对称矩阵特征值分解 - 使用 Jacobi 旋转法
+ 返回 (eigenvalues, eigenvectors)，eigenvectors 的列是对应的特征向量
+ </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.Trace(System.Double[0:,0:])">
+ <summary>矩阵的迹（对角元素之和）</summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.MatrixOps.PrintMatrix(System.Double[0:,0:],System.String)">
+ <summary>打印矩阵（调试用）</summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.LinearAlgebra.Matrix.Numpy.argsort(System.Collections.Generic.IEnumerable{System.Double})">
  <summary>
  Perform an indirect sort along the given axis using the algorithm specified
@@ -5068,6 +5112,14 @@ Microsoft.VisualBasic.Math.Core
  </summary>
  <param name="pvalue"></param>
  <returns></returns>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Extensions.BHCorrection(System.Collections.Generic.IEnumerable{System.Double})">
+ <summary>
+ Benjamini-Hochberg FDR校正
+ <para>控制错误发现率 (False Discovery Rate)</para>
+ </summary>
+ <param name="pValues">原始p值数组</param>
+ <returns>校正后的q值数组 (与输入顺序一致)</returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Extensions.Iterates(System.ValueTuple{System.Int32,System.Int32})">
  <summary>

@@ -1,0 +1,1402 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+SMRUCC.genomics.Analysis.BNLearn
+</name>
+</assembly>
+<members>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode">
+ <summary>
+ 贝叶斯网络节点 —— 对应一个基因
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.Name">
+ <summary>节点名称（基因名）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.Index">
+ <summary>节点索引</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.Parents">
+ <summary>父节点索引列表（上游调控基因）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.Children">
+ <summary>子节点索引列表（下游靶基因）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.CPD">
+ <summary>该节点的条件概率分布参数</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnNode.Level">
+ <summary>节点层级（拓扑排序后）</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork">
+ <summary>
+ 贝叶斯网络 —— DAG 结构
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.Nodes">
+ <summary>所有节点</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.NameToIndex">
+ <summary>节点名 → 索引 的映射</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.Adjacency">
+ <summary>邻接矩阵：adj(i,j)=True 表示 i→j 存在有向边</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.Whitelist">
+ <summary>白名单边（必须存在的调控关系，来自TF注释）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.Blacklist">
+ <summary>黑名单边（禁止存在的边）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork._topoOrder">
+ <summary>拓扑排序结果（缓存）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork._topoDirty">
+ <summary>拓扑排序是否需要重新计算</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.#ctor(System.String[])">
+ <summary>根据基因名列表创建空网络</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.AddNode(System.String)">
+ <summary>添加节点</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.GetNodeIndex(System.String)">
+ <summary>获取节点索引，不存在返回 -1</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.AddEdge(System.Int32,System.Int32)">
+ <summary>添加有向边 fromIdx → toIdx</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.RemoveEdge(System.Int32,System.Int32)">
+ <summary>删除有向边</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.HasEdge(System.Int32,System.Int32)">
+ <summary>检查边是否存在</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.AddWhitelistEdge(System.Int32,System.Int32)">
+ <summary>添加白名单边</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.AddBlacklistEdge(System.Int32,System.Int32)">
+ <summary>添加黑名单边</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.WouldCreateCycle(System.Int32,System.Int32)">
+ <summary>检查添加边是否会形成环（DFS检测）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.IsDAG">
+ <summary>验证当前网络是否为 DAG</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.TopologicalSort">
+ <summary>获取拓扑排序（Kahn算法）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.GetEdges">
+ <summary>获取网络的边列表</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.EdgeCount">
+ <summary>获取边数</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.CloneStructure">
+ <summary>深拷贝网络结构（不拷贝CPD）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork.ToString">
+ <summary>输出网络摘要</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD">
+ <summary>
+ 高斯条件概率分布参数
+ Xi | Pa(Xi) ~ N(β0 + β1·Pa1 + β2·Pa2 + ... + βk·Pak, σ²)
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.NodeIndex">
+ <summary>所属节点索引</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.Intercept">
+ <summary>截距 β0</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.Coeffs">
+ <summary>回归系数 βj，对应每个父节点</summary>
+ <remarks>Coeffs(j) 对应 Parents(j) 的回归系数</remarks>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.ParentIndices">
+ <summary>父节点索引列表（与 Coeffs 一一对应）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.ResidualSD">
+ <summary>残差标准差 σ</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.ResidualVariance">
+ <summary>残差方差 σ²</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.RSquared">
+ <summary>拟合 R²</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.BIC">
+ <summary>BIC 评分</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.NSamples">
+ <summary>样本数</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.ConditionalMean(System.Double[])">
+ <summary>
+ 根据父节点值计算条件均值
+ E[Xi | Pa(Xi)] = β0 + Σ βj·Pa_j
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.Sample(System.Double[])">
+ <summary>
+ 从条件分布中采样
+ Xi ~ N(β0 + Σ βj·Pa_j, σ²)
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BnCPD.LogDensity(System.Double,System.Double[])">
+ <summary>
+ 计算条件概率密度
+ f(Xi | Pa(Xi)) = (1/√(2πσ²))·exp(-(Xi-μ)²/(2σ²))
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD">
+ <summary>
+ 被干预节点的 CPD —— 用于虚拟敲除/过表达
+ 将节点值固定为常数，忽略所有父节点
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD.InterventionType">
+ <summary>干预类型</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD.InterventionValue">
+ <summary>干预值（敲除=0，过表达=指定值）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD.InterventionMode.Knockout">
+ <summary>基因敲除（表达量设为0）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD.InterventionMode.Overexpression">
+ <summary>基因过表达（表达量设为指定高值）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.InterventionCPD.ConditionalMean(System.Double[])">
+ <summary>干预后：直接返回固定值</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow">
+ <summary>
+ BNLearn 工作流 —— 基因表达调控网络建模与虚拟干扰分析
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.ExpressionData">
+ <summary>基因表达矩阵</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.PriorNetwork">
+ <summary>先验调控网络（TF→靶基因 白名单）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.StructureParams">
+ <summary>结构学习参数</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.NormalizeData">
+ <summary>是否对表达数据做标准化</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.NSamples">
+ <summary>采样数（用于推断和干预分析）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.RandomSeed">
+ <summary>随机种子</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.FittedNetwork">
+ <summary>学习到的贝叶斯网络</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.StructureResult">
+ <summary>结构学习结果</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.ParameterResult">
+ <summary>参数学习结果</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.LoadData(System.String,System.String)">
+ <summary>
+ 步骤1：加载数据
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.LearnStructure">
+ <summary>
+ 步骤2：结构学习
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.LearnParameters">
+ <summary>
+ 步骤3：参数学习
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.KnockoutGene(System.String,System.Int32)">
+ <summary>
+ 步骤4：虚拟基因敲除
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.OverexpressGene(System.String,System.Int32)">
+ <summary>
+ 步骤4：虚拟基因过表达
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.DynamicKnockout(System.String,System.Int32,System.Int32)">
+ <summary>
+ 步骤4：动态级联敲除模拟
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.BatchKnockout(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+ <summary>
+ 批量敲除所有基因
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.BatchKnockout(System.Int32)">
+ <summary>
+ 批量敲除所有基因
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.RunFullLearning">
+ <summary>
+ 完整工作流：结构学习 + 参数学习
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.BNLearnWorkflow.SaveResults(System.String)">
+ <summary>
+ 保存所有结果到文件
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData">
+ <summary>
+ 基因表达矩阵
+ 行 = 基因，列 = 样本（可能包含多个时间点）
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GeneNames">
+ <summary>基因名称列表</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.SampleNames">
+ <summary>样本名称列表</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.Matrix">
+ <summary>表达矩阵 [gene, sample]，基因×样本</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.TimePoints">
+ <summary>时间点标签（每个样本对应的时间点）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.UniqueTimePoints">
+ <summary>唯一时间点列表（排序后）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.NGene">
+ <summary>基因数量</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.NSample">
+ <summary>样本数量</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GetGeneExpression(System.Int32)">
+ <summary>获取指定基因的表达向量</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GetSample(System.Int32)">
+ <summary>获取指定样本的所有基因表达值</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GetSampleIndicesAtTime(System.Double)">
+ <summary>获取指定时间点的所有样本索引</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GetSubMatrixAtTime(System.Double)">
+ <summary>获取指定时间点的子矩阵</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.Standardize">
+ <summary>Z-score 标准化（每基因减均值除标准差）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.QuantileNormalize">
+ <summary>分位数归一化</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData.GetGeneIndex(System.String)">
+ <summary>获取基因索引</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge">
+ <summary>
+ 转录调控关系
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge.TF">
+ <summary>转录因子名称</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge.TargetGene">
+ <summary>靶基因名称</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge.RegulationType">
+ <summary>调控类型（激活/抑制）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge.Confidence">
+ <summary>置信度分数（0-1）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge.Evidence">
+ <summary>证据来源</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork">
+ <summary>
+ 先验调控网络
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.Edges">
+ <summary>调控关系列表</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.TFNames">
+ <summary>所有转录因子名称</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.TargetNames">
+ <summary>所有靶基因名称</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.AddEdge(System.String,System.String,System.String,System.Double,System.String)">
+ <summary>添加调控关系</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.GetRegulators(System.String)">
+ <summary>获取指定靶基因的所有上游TF</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.GetTargets(System.String)">
+ <summary>获取指定TF的所有靶基因</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.ToWhitelist(System.String[])">
+ <summary>转换为白名单边列表（使用基因表达矩阵的索引）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork.GetAllGeneNames">
+ <summary>获取所有涉及的基因名</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNodeType">
+ <summary>
+ Type of node in the Dynamic Bayesian Network.
+ Determines how the node participates in inference and coupling.
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNodeType.Gene">
+ <summary>Target gene or operon being regulated. Expression predicted by CPT.</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNodeType.TranscriptionFactor">
+ <summary>Transcription factor (protein or RNA). State provided as evidence from ODEs.</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNodeType.EffectorMetabolite">
+ <summary>Effector metabolite that modulates TF activity. Concentration from ODEs.</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable">
+ <summary>
+ Conditional Probability Table (CPT) for a DBN node.
+ Stores P(node_state | parent_states) for all combinations of parent states.
+ 
+ The table is indexed by a string key formed by joining parent state values
+ with the "|" separator. Each entry contains a probability distribution over
+ the child node's states.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.VariableId">
+ <summary>ID of the variable (child node) this CPT belongs to</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.ParentIds">
+ <summary>Ordered list of parent node IDs (order matters for key construction)</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.States">
+ <summary>Discrete states of the child node (e.g., "Low", "Medium", "High")</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.Table">
+ <summary>
+ Probability table: key = "|"-joined parent states, value = probability array.
+ The array is aligned with the States list.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.GetKey(System.Collections.Generic.List{System.String})">
+ <summary>Build the lookup key from an ordered list of parent state values</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.GetDistribution(System.Collections.Generic.List{System.String})">
+ <summary>
+ Get the probability distribution over child states given a parent configuration.
+ Returns a cloned array (safe to modify).
+ If the configuration is not in the table, returns a uniform distribution.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.SetDistribution(System.Collections.Generic.List{System.String},System.Double[])">
+ <summary>Set the probability distribution for a parent configuration</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.ConditionalProbabilityTable.GetAllParentConfigurations(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}})">
+ <summary>
+ Enumerate all possible parent state combinations (Cartesian product).
+ Used for CPT initialization and parameter learning.
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode">
+ <summary>
+ A node in the Dynamic Bayesian Network.
+ Represents a gene/operon, transcription factor, or effector metabolite.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.NodeId">
+ <summary>Unique node identifier (matches TF_id, target_operon, or metabolite ID)</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.NodeType">
+ <summary>Type of this node (Gene, TranscriptionFactor, or EffectorMetabolite)</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.States">
+ <summary>Discrete states (default: Low, Medium, High)</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.ParentIds">
+ <summary>
+ Parent node IDs at time t that influence this node at time t+1.
+ For gene nodes: the TFs and effector metabolites that regulate this gene.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.CPT">
+ <summary>Conditional Probability Table for this node</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.EffectorMetabolites">
+ <summary>
+ For TF nodes: effector metabolites and their effect types.
+ Key = metabolite ID, Value = effect type (Activator/Inhibitor/Unknown).
+ Populated from RegulatoryLink.effector.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.DefaultRegulatoryDirection">
+ <summary>
+ For TF nodes without effectors: default regulatory direction.
+ Used when a TF regulates a gene directly without an effector metabolite.
+ Default is Activator.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.RegulatorTFs">
+ <summary>For gene nodes: list of TF IDs that regulate this gene</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode.TFEffectors">
+ <summary>
+ For gene nodes: mapping from TF ID to its effector metabolite IDs.
+ Key = TF ID, Value = list of effector metabolite IDs for that TF.
+ Used during CPT initialization to compute activation scores.
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult">
+ <summary>
+ Result of a DBN prediction step.
+ Contains gene expression states, probability distributions, and RNA abundance
+ change rates for coupling with the metabolic network ODEs.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.GeneStates">
+ <summary>Gene/operon ID -> predicted state ("Low", "Medium", or "High")</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.GeneProbabilities">
+ <summary>Gene/operon ID -> full probability distribution over states [P(Low), P(Med), P(High)]</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.GeneStateProbabilities">
+ <summary>Gene/operon ID -> probability of the predicted (most likely) state</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.RNAAbundanceChanges">
+ <summary>
+ Gene/operon ID -> expected RNA transcript abundance change rate.
+ Range: [LowTranscriptionRate, HighTranscriptionRate] (default [0, 1]).
+ This is the expected transcription rate: E[rate] = sum(P(state) * rate(state)).
+ 
+ Usage in ODEs:
+   dR/dt = k_synthesis * RNAAbundanceChange - k_degradation * R
+ where R is the RNA transcript concentration.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.OperonGeneMapping">
+ <summary>Operon ID -> list of gene IDs in that operon</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.GetGeneRNAAbundanceChange(System.String)">
+ <summary>
+ Get RNA abundance change for a specific gene (based on its operon's prediction).
+ Returns 0.0 if the gene is not found in any operon.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult.GetGeneState(System.String)">
+ <summary>
+ Get predicted state for a specific gene (based on its operon's prediction).
+ Returns "Medium" if the gene is not found.
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig">
+ <summary>
+ Configuration options for the Dynamic Bayesian Network.
+ Controls discretization thresholds, smoothing, transcription rate mapping, etc.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.SmoothingAlpha">
+ <summary>
+ Smoothing parameter for parameter learning (Dirichlet prior concentration).
+ Larger values give more weight to the topology-based prior.
+ When alpha = 0: pure Maximum Likelihood Estimation (data only).
+ When alpha is large: prior dominates (topology only).
+ Default = 1.0 (Laplace smoothing with topology prior).
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.UseMultinomialSampling">
+ <summary>
+ If true, sample from the probability distribution (stochastic prediction).
+ If false, take the most likely state (deterministic, argmax).
+ Default = false (deterministic).
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.LowThreshold">
+ <summary>Lower threshold for discretization (values below this = "Low")</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.HighThreshold">
+ <summary>Upper threshold for discretization (values above this = "High")</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.HighTranscriptionRate">
+ <summary>Transcription rate for "High" expression state</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.BasalTranscriptionRate">
+ <summary>Transcription rate for "Medium" expression state (basal)</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.LowTranscriptionRate">
+ <summary>Transcription rate for "Low" expression state</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.Seed">
+ <summary>Random seed for reproducible stochastic sampling</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig.OnlineLearningRate">
+ <summary>Learning rate for online parameter updates (exponential moving average)</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork">
+ <summary>
+ Dynamic Bayesian Network for gene regulatory network simulation.
+ 
+ This DBN implements a 2-slice temporal Bayesian network (2TBN) where:
+ - Gene/operon expression at time t+1 depends on TF and metabolite states at time t
+ - TF states are provided as evidence from the ODE solver (TF protein/RNA abundance)
+ - Metabolite concentrations are provided as evidence from the ODE solver
+ 
+ The DBN supports two modes:
+ 1. Topology-only mode: Uses RegulatoryLink topology to initialize CPTs based on
+    biological heuristics (activator/inhibitor effects via noisy-OR/AND gates).
+    No RNAseq data required.
+ 2. Data-fitting mode: Uses RNAseq time-series data to learn CPT parameters,
+    with the topology-based CPTs serving as a Dirichlet prior.
+ 
+ Coupling with metabolic network ODEs:
+ - DBN -> ODEs: Predicted gene states are mapped to RNA transcript abundance
+   change rates (expected transcription rate), which serve as transcription rate
+   terms in the ODEs: dR/dt = k_synthesis * rate - k_degradation * R
+ - ODEs -> DBN: Metabolite concentrations and TF abundances from the ODEs are
+   discretized (Low/Medium/High) and used as evidence for DBN inference.
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.Config">
+ <summary>Configuration for the DBN (discretization, smoothing, rates, etc.)</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.#ctor">
+ <summary>Default constructor with default configuration</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.#ctor(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNConfig)">
+ <summary>Constructor with custom configuration</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.BuildFromTopology(System.Collections.Generic.IEnumerable{SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink})">
+ <summary>
+ Build the DBN structure from a list of RegulatoryLink objects.
+ 
+ This method:
+ 1. Creates nodes for all TFs, effector metabolites, and target operons
+ 2. Sets up parent-child relationships (gene -> TF + effector parents)
+ 3. Initializes CPTs based on biological heuristics (noisy-OR/AND gates)
+ 
+ After calling this method, the DBN is ready for prediction (topology-only mode)
+ or parameter learning (data-fitting mode).
+ </summary>
+ <param name="links">List of regulatory links defining the network topology</param>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.InitializeCPT(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode)">
+ <summary>
+ Initialize the CPT for a node based on its type and parent relationships.
+ For gene nodes, uses biological heuristics (noisy-OR/AND combination of
+ activator and inhibitor effects). For other nodes, uses uniform distributions.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.ComputeDefaultDistribution(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode,System.Collections.Generic.List{System.String})">
+ <summary>
+ Compute the default probability distribution for a gene node given parent states.
+ Uses the activation score to determine the distribution shape:
+ - High activation score -> P(High) dominant
+ - Moderate score -> P(Medium) dominant
+ - Low score (inhibited) -> P(Low) dominant
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.ComputeActivationScore(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNNode,System.Collections.Generic.List{System.String})">
+ <summary>
+ Compute the activation score for a gene given parent (TF and metabolite) states.
+ 
+ Uses a noisy-OR / noisy-AND combination model:
+ - For activators: P(activation) = 1 - prod(1 - p_i)  [noisy-OR]
+ - For inhibitors: P(inhibition) = 1 - prod(1 - q_j)  [noisy-OR]
+ - Net score = activation - inhibition, mapped to [0, 1]
+ 
+ Interpretation of Effector enum (net effect on gene expression):
+ - Activator: high effector concentration promotes gene activation
+ - Inhibitor: high effector concentration promotes gene inhibition
+ - Unknown: neutral effect (no contribution)
+ 
+ For TFs without effectors, uses the TF's DefaultRegulatoryDirection.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.StateToScore(System.String)">
+ <summary>Convert a state string to a numeric score (Low=0, Medium=0.5, High=1)</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.LearnParameters(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Double}},System.Collections.Generic.Dictionary{System.String,System.Tuple{System.Double,System.Double}})">
+ <summary>
+ Learn CPT parameters from RNAseq time-series data.
+ 
+ Uses Bayesian estimation with Dirichlet prior:
+   P(s|parents) = (count(s) + alpha * prior(s)) / (total + alpha)
+ where:
+   - count(s) is the observed count of state s given the parent configuration
+   - alpha is the smoothing parameter (Config.SmoothingAlpha)
+   - prior(s) is the topology-based probability (serves as base distribution)
+ 
+ When alpha is large, the prior (topology) dominates.
+ When alpha is small, the data dominates.
+ When no data is available for a configuration, the prior is retained.
+ </summary>
+ <param name="rnaSeqTimeSeries">
+ List of time points. Each time point is a dictionary mapping
+ node_id (gene/TF/metabolite) -> abundance value (continuous).
+ Values should be normalized to [0, 1] for default thresholds,
+ or custom thresholds should be provided.
+ </param>
+ <param name="customThresholds">
+ Optional per-node discretization thresholds.
+ Key = node ID, Value = Tuple(low_threshold, high_threshold).
+ If not provided, uses Config.LowThreshold and Config.HighThreshold.
+ </param>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.UpdateParametersOnline(System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Online parameter update using exponential moving average (EMA).
+ Useful for incremental learning during simulation.
+ 
+ For each transition (current -> next), updates the CPT entry:
+   P(s|parents) = (1 - lr) * P_old(s|parents) + lr * target(s)
+ where target(s) = 1 if s == observed_next_state, else 0.
+ </summary>
+ <param name="currentStates">Discrete states at time t (node_id -> state string)</param>
+ <param name="nextStates">Discrete states at time t+1 (node_id -> state string)</param>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.PredictNextState(System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Predict the next-state gene expression given current metabolite and TF abundances.
+ 
+ This is the main interface for ODEs -> DBN coupling.
+ 
+ Algorithm:
+ 1. Discretize metabolite concentrations and TF abundances into Low/Medium/High
+ 2. For each gene node, look up CPT: P(gene[t+1] | parents[t])
+ 3. Determine predicted state (argmax or sampled)
+ 4. Compute expected RNA transcription rate from the distribution
+ 
+ Usage:
+   Dim result = dbn.PredictNextState(metabolites, tfAbundances)
+   ' result.GeneStates: operon_id -> "Low"/"Medium"/"High"
+   ' result.RNAAbundanceChanges: operon_id -> transcription rate [0, 1]
+ </summary>
+ <param name="metaboliteAbundances">
+ Metabolite ID -> concentration (normalized to [0, 1] recommended).
+ These come from the metabolic network ODEs.
+ </param>
+ <param name="tfAbundances">
+ TF ID -> abundance (normalized to [0, 1] recommended).
+ These come from the TF protein/RNA ODEs.
+ </param>
+ <param name="currentGeneStates">
+ Optional: current gene states for parent nodes that lack evidence.
+ Used when a gene is also a TF (regulated by other TFs).
+ </param>
+ <returns>Prediction result with gene states, probabilities, and RNA abundance changes</returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.ComputeExpectedRNARate(System.Double[],System.Collections.Generic.List{System.String})">
+ <summary>
+ Compute the expected RNA transcript abundance change rate from a distribution.
+ 
+ E[rate] = P(High) * k_high + P(Medium) * k_basal + P(Low) * k_low
+ 
+ This value represents the expected transcription rate and can be used
+ directly in ODE models:
+   dR/dt = k_synthesis * E[rate] - k_degradation * R
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.ComputeLogLikelihood(System.Collections.Generic.List{System.Collections.Generic.Dictionary{System.String,System.Double}},System.Collections.Generic.Dictionary{System.String,System.Tuple{System.Double,System.Double}})">
+ <summary>
+ Compute the log-likelihood of the data given the current model.
+ Useful for model evaluation, comparison, and convergence checking.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetThresholds(System.String,System.Collections.Generic.Dictionary{System.String,System.Tuple{System.Double,System.Double}})">
+ <summary>Get discretization thresholds for a node</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.DiscretizeValue(System.Double,System.Double,System.Double)">
+ <summary>Discretize a continuous value into Low/Medium/High</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetNode(System.String)">
+ <summary>Get a node by ID (returns Nothing if not found)</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetAllNodes">
+ <summary>Get all nodes in the network</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetGeneNodes">
+ <summary>Get all gene/operon nodes</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetTFNodes">
+ <summary>Get all transcription factor nodes</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetMetaboliteNodes">
+ <summary>Get all effector metabolite nodes</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetOperonGeneMapping">
+ <summary>Get the operon-to-genes mapping</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetMarginalDistribution(System.String)">
+ <summary>
+ Compute the marginal distribution of a node (averaging over all parent configs).
+ Useful for initialization and debugging.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.ResetToTopologyPrior">
+ <summary>Reset all CPTs to topology-based defaults (discard learned parameters)</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.GetSummary">
+ <summary>Get a summary string of the DBN structure (for debugging)</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.SaveToFile(System.String)">
+ <summary>
+ Save the DBN (structure + learned parameters) to a text file.
+ Format: simple pipe-delimited text, human-readable.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork.LoadFromFile(System.String)">
+ <summary>Load the DBN from a text file (saved by SaveToFile)</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler">
+ <summary>
+ Coupling interface between the DBN and metabolic network ODEs.
+ Provides a clean interface for bidirectional data exchange.
+ 
+ Usage in the virtual cell simulation loop:
+ 
+   Dim coupler As New DBNODECoupler(dbn)
+   For Each timeStep In simulation
+       ' ODEs -> DBN: pass metabolite and TF abundances
+       Dim result = coupler.Step(metaboliteConcentrations, tfAbundances)
+       
+       ' DBN -> ODEs: get transcription rates for ODE integration
+       Dim transcriptionRates = coupler.GetRNATranscriptionRates(result)
+       
+       ' Use transcriptionRates in ODE solver: dR/dt = k_syn * rate - k_deg * R
+       ... integrate ODEs for one time step ...
+   Next
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.DBN">
+ <summary>The underlying DBN</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.#ctor(SMRUCC.genomics.Analysis.BNLearn.DBN.DynamicBayesianNetwork)">
+ <summary>Create a coupler for the given DBN</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.Step(System.Collections.Generic.Dictionary{System.String,System.Double},System.Collections.Generic.Dictionary{System.String,System.Double})">
+ <summary>
+ ODEs -> DBN: Execute one prediction step.
+ 
+ Takes metabolite concentrations and TF abundances from the ODEs,
+ runs DBN inference, and returns the prediction result.
+ 
+ The coupler internally tracks gene states between steps for
+ nodes that lack direct evidence (e.g., genes that are also TFs).
+ </summary>
+ <param name="metaboliteAbundances">Metabolite ID -> concentration (from ODEs)</param>
+ <param name="tfAbundances">TF ID -> abundance (from ODEs)</param>
+ <returns>Prediction result with gene states and RNA abundance changes</returns>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.GetRNATranscriptionRates(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult)">
+ <summary>
+ DBN -> ODEs: Get RNA transcript abundance change rates for ODE integration.
+ 
+ Returns a dictionary mapping each gene ID to its expected transcription rate.
+ Genes in the same operon share the same rate (co-transcribed).
+ 
+ Usage in ODEs:
+   dR_gene/dt = k_synthesis * transcriptionRates(gene) - k_degradation * R_gene
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.GetGeneTranscriptionRate(SMRUCC.genomics.Analysis.BNLearn.DBN.DBNPredictionResult,System.String)">
+ <summary>
+ DBN -> ODEs: Get RNA abundance change for a specific gene.
+ Convenience method for accessing a single gene's transcription rate.
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.UpdateParametersOnline(System.Collections.Generic.Dictionary{System.String,System.String},System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ ODEs -> DBN: Provide observed gene states for online parameter update.
+ 
+ After observing actual gene expression (e.g., from RNAseq or reporter assays),
+ call this method to incrementally update the DBN's CPT parameters.
+ </summary>
+ <param name="currentStates">Discrete states at time t</param>
+ <param name="nextStates">Discrete states at time t+1</param>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.DBN.DBNODECoupler.Reset">
+ <summary>Reset the coupler's internal state (gene state tracking)</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink">
+ <summary>
+ Gene regulatory network
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.TF_id">
+ <summary>
+ transcript factor protein/rna id
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.TF_family">
+ <summary>
+ family of the TF
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.TFBS_id">
+ <summary>
+ motif id of the TFBS site
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.effector">
+ <summary>
+ effector metabolite of this TF its regulation function
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.target_operon">
+ <summary>
+ target operon id that this TF regulates
+ </summary>
+ <returns></returns>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.RegulatoryLink.regulate_genes">
+ <summary>
+ the operon member genes, TF regulates this operon member genes theirs transcription.
+ </summary>
+ <returns></returns>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Effector">
+ <summary>
+ effects of the effector to the TF protein
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine">
+ <summary>
+ 概率推断引擎
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.#ctor(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork)">
+ <summary>初始化推断引擎</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.Sample(System.Int32,System.Int32)">
+ <summary>
+ 从拟合的网络中采样生成模拟数据
+ 按拓扑排序依次采样：Xi ~ N(β0 + Σβj·Pa_j, σ²)
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.SampleAsGeneData(System.Int32,System.Int32)">
+ <summary>
+ 采样并返回 GeneExpressionData 格式
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.ConditionalInference(System.Int32[],System.Double[],System.Int32[])">
+ <summary>
+ 精确条件推断（高斯贝叶斯网络闭式解）
+ 给定证据变量值，计算查询变量的条件分布
+ 
+ 对于线性高斯模型：
+   P(X_query | X_evidence = e) = N(μ_cond, Σ_cond)
+   μ_cond = μ_q + Σ_qe · Σ_ee^(-1) · (e - μ_e)
+   Σ_cond = Σ_qq - Σ_qe · Σ_ee^(-1) · Σ_eq
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.ComputeJointMeans">
+ <summary>
+ 计算联合分布均值向量
+ 对于 GBN：μ = (I - B)^(-1) · β0
+ 其中 B 是回归系数矩阵，β0 是截距向量
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.ComputeJointCovariance">
+ <summary>
+ 计算联合分布协方差矩阵
+ Σ = (I - B)^(-1) · D · ((I - B)^(-1))'
+ 其中 D = diag(σ1², σ2², ..., σn²)
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Inference.BnInferenceEngine.Predict(System.Int32[],System.Double[],System.Int32,System.Int32)">
+ <summary>
+ 给定部分基因的表达值，预测其余基因的表达值
+ 使用采样推断（更稳健）
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer">
+ <summary>
+ 虚拟干扰分析引擎
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.#ctor(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork,SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData)">
+ <summary>初始化</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.AnalyzeIntervention(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec,System.Int32,System.Int32)">
+ <summary>
+ 执行单基因虚拟干扰分析
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.DynamicIntervention(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ 动态级联模拟：模拟敲除后多个时间步的表达变化
+ 每个时间步的输出作为下一个时间步的输入
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.BatchIntervention(System.Int32[],SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode,System.Int32,System.Int32)">
+ <summary>
+ 批量干扰分析：对多个基因逐一进行敲除/过表达
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.ComputeWildtypeMeans(System.Int32,System.Int32)">
+ <summary>
+ 计算野生型基线表达值（从原始网络采样）
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.BnInterventionAnalyzer.CreateInterventionNetwork(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec,System.Double[])">
+ <summary>
+ 创建干预网络（do-演算核心操作）
+ 1. 删除被干预基因的所有入边
+ 2. 将 CPD 替换为常数分布
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter">
+ <summary>
+ 虚拟扰动结果比较分析导出器
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.CollectAllGeneNames">
+ <summary>
+ 从 InterventionResult 数组中提取所有唯一的基因名（排序后）
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.CollectConditionLabels">
+ <summary>
+ 从 InterventionResult 数组中提取所有扰动条件标签
+ 格式：GeneName_Mode（如 "TP53_Knockout"、"MYC_Overexpression"）
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.BuildGeneIndexMap(System.String[])">
+ <summary>
+ 构建基因名 → 索引 的映射
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExtractMetric(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult,System.String[],System.Collections.Generic.Dictionary{System.String,System.Int32},SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMetric)">
+ <summary>
+ 从单个 InterventionResult 中按基因名提取指定指标值
+ 返回与 allGeneNames 等长的数组，缺失基因填 NaN
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.BuildComparisonMatrix(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMetric)">
+ <summary>
+ 构建比较矩阵 [nGenes × nConditions]
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportFoldChangeMatrix(System.String)">
+ <summary>
+ 导出 FoldChange 比较矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = log2 FoldChange
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportPercentChangeMatrix(System.String)">
+ <summary>
+ 导出 PercentChange 比较矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = 表达变化百分比
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportSignificanceMatrix(System.String)">
+ <summary>
+ 导出显著性矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = 1(显著) / 0(不显著)
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportZScoreMatrix(System.String)">
+ <summary>
+ 导出 Z-Score 比较矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = Z-score
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportWildtypeMatrix(System.String)">
+ <summary>
+ 导出野生型均值矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = 野生型表达均值
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportMutantMatrix(System.String)">
+ <summary>
+ 导出突变型均值矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = 扰动后表达均值
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportComprehensiveTable(System.String)">
+ <summary>
+ 导出综合比较矩阵（宽表格式 CSV）
+ 每行 = 一个基因在一个扰动条件下的完整指标
+ 列：Gene, Condition, InterventionGene, InterventionMode,
+      WildtypeMean, MutantMean, FoldChange, PercentChange, ZScore, Significant
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportConditionSimilarityMatrix(System.String)">
+ <summary>
+ 导出扰动条件之间的相似性矩阵（CSV）
+ 基于 FoldChange 向量的 Pearson 相关系数
+ 行/列 = 扰动条件，值 = 相关系数
+ 用于聚类分析：哪些基因的敲除产生相似的下游效应
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportGeneSensitivityMatrix(System.String)">
+ <summary>
+ 导出基因敏感性谱矩阵（CSV）
+ 行 = 基因，列 = 扰动条件，值 = |FoldChange|
+ 用于识别"脆弱基因"——对多种扰动都敏感的基因
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportInterventionRanking(System.String,System.Int32)">
+ <summary>
+ 导出每个扰动条件下受影响最大的基因排名表（CSV）
+ 按 |FoldChange| 降序排列
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportPathwaySummaryMatrix(System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.MetabolicModel.MetabolicPathway},System.String)">
+ <summary>
+ 导出通路级别扰动效应汇总矩阵（CSV）
+ 将基因级别的 FoldChange 按通路聚合（取均值/中位数/显著基因数）
+ 行 = 通路，列 = 扰动条件
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportCrossImpactMatrix(System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.MetabolicModel.MetabolicPathway},System.String)">
+ <summary>
+ 导出扰动-通路交叉影响矩阵（CSV）
+ 行 = 扰动条件，列 = 通路
+ 值 = 该扰动对该通路中显著受影响基因的比例
+ 用于热图可视化
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ExportAll(System.String,System.Collections.Generic.Dictionary{System.String,SMRUCC.genomics.MetabolicModel.MetabolicPathway},System.Int32)">
+ <summary>
+ 一键导出所有比较分析矩阵到指定目录
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMetric">
+ <summary>
+ 比较指标枚举
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix">
+ <summary>
+ 比较矩阵数据结构
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix.GeneNames">
+ <summary>基因名列表（行标题）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix.ConditionLabels">
+ <summary>扰动条件标签列表（列标题）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix.Metric">
+ <summary>指标类型</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix.Matrix">
+ <summary>矩阵数据 [gene, condition]</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.WriteComparisonMatrixCSV(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.ComparisonMatrix,System.String,System.String,System.String)">
+ <summary>
+ 将比较矩阵写入 CSV 文件
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionComparisonExporter.FormatVal(System.Double,System.String)">
+ <summary>
+ 格式化数值（NaN → "NA"）
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode">
+ <summary>
+ 干预模式
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode.Knockout">
+ <summary>基因敲除（设为0）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode.Overexpression">
+ <summary>基因过表达（设为高值）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode.Knockdown">
+ <summary>基因下调（设为低值）</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionMode.Custom">
+ <summary>自定义值干预</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult">
+ <summary>
+ 干预分析结果
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.Spec">
+ <summary>干预定义</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.WildtypeMeans">
+ <summary>野生型（对照）表达值</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.MutantMeans">
+ <summary>干扰后表达值</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.FoldChanges">
+ <summary>表达变化量（Mutant - Wildtype）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.PercentChanges">
+ <summary>表达变化百分比</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.IsSignificant">
+ <summary>变化是否显著</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.GeneNames">
+ <summary>基因名称列表</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.ZScores">
+ <summary>Z-Score（标准化效应量）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.WildtypeSDs">
+ <summary>野生型标准差（每个基因）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.NAffected">
+ <summary>受影响的基因数量（显著变化的）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.DynamicTrajectory">
+ <summary>动态级联结果（多时间步）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.GetTopChangedGenes(System.Int32)">
+ <summary>获取变化最大的前N个基因</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult.ToString">
+ <summary>输出摘要字符串</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec">
+ <summary>
+ 单次干预定义
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec.GeneIndex">
+ <summary>目标基因索引</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec.GeneName">
+ <summary>目标基因名称</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec.Mode">
+ <summary>干预模式</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec.Value">
+ <summary>干预值（Custom 模式下使用）</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionSpec.GetInterventionValue(System.Double,System.Double)">
+ <summary>根据干预模式获取实际干预值</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO">
+ <summary>
+ 数据读写工具
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.ReadGeneExpressionMatrix(SMRUCC.genomics.Analysis.HTS.DataFrame.Matrix,SMRUCC.genomics.GCModeller.Workbench.ExperimentDesigner.SampleInfo[],System.String)">
+ <summary>
+ 从 CSV/TSV 文件读取基因表达矩阵
+ 格式：第一列为基因名，第一行为样本名，其余为表达值
+ </summary>
+ 
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.ReadPriorNetwork(System.Collections.Generic.IEnumerable{SMRUCC.genomics.Analysis.BNLearn.Core.RegulatoryEdge})">
+ <summary>
+ 从 CSV/TSV 读取先验调控网络
+ 格式：TF, TargetGene, RegulationType, Confidence, Evidence
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.WriteNetworkStructure(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork,System.String)">
+ <summary>
+ 将网络结构写入 TSV 文件
+ 格式：From, To, EdgeType
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.WriteCPDParameters(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork,System.String)">
+ <summary>
+ 将 CPD 参数写入 TSV 文件
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.WriteInterventionResult(SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult,System.String)">
+ <summary>
+ 将干预分析结果写入 TSV 文件
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.IO.BnIO.WriteBatchInterventionResults(System.Collections.Generic.List{SMRUCC.genomics.Analysis.BNLearn.Intervention.InterventionResult},System.String)">
+ <summary>
+ 将批量干预结果写入汇总 TSV
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.BnParameterLearner">
+ <summary>
+ 贝叶斯网络参数学习器
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.BnParameterLearner.Learn(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork,SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData)">
+ <summary>
+ 从数据学习网络参数
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.BnParameterLearner.OLS(System.Double[0:,0:],System.Double[],System.Int32,System.Int32)">
+ <summary>
+ OLS 最小二乘法
+ </summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult">
+ <summary>
+ 参数学习结果
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult.Network">
+ <summary>拟合后的网络（含CPD参数）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult.TotalLogLikelihood">
+ <summary>总对数似然</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult.TotalBIC">
+ <summary>总 BIC</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult.AverageRSquared">
+ <summary>平均 R²</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.ParameterLearning.ParameterLearningResult.ElapsedMs">
+ <summary>参数学习耗时（毫秒）</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureAlgorithm">
+ <summary>
+ 结构学习算法类型
+ </summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureAlgorithm.HillClimbing">
+ <summary>Hill-Climbing 贪心搜索</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureAlgorithm.Tabu">
+ <summary>Tabu 禁忌搜索</summary>
+</member>
+<member name="F:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureAlgorithm.MMHC">
+ <summary>MMHC 混合算法（推荐）</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner">
+ <summary>
+ 贝叶斯网络结构学习器
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.Learn(SMRUCC.genomics.Analysis.BNLearn.Core.GeneExpressionData,SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams,SMRUCC.genomics.Analysis.BNLearn.Core.PriorNetwork)">
+ <summary>
+ 从基因表达数据学习网络结构
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.MMPCPhase(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork)">
+ <summary>
+ MMPC 阶段：为每个节点找到候选父节点集合
+ 使用偏相关系数的条件独立性检验
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.PartialCorrelation(System.Int32,System.Int32,System.Collections.Generic.List{System.Int32})">
+ <summary>
+ 计算偏相关系数 ρ(x, y | Z)
+ 使用递推公式从全相关矩阵计算
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.ComputeNetworkBIC(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork)">
+ <summary>
+ 计算整个网络的 BIC 评分
+ BIC = Σ BIC_node
+ BIC_node = -2·LL_node + k_node·log(n)
+ 对于高斯BN：LL_node = -n/2·log(2πσ²) - 1/(2σ²)·RSS
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.ComputeNodeBIC(SMRUCC.genomics.Analysis.BNLearn.Core.BayesianNetwork,System.Int32,System.Int32)">
+ <summary>
+ 计算单个节点的 BIC
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.BuildDesignMatrix(System.Collections.Generic.List{System.Int32},System.Int32)">
+ <summary>构建回归设计矩阵</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.LinearRegression(System.Double[0:,0:],System.Double[],System.Int32,System.Int32)">
+ <summary>
+ 多元线性回归（最小二乘法）
+ β = (X'X)^(-1) X'y
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.MatrixInverse(System.Double[0:,0:],System.Int32)">
+ <summary>
+ 矩阵求逆（高斯-约旦消元法）
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.TDistPValue(System.Double,System.Int32)">
+ <summary>
+ t 分布 P 值（双侧）的近似计算
+ 使用正态近似（大样本）或查表插值
+ </summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.NormalCDF(System.Double)">
+ <summary>标准正态 CDF 近似</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.IncompleteBeta(System.Double,System.Double,System.Double)">
+ <summary>不完全 Beta 函数近似</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.BetaCF(System.Double,System.Double,System.Double)">
+ <summary>Beta 连分数展开</summary>
+</member>
+<member name="M:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.BnStructureLearner.GammaLn(System.Double)">
+ <summary>Gamma 函数对数（Stirling 近似）</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams">
+ <summary>
+ 结构学习参数
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.Algorithm">
+ <summary>算法类型</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.Alpha">
+ <summary>显著性水平 alpha（用于独立性检验）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.MaxParents">
+ <summary>最大父节点数</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.TabuLength">
+ <summary>Tabu 搜索的禁忌表长度</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.MaxIterations">
+ <summary>最大迭代次数</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.BICPenalty">
+ <summary>BIC 惩罚系数（>1 更稀疏）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.UseWhitelist">
+ <summary>是否使用白名单先验</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.UseBlacklist">
+ <summary>是否使用黑名单</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningParams.RandomSeed">
+ <summary>随机种子</summary>
+</member>
+<member name="T:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult">
+ <summary>
+ 结构学习结果
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult.Network">
+ <summary>学习到的网络</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult.FinalBIC">
+ <summary>最终 BIC 评分</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult.Iterations">
+ <summary>迭代次数</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult.ElapsedMs">
+ <summary>学习耗时（毫秒）</summary>
+</member>
+<member name="P:SMRUCC.genomics.Analysis.BNLearn.StructureLearning.StructureLearningResult.BICHistory">
+ <summary>每步 BIC 变化记录</summary>
+</member>
+</members>
+</doc>

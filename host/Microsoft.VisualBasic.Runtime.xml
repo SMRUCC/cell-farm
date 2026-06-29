@@ -17518,11 +17518,13 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  If <paramref name="list"/> contains no elements or it is nothing, then this function will returns nothing
  </summary>
  <param name="list"></param>
- <param name="comma$"></param>
- <param name="andalso$"></param>
- <param name="etc$"></param>
+ <param name="comma"></param>
+ <param name="andalso"></param>
+ <param name="etc"></param>
  <param name="joinSpace"></param>
- <returns></returns>
+ <returns>
+ this function returns null string if the given <paramref name="list"/> is empty or nothing.
+ </returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Data.Trinity.NLP.TextTokens">
  <summary>
@@ -25899,7 +25901,7 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  </summary>
  <param name="path"></param>
  <param name="encoding">Default value is UTF8</param>
- <returns></returns>
+ <returns>this function will returns an empty string array(not nothing) if the given file is not found.</returns>
  <remarks>
  (这个函数只建议读取小文本文件的时候使用)
  </remarks>
@@ -27939,6 +27941,9 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <param name="x#"></param>
  <param name="y#"></param>
  <returns></returns>
+ <remarks>
+ 计算 Pearson 相关系数
+ </remarks>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Correlations.Correlations.ICorrelation">
  <summary>
@@ -28509,6 +28514,11 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  type, see the Reference Source.
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.VBMath.SafeNegLog10(System.Double)">
+ <summary>
+ 安全的 -log10(p) 计算, 处理p=0的边界情况
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.VBMath.Clip(System.Double,System.Double)">
  <summary>
  Standard clamping of a value into a fixed range
@@ -28764,8 +28774,8 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  
  > https://en.wikipedia.org/wiki/Standard_deviation
  </summary>
- <returns></returns>
- <remarks></remarks>
+ <returns>StdDev</returns>
+ <remarks>计算标准差 (样本标准差, ddof=1)</remarks>
  
 </member>
 <member name="M:Microsoft.VisualBasic.Math.VBMath.SD(System.Collections.Generic.IEnumerable{System.Int32})">
@@ -29754,6 +29764,14 @@ You should have received a copy of the GNU  [rest of string was truncated]&quot;
  <summary>
  make sqrt of the variance result will be the standard deviation
  </summary>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.Linq.EnumerableStatsVariance.Variance(System.Collections.Generic.IEnumerable{System.Double},System.Boolean)">
+ <summary>
+ Computes the Variance of a sequence of System.Double values.
+ </summary>
+ <param name="source">A sequence of System.Double values to calculate the Variance of.</param>
+ <param name="isSample"></param>
+ <returns>The Variance of the sequence of values.</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Trigonometric">
  <summary>

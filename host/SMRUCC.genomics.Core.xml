@@ -13524,6 +13524,17 @@ to take away yo [rest of string was truncated]&quot;;.
  会需要依赖于这个路径来加载Bio.Resources资源卫星程序集文件
  </remarks>
 </member>
+<member name="T:SMRUCC.genomics.MetabolicModel.MetabolicPathway">
+ <summary>
+ 通路信息（用于通路级别汇总）
+ </summary>
+</member>
+<member name="P:SMRUCC.genomics.MetabolicModel.MetabolicPathway.name">
+ <summary>通路名称</summary>
+</member>
+<member name="P:SMRUCC.genomics.MetabolicModel.MetabolicPathway.genes">
+ <summary>通路包含的基因ID列表</summary>
+</member>
 <member name="T:SMRUCC.genomics.MetabolicModel.MetabolicReaction">
  <summary>
  A unify reaction model in the GCModeller system

@@ -842,7 +842,7 @@ Microsoft.VisualBasic.Math.Statistics
  two sample p-value
  </summary>
  <param name="t#">The t test value</param>
- <param name="v">v is the degrees of freedom</param>
+ <param name="df">v is the degrees of freedom</param>
  <returns></returns>
  <remarks>
  请注意，双样本检测与单样本检测的pvalue在less和greater是反过来的
@@ -900,6 +900,26 @@ Microsoft.VisualBasic.Math.Statistics
  experiment.
  </summary>
 </member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.HypergeometricPValue(System.Int32,System.Int32,System.Int32,System.Int32)">
+ <summary>
+ 计算超几何分布的右尾p值 P(X >= k)
+ <para>
+ 超几何分布描述: 从N个总体(含K个成功)中抽取n个样本, 恰好得到i个成功的概率
+ P(X=i) = C(K,i) * C(N-K, n-i) / C(N, n)
+ 右尾p值 = Σ_{i=k}^{min(K,n)} P(X=i)
+ </para>
+ </summary>
+ <param name="N">总体大小 (背景特征峰总数)</param>
+ <param name="K">总体中成功数 (背景中匹配到该通路的峰数)</param>
+ <param name="n">样本大小 (显著特征峰总数)</param>
+ <param name="k">观察到的成功数 (显著峰中匹配到该通路的峰数)</param>
+</member>
+<member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.LogBinomial(System.Int32,System.Int32)">
+ <summary>
+ 计算对数二项系数 ln(C(n, k))
+ <para>避免直接计算大数阶乘导致溢出</para>
+ </summary>
+</member>
 <member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.FisherPvalue(System.Double,System.Double,System.Double,System.Double)">
  <summary>
  
@@ -915,10 +935,10 @@ Microsoft.VisualBasic.Math.Statistics
  p = ((a+b)!(c+d)!(a+c)!(b+d)!)/(a!b!c!d!n!)
  ```
  </summary>
- <param name="a#"></param>
- <param name="b#"></param>
- <param name="c#"></param>
- <param name="d#"></param>
+ <param name="a"></param>
+ <param name="b"></param>
+ <param name="c"></param>
+ <param name="d"></param>
  <returns></returns>
 </member>
 <member name="M:Microsoft.VisualBasic.Math.Statistics.FisherTest.FactorialDivide(Microsoft.VisualBasic.Language.List{System.Int32},Microsoft.VisualBasic.Language.List{System.Int32})">
@@ -950,6 +970,12 @@ Microsoft.VisualBasic.Math.Statistics
  </summary>
  <returns></returns>
  
+</member>
+<member name="P:Microsoft.VisualBasic.Math.Statistics.FTest.ConfidenceInterval95">
+ <summary>
+ 获取 95% 置信区间
+ </summary>
+ <returns>包含下限和上限的 Tuple</returns>
 </member>
 <member name="T:Microsoft.VisualBasic.Math.Statistics.LogLikelihood">
  <summary>
