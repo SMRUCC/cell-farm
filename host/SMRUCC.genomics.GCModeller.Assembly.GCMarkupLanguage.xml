@@ -253,6 +253,12 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  </summary>
  <param name="gene"></param>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.ID">
+ <summary>
+ the registry unique reference symbol id
+ </summary>
+ <returns></returns>
+</member>
 <member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Compound.referenceIds">
  <summary>
  the reference id of current metabolite
