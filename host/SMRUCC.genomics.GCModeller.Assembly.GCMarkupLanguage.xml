@@ -358,6 +358,12 @@ SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage
  <param name="protein_id"></param>
  <returns></returns>
 </member>
+<member name="P:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.Transportation.guid">
+ <summary>
+ the reaction model reference id
+ </summary>
+ <returns></returns>
+</member>
 <member name="T:SMRUCC.genomics.GCModeller.Assembly.GCMarkupLanguage.v2.ReactionGroup">
  <summary>
  the reaction collection
